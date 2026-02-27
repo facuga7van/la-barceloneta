@@ -916,54 +916,64 @@ const CARD_DATA = [
 ];
 
 function Cards() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
   return (
     <div className="content-stretch flex flex-col lg:flex-row items-stretch relative shrink-0 w-full" data-name="Cards">
-      {CARD_DATA.map((card, i) => (
-        <div
-          key={i}
-          data-name={`Card${i + 1}`}
-          data-animate="fade-up"
-          data-delay={String(i * 120)}
-          className={`group flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
-          style={{ "--card-bg": card.bgColor } as React.CSSProperties}
-          onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.backgroundColor = card.bgColor; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.backgroundColor = ""; }}
-        >
-          {/* Default state: metric + title/subtitle */}
-          <div className="flex flex-col flex-1 justify-end gap-[32px] group-hover:hidden">
-            <div className="flex flex-col gap-[8px]">
-              <span className="font-['Helvetica:Regular',sans-serif] leading-[1] text-[40px] lg:text-[60px] tracking-[-0.6px] text-[#1e3d59]">
-                {card.metric}
-              </span>
-              <span className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[20px] lg:text-[30px] tracking-[-0.6px] text-[#575757]">
-                {card.period}
-              </span>
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[22px] lg:text-[30px] tracking-[-0.6px] text-black">
-                {card.title}
-              </p>
-              <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[15px] lg:text-[18px] tracking-[-0.18px] text-black opacity-80">
-                {card.subtitle}
-              </p>
-            </div>
-          </div>
+      {CARD_DATA.map((card, i) => {
+        const isActive = activeCard === i;
+        return (
+          <div
+            key={i}
+            data-name={`Card${i + 1}`}
+            data-animate="fade-up"
+            data-delay={String(i * 120)}
+            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
+            style={{ backgroundColor: isActive ? card.bgColor : undefined }}
+            onClick={() => setActiveCard(isActive ? null : i)}
+            onMouseEnter={e => { if (activeCard === null) (e.currentTarget as HTMLDivElement).style.backgroundColor = card.bgColor; }}
+            onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLDivElement).style.backgroundColor = ""; }}
+          >
+            {/* Default state: metric + title/subtitle */}
+            {!isActive && (
+              <div className="flex flex-col flex-1 justify-end gap-[32px]">
+                <div className="flex flex-col gap-[8px]">
+                  <span className="font-['Helvetica:Regular',sans-serif] leading-[1] text-[40px] lg:text-[60px] tracking-[-0.6px] text-[#1e3d59]">
+                    {card.metric}
+                  </span>
+                  <span className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[20px] lg:text-[30px] tracking-[-0.6px] text-[#575757]">
+                    {card.period}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-[8px]">
+                  <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[22px] lg:text-[30px] tracking-[-0.6px] text-black">
+                    {card.title}
+                  </p>
+                  <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[15px] lg:text-[18px] tracking-[-0.18px] text-black opacity-80">
+                    {card.subtitle}
+                  </p>
+                </div>
+              </div>
+            )}
 
-          {/* Hover state: title + detail */}
-          <div className="hidden group-hover:flex flex-col gap-[16px] flex-1 pt-[8px]">
-            <h3 className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[24px] text-white font-bold tracking-[-0.24px]">
-              {card.title}
-            </h3>
-            {card.detail.split("\n").map((line, li) =>
-              line.trim() ? (
-                <p key={li} className="font-['Helvetica:Regular',sans-serif] text-[16px] text-[rgba(255,255,255,0.8)] tracking-[-0.16px] leading-[1.6]">
-                  {line}
-                </p>
-              ) : <br key={li} />
+            {/* Active/expanded state: title + detail */}
+            {isActive && (
+              <div className="flex flex-col gap-[16px] flex-1 pt-[8px]">
+                <h3 className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[24px] text-white font-bold tracking-[-0.24px]">
+                  {card.title}
+                </h3>
+                {card.detail.split("\n").map((line, li) =>
+                  line.trim() ? (
+                    <p key={li} className="font-['Helvetica:Regular',sans-serif] text-[16px] text-[rgba(255,255,255,0.8)] tracking-[-0.16px] leading-[1.6]">
+                      {line}
+                    </p>
+                  ) : <br key={li} />
+                )}
+              </div>
             )}
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -1079,8 +1089,8 @@ function Grafico({
       data-name="Grafico"
     >
       {/* Floor plan image */}
-      <div className="flex h-[422px] items-center justify-center relative shrink-0 w-[597.609px] z-[1]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
-        <div className="flex-none rotate-90">
+      <div className="flex h-[260px] lg:h-[422px] items-center justify-center relative shrink-0 w-full max-w-[597.609px] z-[1] overflow-hidden" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
+        <div className="flex-none rotate-90 scale-[0.55] lg:scale-100 origin-center">
           <div className="h-[597.609px] relative w-[422px]" data-name="image 5472">
             <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={planSrc} />
           </div>
@@ -1345,46 +1355,46 @@ function FractionViewerInteractive() {
         </div>
       </div>
       {/* Right: dynamic investment table */}
-      <div className="content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center leading-[1.2] min-h-px min-w-px not-italic py-[40px] relative self-stretch">
+      <div className="content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center leading-[1.2] min-h-px min-w-px not-italic py-[20px] lg:py-[40px] relative self-stretch">
         {/* TU INVERSIÓN */}
-        <div className="content-stretch flex font-['Helvetica:Bold',sans-serif] items-start justify-between py-[16px] relative shrink-0 text-[#040404] text-[22px] tracking-[-0.22px] w-full">
+        <div className="content-stretch flex font-['Helvetica:Bold',sans-serif] items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] w-full">
           <p className="relative shrink-0">TU INVERSIÓN</p>
           <p className="relative shrink-0 text-right transition-all duration-300">U$D {fmt(investment)}</p>
         </div>
         {/* RENTA DE ESPERA */}
-        <div className="content-stretch flex items-start justify-between py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
-          <div className="flex flex-[1_0_0] flex-col items-start justify-center">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[22px] tracking-[-0.22px]">RENTA DE ESPERA</p>
-            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[15px] tracking-[-0.15px] opacity-70">(5% anual)</p>
+        <div className="content-stretch flex items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
+          <div className="flex flex-[1_0_0] flex-col items-start justify-center min-w-0">
+            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[14px] lg:text-[22px] tracking-[-0.22px]">RENTA DE ESPERA</p>
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(5% anual)</p>
           </div>
-          <div className="flex flex-[1_0_0] items-end justify-end">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaEspera)}</p>
-            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] tracking-[-0.13px]">/MES</p>
+          <div className="flex items-end justify-end shrink-0">
+            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaEspera)}</p>
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
           </div>
         </div>
         {/* RENTA HOTELERA */}
-        <div className="content-stretch flex items-start justify-between py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
-          <div className="flex flex-[1_0_0] flex-col items-start justify-center">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[22px] tracking-[-0.22px]">RENTA HOTELERA</p>
-            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[15px] tracking-[-0.15px] opacity-70">(8–12% anual est.)</p>
+        <div className="content-stretch flex items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
+          <div className="flex flex-[1_0_0] flex-col items-start justify-center min-w-0">
+            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[14px] lg:text-[22px] tracking-[-0.22px]">RENTA HOTELERA</p>
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(8–12% anual est.)</p>
           </div>
-          <div className="flex flex-[1_0_0] items-end justify-end">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaHotelera)}</p>
-            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] tracking-[-0.13px]">/MES</p>
+          <div className="flex items-end justify-end shrink-0">
+            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaHotelera)}</p>
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
           </div>
         </div>
         {/* RENTA ASEGURADA */}
-        <div className="content-stretch flex items-start justify-between py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
-          <div className="flex flex-[1_0_0] flex-col items-start justify-center">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[22px] tracking-[-0.22px]">RENTA ASEGURADA</p>
-            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[15px] tracking-[-0.15px] opacity-70">(6% anual, opcional)</p>
+        <div className="content-stretch flex items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
+          <div className="flex flex-[1_0_0] flex-col items-start justify-center min-w-0">
+            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[14px] lg:text-[22px] tracking-[-0.22px]">RENTA ASEGURADA</p>
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(6% anual, opcional)</p>
           </div>
-          <div className="flex flex-[1_0_0] items-end justify-end">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaAsegurada)}</p>
-            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] tracking-[-0.13px]">/MES</p>
+          <div className="flex items-end justify-end shrink-0">
+            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaAsegurada)}</p>
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
           </div>
         </div>
-        <p className="font-['Helvetica:Regular',sans-serif] opacity-70 text-[#040404] text-[13px] tracking-[-0.13px] w-full lg:w-[393px] whitespace-pre-wrap">* Los valores son estimados. La renta hotelera (RH) puede variar según ocupación y tarifa.</p>
+        <p className="font-['Helvetica:Regular',sans-serif] opacity-70 text-[#040404] text-[12px] lg:text-[13px] tracking-[-0.13px] w-full lg:w-[393px] whitespace-pre-wrap">* Los valores son estimados. La renta hotelera (RH) puede variar según ocupación y tarifa.</p>
       </div>
     </div>
   );
@@ -1439,8 +1449,8 @@ function Header6() {
 function Content6() {
   return (
     <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-name="Content">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[30px] text-white tracking-[-0.3px] w-[min-content] whitespace-pre-wrap">USD 20.000</p>
-      <div className="h-0 relative shrink-0 w-[235px]">
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[22px] lg:text-[30px] text-white tracking-[-0.3px] w-[min-content] whitespace-pre-wrap">USD 20.000</p>
+      <div className="h-0 relative shrink-0 w-full lg:w-[235px]">
         <div className="absolute inset-[-0.5px_0]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 235 1">
             <path d="M0 0.5H235" id="Vector 12" stroke="var(--stroke-0, white)" />
@@ -1520,8 +1530,8 @@ function FeaturesContainer() {
 
 function Container3() {
   return (
-    <div className="content-stretch flex flex-col gap-[59px] items-start relative shrink-0 w-[235px]" data-name="Container">
-      <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[22px] text-white tracking-[-0.22px] w-[min-content] whitespace-pre-wrap">desde</p>
+    <div className="content-stretch flex flex-col gap-[24px] lg:gap-[59px] items-start relative shrink-0 w-full lg:w-[235px]" data-name="Container">
+      <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[18px] lg:text-[22px] text-white tracking-[-0.22px] w-[min-content] whitespace-pre-wrap">desde</p>
       <Content6 />
       <FeaturesContainer />
     </div>
@@ -1530,7 +1540,7 @@ function Container3() {
 
 function ContentWrapper() {
   return (
-    <div className="absolute bg-[#ff5a63] bottom-[-63px] content-stretch flex h-auto lg:h-[350px] items-center p-[20px] lg:p-[30px] right-[16px] lg:right-[98px] w-[220px] lg:w-[295px]" data-name="Content Wrapper">
+    <div className="absolute bg-[#ff5a63] bottom-[16px] lg:bottom-[-63px] content-stretch flex h-auto items-center p-[16px] lg:p-[30px] right-[16px] lg:right-[98px] w-[180px] lg:w-[295px]" data-name="Content Wrapper">
       <Container3 />
     </div>
   );
@@ -1560,19 +1570,19 @@ function Group10() {
 
 function Portada() {
   return (
-    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full" data-name="Portada" data-animate="fade-in">
+    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
-      <div className="absolute aspect-[592/665] bottom-[40px] mix-blend-screen opacity-84 right-[62px] top-[35px]" data-name="image 5457">
+      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5457">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="" className="absolute h-[114.29%] left-[-0.05%] max-w-none top-[-14.29%] w-[100.11%]" src={imgImage5457} />
         </div>
       </div>
       <ContentWrapper />
-      <div className="absolute h-[82px] left-[72px] top-[545px] w-[334px]" data-name="image 5476">
+      <div className="absolute h-[50px] lg:h-[82px] left-[16px] lg:left-[72px] bottom-[16px] lg:bottom-auto lg:top-[545px] w-[200px] lg:w-[334px] hidden lg:block" data-name="image 5476">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5476} />
       </div>
-      <Group10 />
-      <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] inset-[40.04%_12.41%_31.06%_5.84%] leading-none not-italic text-[#ff5a63] text-[36px] sm:text-[60px] lg:text-[101.098px] tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap">
+      <div className="hidden lg:block"><Group10 /></div>
+      <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] left-[16px] lg:left-[5.84%] top-[30%] lg:top-[40.04%] right-[16px] lg:right-[12.41%] leading-none not-italic text-[#ff5a63] text-[32px] sm:text-[50px] lg:text-[101.098px] tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap">
         <p className="mb-0">La Barceloneta</p>
         <p>buenos aires</p>
       </div>
@@ -2552,7 +2562,7 @@ function PersonalitySection() {
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
         <Header6 />
-        <div className="content-stretch flex flex-col h-[400px] sm:h-[550px] lg:h-[763px] items-start pb-[64px] relative shrink-0 w-full" data-name="Portada / Bs As">
+        <div className="content-stretch flex flex-col h-[340px] sm:h-[500px] lg:h-[763px] items-start pb-0 lg:pb-[64px] relative shrink-0 w-full" data-name="Portada / Bs As">
           <Portada />
         </div>
         <ToneAndVoice />
@@ -2629,8 +2639,8 @@ function Header14() {
 function Content10() {
   return (
     <div className="content-stretch flex flex-col gap-[20px] items-start pt-[24px] relative shrink-0 w-full" data-name="Content">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[30px] text-white tracking-[-0.3px] w-[min-content] whitespace-pre-wrap">{`Energy & Business Tower`}</p>
-      <div className="h-0 relative shrink-0 w-[235px]">
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[22px] lg:text-[30px] text-white tracking-[-0.3px] w-[min-content] whitespace-pre-wrap">{`Energy & Business Tower`}</p>
+      <div className="h-0 relative shrink-0 w-full lg:w-[235px]">
         <div className="absolute inset-[-0.5px_0]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 235 1">
             <path d="M0 0.5H235" id="Vector 12" stroke="var(--stroke-0, white)" />
@@ -2740,7 +2750,7 @@ function FeaturesContainer1() {
 
 function Container10() {
   return (
-    <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-[235px]" data-name="Container">
+    <div className="content-stretch flex flex-col gap-[24px] lg:gap-[40px] items-start relative shrink-0 w-full lg:w-[235px]" data-name="Container">
       <Content10 />
       <FeaturesContainer1 />
     </div>
@@ -2749,7 +2759,7 @@ function Container10() {
 
 function ContentWrapper1() {
   return (
-    <div className="absolute bg-[#040404] bottom-[-63px] content-stretch flex h-auto lg:h-[350px] items-center p-[20px] lg:p-[30px] right-[16px] lg:right-[98px] w-[220px] lg:w-[295px]" data-name="Content Wrapper">
+    <div className="absolute bg-[#040404] bottom-[16px] lg:bottom-[-63px] content-stretch flex h-auto items-center p-[16px] lg:p-[30px] right-[16px] lg:right-[98px] w-[180px] lg:w-[295px]" data-name="Content Wrapper">
       <Container10 />
     </div>
   );
@@ -2779,17 +2789,17 @@ function Group11() {
 
 function Portada1() {
   return (
-    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full" data-name="Portada" data-animate="fade-in">
+    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
-      <div className="absolute aspect-[592/665] bottom-[40px] mix-blend-screen right-[62px] top-[35px]" data-name="image 5458">
+      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5458">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5458} />
       </div>
       <ContentWrapper1 />
-      <div className="absolute h-[82px] left-[72px] top-[545px] w-[100px]" data-name="image 5479">
+      <div className="absolute h-[82px] left-[72px] top-[545px] w-[100px] hidden lg:block" data-name="image 5479">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5479} />
       </div>
-      <Group11 />
-      <div className="absolute bottom-[31.06%] font-['Barlow_Condensed:Medium',sans-serif] leading-none left-[16px] lg:left-[72px] not-italic text-[#7ecbe2] text-[36px] sm:text-[60px] lg:text-[101.098px] top-[40.04%] tracking-[-3px] lg:tracking-[-8.7698px] uppercase w-full lg:w-[895.984px] whitespace-pre-wrap">
+      <div className="hidden lg:block"><Group11 /></div>
+      <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] leading-none left-[16px] lg:left-[72px] top-[30%] lg:top-[40.04%] right-[16px] lg:right-auto not-italic text-[#7ecbe2] text-[32px] sm:text-[50px] lg:text-[101.098px] tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap">
         <p className="mb-0">La Barceloneta</p>
         <p>NEUQUÉN</p>
       </div>
@@ -2955,7 +2965,7 @@ function PersonalitySection1() {
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
         <Header14 />
-        <div className="content-stretch flex flex-col h-[400px] sm:h-[550px] lg:h-[763px] items-start pb-[64px] relative shrink-0 w-full" data-name="Portada / Neuquen">
+        <div className="content-stretch flex flex-col h-[340px] sm:h-[500px] lg:h-[763px] items-start pb-0 lg:pb-[64px] relative shrink-0 w-full" data-name="Portada / Neuquen">
           <Portada1 />
         </div>
         <ToneAndVoice1 />
@@ -3301,7 +3311,7 @@ function SectionHeader3() {
 
 function Content13() {
   return (
-    <div className="bg-white flex-[1_0_0] h-auto lg:h-[4799px] min-h-px min-w-px relative" data-name="Content">
+    <div className="bg-white flex-[1_0_0] h-auto lg:h-[790px] min-h-px min-w-px relative" data-name="Content">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col gap-[32px] items-start p-[32px] relative size-full">
         <Title7 />
