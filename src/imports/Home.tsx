@@ -1284,7 +1284,7 @@ function FractionViewerInteractive() {
   const sliderItems = Array.from({ length: TOTAL_DOTS }).flatMap((_, i) => {
     const isSelected = i === activeDot;
     const isBefore   = i < activeDot;
-    const items: JSX.Element[] = [];
+    const items: React.ReactElement[] = [];
     if (i > 0) {
       items.push(
         <div key={`d-${i}`} className={`flex-[1_0_0] h-[2px] min-h-px min-w-px transition-colors duration-300 ${isBefore ? "bg-[#040404]" : "bg-[#c4c4c4]"}`} />
@@ -3192,9 +3192,6 @@ function Body2() {
     <div className="bg-white w-full overflow-hidden max-h-0 group-hover:max-h-[230px] transition-[max-height] duration-500 ease-in-out shrink-0" data-name="Body">
       <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[32px] items-start not-italic p-[24px] relative w-full">
         <Text4 />
-        <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[15px] text-black tracking-[-0.3px] w-full">
-          <a href="#" target="_blank" rel="noopener noreferrer" className="leading-[1.2] whitespace-pre-wrap no-underline text-inherit hover:text-[#f20909] transition-colors cursor-pointer">Ver nota completa→</a>
-        </div>
       </div>
     </div>
   );
@@ -4307,7 +4304,7 @@ function Container11() {
 
 function Main1() {
   return (
-    <main className="content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-full" data-name="Main" tabIndex="-1">
+    <main className="content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-full" data-name="Main" tabIndex={-1}>
       <Hero />
       <Images />
       <Banner />
