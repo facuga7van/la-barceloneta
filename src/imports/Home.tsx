@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, type ChangeEvent } from "react";
 import { Link } from "react-router";
 import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon, Twitter as TwIcon } from "lucide-react";
 import ConstructionTimeline from "../components/ConstructionTimeline";
+import { useScrollAnimations } from "../hooks/useScrollAnimations";
 import svgPaths from "./svg-1a10080iez";
 import imgImage5483 from "figma:asset/5fa2811ceac5459ca22dc90ff1434b4271d95280.png";
 import imgImage5472 from "figma:asset/e3b035696adca0a791535c23f307956a1eceb398.png";
@@ -215,8 +216,8 @@ function Frame40() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full">
       <div className="bg-[#fbf7f4] flex-[1_0_0] h-[4px] min-h-px min-w-px" data-name="Divider" />
-      <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[88px] text-white tracking-[-4px] uppercase whitespace-nowrap">
-        <span className="block leading-none text-[88px]">{` Creamos rentabilidad`}</span>
+      <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[40px] lg:text-[88px] text-white tracking-[-2px] lg:tracking-[-4px] uppercase whitespace-nowrap">
+        <span className="block leading-none text-[40px] lg:text-[88px]">{` Creamos rentabilidad`}</span>
       </div>
     </div>
   );
@@ -225,7 +226,7 @@ function Frame40() {
 function Frame42() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
-      <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[88px] text-white tracking-[-4px] uppercase w-full">
+      <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[40px] lg:text-[88px] text-white tracking-[-2px] lg:tracking-[-4px] uppercase w-full">
         <h1 className="block leading-none whitespace-pre-wrap">No vendemos metros</h1>
       </div>
       <Frame40 />
@@ -237,7 +238,7 @@ function Text() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-center min-h-px min-w-px relative" data-name="Text">
       <Frame42 />
-      <div className="flex flex-col font-['Barlow_Semi_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-white tracking-[-2px] uppercase w-full">
+      <div className="flex flex-col font-['Barlow_Semi_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[18px] lg:text-[30px] text-white tracking-[-1px] lg:tracking-[-2px] uppercase w-full">
         <p className="leading-[0.9] whitespace-pre-wrap">El real estate volvió a ser negocio.</p>
       </div>
     </div>
@@ -246,7 +247,7 @@ function Text() {
 
 function Frame41() {
   return (
-    <div className="content-stretch flex items-center justify-between relative shrink-0 w-[548px]">
+    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full lg:w-[548px]">
       <Text />
     </div>
   );
@@ -254,7 +255,7 @@ function Frame41() {
 
 function PrimaryButton() {
   return (
-    <a href="#contacto" className="bg-white content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-[265px] no-underline cursor-pointer" data-name="Primary button">
+    <a href="#contacto" className="bg-white content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-full sm:w-[265px] no-underline cursor-pointer" data-name="Primary button">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic overflow-hidden relative text-[#141414] text-[15px] text-center text-ellipsis tracking-[-0.15px] whitespace-nowrap">
         <p className="leading-[1.2] overflow-hidden">Quiero invertir</p>
       </div>
@@ -264,7 +265,7 @@ function PrimaryButton() {
 
 function SecondaryButton() {
   return (
-    <a href="#como-gano" className="content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-[265px] no-underline cursor-pointer" data-name="Secondary button">
+    <a href="#como-gano" className="content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-full sm:w-[265px] no-underline cursor-pointer" data-name="Secondary button">
       <div aria-hidden="true" className="absolute border border-solid border-white inset-0 pointer-events-none rounded-[999px]" />
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[15px] text-center text-ellipsis text-white tracking-[-0.15px] whitespace-nowrap">
         <p className="leading-[1.2] overflow-hidden">Conoce el modelo</p>
@@ -275,7 +276,7 @@ function SecondaryButton() {
 
 function Buttons1() {
   return (
-    <div className="content-stretch cursor-pointer flex gap-[8px] items-start relative shrink-0 w-full" data-name="Buttons">
+    <div className="content-stretch cursor-pointer flex flex-col sm:flex-row gap-[8px] items-start relative shrink-0 w-full" data-name="Buttons">
       <PrimaryButton />
       <SecondaryButton />
     </div>
@@ -301,7 +302,7 @@ function Frame57() {
 
 function Content() {
   return (
-    <div className="content-stretch flex items-end justify-between relative shrink-0 w-full" data-name="Content">
+    <div className="content-stretch flex items-end justify-between relative shrink-0 w-full" data-name="Content" data-animate="fade-up">
       <Frame57 />
     </div>
   );
@@ -309,7 +310,7 @@ function Content() {
 
 function IntroSection() {
   return (
-    <section className="absolute bottom-0 content-stretch flex flex-col items-start justify-end left-0 p-[32px] right-0" data-name="Intro section">
+    <section className="absolute bottom-0 content-stretch flex flex-col items-start justify-end left-0 p-[16px] lg:p-[32px] right-0" data-name="Intro section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid inset-0 pointer-events-none" />
       <Content />
     </section>
@@ -539,7 +540,7 @@ function Logos() {
 
 function Hero() {
   return (
-    <div className="h-[640px] overflow-clip relative shrink-0 w-full" data-name="Hero" id="inicio">
+    <div className="h-[100svh] lg:h-[640px] overflow-clip relative shrink-0 w-full" data-name="Hero" id="inicio">
       <video aria-label="Logo on colored background" autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop muted playsInline>
         <source src={`${import.meta.env.BASE_URL}videos/2bd5ae44656fe5e0504e38223d283ffeb8c6d21e.mp4`} type="video/mp4" />
       </video>
@@ -581,7 +582,7 @@ function Images() {
 
 function Banner() {
   return (
-    <section id="brochure" className="relative shrink-0 w-full" data-name="Banner">
+    <section id="brochure" className="relative shrink-0 w-full" data-name="Banner" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border-[#eae9e8] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col items-start p-[32px] relative w-full">
         <div className="aspect-[2320/264] relative shrink-0 w-full" data-name="image 5483">
@@ -594,8 +595,8 @@ function Banner() {
 
 function Title() {
   return (
-    <div className="content-stretch flex items-end relative shrink-0 w-[562px]" data-name="Title">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
+    <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
+      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[22px] lg:text-[30px] text-black tracking-[-0.6px]">
         <h2 className="block leading-[1.2] whitespace-pre-wrap">¿Cómo gano con este modelo?</h2>
       </div>
     </div>
@@ -604,7 +605,7 @@ function Title() {
 
 function Content1() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[265px]" data-name="Content">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[265px]" data-name="Content">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
         <p className="leading-[1.2] whitespace-pre-wrap">Nos ajustamos a tus posibilidades de inversión otorgando beneficios desde el principio. Para que más que invertir en un inmueble inviertas en una experiencia.</p>
       </div>
@@ -614,7 +615,7 @@ function Content1() {
 
 function Header() {
   return (
-    <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-name="Header">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-0 items-start justify-between relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
       <Title />
       <Content1 />
     </div>
@@ -916,12 +917,14 @@ const CARD_DATA = [
 
 function Cards() {
   return (
-    <div className="content-stretch flex items-stretch relative shrink-0 w-full" data-name="Cards">
+    <div className="content-stretch flex flex-col lg:flex-row items-stretch relative shrink-0 w-full" data-name="Cards">
       {CARD_DATA.map((card, i) => (
         <div
           key={i}
           data-name={`Card${i + 1}`}
-          className={`group flex-[1_0_0] min-h-[540px] min-w-[340px] relative flex flex-col p-[40px] transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "border-r border-[rgba(0,0,0,0.1)]" : ""}`}
+          data-animate="fade-up"
+          data-delay={String(i * 120)}
+          className={`group flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
           style={{ "--card-bg": card.bgColor } as React.CSSProperties}
           onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.backgroundColor = card.bgColor; }}
           onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.backgroundColor = ""; }}
@@ -929,18 +932,18 @@ function Cards() {
           {/* Default state: metric + title/subtitle */}
           <div className="flex flex-col flex-1 justify-end gap-[32px] group-hover:hidden">
             <div className="flex flex-col gap-[8px]">
-              <span className="font-['Helvetica:Regular',sans-serif] leading-[1] text-[60px] tracking-[-0.6px] text-[#1e3d59]">
+              <span className="font-['Helvetica:Regular',sans-serif] leading-[1] text-[40px] lg:text-[60px] tracking-[-0.6px] text-[#1e3d59]">
                 {card.metric}
               </span>
-              <span className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[30px] tracking-[-0.6px] text-[#575757]">
+              <span className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[20px] lg:text-[30px] tracking-[-0.6px] text-[#575757]">
                 {card.period}
               </span>
             </div>
             <div className="flex flex-col gap-[8px]">
-              <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[30px] tracking-[-0.6px] text-black">
+              <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[22px] lg:text-[30px] tracking-[-0.6px] text-black">
                 {card.title}
               </p>
-              <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[18px] tracking-[-0.18px] text-black opacity-80">
+              <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[15px] lg:text-[18px] tracking-[-0.18px] text-black opacity-80">
                 {card.subtitle}
               </p>
             </div>
@@ -967,8 +970,8 @@ function Cards() {
 
 function Title1() {
   return (
-    <div className="content-stretch flex items-end relative shrink-0 w-[562px]" data-name="Title">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
+    <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
+      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[22px] lg:text-[30px] text-black tracking-[-0.6px]">
         <h2 className="block leading-[1.2] whitespace-pre-wrap">Elegí tu fracción</h2>
       </div>
     </div>
@@ -977,7 +980,7 @@ function Title1() {
 
 function Content5() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[265px]" data-name="Content">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[265px]" data-name="Content">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
         <p className="leading-[1.2] whitespace-pre-wrap">Accedé a una unidad desde USD 20.000 y hacé que tu ladrillo trabaje por vos.</p>
       </div>
@@ -987,7 +990,7 @@ function Content5() {
 
 function Header1() {
   return (
-    <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-name="Header">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-0 items-start justify-between relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
       <Title1 />
       <Content5 />
     </div>
@@ -1313,11 +1316,11 @@ function FractionViewerInteractive() {
   });
 
   return (
-    <div className="content-stretch flex gap-[32px] items-start pt-[32px] relative shrink-0 w-full">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start pt-[32px] relative shrink-0 w-full" data-animate="fade-up">
       {/* Left: tabs + floor plan + slider */}
-      <div className="content-stretch flex flex-col gap-[24px] h-[544px] isolate items-center relative shrink-0 w-[713px]">
+      <div className="content-stretch flex flex-col gap-[24px] h-auto lg:h-[544px] isolate items-center relative shrink-0 w-full lg:w-[713px]">
         {/* Norte/Sur tabs */}
-        <div className="content-stretch flex gap-[8px] items-start justify-center p-[4px] relative rounded-[99px] shrink-0 w-[542px] z-[3]">
+        <div className="content-stretch flex gap-[8px] items-start justify-center p-[4px] relative rounded-[99px] shrink-0 w-full max-w-[542px] z-[3]">
           <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none rounded-[99px]" />
           {(["norte", "sur"] as const).map(tab => (
             <button
@@ -1381,7 +1384,7 @@ function FractionViewerInteractive() {
             <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] tracking-[-0.13px]">/MES</p>
           </div>
         </div>
-        <p className="font-['Helvetica:Regular',sans-serif] opacity-70 text-[#040404] text-[13px] tracking-[-0.13px] w-[393px] whitespace-pre-wrap">* Los valores son estimados. La renta hotelera (RH) puede variar según ocupación y tarifa.</p>
+        <p className="font-['Helvetica:Regular',sans-serif] opacity-70 text-[#040404] text-[13px] tracking-[-0.13px] w-full lg:w-[393px] whitespace-pre-wrap">* Los valores son estimados. La renta hotelera (RH) puede variar según ocupación y tarifa.</p>
       </div>
     </div>
   );
@@ -1427,7 +1430,7 @@ function Title2() {
 
 function Header6() {
   return (
-    <div className="content-stretch flex items-start pb-[32px] relative shrink-0 w-full" data-name="Header">
+    <div className="content-stretch flex items-start pb-[32px] relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
       <Title2 />
     </div>
   );
@@ -1527,7 +1530,7 @@ function Container3() {
 
 function ContentWrapper() {
   return (
-    <div className="absolute bg-[#ff5a63] bottom-[-63px] content-stretch flex h-[350px] items-center p-[30px] right-[98px] w-[295px]" data-name="Content Wrapper">
+    <div className="absolute bg-[#ff5a63] bottom-[-63px] content-stretch flex h-auto lg:h-[350px] items-center p-[20px] lg:p-[30px] right-[16px] lg:right-[98px] w-[220px] lg:w-[295px]" data-name="Content Wrapper">
       <Container3 />
     </div>
   );
@@ -1557,7 +1560,7 @@ function Group10() {
 
 function Portada() {
   return (
-    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full" data-name="Portada">
+    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full" data-name="Portada" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[40px] mix-blend-screen opacity-84 right-[62px] top-[35px]" data-name="image 5457">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -1569,7 +1572,7 @@ function Portada() {
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5476} />
       </div>
       <Group10 />
-      <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] inset-[40.04%_12.41%_31.06%_5.84%] leading-none not-italic text-[#ff5a63] text-[101.098px] tracking-[-8.7698px] uppercase whitespace-pre-wrap">
+      <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] inset-[40.04%_12.41%_31.06%_5.84%] leading-none not-italic text-[#ff5a63] text-[36px] sm:text-[60px] lg:text-[101.098px] tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap">
         <p className="mb-0">La Barceloneta</p>
         <p>buenos aires</p>
       </div>
@@ -1815,7 +1818,7 @@ function Examples() {
   return (
     <div className="flex-[1_0_0] min-h-px min-w-px relative" data-name="Examples">
       <div className="flex flex-col justify-center size-full">
-        <div className="content-stretch flex flex-col gap-[40px] items-start justify-center px-[80px] relative w-full">
+        <div className="content-stretch flex flex-col gap-[40px] items-start justify-center px-0 lg:px-[80px] relative w-full">
           <Row />
           <Row1 />
           <Row2 />
@@ -1854,7 +1857,7 @@ function Content7() {
 
 function ToneAndVoice() {
   return (
-    <div className="content-stretch flex gap-[32px] items-start py-[32px] relative shrink-0 w-full" data-name="Tone and voice">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start py-[32px] relative shrink-0 w-full" data-name="Tone and voice" data-animate="fade-up">
       <Examples />
       <Content7 />
     </div>
@@ -1863,7 +1866,7 @@ function ToneAndVoice() {
 
 function TitleAndSubtitle() {
   return (
-    <div className="content-stretch flex gap-[531px] items-start relative shrink-0 w-full" data-name="Title and subtitle">
+    <div className="content-stretch flex gap-0 items-start relative shrink-0 w-full" data-name="Title and subtitle">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
         <p className="leading-[1.2]">Prestaciones selectas</p>
       </div>
@@ -1999,11 +2002,11 @@ function Container4() {
   const total = GALLERY_TABS.length;
 
   return (
-    <div className="content-stretch flex gap-[32px] h-[552px] items-center relative shrink-0 w-full" data-name="Container">
+    <div className="content-stretch flex flex-col-reverse lg:flex-row gap-[24px] lg:gap-[32px] h-auto lg:h-[552px] items-center relative shrink-0 w-full" data-name="Container">
       {/* Left content: navigation + counter + title */}
-      <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start justify-between min-h-px min-w-px relative" data-name="Content">
+      <div className="content-stretch flex flex-[1_0_0] flex-col h-[200px] lg:h-full items-start justify-between min-h-px min-w-px relative w-full" data-name="Content">
         {/* Arrow navigation + description */}
-        <div className="absolute bottom-[0.29px] content-stretch flex flex-col gap-[8px] items-end justify-center left-0" data-name="Container">
+        <div className="relative lg:absolute bottom-auto lg:bottom-[0.29px] content-stretch flex flex-col gap-[8px] items-end justify-center left-0" data-name="Container">
           <div className="content-stretch flex items-center relative shrink-0 w-full">
             <button
               type="button"
@@ -2048,11 +2051,11 @@ function Container4() {
             <span className="leading-[1.2]">{String(tab + 1).padStart(2, "0")}</span>
             <span className="leading-[1.2] text-[#575757]">/{String(total).padStart(2, "0")}</span>
           </p>
-          <p className="leading-[1.1] min-w-full relative shrink-0 text-[60px] text-right tracking-[-0.6px] w-[min-content] whitespace-pre-wrap">{current.label}</p>
+          <p className="leading-[1.1] min-w-full relative shrink-0 text-[36px] lg:text-[60px] text-right tracking-[-0.6px] w-[min-content] whitespace-pre-wrap">{current.label}</p>
         </div>
       </div>
       {/* Gallery image */}
-      <div aria-hidden="true" className="flex-[1_0_0] h-[552px] min-h-px min-w-px relative overflow-hidden" data-name="Image" role="presentation">
+      <div aria-hidden="true" className="flex-[1_0_0] h-[300px] lg:h-[552px] min-h-px min-w-px relative overflow-hidden w-full" data-name="Image" role="presentation">
         <img key={tab} alt={current.label} className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={current.image} />
       </div>
     </div>
@@ -2061,8 +2064,8 @@ function Container4() {
 
 function TitleAndSubtitle1() {
   return (
-    <div className="content-stretch flex font-['Helvetica:Regular',sans-serif] gap-[32px] items-center leading-[0] not-italic relative shrink-0 w-full" data-name="Title and subtitle">
-      <div className="flex flex-[1_0_0] flex-col justify-center min-h-px min-w-px relative text-[30px] text-black tracking-[-0.6px]">
+    <div className="content-stretch flex flex-col lg:flex-row font-['Helvetica:Regular',sans-serif] gap-[12px] lg:gap-[32px] items-start lg:items-center leading-[0] not-italic relative shrink-0 w-full" data-name="Title and subtitle">
+      <div className="flex flex-[1_0_0] flex-col justify-center min-h-px min-w-px relative text-[22px] lg:text-[30px] text-black tracking-[-0.6px]">
         <p className="leading-[1.2] whitespace-pre-wrap">Avance de obra</p>
       </div>
       <div className="flex flex-[1_0_0] flex-col justify-center min-h-px min-w-px relative text-[#575757] text-[15px] tracking-[-0.15px]">
@@ -2483,9 +2486,9 @@ function Content9() {
 
 function Container6() {
   return (
-    <div className="content-stretch flex gap-[32px] h-[552px] items-center relative shrink-0 w-full" data-name="Container">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[32px] h-auto lg:h-[552px] items-center relative shrink-0 w-full" data-name="Container">
       <Content9 />
-      <div aria-hidden="true" className="flex-[1_0_0] h-[552px] max-w-[1000px] min-h-px min-w-px relative" data-name="Image" role="presentation">
+      <div aria-hidden="true" className="flex-[1_0_0] h-[250px] lg:h-[552px] max-w-[1000px] min-h-px min-w-px relative w-full" data-name="Image" role="presentation">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage1} />
       </div>
     </div>
@@ -2504,7 +2507,7 @@ function Header13() {
 
 function Map() {
   return (
-    <div className="flex-[1_0_0] h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative" data-name="Map">
+    <div className="flex-[1_0_0] h-[300px] lg:h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative w-full" data-name="Map">
       <div className="absolute h-[886px] left-[-399px] top-[-153px] w-[1066px]" data-name="image 5476">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5477} />
       </div>
@@ -2515,7 +2518,7 @@ function Map() {
 function Text1() {
   return (
     <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" data-name="Text">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[30px] text-right tracking-[-0.3px] w-full">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[20px] lg:text-[30px] text-center lg:text-right tracking-[-0.3px] w-full">
         <h3 className="block leading-[1.2] whitespace-pre-wrap">Venezuela 2475, C1096ABQ Cdad. Autónoma de Buenos Aires</h3>
       </div>
     </div>
@@ -2533,8 +2536,8 @@ function Container9() {
 function Container8() {
   return (
     <div className="relative shrink-0 w-full" data-name="Container">
-      <div className="flex flex-row items-center size-full">
-        <div className="content-stretch flex gap-[121px] items-center pr-[100px] relative w-full">
+      <div className="flex flex-col lg:flex-row items-center size-full">
+        <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[60px] items-center pr-0 lg:pr-[40px] relative w-full">
           <Map />
           <Container9 />
         </div>
@@ -2547,21 +2550,21 @@ function PersonalitySection() {
   return (
     <div aria-label="Section 2 out of 6" className="relative shrink-0 w-full" data-name="Personality Section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col gap-[30px] items-start px-[32px] py-[120px] relative w-full">
+      <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
         <Header6 />
-        <div className="content-stretch flex flex-col h-[763px] items-start pb-[64px] relative shrink-0 w-full" data-name="Portada / Bs As">
+        <div className="content-stretch flex flex-col h-[400px] sm:h-[550px] lg:h-[763px] items-start pb-[64px] relative shrink-0 w-full" data-name="Portada / Bs As">
           <Portada />
         </div>
         <ToneAndVoice />
-        <section className="content-stretch flex flex-col gap-[64px] items-start justify-center py-[80px] relative shrink-0 w-full" data-name="Galería de fotos">
+        <section className="content-stretch flex flex-col gap-[64px] items-start justify-center py-[80px] relative shrink-0 w-full" data-name="Galería de fotos" data-animate="fade-up">
           <TitleAndSubtitle />
           <Container4 />
         </section>
-        <section id="avance" className="bg-white content-stretch flex flex-col gap-[64px] items-start justify-center py-[80px] relative shrink-0 w-full" data-name="Avance de obra">
+        <section id="avance" className="bg-white content-stretch flex flex-col gap-[64px] items-start justify-center py-[80px] relative shrink-0 w-full" data-name="Avance de obra" data-animate="fade-up">
           <TitleAndSubtitle1 />
           <Container6 />
         </section>
-        <section className="aspect-[1160/812] bg-white content-stretch flex flex-col gap-[64px] items-start justify-center py-[80px] relative shrink-0 w-full" data-name="Ubicación">
+        <section className="bg-white content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center py-[40px] lg:py-[80px] relative shrink-0 w-full" data-name="Ubicación" data-animate="fade-up">
           <Header13 />
           <Container8 />
         </section>
@@ -2572,7 +2575,7 @@ function PersonalitySection() {
 
 function PrimaryButton1() {
   return (
-    <a href="#contacto" className="-translate-y-1/2 absolute bg-[#ff41b6] content-stretch cursor-pointer flex h-[48px] items-center justify-center px-[25px] py-[12px] right-[150px] rounded-[999px] top-[calc(50%-0.36px)] w-[265px] no-underline hover:bg-[#e03aa3] transition-colors" data-name="Primary button">
+    <a href="#contacto" className="-translate-y-1/2 absolute bg-[#ff41b6] content-stretch cursor-pointer flex h-[48px] items-center justify-center px-[25px] py-[12px] right-[16px] lg:right-[150px] rounded-[999px] top-[calc(50%-0.36px)] w-[200px] lg:w-[265px] no-underline hover:bg-[#e03aa3] transition-colors" data-name="Primary button">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic overflow-hidden relative text-[15px] text-center text-ellipsis text-white tracking-[-0.15px] whitespace-nowrap">
         <p className="leading-[1.2] overflow-hidden">Ir a la plataforma</p>
       </div>
@@ -2582,7 +2585,7 @@ function PrimaryButton1() {
 
 function Banner1() {
   return (
-    <section className="relative shrink-0 w-full" data-name="Banner">
+    <section className="relative shrink-0 w-full" data-name="Banner" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border-[#eae9e8] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="flex flex-col justify-center size-full">
         <div className="content-stretch flex flex-col gap-[80px] items-start justify-center p-[32px] relative w-full">
@@ -2746,7 +2749,7 @@ function Container10() {
 
 function ContentWrapper1() {
   return (
-    <div className="absolute bg-[#040404] bottom-[-63px] content-stretch flex h-[350px] items-center p-[30px] right-[98px] w-[295px]" data-name="Content Wrapper">
+    <div className="absolute bg-[#040404] bottom-[-63px] content-stretch flex h-auto lg:h-[350px] items-center p-[20px] lg:p-[30px] right-[16px] lg:right-[98px] w-[220px] lg:w-[295px]" data-name="Content Wrapper">
       <Container10 />
     </div>
   );
@@ -2776,7 +2779,7 @@ function Group11() {
 
 function Portada1() {
   return (
-    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full" data-name="Portada">
+    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full" data-name="Portada" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[40px] mix-blend-screen right-[62px] top-[35px]" data-name="image 5458">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5458} />
@@ -2786,7 +2789,7 @@ function Portada1() {
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5479} />
       </div>
       <Group11 />
-      <div className="absolute bottom-[31.06%] font-['Barlow_Condensed:Medium',sans-serif] leading-none left-[72px] not-italic text-[#7ecbe2] text-[101.098px] top-[40.04%] tracking-[-8.7698px] uppercase w-[895.984px] whitespace-pre-wrap">
+      <div className="absolute bottom-[31.06%] font-['Barlow_Condensed:Medium',sans-serif] leading-none left-[16px] lg:left-[72px] not-italic text-[#7ecbe2] text-[36px] sm:text-[60px] lg:text-[101.098px] top-[40.04%] tracking-[-3px] lg:tracking-[-8.7698px] uppercase w-full lg:w-[895.984px] whitespace-pre-wrap">
         <p className="mb-0">La Barceloneta</p>
         <p>NEUQUÉN</p>
       </div>
@@ -2901,7 +2904,7 @@ function Examples1() {
   return (
     <div className="flex-[1_0_0] min-h-px min-w-px relative" data-name="Examples">
       <div className="flex flex-col justify-center size-full">
-        <div className="content-stretch flex flex-col gap-[40px] items-start justify-center px-[80px] relative w-full">
+        <div className="content-stretch flex flex-col gap-[40px] items-start justify-center px-0 lg:px-[80px] relative w-full">
           <Row7 />
           <Row8 />
           <Row9 />
@@ -2939,7 +2942,7 @@ function Content11() {
 
 function ToneAndVoice1() {
   return (
-    <div className="content-stretch flex gap-[32px] items-start py-[32px] relative shrink-0 w-full" data-name="Tone and voice">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start py-[32px] relative shrink-0 w-full" data-name="Tone and voice">
       <Examples1 />
       <Content11 />
     </div>
@@ -2950,9 +2953,9 @@ function PersonalitySection1() {
   return (
     <div id="neuquen" aria-label="Section 2 out of 6" className="relative shrink-0 w-full" data-name="Personality Section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col gap-[30px] items-start px-[32px] py-[120px] relative w-full">
+      <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
         <Header14 />
-        <div className="content-stretch flex flex-col h-[763px] items-start pb-[64px] relative shrink-0 w-full" data-name="Portada / Neuquen">
+        <div className="content-stretch flex flex-col h-[400px] sm:h-[550px] lg:h-[763px] items-start pb-[64px] relative shrink-0 w-full" data-name="Portada / Neuquen">
           <Portada1 />
         </div>
         <ToneAndVoice1 />
@@ -2964,7 +2967,7 @@ function PersonalitySection1() {
 function Title4() {
   return (
     <div className="content-stretch flex flex-[1_0_0] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-[454px]">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] w-full lg:w-[454px]">
         <h2 className="block leading-[1.2] whitespace-pre-wrap">Experiencias reales de quienes ya están invirtiendo</h2>
       </div>
     </div>
@@ -3040,7 +3043,7 @@ function Header15() {
 
 function StrategySection1() {
   return (
-    <section className="relative shrink-0 w-full" id="testimonios" data-name="Strategy section">
+    <section className="relative shrink-0 w-full" id="testimonios" data-name="Strategy section" data-animate="fade-up">
       <div className="content-stretch flex flex-col items-start pl-[32px] pt-[120px] pb-[80px] relative w-full">
         {/* Header: title left + empty spacer right (Figma original layout) */}
         <Header15 />
@@ -3058,7 +3061,7 @@ function StrategySection1() {
 
 function Title5() {
   return (
-    <div className="content-stretch flex items-end relative shrink-0 w-[562px]" data-name="Title">
+    <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
         <h2 className="block leading-[1.2] whitespace-pre-wrap">Prensa</h2>
       </div>
@@ -3068,7 +3071,7 @@ function Title5() {
 
 function Content12() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[265px]" data-name="Content">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[265px]" data-name="Content">
       <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[16px] tracking-[-0.5px] w-full">
         <p className="leading-[1.6] whitespace-pre-wrap">Los medios hablan del modelo de inversión en fracciones y de La Barceloneta.</p>
       </div>
@@ -3078,7 +3081,7 @@ function Content12() {
 
 function Header16() {
   return (
-    <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-name="Header">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-0 items-start justify-between relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
       <Title5 />
       <Content12 />
     </div>
@@ -3194,8 +3197,8 @@ function Body2() {
 
 function Frame53() {
   return (
-    <div className="content-stretch flex items-center relative shrink-0 w-full">
-      <article className="bg-white flex-[1_0_0] h-[540px] min-h-px min-w-px relative group overflow-hidden" data-name="Prensa 1">
+    <div className="content-stretch flex flex-col lg:flex-row items-center relative shrink-0 w-full">
+      <article className="bg-white flex-[1_0_0] h-[400px] lg:h-[540px] min-h-px min-w-px relative group overflow-hidden w-full" data-name="Prensa 1">
         <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
           <Image />
           <Body />
@@ -3298,7 +3301,7 @@ function SectionHeader3() {
 
 function Content13() {
   return (
-    <div className="bg-white flex-[1_0_0] h-[4799px] min-h-px min-w-px relative" data-name="Content">
+    <div className="bg-white flex-[1_0_0] h-auto lg:h-[4799px] min-h-px min-w-px relative" data-name="Content">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col gap-[32px] items-start p-[32px] relative size-full">
         <Title7 />
@@ -3310,9 +3313,9 @@ function Content13() {
 
 function PersonalitySection2() {
   return (
-    <div aria-label="Section 2 out of 6" className="h-[960px] shrink-0 sticky top-0 w-full" data-name="Personality Section">
+    <div aria-label="Section 2 out of 6" className="h-auto lg:h-[960px] shrink-0 lg:sticky top-0 w-full" data-name="Personality Section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex gap-[30px] items-start pl-[32px] relative size-full">
+      <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[30px] items-start px-[16px] lg:px-0 lg:pl-[32px] relative w-full lg:size-full">
         <Examples2 />
         <Content13 />
       </div>
@@ -3391,7 +3394,7 @@ function SectionHeader5() {
 
 function Content14() {
   return (
-    <div className="bg-white flex-[1_0_0] h-[790px] min-h-px min-w-px relative" data-name="Content">
+    <div className="bg-white flex-[1_0_0] h-auto lg:h-[790px] min-h-px min-w-px relative" data-name="Content">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col gap-[32px] items-start p-[32px] relative size-full">
         <Title9 />
@@ -3403,9 +3406,9 @@ function Content14() {
 
 function PersonalitySection3() {
   return (
-    <div aria-label="Section 2 out of 6" className="h-[960px] shrink-0 sticky top-0 w-full" data-name="Personality Section">
+    <div aria-label="Section 2 out of 6" className="h-auto lg:h-[960px] shrink-0 lg:sticky top-0 w-full" data-name="Personality Section">
       <div className="flex flex-row items-end overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex gap-[30px] items-end pl-[32px] relative size-full">
+        <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[30px] items-start lg:items-end px-[16px] lg:px-0 lg:pl-[32px] relative w-full lg:size-full">
           <Examples3 />
           <Content14 />
         </div>
@@ -3484,7 +3487,7 @@ function SectionHeader7() {
 
 function Content15() {
   return (
-    <div className="bg-white flex-[1_0_0] h-[620px] min-h-px min-w-px relative" data-name="Content">
+    <div className="bg-white flex-[1_0_0] h-auto lg:h-[620px] min-h-px min-w-px relative" data-name="Content">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col gap-[32px] items-start p-[32px] relative size-full">
         <Title11 />
@@ -3496,9 +3499,9 @@ function Content15() {
 
 function PersonalitySection4() {
   return (
-    <div aria-label="Section 2 out of 6" className="h-[960px] shrink-0 sticky top-0 w-full" data-name="Personality Section">
+    <div aria-label="Section 2 out of 6" className="h-auto lg:h-[960px] shrink-0 lg:sticky top-0 w-full" data-name="Personality Section">
       <div className="flex flex-row items-end overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex gap-[30px] items-end pl-[32px] relative size-full">
+        <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[30px] items-start lg:items-end px-[16px] lg:px-0 lg:pl-[32px] relative w-full lg:size-full">
           <Examples4 />
           <Content15 />
         </div>
@@ -3576,7 +3579,7 @@ function SectionHeader9() {
 
 function Content16() {
   return (
-    <div className="bg-white flex-[1_0_0] h-[450px] min-h-px min-w-px relative" data-name="Content">
+    <div className="bg-white flex-[1_0_0] h-auto lg:h-[450px] min-h-px min-w-px relative" data-name="Content">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col gap-[32px] items-start p-[32px] relative size-full">
         <Title13 />
@@ -3588,9 +3591,9 @@ function Content16() {
 
 function PersonalitySection5() {
   return (
-    <div aria-label="Section 2 out of 6" className="h-[960px] shrink-0 sticky top-0 w-full" data-name="Personality Section">
+    <div aria-label="Section 2 out of 6" className="h-auto lg:h-[960px] shrink-0 lg:sticky top-0 w-full" data-name="Personality Section">
       <div className="flex flex-row items-end overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex gap-[30px] items-end pl-[32px] relative size-full">
+        <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[30px] items-start lg:items-end px-[16px] lg:px-0 lg:pl-[32px] relative w-full lg:size-full">
           <Examples5 />
           <Content16 />
         </div>
@@ -3680,7 +3683,7 @@ function SectionHeader11() {
 
 function Content17() {
   return (
-    <div className="bg-white flex-[1_0_0] h-[280px] min-h-px min-w-px relative" data-name="Content">
+    <div className="bg-white flex-[1_0_0] h-auto lg:h-[280px] min-h-px min-w-px relative" data-name="Content">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col gap-[32px] items-start p-[32px] relative size-full">
         <Title15 />
@@ -3692,9 +3695,9 @@ function Content17() {
 
 function PersonalitySection6() {
   return (
-    <div aria-label="Section 2 out of 6" className="h-[960px] shrink-0 sticky top-0 w-full" data-name="Personality Section">
+    <div aria-label="Section 2 out of 6" className="h-auto lg:h-[960px] shrink-0 lg:sticky top-0 w-full" data-name="Personality Section">
       <div className="flex flex-row items-end overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex gap-[30px] items-end pl-[32px] relative size-full">
+        <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[30px] items-start lg:items-end px-[16px] lg:px-0 lg:pl-[32px] relative w-full lg:size-full">
           <Examples6 />
           <Content17 />
         </div>
@@ -3705,7 +3708,7 @@ function PersonalitySection6() {
 
 function Frame59() {
   return (
-    <div id="como-invertir" className="content-stretch flex flex-col items-start relative shrink-0 w-full">
+    <div id="como-invertir" className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-animate="fade-up">
       <PersonalitySection2 />
       <PersonalitySection3 />
       <PersonalitySection4 />
@@ -4056,7 +4059,7 @@ function ContentWrapper2() {
   return (
     <form onSubmit={handleSubmit} className="content-stretch flex flex-[1_0_0] flex-col gap-[20px] items-start min-h-px min-w-px relative" data-name="Content Wrapper">
       {/* Nombre + Apellido */}
-      <div className="content-stretch flex gap-[19px] items-center relative shrink-0 w-full">
+      <div className="content-stretch flex flex-col sm:flex-row gap-[16px] sm:gap-[19px] items-center relative shrink-0 w-full">
         <div className="content-stretch flex flex-[1_0_0] flex-col gap-[10px] items-start min-h-px min-w-px relative">
           <label className={labelCls}>Nombre completo</label>
           <input name="nombre" type="text" value={formData.nombre} onChange={handleChange} placeholder="Juan" className={inputCls} required />
@@ -4281,7 +4284,7 @@ function Left() {
 
 function Frame12() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col h-[665px] items-start justify-between min-h-px min-w-px relative">
+    <div className="content-stretch flex flex-[1_0_0] flex-col h-auto lg:h-[665px] gap-[40px] lg:gap-0 items-start justify-between min-h-px min-w-px relative">
       <Info />
       <Left />
     </div>
@@ -4290,7 +4293,7 @@ function Frame12() {
 
 function Container11() {
   return (
-    <div className="content-stretch flex gap-[32px] items-start relative shrink-0 w-full" data-name="Container">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start relative shrink-0 w-full" data-name="Container">
       <ContactForm />
       <Frame12 />
     </div>
@@ -4313,9 +4316,9 @@ function Main1() {
       <StrategySection1 />
       <Frame58 />
       <Frame59 />
-      <div id="contacto" className="bg-white relative shrink-0 w-full" data-name="Form">
+      <div id="contacto" className="bg-white relative shrink-0 w-full" data-name="Form" data-animate="fade-up">
         <div className="overflow-clip rounded-[inherit] size-full">
-          <div className="content-stretch flex flex-col gap-[30px] items-start px-[32px] py-[120px] relative w-full">
+          <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
             <Header22 />
             <Container11 />
           </div>
@@ -4533,9 +4536,9 @@ function Nav() {
 
 function Container13() {
   return (
-    <div className="bg-[#040404] relative shrink-0 w-full" data-name="Container">
+    <div className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border-[#575757] border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex gap-[120px] items-start px-[32px] py-[80px] relative w-full">
+      <div className="content-stretch flex flex-col lg:flex-row gap-[40px] lg:gap-[120px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
         <Content18 />
         <Nav />
       </div>
@@ -4557,7 +4560,7 @@ function Main() {
 
 function Logo1() {
   return (
-    <div className="absolute h-[57.813px] left-[81px] top-[45px] w-[153.304px]" data-name="Logo">
+    <div className="absolute h-[45px] lg:h-[57.813px] left-[16px] lg:left-[81px] top-[24px] lg:top-[45px] w-[120px] lg:w-[153.304px]" data-name="Logo">
       <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 153.304 57.8134">
         <g id="Logo">
           <path d={svgPaths.p1d2e3c70} fill="var(--fill-0, white)" id="Vector" />
@@ -4581,7 +4584,7 @@ function Logo1() {
 
 function Iso() {
   return (
-    <div className="absolute h-[71.316px] left-[32px] top-[32px] w-[33.027px]" data-name="Iso">
+    <div className="absolute h-[56px] lg:h-[71.316px] left-[16px] lg:left-[32px] top-[80px] lg:top-[32px] w-[26px] lg:w-[33.027px]" data-name="Iso">
       <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33.0271 71.3157">
         <g id="Iso">
           <path d={svgPaths.p2a437a00} fill="var(--fill-0, white)" id="Vector" />
@@ -4608,6 +4611,8 @@ export default function Home() {
   const [videoMuted, setVideoMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  useScrollAnimations();
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -4624,7 +4629,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-white content-stretch flex items-start justify-end pr-[56px] relative size-full" data-name="Home">
+    <div className="bg-white content-stretch flex items-start justify-end lg:pr-[56px] relative size-full" data-name="Home">
       {/* Overlay del menú */}
       <div
         className={`fixed inset-0 bg-black/45 z-[199] transition-opacity duration-350 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
@@ -4656,11 +4661,20 @@ export default function Home() {
           ))}
         </div>
       </div>
-      {/* Fixed right sidebar: hamburger (top) + nav items + Invertir (bottom) */}
-      <div className="fixed top-0 right-0 h-screen z-[150] flex flex-col" data-name="SidebarNav">
+      {/* Fixed right sidebar — hidden on mobile */}
+      <div className="hidden lg:flex fixed top-0 right-0 h-screen z-[150] flex-col" data-name="SidebarNav">
         <NavMenu onMenuClick={() => setMenuOpen(true)} />
         <NavMenu1 />
       </div>
+      {/* Mobile hamburger */}
+      <button
+        type="button"
+        className="lg:hidden fixed top-3 right-3 z-[150] bg-black size-[48px] flex items-center justify-center rounded-full shadow-lg cursor-pointer"
+        onClick={() => setMenuOpen(true)}
+        aria-label="Abrir menú"
+      >
+        <IconamoonMenuBurgerHorizontalLight />
+      </button>
       {videoVisible && (
         <div id="vista360" className="fixed bottom-[16px] left-[16px] z-[100] h-[325px] overflow-clip rounded-[16px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] w-[200px]" data-name="Video">
           <video ref={videoRef} src={`${import.meta.env.BASE_URL}videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mov`} autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted={videoMuted} playsInline />

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon, Twitter as TwIcon } from "lucide-react";
+import { useScrollAnimations } from "../hooks/useScrollAnimations";
 import svgPaths from "./svg-36x96stg2x";
 import imgImage5475 from "figma:asset/a8c798b5c8be4c06e14d3f2ec3849a7ee96cbec3.png";
 import imgImage5474 from "figma:asset/28f87cdf85d8b9d691305432cfcd710646570202.png";
@@ -248,7 +249,7 @@ function Group1() {
 
 function LogoGm() {
   return (
-    <div className="h-[233px] overflow-clip relative shrink-0 w-[414.424px]" data-name="logo gm 1">
+    <div className="h-[160px] lg:h-[233px] overflow-clip relative shrink-0 w-full max-w-[414.424px]" data-name="logo gm 1">
       <Group />
       <Group1 />
     </div>
@@ -278,8 +279,8 @@ function LinkButon() {
 
 function Frame15() {
   return (
-    <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-[415px]">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-[372px]">
+    <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-full lg:w-[415px]">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full lg:w-[372px]">
         <p className="leading-[1.2] whitespace-pre-wrap">25 años de trayectoria. Una nueva generación que transforma el real estate en Argentina.</p>
       </div>
       <LinkButon />
@@ -289,7 +290,7 @@ function Frame15() {
 
 function Content() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[120px] items-center justify-end min-h-px min-w-px relative self-stretch" data-name="Content">
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[40px] lg:gap-[120px] items-center justify-end min-h-px min-w-px relative self-stretch" data-name="Content">
       <LogoGm />
       <Frame15 />
     </div>
@@ -298,7 +299,7 @@ function Content() {
 
 function Image() {
   return (
-    <div className="bg-white h-[690px] overflow-clip relative shrink-0 w-[600px]" data-name="Image">
+    <div className="bg-white h-[350px] lg:h-[690px] overflow-clip relative shrink-0 w-full lg:w-[600px]" data-name="Image">
       <div className="-translate-y-1/2 absolute aspect-[581/765] left-0 right-px top-[calc(50%+83px)]" data-name="image 5475">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5475} />
       </div>
@@ -308,9 +309,9 @@ function Image() {
 
 function IntroSection() {
   return (
-    <section id="nosotros" className="relative shrink-0 w-full" data-name="Intro section">
+    <section id="nosotros" className="relative shrink-0 w-full" data-name="Intro section" data-animate="fade-up">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid inset-0 pointer-events-none" />
-      <div className="content-stretch flex gap-[30px] items-start pb-[80px] pt-[32px] px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[30px] items-start pb-[40px] lg:pb-[80px] pt-[24px] lg:pt-[32px] px-[16px] lg:px-[32px] relative w-full">
         <Content />
         <Image />
       </div>
@@ -320,7 +321,7 @@ function IntroSection() {
 
 function Text() {
   return (
-    <div className="content-stretch flex flex-col gap-[30px] items-start leading-[1.2] relative shrink-0 text-[#555] text-[15px] tracking-[-0.15px] w-[600px] whitespace-pre-wrap" data-name="Text">
+    <div className="content-stretch flex flex-col gap-[30px] items-start leading-[1.2] relative shrink-0 text-[#555] text-[15px] tracking-[-0.15px] w-full lg:w-[600px] whitespace-pre-wrap" data-name="Text">
       <p className="relative shrink-0 w-full">Grupo Marting nació hace más de 25 años de la mano de Marcelino Piñeiro, con la misión de brindar un servicio inmobiliario transparente y profesional.</p>
       <p className="relative shrink-0 w-full">{` Hoy, bajo la dirección de Alan Piñeiro, la empresa se consolida como una desarrolladora integral con visión federal y enfoque 100 % digital.`}</p>
       <p className="relative shrink-0 w-full">Nuestro propósito: transformar la experiencia de invertir, vivir y trabajar en el Real Estate argentino, combinando innovación, tecnología y modelos propios como el condo hotel fraccionado, representado por nuestra marca insignia La Barceloneta.</p>
@@ -330,8 +331,8 @@ function Text() {
 
 function Title() {
   return (
-    <div className="content-stretch flex font-['Helvetica:Regular',sans-serif] items-start justify-between not-italic relative shrink-0 w-full" data-name="Title">
-      <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[60px] text-black tracking-[-0.6px] whitespace-nowrap">
+    <div className="content-stretch flex flex-col lg:flex-row font-['Helvetica:Regular',sans-serif] items-start justify-between gap-[16px] lg:gap-0 not-italic relative shrink-0 w-full" data-name="Title">
+      <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[36px] lg:text-[60px] text-black tracking-[-0.6px]">
         <p className="leading-[1.1]">Nuestra historia</p>
       </div>
       <Text />
@@ -341,7 +342,7 @@ function Title() {
 
 function Image1() {
   return (
-    <div className="bg-[#e6e6e6] h-[578px] overflow-clip relative shrink-0 w-[347.27px]" data-name="Image">
+    <div className="bg-[#e6e6e6] h-[300px] lg:h-[578px] overflow-clip relative shrink-0 w-full lg:w-[347.27px]" data-name="Image">
       <div className="-translate-x-1/2 absolute aspect-[1148/1526] bottom-0 left-[calc(50%+0.37px)] top-0" data-name="image 5474">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5474} />
       </div>
@@ -351,7 +352,7 @@ function Image1() {
 
 function Image2() {
   return (
-    <div className="h-[740px] overflow-clip relative shrink-0 w-[676px]" data-name="Image">
+    <div className="h-[300px] lg:h-[740px] overflow-clip relative shrink-0 w-full lg:w-[676px]" data-name="Image">
       <div className="absolute bottom-0 h-[489px] right-0 w-[734px]" data-name="image 29">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage29} />
       </div>
@@ -361,7 +362,7 @@ function Image2() {
 
 function Frame13() {
   return (
-    <div className="content-stretch flex h-[740px] items-start justify-between relative shrink-0 w-full">
+    <div className="content-stretch flex flex-col lg:flex-row h-auto lg:h-[740px] items-start justify-between gap-[16px] lg:gap-0 relative shrink-0 w-full">
       <Image1 />
       <Image2 />
     </div>
@@ -379,9 +380,9 @@ function Frame12() {
 
 function StrategySection() {
   return (
-    <section id="historia" className="relative shrink-0 w-full" data-name="Strategy section">
+    <section id="historia" className="relative shrink-0 w-full" data-name="Strategy section" data-animate="fade-up">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[80px] pt-[120px] px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[40px] lg:pb-[80px] pt-[60px] lg:pt-[120px] px-[16px] lg:px-[32px] relative w-full">
         <Frame12 />
       </div>
     </section>
@@ -458,7 +459,7 @@ function Stats3() {
 
 function Frame10() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] items-center justify-center min-h-px min-w-px relative">
+    <div className="content-stretch flex flex-wrap flex-[1_0_0] items-center justify-center gap-[16px] lg:gap-0 min-h-px min-w-px relative">
       <Stats />
       <Stats1 />
       <Stats2 />
@@ -469,8 +470,8 @@ function Frame10() {
 
 function Frame11() {
   return (
-    <div className="content-stretch flex gap-[24px] items-center relative shrink-0 w-full">
-      <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[#040404] text-[22px] tracking-[-0.22px] w-[220px] whitespace-pre-wrap">Nuestras estadísticas destacadas en 2025</p>
+    <div className="content-stretch flex flex-col lg:flex-row gap-[24px] items-start lg:items-center relative shrink-0 w-full">
+      <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[#040404] text-[22px] tracking-[-0.22px] w-full lg:w-[220px] whitespace-pre-wrap">Nuestras estadísticas destacadas en 2025</p>
       <div className="h-[81px] relative shrink-0 w-0">
         <div className="absolute inset-[0_-0.5px]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1 81">
@@ -485,10 +486,10 @@ function Frame11() {
 
 function StrategySection1() {
   return (
-    <section className="relative shrink-0 w-full" data-name="Strategy section">
+    <section className="relative shrink-0 w-full" data-name="Strategy section" data-animate="fade-up">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-b border-solid border-t inset-0 pointer-events-none" />
       <div className="flex flex-col justify-center size-full">
-        <div className="content-stretch flex flex-col items-start justify-center px-[32px] py-[80px] relative w-full">
+        <div className="content-stretch flex flex-col items-start justify-center px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
           <Frame11 />
         </div>
       </div>
@@ -498,8 +499,8 @@ function StrategySection1() {
 
 function Title1() {
   return (
-    <div className="content-stretch flex items-end relative shrink-0 w-[562px]" data-name="Title">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[60px] text-black tracking-[-0.6px]">
+    <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
+      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[36px] lg:text-[60px] text-black tracking-[-0.6px]">
         <h2 className="block leading-[1.1] whitespace-pre-wrap">Nuestros valores</h2>
       </div>
     </div>
@@ -508,7 +509,7 @@ function Title1() {
 
 function Content1() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[265px]" data-name="Content">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[265px]" data-name="Content">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
         <p className="leading-[1.2] whitespace-pre-wrap">Creando espacios visionarios con precisión y arte. Eleva tu arquitectura con diseño y innovación de vanguardia.</p>
       </div>
@@ -518,7 +519,7 @@ function Content1() {
 
 function Header() {
   return (
-    <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-name="Header">
+    <div className="content-stretch flex flex-col lg:flex-row items-start justify-between gap-[16px] lg:gap-0 relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
       <Title1 />
       <Content1 />
     </div>
@@ -529,7 +530,7 @@ function StrategySection2() {
   return (
     <section id="valores" className="relative shrink-0 w-full" data-name="Strategy section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[80px] pt-[120px] px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[40px] lg:pb-[80px] pt-[60px] lg:pt-[120px] px-[16px] lg:px-[32px] relative w-full">
         <Header />
       </div>
     </section>
@@ -570,7 +571,7 @@ function Icon() {
 function Frame6() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-end min-h-px min-w-px py-[16px] relative w-full">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[#1e3d59] text-[60px] tracking-[-0.6px]">Transparencia</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[#1e3d59] text-[36px] lg:text-[60px] tracking-[-0.6px]">Transparencia</p>
     </div>
   );
 }
@@ -595,7 +596,7 @@ function Content2() {
 
 function Card1() {
   return (
-    <div className="bg-white h-[426px] min-w-[340px] relative shrink-0 w-[612px]" data-name="Card1">
+    <div className="bg-white h-auto min-h-[300px] lg:h-[426px] min-w-0 lg:min-w-[340px] relative shrink-0 w-full lg:w-[612px]" data-name="Card1">
       <div className="content-stretch flex items-center min-w-[inherit] overflow-clip p-[40px] relative rounded-[inherit] size-full">
         <Content2 />
       </div>
@@ -643,7 +644,7 @@ function Frame7() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start justify-end min-h-px min-w-px py-[16px] relative w-full">
       <Frame16 />
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[#1e3d59] text-[60px] tracking-[-0.6px]">Innovación</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[#1e3d59] text-[36px] lg:text-[60px] tracking-[-0.6px]">Innovación</p>
     </div>
   );
 }
@@ -668,7 +669,7 @@ function Content3() {
 
 function Card2() {
   return (
-    <div className="bg-white h-[426px] min-w-[340px] relative shrink-0 w-[612px]" data-name="Card2">
+    <div className="bg-white h-auto min-h-[300px] lg:h-[426px] min-w-0 lg:min-w-[340px] relative shrink-0 w-full lg:w-[612px]" data-name="Card2">
       <div className="content-stretch flex items-center min-w-[inherit] overflow-clip p-[40px] relative rounded-[inherit] size-full">
         <Content3 />
       </div>
@@ -716,7 +717,7 @@ function Frame8() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start justify-end min-h-px min-w-px py-[16px] relative w-full">
       <Frame17 />
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[#1e3d59] text-[60px] tracking-[-0.6px]">Comunidad</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[#1e3d59] text-[36px] lg:text-[60px] tracking-[-0.6px]">Comunidad</p>
     </div>
   );
 }
@@ -741,8 +742,8 @@ function Content4() {
 
 function Card3() {
   return (
-    <div className="bg-white h-[425px] min-w-[340px] relative shrink-0 w-[612px]" data-name="Card3">
-      <div className="content-stretch flex items-center min-w-[inherit] overflow-clip p-[40px] relative rounded-[inherit] size-full">
+    <div className="bg-white h-auto min-h-[300px] lg:h-[425px] min-w-0 lg:min-w-[340px] relative shrink-0 w-full lg:w-[612px]" data-name="Card3">
+      <div className="content-stretch flex items-center min-w-[inherit] overflow-clip p-[24px] lg:p-[40px] relative rounded-[inherit] size-full">
         <Content4 />
       </div>
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-b border-r border-solid inset-0 pointer-events-none" />
@@ -789,7 +790,7 @@ function Frame9() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start justify-end min-h-px min-w-px py-[16px] relative w-full">
       <Frame18 />
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[#1e3d59] text-[60px] tracking-[-0.6px]">Rentabilidad</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[#1e3d59] text-[36px] lg:text-[60px] tracking-[-0.6px]">Rentabilidad</p>
     </div>
   );
 }
@@ -814,8 +815,8 @@ function Content5() {
 
 function Card4() {
   return (
-    <div className="bg-white h-[425px] min-w-[340px] relative shrink-0 w-[612px]" data-name="Card3">
-      <div className="content-stretch flex items-center min-w-[inherit] overflow-clip p-[40px] relative rounded-[inherit] size-full">
+    <div className="bg-white h-auto min-h-[300px] lg:h-[425px] min-w-0 lg:min-w-[340px] relative shrink-0 w-full lg:w-[612px]" data-name="Card3">
+      <div className="content-stretch flex items-center min-w-[inherit] overflow-clip p-[24px] lg:p-[40px] relative rounded-[inherit] size-full">
         <Content5 />
       </div>
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-b border-solid inset-0 pointer-events-none" />
@@ -825,7 +826,7 @@ function Card4() {
 
 function Cards() {
   return (
-    <div className="content-start flex flex-wrap gap-0 items-start relative shrink-0 w-full" data-name="Cards">
+    <div className="content-start flex flex-col lg:flex-row lg:flex-wrap gap-0 items-start relative shrink-0 w-full" data-name="Cards" data-animate="fade-up">
       <Card1 />
       <Card2 />
       <Card3 />
@@ -849,7 +850,7 @@ function Text1() {
 function Title2() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[32px] items-start min-h-px min-w-px pb-[32px] relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-[487px]">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] w-full lg:w-[487px]">
         <p className="leading-[1.2] whitespace-pre-wrap">Conoce a los visionarios detrás de Grupo Marting</p>
       </div>
       <Text1 />
@@ -961,7 +962,7 @@ function Card5() {
 
 function Peoples() {
   return (
-    <div className="content-start flex flex-wrap gap-[48px_34px] items-start relative shrink-0 w-[657px]" data-name="Peoples">
+    <div className="content-start flex flex-col sm:flex-row sm:flex-wrap gap-[24px] sm:gap-[48px_34px] items-start relative shrink-0 w-full lg:w-[657px]" data-name="Peoples">
       <Card />
       <Card5 />
     </div>
@@ -970,7 +971,7 @@ function Peoples() {
 
 function Frame14() {
   return (
-    <div className="content-stretch flex gap-[32px] items-start relative shrink-0 w-full">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[32px] items-start relative shrink-0 w-full">
       <Title2 />
       <Peoples />
     </div>
@@ -979,9 +980,9 @@ function Frame14() {
 
 function StrategySection3() {
   return (
-    <section id="equipo" className="relative shrink-0 w-full" data-name="Strategy section">
+    <section id="equipo" className="relative shrink-0 w-full" data-name="Strategy section" data-animate="fade-up">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start px-[32px] py-[120px] relative w-full">
+      <div className="content-stretch flex flex-col items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
         <Frame14 />
       </div>
     </section>
@@ -1202,9 +1203,9 @@ function Nav() {
 
 function Container4() {
   return (
-    <div className="bg-[#040404] relative shrink-0 w-full" data-name="Container">
+    <div className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border-[#575757] border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex gap-[120px] items-start px-[32px] py-[80px] relative w-full">
+      <div className="content-stretch flex flex-col lg:flex-row gap-[40px] lg:gap-[120px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
         <Content6 />
         <Nav />
       </div>
@@ -1226,7 +1227,7 @@ function Main() {
 
 function Iso() {
   return (
-    <div className="absolute h-[71.316px] left-[32px] top-[32px] w-[33.027px]" data-name="Iso">
+    <div className="absolute h-[56px] lg:h-[71.316px] left-[16px] lg:left-[32px] top-[16px] lg:top-[32px] w-[26px] lg:w-[33.027px]" data-name="Iso">
       <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33.0271 71.3157">
         <g id="Iso">
           <path d={svgPaths.p2a437a00} fill="var(--fill-0, #040404)" id="Vector" />
@@ -1252,6 +1253,8 @@ export default function About() {
   const [videoMuted, setVideoMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  useScrollAnimations();
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -1268,7 +1271,7 @@ export default function About() {
   };
 
   return (
-    <div className="bg-white content-stretch flex items-start justify-end pr-[56px] relative size-full" data-name="About">
+    <div className="bg-white content-stretch flex items-start justify-end lg:pr-[56px] relative size-full" data-name="About">
       {/* Overlay del menú */}
       <div
         className={`fixed inset-0 bg-black/45 z-[199] transition-opacity duration-350 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
@@ -1300,11 +1303,20 @@ export default function About() {
           ))}
         </div>
       </div>
-      {/* Fixed right sidebar: hamburger (top) + nav items + Invertir (bottom) */}
-      <div className="fixed top-0 right-0 h-screen z-[150] flex flex-col" data-name="SidebarNav">
+      {/* Fixed right sidebar — hidden on mobile */}
+      <div className="hidden lg:flex fixed top-0 right-0 h-screen z-[150] flex-col" data-name="SidebarNav">
         <NavMenu onMenuClick={() => setMenuOpen(true)} />
         <NavMenu1 />
       </div>
+      {/* Mobile hamburger */}
+      <button
+        type="button"
+        className="lg:hidden fixed top-3 right-3 z-[150] bg-black size-[48px] flex items-center justify-center rounded-full shadow-lg cursor-pointer"
+        onClick={() => setMenuOpen(true)}
+        aria-label="Abrir menú"
+      >
+        <IconamoonMenuBurgerHorizontalLight />
+      </button>
       {videoVisible && (
         <div className="fixed bottom-[16px] left-[16px] z-[100] h-[325px] overflow-clip rounded-[16px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] w-[200px]" data-name="Video">
           <video ref={videoRef} src={`${import.meta.env.BASE_URL}videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mov`} autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted={videoMuted} playsInline />
