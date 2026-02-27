@@ -541,7 +541,7 @@ function Hero() {
   return (
     <div className="h-[640px] overflow-clip relative shrink-0 w-full" data-name="Hero" id="inicio">
       <video aria-label="Logo on colored background" autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop muted playsInline>
-        <source src="/videos/2bd5ae44656fe5e0504e38223d283ffeb8c6d21e.mp4" type="video/mp4" />
+        <source src={`${import.meta.env.BASE_URL}videos/2bd5ae44656fe5e0504e38223d283ffeb8c6d21e.mp4`} type="video/mp4" />
       </video>
       <IntroSection />
       <Logos />
@@ -3015,7 +3015,7 @@ function TestimonialCard({ name, subtitle, quote }: { name: string; subtitle: st
       <div aria-hidden="true" className="absolute right-0 top-0 bottom-0 w-px bg-[rgba(0,0,0,0.1)]" />
       {/* Avatar */}
       <img
-        src="/images/12a1d1f9a76a86ace883f4af20883e44a6eda988.png"
+        src={`${import.meta.env.BASE_URL}images/12a1d1f9a76a86ace883f4af20883e44a6eda988.png`}
         alt={name}
         className="size-[56px] rounded-full object-cover mb-[8px] shrink-0"
       />
@@ -4671,7 +4671,7 @@ export default function Home() {
       </div>
       {videoVisible && (
         <div id="vista360" className="fixed bottom-[16px] left-[16px] z-[100] h-[325px] overflow-clip rounded-[16px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] w-[200px]" data-name="Video">
-          <video ref={videoRef} src="/videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mov" autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted={videoMuted} playsInline />
+          <video ref={videoRef} src={`${import.meta.env.BASE_URL}videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mov`} autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted={videoMuted} playsInline />
           <Button5 onClick={() => setVideoVisible(false)} />
           <Button6 onClick={handleFullscreen} />
           <Button7 onClick={handleToggleMute} isMuted={videoMuted} />

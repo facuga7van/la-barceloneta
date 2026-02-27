@@ -1307,7 +1307,7 @@ export default function About() {
       </div>
       {videoVisible && (
         <div className="fixed bottom-[16px] left-[16px] z-[100] h-[325px] overflow-clip rounded-[16px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] w-[200px]" data-name="Video">
-          <video ref={videoRef} src="/videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mov" autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted={videoMuted} playsInline />
+          <video ref={videoRef} src={`${import.meta.env.BASE_URL}videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mov`} autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted={videoMuted} playsInline />
           <Button5 onClick={() => setVideoVisible(false)} />
           <Button6 onClick={handleFullscreen} />
           <Button7 onClick={handleToggleMute} />
