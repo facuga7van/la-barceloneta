@@ -1828,7 +1828,7 @@ function Examples() {
   return (
     <div className="w-full lg:flex-[1_0_0] lg:min-h-px lg:min-w-px relative" data-name="Examples">
       <div className="flex flex-col justify-center w-full lg:size-full">
-        <div className="content-stretch flex flex-row lg:flex-col flex-wrap gap-[24px] lg:gap-[40px] items-start justify-start lg:justify-center px-0 lg:px-[80px] relative w-full">
+        <div className="content-stretch flex flex-col gap-[16px] lg:gap-[40px] items-start justify-start lg:justify-center px-0 lg:px-[80px] relative w-full">
           <Row />
           <Row1 />
           <Row2 />
@@ -2503,7 +2503,14 @@ function Content9() {
 function Container6() {
   return (
     <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[32px] h-auto lg:h-[552px] items-center relative shrink-0 w-full" data-name="Container">
-      <Content9 />
+      {/* Desktop: original ruler/arrows */}
+      <div className="hidden lg:flex flex-[1_0_0] h-full min-h-px min-w-px relative">
+        <Content9 />
+      </div>
+      {/* Mobile: ConstructionTimeline */}
+      <div className="lg:hidden w-full">
+        <ConstructionTimeline />
+      </div>
       <div aria-hidden="true" className="w-full flex-none lg:flex-[1_0_0] h-[250px] lg:h-[552px] max-w-[1000px] min-h-px min-w-px relative" data-name="Image" role="presentation">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage1} />
       </div>
@@ -4415,7 +4422,7 @@ function Main1() {
       <Frame58 />
       <Frame59 />
       <div id="contacto" className="bg-white relative shrink-0 w-full" data-name="Form" data-animate="fade-up">
-        <div className="overflow-clip rounded-[inherit] size-full">
+        <div className="overflow-clip rounded-[inherit] w-full">
           <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
             <Header22 />
             <Container11 />
@@ -4570,7 +4577,7 @@ function Header23() {
 function Column() {
   const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors no-underline text-inherit";
   return (
-    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-full sm:w-[130px]" data-name="Column 1">
+    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[calc(50%-12px)] sm:w-[160px]" data-name="Column 1">
       <Header23 />
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
         <a href="#como-gano" className={linkCls}>¿Cómo gano?</a>
@@ -4593,9 +4600,9 @@ function Column() {
 
 function Header24() {
   return (
-    <div className="hidden lg:flex content-stretch items-start pb-[16px] relative shrink-0 w-full" data-name="Header">
-      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic opacity-0 relative shrink-0 text-[22px] text-white tracking-[-0.22px] whitespace-nowrap">
-        <p className="leading-[1.2]">Learn more</p>
+    <div className="content-stretch flex items-start pb-[16px] relative shrink-0 w-full" data-name="Header">
+      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] text-white tracking-[-0.22px] whitespace-nowrap">
+        <p className="leading-[1.2]">Info</p>
       </div>
     </div>
   );
@@ -4604,7 +4611,7 @@ function Header24() {
 function Column1() {
   const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors no-underline text-inherit";
   return (
-    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-full sm:w-[130px]" data-name="Column 2">
+    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[calc(50%-12px)] sm:w-[160px]" data-name="Column 2">
       <Header24 />
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
         <a href="#como-invertir" className={linkCls}>¿Cómo invertir?</a>
