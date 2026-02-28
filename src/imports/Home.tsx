@@ -1020,7 +1020,7 @@ function StrategySection() {
 
 function Frame13() {
   return (
-    <div className="content-stretch flex gap-[8px] items-start justify-center p-[4px] relative rounded-[99px] shrink-0 w-[542px] z-[3]">
+    <div className="content-stretch flex gap-[8px] items-start justify-center p-[4px] relative rounded-[99px] shrink-0 w-full max-w-[542px] z-[3]">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none rounded-[99px]" />
       <div className="bg-[#040404] flex-[1_0_0] h-[40px] min-h-px min-w-px relative rounded-[40px]" data-name="Button">
         <div className="flex flex-row items-center justify-center size-full">
@@ -1046,7 +1046,7 @@ function Frame13() {
 
 function Frame14() {
   return (
-    <div className="absolute bg-[rgba(0,0,0,0.1)] h-[434px] left-0 right-[604px] top-[28px] z-[2]">
+    <div className="hidden lg:block absolute bg-[rgba(0,0,0,0.1)] h-[434px] left-0 right-[604px] top-[28px] z-[2]">
       <div aria-hidden="true" className="absolute border-[#040404] border-r-2 border-solid inset-[0_-2px_0_0] pointer-events-none" />
     </div>
   );
@@ -1168,7 +1168,7 @@ function Slider() {
 
 function Frame15() {
   return (
-    <div className="content-stretch flex flex-col gap-[24px] h-[544px] isolate items-center relative shrink-0 w-[713px]">
+    <div className="content-stretch flex flex-col gap-[24px] h-auto lg:h-[544px] isolate items-center relative shrink-0 w-full lg:w-[713px]">
       <Frame13 />
       <Grafico />
       <Slider />
@@ -2476,7 +2476,7 @@ function Frame49() {
 
 function Frame30() {
   return (
-    <div className="content-stretch flex flex-col gap-[8px] h-[95px] items-start overflow-clip relative shrink-0 w-full">
+    <div className="hidden lg:flex content-stretch flex-col gap-[8px] h-[95px] items-start overflow-clip relative shrink-0 w-full">
       <Frame23 />
       <Frame49 />
       <div className="absolute h-[95px] right-0 top-0 w-[43px]" style={{ backgroundImage: "linear-gradient(269.462deg, rgb(255, 255, 255) 1.0158%, rgba(255, 255, 255, 0) 111.65%)" }} />
@@ -2487,8 +2487,18 @@ function Frame30() {
 
 function Content9() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start justify-between min-h-px min-w-px relative" data-name="Content">
-      <Container7 />
+    <div className="content-stretch flex flex-[1_0_0] flex-col h-auto lg:h-full items-start justify-between min-h-px min-w-px relative" data-name="Content">
+      {/* On mobile: show Container7 inline (not absolute) */}
+      <div className="lg:hidden w-full">
+        <div className="content-stretch flex flex-col gap-[8px] items-end justify-center w-full">
+          <Frame28 />
+          <Frame29 />
+        </div>
+      </div>
+      {/* On desktop: original absolute Container7 */}
+      <div className="hidden lg:block relative w-full h-full">
+        <Container7 />
+      </div>
       <Frame30 />
     </div>
   );
@@ -3110,7 +3120,7 @@ function StrategySection2() {
 function Image() {
   return (
     <div className="bg-black content-stretch flex flex-[1_0_0] flex-col items-center justify-center min-h-px min-w-px relative w-full" data-name="Image">
-      <div className="h-[64.044px] relative shrink-0 w-[256.176px]" data-name="Logo">
+      <div className="h-[64.044px] relative shrink-0 w-full max-w-[256.176px]" data-name="Logo">
         <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 256.176 64.0439">
           <path d={svgPaths.pda034c0} fill="var(--fill-0, white)" id="Logo" />
         </svg>
@@ -3121,7 +3131,7 @@ function Image() {
 
 function Text2() {
   return (
-    <div className="content-stretch flex flex-col gap-[8px] h-[168px] items-start relative shrink-0 w-full" data-name="Text">
+    <div className="content-stretch flex flex-col gap-[8px] h-auto lg:h-[168px] items-start relative shrink-0 w-full" data-name="Text">
       <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full">
         <h5 className="block leading-[1.2] whitespace-pre-wrap">Forbes Argentina</h5>
       </div>
@@ -3144,7 +3154,7 @@ function Body() {
 function Image1() {
   return (
     <div className="bg-[#f1f1f1] content-stretch flex flex-[1_0_0] flex-col items-center justify-center min-h-px min-w-px relative w-full overflow-hidden" data-name="Image">
-      <div className="h-[180.396px] relative shrink-0 w-[322.5px]" data-name="Imagen">
+      <div className="h-[180.396px] relative shrink-0 w-full max-w-[322.5px]" data-name="Imagen">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="" className="absolute h-[106.53%] left-[-2.79%] max-w-none top-[-3.77%] w-[106.05%] transition-transform duration-500 group-hover:scale-105" src={imgImagen} />
         </div>
@@ -3155,7 +3165,7 @@ function Image1() {
 
 function Text3() {
   return (
-    <div className="content-stretch flex flex-col gap-[8px] h-[168px] items-start relative shrink-0 w-full" data-name="Text">
+    <div className="content-stretch flex flex-col gap-[8px] h-auto lg:h-[168px] items-start relative shrink-0 w-full" data-name="Text">
       <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full">
         <h5 className="block leading-[1.2] whitespace-pre-wrap">Perfil</h5>
       </div>
@@ -3177,14 +3187,14 @@ function Body1() {
 function Image2() {
   return (
     <div className="bg-[#f45f00] content-stretch flex flex-[1_0_0] flex-col items-center justify-center min-h-px min-w-px relative w-full" data-name="Image">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[60px] text-center text-white tracking-[-0.6px] w-[302px] whitespace-pre-wrap">Próximamente</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[36px] lg:text-[60px] text-center text-white tracking-[-0.6px] w-full max-w-[302px] whitespace-pre-wrap">Próximamente</p>
     </div>
   );
 }
 
 function Text4() {
   return (
-    <div className="content-stretch flex flex-col gap-[8px] h-[168px] items-start relative shrink-0 w-full" data-name="Text">
+    <div className="content-stretch flex flex-col gap-[8px] h-auto lg:h-[168px] items-start relative shrink-0 w-full" data-name="Text">
       <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full">
         <h5 className="block leading-[1.2] whitespace-pre-wrap">Medio de Inversiones</h5>
       </div>
@@ -3721,14 +3731,68 @@ function PersonalitySection6() {
   );
 }
 
+const COMO_INVERTIR_STEPS = [
+  {
+    num: "1",
+    title: "Definimos tu ticket de inversión",
+    desc: "Elegís cuántas fracciones querés (1/8, 2/8, 3/8…) y la tipología (Norte o Sur).",
+  },
+  {
+    num: "2",
+    title: "Anticipo + cuotas",
+    desc: "Anticipo sugerido: USD 10.000. El resto se completa con cuotas accesibles hasta la entrega.",
+  },
+  {
+    num: "3",
+    title: "Escritura pública",
+    desc: "Tu participación queda respaldada legalmente mediante escritura pública y título de propiedad.",
+  },
+  {
+    num: "4",
+    title: "Operación hotelera",
+    desc: "Una vez entregado, el edificio pasa a operar bajo Own Hotels, dentro del pool de renta.",
+  },
+  {
+    num: "5",
+    title: "Cobro de rentas en USD",
+    desc: "Recibís tus ingresos según el modelo elegido: Renta de Espera (durante la obra), Renta Hotelera (hotel operativo) o Renta Asegurada (opcional).",
+  },
+];
+
 function Frame59() {
   return (
     <div id="como-invertir" className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-animate="fade-up">
-      <PersonalitySection2 />
-      <PersonalitySection3 />
-      <PersonalitySection4 />
-      <PersonalitySection5 />
-      <PersonalitySection6 />
+      {/* Mobile: clean stacked steps */}
+      <div className="lg:hidden w-full">
+        <div className="content-stretch flex flex-col items-start px-[16px] py-[60px] relative w-full">
+          <div className="content-stretch flex items-start pb-[32px] relative shrink-0 w-full">
+            <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px]">
+              <h2 className="block leading-[1.2]">¿Cómo invertir?</h2>
+            </div>
+          </div>
+          <div className="flex flex-col gap-[16px] w-full">
+            {COMO_INVERTIR_STEPS.map((step) => (
+              <div key={step.num} className="bg-white border border-[rgba(0,0,0,0.1)] p-[24px] flex flex-col gap-[16px] w-full">
+                <h3 className="font-['Helvetica:Regular',sans-serif] text-[22px] text-black tracking-[-0.6px] leading-[1.2]">
+                  <span className="text-[#f45f00]">{step.num}</span>
+                  {"  "}{step.title}
+                </h3>
+                <p className="font-['Helvetica:Regular',sans-serif] text-[15px] text-[#575757] tracking-[-0.15px] leading-[1.4]">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* Desktop: original sticky scroll sections */}
+      <div className="hidden lg:flex flex-col w-full">
+        <PersonalitySection2 />
+        <PersonalitySection3 />
+        <PersonalitySection4 />
+        <PersonalitySection5 />
+        <PersonalitySection6 />
+      </div>
     </div>
   );
 }
