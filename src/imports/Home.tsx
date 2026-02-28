@@ -2171,7 +2171,7 @@ function Frame29() {
 
 function Container7() {
   return (
-    <div className="absolute bottom-[0.29px] content-stretch flex flex-col gap-[8px] items-end justify-center left-0 w-[335px]" data-name="Container">
+    <div className="absolute bottom-[0.29px] content-stretch flex flex-col gap-[8px] items-end justify-center left-0 w-full max-w-[335px]" data-name="Container">
       <Frame28 />
       <Frame29 />
     </div>
@@ -2197,7 +2197,7 @@ function Frame31() {
 
 function Header7() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[306px]" data-name="Header">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full max-w-[306px]" data-name="Header">
       <Frame24 />
       <Frame31 />
     </div>
@@ -2223,7 +2223,7 @@ function Frame37() {
 
 function Header8() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[306px]" data-name="Header">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full max-w-[306px]" data-name="Header">
       <Frame36 />
       <Frame37 />
     </div>
@@ -2249,7 +2249,7 @@ function Frame39() {
 
 function Header9() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[306px]" data-name="Header">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full max-w-[306px]" data-name="Header">
       <Frame38 />
       <Frame39 />
     </div>
@@ -2275,7 +2275,7 @@ function Frame44() {
 
 function Header10() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[306px]" data-name="Header">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full max-w-[306px]" data-name="Header">
       <Frame43 />
       <Frame44 />
     </div>
@@ -2301,7 +2301,7 @@ function Frame46() {
 
 function Header11() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[306px]" data-name="Header">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full max-w-[306px]" data-name="Header">
       <Frame45 />
       <Frame46 />
     </div>
@@ -2327,7 +2327,7 @@ function Frame48() {
 
 function Header12() {
   return (
-    <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-[306px]" data-name="Header">
+    <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full max-w-[306px]" data-name="Header">
       <Frame47 />
       <Frame48 />
     </div>
@@ -2336,7 +2336,7 @@ function Header12() {
 
 function Frame23() {
   return (
-    <div className="absolute content-stretch flex gap-[37px] items-start justify-end left-[65px] top-[21px] w-[375px]">
+    <div className="absolute content-stretch flex gap-[37px] items-start justify-end left-[16px] lg:left-[65px] top-[21px] w-[calc(100%-32px)] lg:w-[375px]">
       <Header7 />
       <Header8 />
       <Header9 />
@@ -2518,9 +2518,7 @@ function Header13() {
 function Map() {
   return (
     <div className="flex-[1_0_0] h-[300px] lg:h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative w-full" data-name="Map">
-      <div className="absolute h-[886px] left-[-399px] top-[-153px] w-[1066px]" data-name="image 5476">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5477} />
-      </div>
+      <img alt="Mapa ubicación" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5477} />
     </div>
   );
 }
@@ -2927,7 +2925,7 @@ function Examples1() {
 function SectionHeader1() {
   return (
     <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="Section header">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.3px]">
+      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[22px] lg:text-[30px] text-black tracking-[-0.3px]">
         <h3 className="block leading-[1.2] whitespace-pre-wrap">Lo que nació en Buenos Aires, ahora se expande al país</h3>
       </div>
     </div>
@@ -2938,7 +2936,7 @@ function Content11() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[32px] items-start min-h-px min-w-px relative" data-name="Content">
       <SectionHeader1 />
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[18px] tracking-[-0.18px] w-full">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] lg:text-[18px] tracking-[-0.18px] w-full">
         <p className="leading-[1.6] whitespace-pre-wrap">La Barceloneta llega a Neuquén con una torre de 17 pisos diseñada para el nuevo polo energético y corporativo de la región. Un proyecto que replica el modelo condo-hotel fraccionado con foco en hotelería, negocios y crecimiento federal.</p>
       </div>
       <div className="aspect-[860/888] relative shrink-0 w-full" data-name="Image">
@@ -3134,7 +3132,7 @@ function Text2() {
 
 function Body() {
   return (
-    <div className="bg-white w-full overflow-hidden max-h-0 group-hover:max-h-[230px] transition-[max-height] duration-500 ease-in-out shrink-0" data-name="Body">
+    <div data-name="Body">
       <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[32px] items-start not-italic p-[24px] relative w-full">
         <Text2 />
 
@@ -3168,7 +3166,7 @@ function Text3() {
 
 function Body1() {
   return (
-    <div className="bg-white w-full overflow-hidden max-h-0 group-hover:max-h-[230px] transition-[max-height] duration-500 ease-in-out shrink-0" data-name="Body">
+    <div data-name="Body">
       <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[32px] items-start not-italic p-[24px] relative w-full">
         <Text3 />
       </div>
@@ -3197,7 +3195,7 @@ function Text4() {
 
 function Body2() {
   return (
-    <div className="bg-white w-full overflow-hidden max-h-0 group-hover:max-h-[230px] transition-[max-height] duration-500 ease-in-out shrink-0" data-name="Body">
+    <div data-name="Body">
       <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[32px] items-start not-italic p-[24px] relative w-full">
         <Text4 />
       </div>
@@ -3206,29 +3204,36 @@ function Body2() {
 }
 
 function Frame53() {
+  const [activePressa, setActivePressa] = useState<number | null>(null);
+
+  const PRENSA_DATA = [
+    { image: <Image />, body: <Body />, name: "Prensa 1" },
+    { image: <Image1 />, body: <Body1 />, name: "Prensa 2" },
+    { image: <Image2 />, body: <Body2 />, name: "Prensa 3" },
+  ];
+
   return (
     <div className="content-stretch flex flex-col lg:flex-row items-center relative shrink-0 w-full">
-      <article className="bg-white flex-[1_0_0] h-[400px] lg:h-[540px] min-h-px min-w-px relative group overflow-hidden w-full" data-name="Prensa 1">
-        <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
-          <Image />
-          <Body />
-        </div>
-        <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
-      </article>
-      <article className="bg-white flex-[1_0_0] h-[540px] min-h-px min-w-px relative group overflow-hidden" data-name="Prensa 2">
-        <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
-          <Image1 />
-          <Body1 />
-        </div>
-        <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
-      </article>
-      <article className="bg-white flex-[1_0_0] h-[540px] min-h-px min-w-px relative group overflow-hidden" data-name="Prensa 3">
-        <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
-          <Image2 />
-          <Body2 />
-        </div>
-        <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
-      </article>
+      {PRENSA_DATA.map((item, i) => {
+        const isActive = activePressa === i;
+        return (
+          <article
+            key={i}
+            className={`bg-white flex-[1_0_0] h-[400px] lg:h-[540px] min-h-px min-w-px relative overflow-hidden w-full cursor-pointer ${!isActive ? "group" : ""}`}
+            data-name={item.name}
+            onClick={() => setActivePressa(isActive ? null : i)}
+          >
+            <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+              {item.image}
+              {/* On desktop use group-hover, on mobile use active state */}
+              <div className={`bg-white w-full overflow-hidden transition-[max-height] duration-500 ease-in-out shrink-0 ${isActive ? "max-h-[230px]" : "max-h-0 group-hover:max-h-[230px]"}`}>
+                {item.body}
+              </div>
+            </div>
+            <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
+          </article>
+        );
+      })}
     </div>
   );
 }
@@ -3270,7 +3275,7 @@ function Header17() {
 function SectionHeader2() {
   return (
     <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="Section header">
-      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] text-black tracking-[-0.22px] w-[325px]">
+      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] text-black tracking-[-0.22px] w-full lg:w-[325px]">
         <h3 className="block leading-[1.2] whitespace-pre-wrap">Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado</h3>
       </div>
     </div>
@@ -3340,7 +3345,7 @@ function Number3() {
 function Title8() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[60px] text-black tracking-[-0.6px] whitespace-nowrap">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[36px] lg:text-[60px] text-black tracking-[-0.6px] whitespace-nowrap">
         <h2 className="block leading-[1.1]">¿Cómo invertir?</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
@@ -3361,7 +3366,7 @@ function Header18() {
 function SectionHeader4() {
   return (
     <div className="content-stretch flex items-center opacity-0 relative shrink-0 w-full" data-name="Section header">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-[325px]">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full lg:w-[325px]">
         <h3 className="block leading-[1.2] whitespace-pre-wrap">Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado</h3>
       </div>
     </div>
@@ -3434,7 +3439,7 @@ function Number4() {
 function Title10() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[60px] text-black tracking-[-0.6px] whitespace-nowrap">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[36px] lg:text-[60px] text-black tracking-[-0.6px] whitespace-nowrap">
         <h2 className="block leading-[1.1]">¿Cómo invertir?</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
@@ -3455,7 +3460,7 @@ function Header19() {
 function SectionHeader6() {
   return (
     <div className="content-stretch flex items-center opacity-0 relative shrink-0 w-full" data-name="Section header">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-[325px]">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full lg:w-[325px]">
         <h3 className="block leading-[1.2] whitespace-pre-wrap">Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado</h3>
       </div>
     </div>
@@ -3527,7 +3532,7 @@ function Number5() {
 function Title12() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[60px] text-black tracking-[-0.6px] whitespace-nowrap">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[36px] lg:text-[60px] text-black tracking-[-0.6px] whitespace-nowrap">
         <h2 className="block leading-[1.1]">¿Cómo invertir?</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
@@ -3548,7 +3553,7 @@ function Header20() {
 function SectionHeader8() {
   return (
     <div className="content-stretch flex items-center opacity-0 relative shrink-0 w-full" data-name="Section header">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-[325px]">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full lg:w-[325px]">
         <h3 className="block leading-[1.2] whitespace-pre-wrap">Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado</h3>
       </div>
     </div>
@@ -3619,7 +3624,7 @@ function Number6() {
 function Title14() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[60px] text-black tracking-[-0.6px] whitespace-nowrap">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[36px] lg:text-[60px] text-black tracking-[-0.6px] whitespace-nowrap">
         <h2 className="block leading-[1.1]">¿Cómo invertir?</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
@@ -3640,7 +3645,7 @@ function Header21() {
 function SectionHeader10() {
   return (
     <div className="content-stretch flex items-center opacity-0 relative shrink-0 w-full" data-name="Section header">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-[325px]">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full lg:w-[325px]">
         <h3 className="block leading-[1.2] whitespace-pre-wrap">Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado</h3>
       </div>
     </div>
@@ -4452,7 +4457,7 @@ function SocialIcon1() {
 
 function SocialIcons() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[257px]" data-name="Social Icons">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[257px]" data-name="Social Icons">
       <SocialIcon1 />
     </div>
   );
@@ -4480,7 +4485,7 @@ function Header23() {
 function Column() {
   const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors no-underline text-inherit";
   return (
-    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[130px]" data-name="Column 1">
+    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-full sm:w-[130px]" data-name="Column 1">
       <Header23 />
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
         <a href="#como-gano" className={linkCls}>¿Cómo gano?</a>
@@ -4514,7 +4519,7 @@ function Header24() {
 function Column1() {
   const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors no-underline text-inherit";
   return (
-    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[130px]" data-name="Column 2">
+    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-full sm:w-[130px]" data-name="Column 2">
       <Header24 />
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
         <a href="#como-invertir" className={linkCls}>¿Cómo invertir?</a>
