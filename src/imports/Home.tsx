@@ -4708,8 +4708,17 @@ const MENU_LINKS = [
   { label: "¿Cómo gano?", href: "#como-gano" },
   { label: "Elegí tu fracción", href: "#fracciones" },
   { label: "El proyecto (Buenos Aires)", href: "#proyecto" },
+  { label: "Avance de obra", href: "#avance" },
+  { label: "El próximo capítulo (Neuquén)", href: "#neuquen" },
   { label: "¿Cómo invertir?", href: "#como-invertir" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Testimonios", href: "#testimonios" },
+  { label: "Prensa", href: "#prensa" },
+];
+
+const MENU_CARDS = [
+  { label: "Nosotros", href: "#proyecto", bg: "bg-[#3d5a80]" },
+  { label: "Agendá una reunión", href: "#contacto", bg: "bg-[#5c7a99]" },
+  { label: "Contactános", href: "#contacto", bg: "bg-[#f45f00]" },
 ];
 
 export default function Home() {
@@ -4745,26 +4754,51 @@ export default function Home() {
       />
       {/* Panel del menú */}
       <div
-        className={`fixed top-0 right-0 w-[520px] max-w-full h-screen bg-white z-[200] flex flex-col p-20 pt-12 overflow-y-auto transition-transform duration-400 ease-out ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed top-0 right-0 w-[520px] max-w-full h-screen bg-white z-[200] flex flex-col overflow-y-auto transition-transform duration-400 ease-out ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <button
           type="button"
-          className="absolute top-5 right-5 w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#eae9e8] transition-colors"
+          className="absolute top-5 right-5 w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#eae9e8] transition-colors z-10"
           onClick={() => setMenuOpen(false)}
           aria-label="Cerrar menú"
         >
           <PhXLight fill="#141414" />
         </button>
-        <div className="flex flex-col gap-5 mt-8">
+        {/* Links de navegación */}
+        <div className="flex flex-col gap-4 px-8 pt-12 pb-6">
           {MENU_LINKS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="font-['Helvetica:Regular',sans-serif] text-base text-[#141414] hover:text-[#f20909] transition-colors"
+              className="font-['Helvetica:Regular',sans-serif] text-[15px] text-[#141414] hover:text-[#f20909] transition-colors no-underline"
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
             </a>
+          ))}
+        </div>
+        {/* Cards de acción */}
+        <div className="flex flex-col">
+          {MENU_CARDS.map((card) => (
+            <a
+              key={card.label}
+              href={card.href}
+              className={`${card.bg} flex items-end justify-between px-8 py-6 min-h-[100px] no-underline group`}
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className="font-['Helvetica:Regular',sans-serif] text-[24px] text-white tracking-[-0.5px] leading-[1.2]">{card.label}</span>
+              <svg className="size-[28px] shrink-0 text-white opacity-80 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15M19.5 4.5v12M19.5 4.5h-12" />
+              </svg>
+            </a>
+          ))}
+        </div>
+        {/* Thumbnails de imágenes */}
+        <div className="flex gap-3 px-8 py-6 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {[imgArrowRight4, imgArrowRight3, imgArrowRight5].map((src, i) => (
+            <div key={i} className="flex-none w-[140px] h-[100px] overflow-hidden rounded-[4px]">
+              <img alt="" src={src} className="size-full object-cover" />
+            </div>
           ))}
         </div>
       </div>
