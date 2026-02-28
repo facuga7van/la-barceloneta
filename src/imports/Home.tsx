@@ -4715,8 +4715,8 @@ const MENU_LINKS = [
   { label: "Prensa", href: "#prensa" },
 ];
 
-const MENU_CARDS = [
-  { label: "Nosotros", href: "#proyecto", bg: "bg-[#3d5a80]" },
+const MENU_CARDS: { label: string; href: string; bg: string; isRoute?: boolean }[] = [
+  { label: "Nosotros", href: "/about", bg: "bg-[#3d5a80]", isRoute: true },
   { label: "Agendá una reunión", href: "#contacto", bg: "bg-[#5c7a99]" },
   { label: "Contactános", href: "#contacto", bg: "bg-[#f45f00]" },
 ];
@@ -4779,19 +4779,26 @@ export default function Home() {
         </div>
         {/* Cards de acción */}
         <div className="flex flex-col">
-          {MENU_CARDS.map((card) => (
-            <a
-              key={card.label}
-              href={card.href}
-              className={`${card.bg} flex items-end justify-between px-8 py-6 min-h-[100px] no-underline group`}
-              onClick={() => setMenuOpen(false)}
-            >
-              <span className="font-['Helvetica:Regular',sans-serif] text-[24px] text-white tracking-[-0.5px] leading-[1.2]">{card.label}</span>
-              <svg className="size-[28px] shrink-0 text-white opacity-80 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15M19.5 4.5v12M19.5 4.5h-12" />
-              </svg>
-            </a>
-          ))}
+          {MENU_CARDS.map((card) => {
+            const cardContent = (
+              <>
+                <span className="font-['Helvetica:Regular',sans-serif] text-[24px] text-white tracking-[-0.5px] leading-[1.2]">{card.label}</span>
+                <svg className="size-[28px] shrink-0 text-white opacity-80 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15M19.5 4.5v12M19.5 4.5h-12" />
+                </svg>
+              </>
+            );
+            const cls = `${card.bg} flex items-end justify-between px-8 py-6 min-h-[100px] no-underline group`;
+            return card.isRoute ? (
+              <Link key={card.label} to={card.href} className={cls} onClick={() => setMenuOpen(false)}>
+                {cardContent}
+              </Link>
+            ) : (
+              <a key={card.label} href={card.href} className={cls} onClick={() => setMenuOpen(false)}>
+                {cardContent}
+              </a>
+            );
+          })}
         </div>
         {/* Thumbnails de imágenes */}
         <div className="flex gap-3 px-8 py-6 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
