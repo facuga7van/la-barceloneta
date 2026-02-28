@@ -1077,7 +1077,7 @@ function Grafico({
   return (
     <div
       ref={containerRef}
-      className="content-stretch flex flex-[1_0_0] isolate items-center justify-center min-h-px min-w-px relative w-full z-[2] select-none cursor-ew-resize"
+      className="content-stretch flex shrink-0 lg:flex-[1_0_0] isolate items-center justify-center h-[220px] sm:h-[280px] lg:min-h-px lg:min-w-px relative w-full z-[2] select-none cursor-ew-resize"
       onPointerDown={(e) => {
         e.currentTarget.setPointerCapture(e.pointerId);
         onFractionChange?.(getFraction(e.clientX));
@@ -1328,7 +1328,7 @@ function FractionViewerInteractive() {
   return (
     <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start pt-[32px] relative shrink-0 w-full" data-animate="fade-up">
       {/* Left: tabs + floor plan + slider */}
-      <div className="content-stretch flex flex-col gap-[24px] h-auto lg:h-[544px] isolate items-center relative shrink-0 w-full lg:w-[713px]">
+      <div className="content-stretch flex flex-col gap-[24px] isolate items-center relative shrink-0 w-full lg:w-[713px] overflow-hidden">
         {/* Norte/Sur tabs */}
         <div className="content-stretch flex gap-[8px] items-start justify-center p-[4px] relative rounded-[99px] shrink-0 w-full max-w-[542px] z-[3]">
           <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none rounded-[99px]" />
@@ -1349,13 +1349,13 @@ function FractionViewerInteractive() {
         </div>
         {/* Floor plan */}
         <Grafico planSrc={planSrc} fraction={activeDot} totalFractions={TOTAL_DOTS} onFractionChange={setActiveDot} />
-        {/* Slider — click dot to select fraction, table updates */}
-        <div className="content-stretch flex isolate items-center relative shrink-0 w-full z-[1] px-[8px]" data-name="Slider">
+        {/* Slider — click dot to select fraction, table updates. mb-8 to clear the absolute 1/8 label */}
+        <div className="content-stretch flex isolate items-center relative shrink-0 w-full z-[1] px-[8px] mb-8" data-name="Slider">
           {sliderItems}
         </div>
       </div>
       {/* Right: dynamic investment table */}
-      <div className="content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center leading-[1.2] min-h-px min-w-px not-italic py-[20px] lg:py-[40px] relative self-stretch">
+      <div className="content-stretch flex w-full lg:flex-[1_0_0] flex-col gap-[8px] items-start justify-center leading-[1.2] min-h-px lg:min-w-px not-italic py-[20px] lg:py-[40px] relative border-t border-[rgba(0,0,0,0.1)] lg:border-none lg:self-stretch">
         {/* TU INVERSIÓN */}
         <div className="content-stretch flex font-['Helvetica:Bold',sans-serif] items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] w-full">
           <p className="relative shrink-0">TU INVERSIÓN</p>
@@ -1413,7 +1413,7 @@ function ValueSection() {
   return (
     <div id="proyecto" className="relative shrink-0 w-full" data-name="Value Section">
       <div className="flex flex-col items-end size-full">
-        <div className="content-stretch flex flex-col items-end pb-[120px] px-[32px] relative w-full">
+        <div className="content-stretch flex flex-col items-end pb-[40px] lg:pb-[120px] px-[16px] lg:px-[32px] relative w-full">
           <FractionViewerInteractive />
         </div>
       </div>
@@ -1826,9 +1826,9 @@ function Row3() {
 
 function Examples() {
   return (
-    <div className="flex-[1_0_0] min-h-px min-w-px relative" data-name="Examples">
-      <div className="flex flex-col justify-center size-full">
-        <div className="content-stretch flex flex-col gap-[40px] items-start justify-center px-0 lg:px-[80px] relative w-full">
+    <div className="w-full lg:flex-[1_0_0] lg:min-h-px lg:min-w-px relative" data-name="Examples">
+      <div className="flex flex-col justify-center w-full lg:size-full">
+        <div className="content-stretch flex flex-row lg:flex-col flex-wrap gap-[24px] lg:gap-[40px] items-start justify-start lg:justify-center px-0 lg:px-[80px] relative w-full">
           <Row />
           <Row1 />
           <Row2 />
@@ -1851,12 +1851,12 @@ function SectionHeader() {
 
 function Content7() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[32px] items-start min-h-px min-w-px relative" data-name="Content">
+    <div className="content-stretch flex w-full lg:flex-[1_0_0] flex-col gap-[32px] items-start min-h-px min-w-px relative" data-name="Content">
       <SectionHeader />
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
         <p className="leading-[1.2] whitespace-pre-wrap">La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 20.000 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.</p>
       </div>
-      <div className="aspect-[860/888] relative shrink-0 w-full" data-name="Image">
+      <div className="hidden lg:block aspect-[860/888] relative shrink-0 w-full" data-name="Image">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="Person with iPad" className="absolute h-[100.02%] left-[-5.78%] max-w-none top-[-0.01%] w-[105.78%]" src={imgImage} />
         </div>
@@ -1877,8 +1877,8 @@ function ToneAndVoice() {
 function TitleAndSubtitle() {
   return (
     <div className="content-stretch flex gap-0 items-start relative shrink-0 w-full" data-name="Title and subtitle">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
-        <p className="leading-[1.2]">Prestaciones selectas</p>
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[24px] lg:text-[30px] text-black tracking-[-0.6px]">
+        <p className="leading-[1.2] whitespace-normal">Prestaciones selectas</p>
       </div>
     </div>
   );
@@ -1982,7 +1982,7 @@ function Container5() {
 
 function MeetingPointsContainer() {
   return (
-    <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[100px] items-start justify-center not-italic relative shrink-0 text-black w-full" data-name="Meeting Points Container">
+    <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[24px] lg:gap-[100px] items-start justify-center not-italic relative shrink-0 text-black w-full" data-name="Meeting Points Container">
       <p className="font-['Inter:Medium',sans-serif] font-medium leading-[0] relative shrink-0 text-[0px] text-[15px] tracking-[-0.15px]">
         <span className="leading-[1.2]">01</span>
         <span className="leading-[1.2] text-[#575757]">/03</span>
@@ -2014,7 +2014,7 @@ function Container4() {
   return (
     <div className="content-stretch flex flex-col-reverse lg:flex-row gap-[24px] lg:gap-[32px] h-auto lg:h-[552px] items-center relative shrink-0 w-full" data-name="Container">
       {/* Left content: navigation + counter + title */}
-      <div className="content-stretch flex flex-[1_0_0] flex-col h-[200px] lg:h-full items-start justify-between min-h-px min-w-px relative w-full" data-name="Content">
+      <div className="content-stretch flex w-full flex-none lg:flex-[1_0_0] flex-col h-[200px] lg:h-full items-start justify-between min-h-px min-w-px relative" data-name="Content">
         {/* Arrow navigation + description */}
         <div className="relative lg:absolute bottom-auto lg:bottom-[0.29px] content-stretch flex flex-col gap-[8px] items-end justify-center left-0" data-name="Container">
           <div className="content-stretch flex items-center relative shrink-0 w-full">
@@ -2056,16 +2056,16 @@ function Container4() {
           </div>
         </div>
         {/* Counter + section title */}
-        <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[100px] items-start justify-center not-italic relative shrink-0 text-black w-full" data-name="Meeting Points Container">
+        <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[24px] lg:gap-[100px] items-start justify-center not-italic relative shrink-0 text-black w-full" data-name="Meeting Points Container">
           <p className="font-['Inter:Medium',sans-serif] font-medium leading-[0] relative shrink-0 text-[0px] text-[15px] tracking-[-0.15px]">
             <span className="leading-[1.2]">{String(tab + 1).padStart(2, "0")}</span>
             <span className="leading-[1.2] text-[#575757]">/{String(total).padStart(2, "0")}</span>
           </p>
-          <p className="leading-[1.1] min-w-full relative shrink-0 text-[36px] lg:text-[60px] text-right tracking-[-0.6px] w-[min-content] whitespace-pre-wrap">{current.label}</p>
+          <p className="leading-[1.1] min-w-full relative shrink-0 text-[36px] lg:text-[60px] text-left lg:text-right tracking-[-0.6px] w-[min-content] whitespace-pre-wrap">{current.label}</p>
         </div>
       </div>
       {/* Gallery image */}
-      <div aria-hidden="true" className="flex-[1_0_0] h-[300px] lg:h-[552px] min-h-px min-w-px relative overflow-hidden w-full" data-name="Image" role="presentation">
+      <div aria-hidden="true" className="w-full h-[300px] lg:h-[552px] flex-none lg:flex-[1_0_0] min-h-px min-w-px relative overflow-hidden" data-name="Image" role="presentation">
         <img key={tab} alt={current.label} className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={current.image} />
       </div>
     </div>
@@ -2476,7 +2476,7 @@ function Frame49() {
 
 function Frame30() {
   return (
-    <div className="hidden lg:flex content-stretch flex-col gap-[8px] h-[95px] items-start overflow-clip relative shrink-0 w-full">
+    <div className="flex content-stretch flex-col gap-[8px] h-[95px] items-start overflow-clip relative shrink-0 w-full min-w-[800px] lg:min-w-0">
       <Frame23 />
       <Frame49 />
       <div className="absolute h-[95px] right-0 top-0 w-[43px]" style={{ backgroundImage: "linear-gradient(269.462deg, rgb(255, 255, 255) 1.0158%, rgba(255, 255, 255, 0) 111.65%)" }} />
@@ -2487,19 +2487,15 @@ function Frame30() {
 
 function Content9() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col h-auto lg:h-full items-start justify-between min-h-px min-w-px relative" data-name="Content">
-      {/* On mobile: show Container7 inline (not absolute) */}
-      <div className="lg:hidden w-full">
-        <div className="content-stretch flex flex-col gap-[8px] items-end justify-center w-full">
-          <Frame28 />
-          <Frame29 />
+    <div className="content-stretch flex w-full flex-none lg:flex-[1_0_0] flex-col h-auto lg:h-full items-start justify-between min-h-px min-w-px relative" data-name="Content">
+      <div className="w-full relative overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pt-[20px] lg:pt-0">
+        <div className="min-w-[800px] lg:min-w-0 w-full h-[150px] lg:h-full relative flex flex-col justify-end lg:justify-between pb-[20px] lg:pb-0">
+          <div className="relative w-full h-full lg:h-auto">
+            <Container7 />
+          </div>
+          <Frame30 />
         </div>
       </div>
-      {/* On desktop: original absolute Container7 */}
-      <div className="hidden lg:block relative w-full h-full">
-        <Container7 />
-      </div>
-      <Frame30 />
     </div>
   );
 }
@@ -2508,7 +2504,7 @@ function Container6() {
   return (
     <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[32px] h-auto lg:h-[552px] items-center relative shrink-0 w-full" data-name="Container">
       <Content9 />
-      <div aria-hidden="true" className="flex-[1_0_0] h-[250px] lg:h-[552px] max-w-[1000px] min-h-px min-w-px relative w-full" data-name="Image" role="presentation">
+      <div aria-hidden="true" className="w-full flex-none lg:flex-[1_0_0] h-[250px] lg:h-[552px] max-w-[1000px] min-h-px min-w-px relative" data-name="Image" role="presentation">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage1} />
       </div>
     </div>
@@ -2527,7 +2523,7 @@ function Header13() {
 
 function Map() {
   return (
-    <div className="flex-[1_0_0] h-[300px] lg:h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative w-full" data-name="Map">
+    <div className="w-full flex-none lg:flex-[1_0_0] h-[300px] lg:h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative" data-name="Map">
       <img alt="Mapa ubicación" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5477} />
     </div>
   );
@@ -3135,7 +3131,7 @@ function Text2() {
       <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full">
         <h5 className="block leading-[1.2] whitespace-pre-wrap">Forbes Argentina</h5>
       </div>
-      <p className="flex-[1_0_0] leading-[1.2] min-h-px min-w-px relative text-[#575757] text-[15px] tracking-[-0.15px] w-full whitespace-pre-wrap">Forbes Argentina destacó el crecimiento del formato 1/8 en CABA y el rol de La Barceloneta como referencia dentro del segmento condo-hotel.</p>
+      <p className="flex-none lg:flex-[1_0_0] leading-[1.2] min-h-px min-w-px relative text-[#575757] text-[15px] tracking-[-0.15px] w-full whitespace-pre-wrap">Forbes Argentina destacó el crecimiento del formato 1/8 en CABA y el rol de La Barceloneta como referencia dentro del segmento condo-hotel.</p>
     </div>
   );
 }
@@ -3169,7 +3165,7 @@ function Text3() {
       <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full">
         <h5 className="block leading-[1.2] whitespace-pre-wrap">Perfil</h5>
       </div>
-      <p className="flex-[1_0_0] leading-[1.2] min-h-px min-w-px relative text-[#575757] text-[15px] tracking-[-0.15px] w-full whitespace-pre-wrap">El medio analizó la propuesta del modelo fraccionado y su impacto en el mercado inmobiliario actual.</p>
+      <p className="flex-none lg:flex-[1_0_0] leading-[1.2] min-h-px min-w-px relative text-[#575757] text-[15px] tracking-[-0.15px] w-full whitespace-pre-wrap">El medio analizó la propuesta del modelo fraccionado y su impacto en el mercado inmobiliario actual.</p>
     </div>
   );
 }
@@ -3198,7 +3194,7 @@ function Text4() {
       <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full">
         <h5 className="block leading-[1.2] whitespace-pre-wrap">Medio de Inversiones</h5>
       </div>
-      <p className="flex-[1_0_0] leading-[1.2] min-h-px min-w-px relative text-[#575757] text-[15px] tracking-[-0.15px] w-full whitespace-pre-wrap">Un análisis del mecanismo de renta (RE, RH, RA) y por qué está creciendo entre inversores jóvenes y conservadores por igual.</p>
+      <p className="flex-none lg:flex-[1_0_0] leading-[1.2] min-h-px min-w-px relative text-[#575757] text-[15px] tracking-[-0.15px] w-full whitespace-pre-wrap">Un análisis del mecanismo de renta (RE, RH, RA) y por qué está creciendo entre inversores jóvenes y conservadores por igual.</p>
     </div>
   );
 }
@@ -3213,6 +3209,29 @@ function Body2() {
   );
 }
 
+function PrensaMobile() {
+  const PRENSA_DATA = [
+    { image: <Image />, body: <Body /> },
+    { image: <Image1 />, body: <Body1 /> },
+    { image: <Image2 />, body: <Body2 /> },
+  ];
+
+  return (
+    <div className="flex flex-col gap-[24px] w-full px-[16px] lg:hidden">
+      {PRENSA_DATA.map((item, i) => (
+        <article key={i} className="flex flex-col w-full bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.1)] rounded-[12px] overflow-hidden">
+          <div className="w-full h-[200px] shrink-0 flex">
+            {item.image}
+          </div>
+          <div className="w-full">
+            {item.body}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function Frame53() {
   const [activePressa, setActivePressa] = useState<number | null>(null);
 
@@ -3223,19 +3242,18 @@ function Frame53() {
   ];
 
   return (
-    <div className="content-stretch flex flex-col lg:flex-row items-center relative shrink-0 w-full">
+    <div className="hidden lg:flex content-stretch flex-row items-stretch relative shrink-0 w-full">
       {PRENSA_DATA.map((item, i) => {
         const isActive = activePressa === i;
         return (
           <article
             key={i}
-            className={`bg-white flex-[1_0_0] h-[280px] lg:h-[540px] min-h-px min-w-px relative overflow-hidden w-full cursor-pointer ${!isActive ? "group" : ""}`}
+            className={`bg-white flex-[1_0_0] h-[540px] min-w-0 relative overflow-hidden cursor-pointer ${!isActive ? "group" : ""}`}
             data-name={item.name}
             onClick={() => setActivePressa(isActive ? null : i)}
           >
-            <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+            <div className="flex flex-col items-start overflow-clip rounded-[inherit] size-full">
               {item.image}
-              {/* On desktop use group-hover, on mobile use active state */}
               <div className={`bg-white w-full overflow-hidden transition-[max-height] duration-500 ease-in-out shrink-0 ${isActive ? "max-h-[230px]" : "max-h-0 group-hover:max-h-[230px]"}`}>
                 {item.body}
               </div>
@@ -3253,6 +3271,7 @@ function Frame58() {
     <div id="prensa" className="content-stretch flex flex-col items-start pb-[60px] lg:pb-[120px] relative shrink-0 w-full">
       <StrategySection2 />
       <Frame53 />
+      <PrensaMobile />
     </div>
   );
 }
@@ -4138,12 +4157,12 @@ function ContentWrapper2() {
   return (
     <form onSubmit={handleSubmit} className="content-stretch flex flex-[1_0_0] flex-col gap-[20px] items-start min-h-px min-w-px relative" data-name="Content Wrapper">
       {/* Nombre + Apellido */}
-      <div className="content-stretch flex flex-col sm:flex-row gap-[16px] sm:gap-[19px] items-center relative shrink-0 w-full">
-        <div className="content-stretch flex flex-[1_0_0] flex-col gap-[10px] items-start min-h-px min-w-px relative">
+      <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
+        <div className="content-stretch flex flex-col gap-[10px] items-start relative w-full">
           <label className={labelCls}>Nombre completo</label>
           <input name="nombre" type="text" value={formData.nombre} onChange={handleChange} placeholder="Juan" className={inputCls} required />
         </div>
-        <div className="content-stretch flex flex-[1_0_0] flex-col gap-[10px] items-start min-h-px min-w-px relative">
+        <div className="content-stretch flex flex-col gap-[10px] items-start relative w-full">
           <label className={labelCls}>Apellido completo</label>
           <input name="apellido" type="text" value={formData.apellido} onChange={handleChange} placeholder="García" className={inputCls} required />
         </div>
@@ -4233,9 +4252,9 @@ function ContentWrapper2() {
 
 function ContactForm() {
   return (
-    <div className="bg-white flex-[1_0_0] min-h-px min-w-px relative" data-name="Contact Form">
-      <div className="flex flex-row items-center overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex items-center p-[20px] relative w-full">
+    <div className="bg-white w-full lg:flex-[1_0_0] lg:min-h-px lg:min-w-px relative" data-name="Contact Form">
+      <div className="flex flex-col items-start overflow-clip rounded-[inherit] w-full">
+        <div className="content-stretch flex items-start p-[20px] lg:p-[32px] relative w-full">
           <ContentWrapper2 />
         </div>
       </div>
@@ -4529,9 +4548,11 @@ function SocialIcons() {
 
 function Content18() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[56px] items-start min-h-px min-w-px relative self-stretch" data-name="Content">
-      <Text6 />
-      <SocialIcons />
+    <div className="w-full lg:flex-[1_0_0] lg:min-h-px lg:min-w-px relative shrink-0 lg:self-stretch" data-name="Content">
+      <div className="content-stretch flex flex-col gap-[56px] items-start relative w-full">
+        <Text6 />
+        <SocialIcons />
+      </div>
     </div>
   );
 }
