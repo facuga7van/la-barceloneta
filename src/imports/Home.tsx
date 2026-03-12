@@ -4171,7 +4171,7 @@ function ContentWrapper2() {
           rango_de_inversion: formData.rango,
           proyecto_de_interes: formData.proyecto,
           perfil_del_usuario: formData.perfil,
-          cantidad_de_fracciones: Number(formData.fracciones),
+          cantidad_de_fracciones: parseInt(formData.fracciones, 10),
           mensaje: formData.mensaje,
         }),
       });
