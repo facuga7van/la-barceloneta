@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon, Twitter as TwIcon } from "lucide-react";
+import { Link } from "react-router";
+import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon } from "lucide-react";
 import { useScrollAnimations } from "../hooks/useScrollAnimations";
 import svgPaths from "./svg-36x96stg2x";
 import imgImage5475 from "figma:asset/a8c798b5c8be4c06e14d3f2ec3849a7ee96cbec3.png";
@@ -22,7 +23,7 @@ function IconamoonMenuBurgerHorizontalLight() {
 
 function Button({ onClick }: { onClick?: () => void }) {
   return (
-    <button className="bg-black cursor-pointer h-[64px] relative shrink-0 w-full" data-name="Button" onClick={onClick}>
+    <button aria-label="Abrir menú" className="bg-black cursor-pointer h-[64px] relative shrink-0 w-full" data-name="Button" onClick={onClick}>
       <div className="flex flex-row items-center justify-center overflow-clip rounded-[inherit] size-full">
         <div className="content-stretch flex items-center justify-center px-[18px] relative size-full">
           <IconamoonMenuBurgerHorizontalLight />
@@ -42,7 +43,7 @@ function NavMenu({ onMenuClick }: { onMenuClick?: () => void }) {
 
 function Button1() {
   return (
-    <a href="/#vista360" className="content-stretch flex items-center relative no-underline cursor-pointer" data-name="Button">
+    <a href="https://data.sentiovr.com/spaces/54685/space_1700064741/vtour/tour.html" target="_blank" rel="noopener noreferrer" className="content-stretch flex items-center relative no-underline cursor-pointer" data-name="Button">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[15px] text-center tracking-[-0.3px] whitespace-nowrap hover:text-[#f20909] transition-colors">
         <span className="leading-[1.2]">Vista 360</span>
       </div>
@@ -62,7 +63,7 @@ function Button2() {
 
 function Button3() {
   return (
-    <a href="/#brochure" className="content-stretch flex items-center relative no-underline cursor-pointer" data-name="Button">
+    <a href="https://drive.google.com/file/d/1-NlHPsM-R_g7Uc5tK72hWYvNuhRM20gR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="content-stretch flex items-center relative no-underline cursor-pointer" data-name="Button">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[15px] text-center tracking-[-0.3px] whitespace-nowrap hover:text-[#f20909] transition-colors">
         <span className="leading-[1.2]">Brochure</span>
       </div>
@@ -106,7 +107,7 @@ function PhArrowUpRightLight() {
 
 function Button4() {
   return (
-    <a href="/#contacto" className="bg-[#f20909] relative shrink-0 w-full no-underline block cursor-pointer hover:bg-[#d00808] transition-colors" data-name="Button">
+    <a href="https://wa.me/5491173646541" target="_blank" rel="noopener noreferrer" className="bg-[#f20909] relative shrink-0 w-full no-underline block cursor-pointer hover:bg-[#d00808] transition-colors" data-name="Button">
       <div className="flex flex-col items-center justify-end overflow-clip rounded-[inherit] size-full">
         <div className="content-stretch flex flex-col gap-[8px] items-center justify-end pb-[16px] pt-[24px] px-[8px] relative w-full">
           <div className="flex h-[74px] items-center justify-center relative shrink-0 w-[26px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
@@ -144,7 +145,7 @@ function PhXLight({ fill = "white" }: { fill?: string }) {
 
 function Button5({ onClick }: { onClick?: () => void }) {
   return (
-    <button className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center overflow-clip px-[18px] right-[8px] rounded-[12px] size-[48px] top-[8px]" data-name="Button" onClick={onClick}>
+    <button aria-label="Cerrar video" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center overflow-clip px-[18px] right-[8px] rounded-[12px] size-[48px] top-[8px]" data-name="Button" onClick={onClick}>
       <PhXLight />
     </button>
   );
@@ -164,7 +165,7 @@ function SystemUiconsExpand() {
 
 function Button6({ onClick }: { onClick?: () => void }) {
   return (
-    <button className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center left-[8px] overflow-clip px-[18px] rounded-[12px] size-[48px] top-[8px]" data-name="Button" onClick={onClick}>
+    <button aria-label="Expandir video" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center left-[8px] overflow-clip px-[18px] rounded-[12px] size-[48px] top-[8px]" data-name="Button" onClick={onClick}>
       <SystemUiconsExpand />
     </button>
   );
@@ -184,7 +185,7 @@ function OcticonMute() {
 
 function Button7({ onClick }: { onClick?: () => void }) {
   return (
-    <button className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] bottom-[8px] content-stretch cursor-pointer flex items-center justify-center left-[8px] overflow-clip px-[18px] rounded-[12px] size-[48px]" data-name="Button" onClick={onClick}>
+    <button aria-label="Silenciar video" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] bottom-[8px] content-stretch cursor-pointer flex items-center justify-center left-[8px] overflow-clip px-[18px] rounded-[12px] size-[48px]" data-name="Button" onClick={onClick}>
       <OcticonMute />
     </button>
   );
@@ -301,7 +302,7 @@ function Image() {
   return (
     <div className="bg-white h-[350px] lg:h-[690px] overflow-clip relative shrink-0 w-full lg:w-[600px]" data-name="Image">
       <div className="-translate-y-1/2 absolute aspect-[581/765] left-0 right-px top-[calc(50%+83px)]" data-name="image 5475">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5475} />
+        <img alt="Edificio La Barceloneta exterior" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5475} />
       </div>
     </div>
   );
@@ -310,7 +311,6 @@ function Image() {
 function IntroSection() {
   return (
     <section id="nosotros" className="relative shrink-0 w-full" data-name="Intro section" data-animate="fade-up">
-      <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[30px] items-start pb-[40px] lg:pb-[80px] pt-[24px] lg:pt-[32px] px-[16px] lg:px-[32px] relative w-full">
         <Content />
         <Image />
@@ -331,7 +331,7 @@ function Text() {
 
 function Title() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row font-['Helvetica:Regular',sans-serif] items-start justify-between gap-[16px] lg:gap-0 not-italic relative shrink-0 w-full" data-name="Title">
+    <div className="content-stretch flex flex-col lg:flex-row font-['Helvetica:Regular',sans-serif] items-start gap-[16px] lg:gap-[48px] not-italic relative shrink-0 w-full max-w-[1100px] mx-auto" data-name="Title">
       <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[36px] lg:text-[60px] text-black tracking-[-0.6px]">
         <p className="leading-[1.1]">Nuestra historia</p>
       </div>
@@ -342,9 +342,9 @@ function Title() {
 
 function Image1() {
   return (
-    <div className="bg-[#e6e6e6] h-[300px] lg:h-[578px] overflow-clip relative shrink-0 w-full lg:w-[347.27px]" data-name="Image">
+    <div className=" h-[300px] lg:h-[500px] overflow-clip relative shrink-0 w-full lg:flex-1" data-name="Image">
       <div className="-translate-x-1/2 absolute aspect-[1148/1526] bottom-0 left-[calc(50%+0.37px)] top-0" data-name="image 5474">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5474} />
+        <img alt="Detalle del proyecto" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5474} />
       </div>
     </div>
   );
@@ -352,9 +352,9 @@ function Image1() {
 
 function Image2() {
   return (
-    <div className="h-[300px] lg:h-[740px] overflow-clip relative shrink-0 w-full lg:w-[676px]" data-name="Image">
+    <div className="h-[300px] lg:h-[500px] overflow-clip relative shrink-0 w-full lg:flex-[1.5]" data-name="Image">
       <div className="absolute bottom-0 h-[489px] right-0 w-[734px]" data-name="image 29">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage29} />
+        <img alt="Vista del emprendimiento" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage29} />
       </div>
     </div>
   );
@@ -362,7 +362,7 @@ function Image2() {
 
 function Frame13() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row h-auto lg:h-[740px] items-start justify-between gap-[16px] lg:gap-0 relative shrink-0 w-full">
+    <div className="content-stretch flex flex-col lg:flex-row h-auto lg:h-[500px] items-start gap-[16px] lg:gap-[24px] relative shrink-0 w-full max-w-[1100px] mx-auto">
       <Image1 />
       <Image2 />
     </div>
@@ -381,8 +381,7 @@ function Frame12() {
 function StrategySection() {
   return (
     <section id="historia" className="relative shrink-0 w-full" data-name="Strategy section" data-animate="fade-up">
-      <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[40px] lg:pb-[80px] pt-[60px] lg:pt-[120px] px-[16px] lg:px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[32px] relative w-full">
         <Frame12 />
       </div>
     </section>
@@ -392,8 +391,8 @@ function StrategySection() {
 function Frame() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[16px] items-start leading-[1.2] not-italic relative shrink-0 text-[#040404]">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">4.8%</p>
-      <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Reseñas Positivas</p>
+      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">94%</p>
+      <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Reseñas positivas</p>
     </div>
   );
 }
@@ -409,8 +408,8 @@ function Stats() {
 function Frame3() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[16px] items-start leading-[1.2] not-italic relative shrink-0 text-[#040404]">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">300+</p>
-      <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Clientes Satisfechos</p>
+      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">+300</p>
+      <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Clientes satisfechos</p>
     </div>
   );
 }
@@ -426,8 +425,8 @@ function Stats1() {
 function Frame1() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[16px] items-start leading-[1.2] not-italic relative shrink-0 text-[#040404]">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">100+</p>
-      <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Agentes Expertos</p>
+      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">+25</p>
+      <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Agentes expertos</p>
     </div>
   );
 }
@@ -443,8 +442,8 @@ function Stats2() {
 function Frame2() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[16px] items-start leading-[1.2] not-italic relative shrink-0 text-[#040404]">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">620+</p>
-      <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Proyectos Completados</p>
+      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">25+</p>
+      <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Años de trayectoria</p>
     </div>
   );
 }
@@ -530,7 +529,7 @@ function StrategySection2() {
   return (
     <section id="valores" className="relative shrink-0 w-full" data-name="Strategy section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[40px] lg:pb-[80px] pt-[60px] lg:pt-[120px] px-[16px] lg:px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[32px] relative w-full">
         <Header />
       </div>
     </section>
@@ -874,7 +873,7 @@ function Name() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[3px] items-start leading-[1.2] not-italic relative shrink-0 text-[#141414]" data-name="Name">
       <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">Alan Piñeiro</p>
-      <p className="opacity-80 relative shrink-0 text-[13px] tracking-[-0.13px]">Director ejecutivo</p>
+      <p className="opacity-80 relative shrink-0 text-[13px] tracking-[-0.13px]">CEO & Founder</p>
     </div>
   );
 }
@@ -982,7 +981,7 @@ function StrategySection3() {
   return (
     <section id="equipo" className="relative shrink-0 w-full" data-name="Strategy section" data-animate="fade-up">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
+      <div className="content-stretch flex flex-col items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
         <Frame14 />
       </div>
     </section>
@@ -1098,16 +1097,13 @@ function SocialIcons() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-[257px]" data-name="Social Icons">
       <div className="flex gap-[32px] items-center w-full" data-name="Social Icon">
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
+        <a href="https://www.facebook.com/labarcelonetafeelfree" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
           <FbIcon size={24} strokeWidth={1.5} />
         </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
-          <TwIcon size={24} strokeWidth={1.5} />
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
+        <a href="https://www.instagram.com/labarceloneta.bsas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
           <IgIcon size={24} strokeWidth={1.5} />
         </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
+        <a href="https://www.linkedin.com/company/la-barceloneta-feel-free/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
           <LiIcon size={24} strokeWidth={1.5} />
         </a>
       </div>
@@ -1194,7 +1190,7 @@ function Column1() {
 
 function Nav() {
   return (
-    <div className="content-stretch flex gap-[40px] items-start relative shrink-0" data-name="Nav">
+    <div className="content-stretch flex flex-wrap gap-[24px] lg:gap-[40px] items-start relative shrink-0 w-full lg:w-auto" data-name="Nav">
       <Column />
       <Column1 />
     </div>
@@ -1241,10 +1237,20 @@ function Iso() {
 
 const ABOUT_MENU_LINKS = [
   { label: "Inicio", href: "/" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Nuestra historia", href: "#historia" },
-  { label: "Nuestros valores", href: "#valores" },
-  { label: "El equipo", href: "#equipo" },
+  { label: "¿Cómo gano?", href: "/#como-gano" },
+  { label: "Elegí tu fracción", href: "/#fracciones" },
+  { label: "El proyecto (Buenos Aires)", href: "/#proyecto" },
+  { label: "Avance de obra", href: "/#avance" },
+  { label: "El próximo capítulo (Neuquén)", href: "/#neuquen" },
+  { label: "¿Cómo invertir?", href: "/#como-invertir" },
+  { label: "Testimonios", href: "/#testimonios" },
+  { label: "Prensa", href: "/#prensa" },
+];
+
+const ABOUT_MENU_CARDS: { label: string; href: string; bg: string; isRoute?: boolean }[] = [
+  { label: "Nosotros", href: "#nosotros", bg: "bg-[#3d5a80]" },
+  { label: "Agendá una reunión", href: "/#contacto", bg: "bg-[#5c7a99]" },
+  { label: "Contactános", href: "/#contacto", bg: "bg-[#f45f00]" },
 ];
 
 export default function About() {
@@ -1290,17 +1296,41 @@ export default function About() {
         >
           <PhXLight fill="#141414" />
         </button>
-        <div className="flex flex-col gap-5 mt-8">
+        {/* Links de navegación */}
+        <div className="flex flex-col gap-4 px-8 pt-12 pb-6">
           {ABOUT_MENU_LINKS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="font-['Helvetica:Regular',sans-serif] text-base text-[#141414] hover:text-[#f20909] transition-colors"
+              className="font-['Helvetica:Regular',sans-serif] text-[15px] text-[#141414] hover:text-[#f20909] transition-colors no-underline"
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
             </a>
           ))}
+        </div>
+        {/* Cards de acción */}
+        <div className="flex flex-col">
+          {ABOUT_MENU_CARDS.map((card) => {
+            const cardContent = (
+              <>
+                <span className="font-['Helvetica:Regular',sans-serif] text-[24px] text-white tracking-[-0.5px] leading-[1.2]">{card.label}</span>
+                <svg className="size-[28px] shrink-0 text-white opacity-80 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15M19.5 4.5v12M19.5 4.5h-12" />
+                </svg>
+              </>
+            );
+            const cls = `${card.bg} flex items-end justify-between px-8 py-6 min-h-[100px] no-underline group`;
+            return card.isRoute ? (
+              <Link key={card.label} to={card.href} className={cls} onClick={() => setMenuOpen(false)}>
+                {cardContent}
+              </Link>
+            ) : (
+              <a key={card.label} href={card.href} className={cls} onClick={() => setMenuOpen(false)}>
+                {cardContent}
+              </a>
+            );
+          })}
         </div>
       </div>
       {/* Fixed right sidebar — hidden on mobile */}

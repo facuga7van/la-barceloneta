@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef, type ChangeEvent } from "react";
 import { Link } from "react-router";
-import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon, Twitter as TwIcon } from "lucide-react";
+import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon } from "lucide-react";
 import ConstructionTimeline from "../components/ConstructionTimeline";
 import { useScrollAnimations } from "../hooks/useScrollAnimations";
 import svgPaths from "./svg-1a10080iez";
 import imgImage5483 from "figma:asset/5fa2811ceac5459ca22dc90ff1434b4271d95280.png";
 import imgImage5472 from "figma:asset/e3b035696adca0a791535c23f307956a1eceb398.png";
 import imgImage5457 from "figma:asset/a1e4300735e617601eb68cb252aab3a81e0488cb.png";
-import imgImage5476 from "figma:asset/da05dcec391a72e13d0510a716c619ab3f3e73f9.png";
-import imgImage from "figma:asset/40faea4885d8eb28c843a386f0e7f9ed377070c9.png";
 import imgArrowRight02 from "figma:asset/742d27d63a4c2ac7129e534a9d89fd15a13a1a99.png";
 import imgArrowRight3 from "figma:asset/4f6aa36958afd713bc1c8acb59b4994a3636420d.png";
 import imgArrowRight4 from "figma:asset/ee42972642d8fa9e5f8cda6dbdda134bd59958d1.png";
@@ -18,9 +16,19 @@ import imgImage1 from "figma:asset/aecf8491a4aed42a021d65d003982cb10eaa27bb.png"
 import imgImage5477 from "figma:asset/f57b3df53eecbd1024de251092ca13b5ba9f2c7f.png";
 import imgImage5484 from "figma:asset/c2f24df4b6ca0039f037d93862af8ddfbae7000b.png";
 import imgImage5458 from "figma:asset/914b7a18cc94a82207d92425d5761fe22525c121.png";
-import imgImage5479 from "figma:asset/34c316585b4495cb74c6d6857f6aa9f55d2009e5.png";
-import imgImage2 from "figma:asset/131468d8c4d8bf18178f60f9e863d932cb3990d2.png";
 import imgImagen from "figma:asset/7694e423852a974cdbc6d9264be6bf9dd34a1208.png";
+
+// New assets from client feedback
+import imgLogoFeelFree from "figma:asset/LB BS AS FEEL FREE.svg";
+import imgSeccionOctavos from "figma:asset/SECCION-MOSTRANDO-OCTAVOS.jpg";
+import imgLogoNeuquen from "figma:asset/LB NEUQUÉN.svg";
+import imgNeuquenExpansion from "figma:asset/lb-enandb.jpg";
+import imgLogoLB from "figma:asset/LB LOGO.svg";
+import imgRooftop from "figma:asset/Copia de Copia de Copia de OCHA-BRC-ROOF TOP-CHILLA-14.jpg";
+import imgGaleriaArte from "figma:asset/GALERÍA DE ARTE 3.jpg";
+import imgBarJazz from "figma:asset/BAR 5.jpg";
+import imgRecreationRoom from "figma:asset/RECREATION ROOM 7.jpg";
+import imgAreaBienestar from "figma:asset/Copia de Copia de Copia de OCHA-BRC-AMENITIE-ZEN 1.jpg";
 
 function IconamoonMenuBurgerHorizontalLight() {
   return (
@@ -56,7 +64,7 @@ function NavMenu({ onMenuClick }: { onMenuClick?: () => void }) {
 
 function Button1() {
   return (
-    <a href="#vista360" className="content-stretch flex items-center relative no-underline text-inherit cursor-pointer" data-name="Button">
+    <a href="https://data.sentiovr.com/spaces/54685/space_1700064741/vtour/tour.html" target="_blank" rel="noopener noreferrer" className="content-stretch flex items-center relative no-underline text-inherit cursor-pointer" data-name="Button">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[15px] text-center tracking-[-0.3px] whitespace-nowrap">
         <p className="leading-[1.2]">Vista 360</p>
       </div>
@@ -76,7 +84,7 @@ function Button2() {
 
 function Button3() {
   return (
-    <a href="#brochure" className="content-stretch flex items-center relative no-underline text-inherit cursor-pointer" data-name="Button">
+    <a href="https://drive.google.com/file/d/1-NlHPsM-R_g7Uc5tK72hWYvNuhRM20gR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="content-stretch flex items-center relative no-underline text-inherit cursor-pointer" data-name="Button">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[15px] text-center tracking-[-0.3px] whitespace-nowrap">
         <p className="leading-[1.2]">Brochure</p>
       </div>
@@ -120,7 +128,7 @@ function PhArrowUpRightLight() {
 
 function Button4() {
   return (
-    <a href="#como-invertir" className="bg-[#f20909] relative shrink-0 w-full block no-underline text-inherit cursor-pointer" data-name="Button">
+    <a href="https://wa.me/5491173646541" target="_blank" rel="noopener noreferrer" className="bg-[#f20909] relative shrink-0 w-full block no-underline text-inherit cursor-pointer" data-name="Button">
       <div className="flex flex-col items-center justify-end overflow-clip rounded-[inherit] size-full">
         <div className="content-stretch flex flex-col gap-[8px] items-center justify-end pb-[16px] pt-[24px] px-[8px] relative w-full">
           <div className="flex h-[74px] items-center justify-center relative shrink-0 w-[26px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
@@ -226,7 +234,7 @@ function Frame40() {
 function Frame42() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
-      <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[40px] lg:text-[88px] text-white tracking-[-2px] lg:tracking-[-4px] uppercase w-full">
+      <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[40px] lg:text-[88px] text-white tracking-[2px] lg:tracking-[4px] uppercase w-full">
         <h1 className="block leading-none whitespace-pre-wrap">No vendemos metros</h1>
       </div>
       <Frame40 />
@@ -255,7 +263,7 @@ function Frame41() {
 
 function PrimaryButton() {
   return (
-    <a href="#contacto" className="bg-white content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-full sm:w-[265px] no-underline cursor-pointer" data-name="Primary button">
+    <a href="https://wa.me/5491173646541" target="_blank" rel="noopener noreferrer" className="bg-white content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-full sm:w-[265px] no-underline cursor-pointer" data-name="Primary button">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic overflow-hidden relative text-[#141414] text-[15px] text-center text-ellipsis tracking-[-0.15px] whitespace-nowrap">
         <p className="leading-[1.2] overflow-hidden">Quiero invertir</p>
       </div>
@@ -521,7 +529,7 @@ function Row6() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-name="Row 7">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-w-full not-italic relative shrink-0 text-[#e8ebef] text-[10px] tracking-[-0.2px] w-[min-content]">
-        <p className="leading-[1.2] whitespace-pre-wrap">Desarrolla</p>
+        <p className="leading-[1.2] font-bold whitespace-pre-wrap">Desarrolla</p>
       </div>
       <LogoGm />
     </div>
@@ -582,22 +590,22 @@ function Images() {
 
 function Banner() {
   return (
-    <section id="brochure" className="relative shrink-0 w-full" data-name="Banner" data-animate="fade-in">
+    <a id="brochure" href="https://drive.google.com/file/d/1-NlHPsM-R_g7Uc5tK72hWYvNuhRM20gR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="relative shrink-0 w-full block cursor-pointer no-underline" data-name="Banner" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border-[#eae9e8] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col items-start p-[32px] relative w-full">
         <div className="aspect-[2320/264] relative shrink-0 w-full" data-name="image 5483">
-          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5483} />
+          <img alt="La Barceloneta Buenos Aires" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5483} />
         </div>
       </div>
-    </section>
+    </a>
   );
 }
 
 function Title() {
   return (
-    <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[22px] lg:text-[30px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2] whitespace-pre-wrap">¿Cómo gano con este modelo?</h2>
+    <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1" data-name="Title">
+      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
+        <h2 className="block leading-[1.2] font-bold whitespace-pre-wrap">¿Cómo gano con este modelo?</h2>
       </div>
     </div>
   );
@@ -605,9 +613,9 @@ function Title() {
 
 function Content1() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[265px]" data-name="Content">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <p className="leading-[1.2] whitespace-pre-wrap">Nos ajustamos a tus posibilidades de inversión otorgando beneficios desde el principio. Para que más que invertir en un inmueble inviertas en una experiencia.</p>
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:flex-1 lg:max-w-[450px]" data-name="Content">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[16px] tracking-[-0.15px] w-full">
+        <p className="leading-[1.4] whitespace-pre-wrap">Nos ajustamos a tus posibilidades de inversión otorgando beneficios desde el principio. Para que más que invertir en un inmueble inviertas en una experiencia.</p>
       </div>
     </div>
   );
@@ -615,7 +623,7 @@ function Content1() {
 
 function Header() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-0 items-start justify-between relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[48px] items-start lg:items-center relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
       <Title />
       <Content1 />
     </div>
@@ -626,7 +634,7 @@ function ComoGano() {
   return (
     <section id="como-gano" className="relative shrink-0 w-full" data-name="Como gano">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[40px] lg:pb-[80px] pt-[60px] lg:pt-[120px] px-[16px] lg:px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[24px] lg:pb-[40px] pt-[32px] lg:pt-[48px] px-[24px] lg:px-[80px] xl:px-[160px] relative w-full">
         <Header />
       </div>
     </section>
@@ -890,14 +898,6 @@ function Button10({ onClick, isExpanded }: { onClick?: () => void; isExpanded?: 
 
 const CARD_DATA = [
   {
-    metric: "+6%",
-    period: "Por 24 meses",
-    title: "RENTA ASEGURADA",
-    subtitle: "Renta fija garantizada por contrato (opcional)",
-    detail: "Renta Asegurada (RA)\nEs una modalidad opcional que te permite cobrar una renta fija, estable y garantizada por contrato durante los primeros 24 meses.\nNo depende de la ocupación del hotel ni de la variabilidad del mercado, por lo que es ideal si buscás previsibilidad desde el primer día.",
-    bgColor: "#141414",
-  },
-  {
     metric: "+8–12%",
     period: "Anual",
     title: "RENTA HOTELERA",
@@ -912,6 +912,14 @@ const CARD_DATA = [
     subtitle: "Ganancia durante obra (segura, baja).",
     detail: "Es la renta que obtenés mientras la obra se encuentra en construcción.\nFunciona como una compensación fija por acompañar el desarrollo desde sus primeras etapas.\n\nTiene un rendimiento estable y previsible, y te permite generar ingresos desde el inicio, aun antes de que el edificio entre en operación hotelera.",
     bgColor: "#1e3d59",
+  },
+  {
+    metric: "+30%",
+    period: "Estimado",
+    title: "VALORIZACIÓN",
+    subtitle: "Plusvalía del inmueble a medida que avanza la obra.",
+    detail: "Es la ganancia de capital que obtenés por la revalorización de tu fracción.\nA medida que la obra avanza y el edificio se acerca a su entrega, el valor de mercado de cada unidad aumenta.\n\nEsta valorización se refleja en el precio de reventa de tu fracción, generando una ganancia patrimonial que se suma a las rentas.",
+    bgColor: "#141414",
   },
 ];
 
@@ -931,25 +939,40 @@ function Cards() {
             className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
             style={{ backgroundColor: isActive ? card.bgColor : undefined }}
             onClick={() => setActiveCard(isActive ? null : i)}
-            onMouseEnter={e => { if (activeCard === null) (e.currentTarget as HTMLDivElement).style.backgroundColor = card.bgColor; }}
-            onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLDivElement).style.backgroundColor = ""; }}
+            onMouseEnter={e => {
+              if (activeCard === null) {
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.backgroundColor = card.bgColor;
+                el.querySelectorAll('.card-metric, .card-period, .card-title, .card-subtitle').forEach(c => (c as HTMLElement).style.color = 'white');
+              }
+            }}
+            onMouseLeave={e => {
+              if (!isActive) {
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.backgroundColor = "";
+                el.querySelectorAll('.card-metric').forEach(c => (c as HTMLElement).style.color = '');
+                el.querySelectorAll('.card-period').forEach(c => (c as HTMLElement).style.color = '');
+                el.querySelectorAll('.card-title').forEach(c => (c as HTMLElement).style.color = '');
+                el.querySelectorAll('.card-subtitle').forEach(c => (c as HTMLElement).style.color = '');
+              }
+            }}
           >
             {/* Default state: metric + title/subtitle */}
             {!isActive && (
-              <div className="flex flex-col flex-1 justify-end gap-[32px]">
+              <div className="flex flex-col flex-1 justify-end gap-[32px] card-default-content">
                 <div className="flex flex-col gap-[8px]">
-                  <span className="font-['Helvetica:Regular',sans-serif] leading-[1] text-[40px] lg:text-[60px] tracking-[-0.6px] text-[#1e3d59]">
+                  <span className="font-['Helvetica:Regular',sans-serif] leading-[1] text-[40px] lg:text-[60px] tracking-[-0.6px] text-[#1e3d59] transition-colors duration-300 card-metric">
                     {card.metric}
                   </span>
-                  <span className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[20px] lg:text-[30px] tracking-[-0.6px] text-[#575757]">
+                  <span className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[20px] lg:text-[30px] tracking-[-0.6px] text-[#575757] transition-colors duration-300 card-period">
                     {card.period}
                   </span>
                 </div>
                 <div className="flex flex-col gap-[8px]">
-                  <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[22px] lg:text-[30px] tracking-[-0.6px] text-black">
+                  <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[22px] lg:text-[30px] tracking-[-0.6px] text-black transition-colors duration-300 card-title">
                     {card.title}
                   </p>
-                  <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[15px] lg:text-[18px] tracking-[-0.18px] text-black opacity-80">
+                  <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[15px] lg:text-[18px] tracking-[-0.18px] text-black opacity-80 transition-colors duration-300 card-subtitle">
                     {card.subtitle}
                   </p>
                 </div>
@@ -980,9 +1003,9 @@ function Cards() {
 
 function Title1() {
   return (
-    <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[22px] lg:text-[30px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2] whitespace-pre-wrap">Elegí tu fracción</h2>
+    <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1" data-name="Title">
+      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
+        <h2 className="block leading-[1.2] font-bold whitespace-pre-wrap">Elegí tu fracción</h2>
       </div>
     </div>
   );
@@ -990,9 +1013,9 @@ function Title1() {
 
 function Content5() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[265px]" data-name="Content">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <p className="leading-[1.2] whitespace-pre-wrap">Accedé a una unidad desde USD 20.000 y hacé que tu ladrillo trabaje por vos.</p>
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:flex-1 lg:max-w-[450px]" data-name="Content">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[16px] tracking-[-0.15px] w-full">
+        <p className="leading-[1.4] whitespace-pre-wrap">Accedé a una unidad desde USD 22.500 y hacé que tu ladrillo trabaje por vos.</p>
       </div>
     </div>
   );
@@ -1000,7 +1023,7 @@ function Content5() {
 
 function Header1() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-0 items-start justify-between relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[48px] items-start lg:items-center relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
       <Title1 />
       <Content5 />
     </div>
@@ -1011,7 +1034,7 @@ function StrategySection() {
   return (
     <section id="fracciones" className="relative shrink-0 w-full" data-name="Strategy section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[40px] lg:pb-[80px] pt-[60px] lg:pt-[120px] px-[16px] lg:px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[24px] lg:pb-[40px] pt-[32px] lg:pt-[48px] px-[24px] lg:px-[80px] xl:px-[160px] relative w-full">
         <Header1 />
       </div>
     </section>
@@ -1077,7 +1100,7 @@ function Grafico({
   return (
     <div
       ref={containerRef}
-      className="content-stretch flex shrink-0 lg:flex-[1_0_0] isolate items-center justify-center h-[220px] sm:h-[280px] lg:min-h-px lg:min-w-px relative w-full z-[2] select-none cursor-ew-resize"
+      className="content-stretch flex shrink-0 isolate items-center justify-center h-[220px] sm:h-[280px] md:h-[350px] lg:h-[422px] relative w-full z-[2] select-none cursor-ew-resize"
       onPointerDown={(e) => {
         e.currentTarget.setPointerCapture(e.pointerId);
         onFractionChange?.(getFraction(e.clientX));
@@ -1089,12 +1112,14 @@ function Grafico({
       data-name="Grafico"
     >
       {/* Floor plan image */}
-      <div className="flex h-[200px] sm:h-[260px] lg:h-[422px] items-center justify-center relative shrink-0 w-full max-w-[597.609px] z-[1] overflow-hidden" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
-        <div className="flex-none rotate-90 scale-[0.4] sm:scale-[0.55] lg:scale-100 origin-center">
-          <div className="h-[597.609px] relative w-[422px]" data-name="image 5472">
-            <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={planSrc} />
-          </div>
-        </div>
+      <div className="relative h-[200px] sm:h-[260px] md:h-[330px] lg:h-[422px] shrink-0 w-full max-w-[597.609px] z-[1]">
+        <img
+          alt="Plano del departamento"
+          loading="lazy"
+          className="absolute inset-0 max-w-none object-contain pointer-events-none size-full"
+          src={planSrc}
+          data-name="image 5472"
+        />
       </div>
       {/* Draggable overlay — grows left→right as fraction increases */}
       <div
@@ -1180,7 +1205,7 @@ function Header2() {
   return (
     <div className="content-stretch flex font-['Helvetica:Bold',sans-serif] items-start justify-between py-[16px] relative shrink-0 text-[#040404] text-[22px] tracking-[-0.22px] w-full" data-name="Header">
       <p className="relative shrink-0">TU INVERSIÓN</p>
-      <p className="relative shrink-0 text-right">U$D 20.000</p>
+      <p className="relative shrink-0 text-right">U$D 22.500</p>
     </div>
   );
 }
@@ -1272,7 +1297,6 @@ function Frame16() {
       <Header2 />
       <Header3 />
       <Header4 />
-      <Header5 />
       <p className="font-['Helvetica:Regular',sans-serif] opacity-70 relative shrink-0 text-[#040404] text-[13px] tracking-[-0.13px] w-[393px] whitespace-pre-wrap">* Los valores son estimados. La renta hotelera (RH) puede variar según ocupación y tarifa.</p>
     </div>
   );
@@ -1283,12 +1307,11 @@ function FractionViewerInteractive() {
   const [activeDot, setActiveDot] = useState(0);
 
   const TOTAL_DOTS = 8;
-  const BASE = 20000;
+  const BASE = activeTab === "norte" ? 22500 : 25000;
   const fractions = activeDot + 1;
   const investment = BASE * fractions;
   const rentaEspera   = Math.round(investment * 0.05  / 12);
   const rentaHotelera = Math.round(investment * 0.10  / 12);
-  const rentaAsegurada = Math.round(investment * 0.06 / 12);
 
   const fmt = (n: number) => n.toLocaleString("es-AR");
 
@@ -1383,17 +1406,6 @@ function FractionViewerInteractive() {
             <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
           </div>
         </div>
-        {/* RENTA ASEGURADA */}
-        <div className="content-stretch flex items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
-          <div className="flex flex-[1_0_0] flex-col items-start justify-center min-w-0">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[14px] lg:text-[22px] tracking-[-0.22px]">RENTA ASEGURADA</p>
-            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(6% anual, opcional)</p>
-          </div>
-          <div className="flex items-end justify-end shrink-0">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaAsegurada)}</p>
-            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
-          </div>
-        </div>
         <p className="font-['Helvetica:Regular',sans-serif] opacity-70 text-[#040404] text-[12px] lg:text-[13px] tracking-[-0.13px] w-full lg:w-[393px] whitespace-pre-wrap">* Los valores son estimados. La renta hotelera (RH) puede variar según ocupación y tarifa.</p>
       </div>
     </div>
@@ -1411,9 +1423,9 @@ function Frame35() {
 
 function ValueSection() {
   return (
-    <div id="proyecto" className="relative shrink-0 w-full" data-name="Value Section">
+    <div id="proyecto" className="relative shrink-0 w-full overflow-hidden" data-name="Value Section">
       <div className="flex flex-col items-end size-full">
-        <div className="content-stretch flex flex-col items-end pb-[40px] lg:pb-[120px] px-[16px] lg:px-[32px] relative w-full">
+        <div className="content-stretch flex flex-col items-end pb-[32px] lg:pb-[80px] px-[16px] lg:px-[32px] relative w-full">
           <FractionViewerInteractive />
         </div>
       </div>
@@ -1428,8 +1440,8 @@ function Number() {
 function Title2() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
-        <h2 className="block leading-[1.2]">El proyecto</h2>
+      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[36px] lg:text-[48px] text-black tracking-[-0.6px] whitespace-nowrap">
+        <h2 className="block leading-[1.2] font-bold">El proyecto</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
         <Number />
@@ -1449,7 +1461,7 @@ function Header6() {
 function Content6() {
   return (
     <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-name="Content">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[22px] lg:text-[30px] text-white tracking-[-0.3px] w-[min-content] whitespace-pre-wrap">USD 20.000</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[22px] lg:text-[30px] text-white tracking-[-0.3px] w-[min-content] whitespace-pre-wrap">USD 22.500</p>
       <div className="h-0 relative shrink-0 w-full lg:w-[235px]">
         <div className="absolute inset-[-0.5px_0]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 235 1">
@@ -1540,7 +1552,7 @@ function Container3() {
 
 function ContentWrapper() {
   return (
-    <div className="hidden lg:flex absolute bg-[#ff5a63] bottom-[-63px] content-stretch h-auto items-center p-[30px] right-[98px] w-[295px]" data-name="Content Wrapper">
+    <div className="hidden lg:flex absolute bg-[#ff5a63] bottom-[20px] content-stretch h-auto items-center p-[30px] right-[98px] w-[295px] z-10" data-name="Content Wrapper">
       <Container3 />
     </div>
   );
@@ -1574,14 +1586,13 @@ function Portada() {
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5457">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[114.29%] left-[-0.05%] max-w-none top-[-14.29%] w-[100.11%]" src={imgImage5457} />
+          <img alt="Edificio La Barceloneta" loading="lazy" className="absolute h-[114.29%] left-[-0.05%] max-w-none top-[-14.29%] w-[100.11%]" src={imgImage5457} />
         </div>
       </div>
       <ContentWrapper />
-      <div className="absolute h-[50px] lg:h-[82px] left-[16px] lg:left-[72px] bottom-[16px] lg:bottom-auto lg:top-[545px] w-[200px] lg:w-[334px] hidden lg:block" data-name="image 5476">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5476} />
+      <div className="absolute h-[50px] lg:h-[82px] left-[16px] lg:left-[72px] top-[16px] lg:top-[35px] w-[200px] lg:w-[334px]" data-name="logo feel free">
+        <img alt="La Barceloneta Feel Free" loading="lazy" className="absolute inset-0 max-w-none object-contain object-left pointer-events-none size-full" src={imgLogoFeelFree} />
       </div>
-      <div className="hidden lg:block"><Group10 /></div>
       <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] left-[16px] lg:left-[5.84%] bottom-[16px] lg:bottom-auto lg:top-[40.04%] right-[16px] lg:right-[12.41%] leading-none not-italic text-[#ff5a63] text-[24px] sm:text-[40px] lg:text-[101.098px] tracking-[-1px] sm:tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap">
         <p className="mb-0">La Barceloneta</p>
         <p>buenos aires</p>
@@ -1594,7 +1605,7 @@ function Row() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start leading-[0] not-italic relative shrink-0 text-[15px] tracking-[-0.15px] w-full" data-name="Row 1">
       <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center relative shrink-0 text-black w-full">
-        <p className="leading-[1.2] whitespace-pre-wrap">Entrega estimada</p>
+        <p className="leading-[1.2] font-bold whitespace-pre-wrap">Entrega estimada</p>
       </div>
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center relative shrink-0 text-[#575757] w-full">
         <p className="leading-[1.2] whitespace-pre-wrap">Segundo semestre 2026</p>
@@ -1854,11 +1865,11 @@ function Content7() {
     <div className="content-stretch flex w-full lg:flex-[1_0_0] flex-col gap-[32px] items-start min-h-px min-w-px relative" data-name="Content">
       <SectionHeader />
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <p className="leading-[1.2] whitespace-pre-wrap">La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 20.000 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.</p>
+        <p className="leading-[1.2] whitespace-pre-wrap">La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 22.500 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.</p>
       </div>
-      <div className="hidden lg:block aspect-[860/888] relative shrink-0 w-full" data-name="Image">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="Person with iPad" className="absolute h-[100.02%] left-[-5.78%] max-w-none top-[-0.01%] w-[105.78%]" src={imgImage} />
+      <div className="hidden lg:block aspect-[860/500] relative shrink-0 w-full max-h-[400px]" data-name="Image">
+        <div className="absolute inset-0 overflow-hidden rounded-[8px] pointer-events-none">
+          <img alt="Sección mostrando octavos" loading="lazy" className="absolute inset-0 max-w-none object-cover size-full" src={imgSeccionOctavos} />
         </div>
       </div>
     </div>
@@ -1867,7 +1878,7 @@ function Content7() {
 
 function ToneAndVoice() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start py-[32px] relative shrink-0 w-full" data-name="Tone and voice" data-animate="fade-up">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start lg:items-center py-[24px] relative shrink-0 w-full" data-name="Tone and voice" data-animate="fade-up">
       <Examples />
       <Content7 />
     </div>
@@ -1924,7 +1935,7 @@ function Frame25() {
 function ArrowRight1() {
   return (
     <div className="relative shrink-0 size-[104px]" data-name="arrow-right-02">
-      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgArrowRight02} />
+      <img alt="" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgArrowRight02} />
     </div>
   );
 }
@@ -1932,7 +1943,7 @@ function ArrowRight1() {
 function ArrowRight2() {
   return (
     <div className="relative size-[104px]" data-name="arrow-right-02">
-      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgArrowRight3} />
+      <img alt="" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgArrowRight3} />
     </div>
   );
 }
@@ -1941,7 +1952,7 @@ function ArrowRight3() {
   return (
     <div className="relative shrink-0 size-[104px]" data-name="arrow-right-02">
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-        <img alt="" className="absolute max-w-none object-cover size-full" src={imgArrowRight4} />
+        <img alt="" loading="lazy" className="absolute max-w-none object-cover size-full" src={imgArrowRight4} />
         <div className="absolute bg-gradient-to-r from-[rgba(251,247,244,0)] inset-0 to-[#fbf7f4]" />
       </div>
     </div>
@@ -2004,9 +2015,11 @@ function Content8() {
 function Container4() {
   const [tab, setTab] = useState(0);
   const GALLERY_TABS = [
-    { label: "ROOFTOP", desc: "50m² de pileta + solarium", image: imgArrowRight3 },
-    { label: "SPA", desc: "Spa y wellness de alta gama", image: imgArrowRight4 },
-    { label: "ART GALLERY", desc: "Galería de arte integrada al hotel", image: imgArrowRight5 },
+    { label: "ROOFTOP", desc: "Pileta + solarium con vista panorámica", image: imgRooftop },
+    { label: "GALERÍA DE ARTE", desc: "Galería de arte integrada al hotel", image: imgGaleriaArte },
+    { label: "BAR DE JAZZ Y TANGO", desc: "Bar temático de jazz y tango", image: imgBarJazz },
+    { label: "RECREATION ROOM", desc: "Sala de recreación y entretenimiento", image: imgRecreationRoom },
+    { label: "ÁREA DE BIENESTAR", desc: "Espacio zen y wellness", image: imgAreaBienestar },
   ];
   const current = GALLERY_TABS[tab];
   const total = GALLERY_TABS.length;
@@ -2066,7 +2079,7 @@ function Container4() {
       </div>
       {/* Gallery image */}
       <div aria-hidden="true" className="w-full h-[300px] lg:h-[552px] flex-none lg:flex-[1_0_0] min-h-px min-w-px relative overflow-hidden" data-name="Image" role="presentation">
-        <img key={tab} alt={current.label} className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={current.image} />
+        <img key={tab} alt={current.label} loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={current.image} />
       </div>
     </div>
   );
@@ -2127,7 +2140,7 @@ function ArrowRight6() {
     <div className="relative size-[104px]" data-name="arrow-right-02">
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
         <div className="absolute bg-[rgba(255,255,255,0.92)] inset-0" />
-        <img alt="" className="absolute max-w-none object-cover size-full" src={imgArrowRight5} />
+        <img alt="" loading="lazy" className="absolute max-w-none object-cover size-full" src={imgArrowRight5} />
       </div>
     </div>
   );
@@ -2138,7 +2151,7 @@ function ArrowRight8() {
     <div className="relative shrink-0 size-[104px]" data-name="arrow-right-02">
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
         <div className="absolute bg-[rgba(159,159,159,0.8)] inset-0" />
-        <img alt="" className="absolute max-w-none object-cover size-full" src={imgArrowRight6} />
+        <img alt="" loading="lazy" className="absolute max-w-none object-cover size-full" src={imgArrowRight6} />
       </div>
     </div>
   );
@@ -2148,7 +2161,7 @@ function ArrowRight9() {
   return (
     <div className="relative shrink-0 size-[104px]" data-name="arrow-right-02">
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-        <img alt="" className="absolute max-w-none object-cover size-full" src={imgArrowRight6} />
+        <img alt="" loading="lazy" className="absolute max-w-none object-cover size-full" src={imgArrowRight6} />
         <div className="absolute bg-gradient-to-r from-[rgba(251,247,244,0)] inset-0 to-[#fbf7f4]" />
       </div>
     </div>
@@ -2512,7 +2525,7 @@ function Container6() {
         <ConstructionTimeline />
       </div>
       <div aria-hidden="true" className="w-full flex-none lg:flex-[1_0_0] h-[250px] lg:h-[552px] max-w-[1000px] min-h-px min-w-px relative" data-name="Image" role="presentation">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage1} />
+        <img alt="Interior del departamento" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage1} />
       </div>
     </div>
   );
@@ -2522,7 +2535,7 @@ function Header13() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Header">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
-        <p className="leading-[1.2]">Ubicación</p>
+        <p className="leading-[1.2] font-bold">Ubicación</p>
       </div>
     </div>
   );
@@ -2531,7 +2544,7 @@ function Header13() {
 function Map() {
   return (
     <div className="w-full flex-none lg:flex-[1_0_0] h-[300px] lg:h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative" data-name="Map">
-      <img alt="Mapa ubicación" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5477} />
+      <img alt="Mapa ubicación" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5477} />
     </div>
   );
 }
@@ -2540,7 +2553,7 @@ function Text1() {
   return (
     <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" data-name="Text">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[20px] lg:text-[30px] text-center lg:text-right tracking-[-0.3px] w-full">
-        <h3 className="block leading-[1.2] whitespace-pre-wrap">Venezuela 2475, C1096ABQ Cdad. Autónoma de Buenos Aires</h3>
+        <h3 className="block leading-[1.2] whitespace-pre-wrap">Desarrollo La Barceloneta Feel Free{"\n"}Buenos Aires – Argentina{"\n"}Obra en construcción: Venezuela 2475, C1096ABQ – CABA{"\n"}Oficina comercial: Ángel Justiniano Carranza 1470 C1414 – Ciudad Autónoma de Buenos Aires</h3>
       </div>
     </div>
   );
@@ -2571,9 +2584,9 @@ function PersonalitySection() {
   return (
     <div aria-label="Section 2 out of 6" className="relative shrink-0 w-full" data-name="Personality Section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
+      <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
         <Header6 />
-        <div className="content-stretch flex flex-col h-[280px] sm:h-[400px] lg:h-[763px] items-start pb-0 lg:pb-[64px] relative shrink-0 w-full overflow-hidden" data-name="Portada / Bs As">
+        <div className="content-stretch flex flex-col h-[280px] sm:h-[400px] md:h-[550px] lg:h-[763px] items-start pb-0 lg:pb-[64px] relative shrink-0 w-full overflow-hidden" data-name="Portada / Bs As">
           <Portada />
         </div>
         <ToneAndVoice />
@@ -2594,28 +2607,20 @@ function PersonalitySection() {
   );
 }
 
-function PrimaryButton1() {
-  return (
-    <a href="#contacto" className="hidden lg:flex -translate-y-1/2 absolute bg-[#ff41b6] content-stretch cursor-pointer h-[48px] items-center justify-center px-[25px] py-[12px] right-[150px] rounded-[999px] top-[calc(50%-0.36px)] w-[265px] no-underline hover:bg-[#e03aa3] transition-colors" data-name="Primary button">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic overflow-hidden relative text-[15px] text-center text-ellipsis text-white tracking-[-0.15px] whitespace-nowrap">
-        <p className="leading-[1.2] overflow-hidden">Ir a la plataforma</p>
-      </div>
-    </a>
-  );
-}
-
 function Banner1() {
   return (
-    <section className="relative shrink-0 w-full" data-name="Banner" data-animate="fade-in">
+    <section id="banner" className="relative shrink-0 w-full" data-name="Banner" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border-[#eae9e8] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="flex flex-col justify-center size-full">
-        <div className="content-stretch flex flex-col gap-[40px] lg:gap-[80px] items-start justify-center p-[16px] lg:p-[32px] relative w-full">
-          <div className="aspect-[2320/264] relative shrink-0 w-full" data-name="image 5483">
+        <div className="content-stretch flex flex-col items-start justify-center p-[16px] lg:p-[32px] relative w-full">
+          <div className="aspect-[2320/264] relative shrink-0 w-full overflow-hidden rounded-[8px]" data-name="image 5483">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute h-[341.63%] left-[-3.84%] max-w-none top-[-119.94%] w-[131.21%]" src={imgImage5484} />
+              <img alt="Vista aérea del proyecto" loading="lazy" className="absolute h-[341.63%] left-[-3.84%] max-w-none top-[-119.94%] w-[131.21%]" src={imgImage5484} />
+            </div>
+            <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
+              <span className=" font-['Helvetica:Bold',sans-serif] font-bold text-white text-[18px] sm:text-[24px] lg:text-[36px] tracking-[4px] lg:tracking-[8px] uppercase">Próximamente</span>
             </div>
           </div>
-          <PrimaryButton1 />
         </div>
       </div>
     </section>
@@ -2629,8 +2634,8 @@ function Number1() {
 function Title3() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2]">El próximo capítulo (Neuquén)</h2>
+      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] lg:text-[42px] text-black tracking-[-0.6px]">
+        <h2 className="block leading-[1.2] font-bold">El próximo capítulo (Neuquén)</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
         <Number1 />
@@ -2641,7 +2646,7 @@ function Title3() {
 
 function Header14() {
   return (
-    <div className="content-stretch flex items-start pb-[32px] relative shrink-0 w-full" data-name="Header">
+    <div className="content-stretch flex flex-col sm:flex-row items-start sm:items-center gap-[12px] sm:gap-[24px] pb-[32px] relative shrink-0 w-full" data-name="Header">
       <Title3 />
     </div>
   );
@@ -2770,7 +2775,7 @@ function Container10() {
 
 function ContentWrapper1() {
   return (
-    <div className="hidden lg:flex absolute bg-[#040404] bottom-[-63px] content-stretch h-auto items-center p-[30px] right-[98px] w-[295px]" data-name="Content Wrapper">
+    <div className="hidden lg:flex absolute bg-[#040404] bottom-[20px] content-stretch h-auto items-center p-[30px] right-[98px] w-[295px] z-10" data-name="Content Wrapper">
       <Container10 />
     </div>
   );
@@ -2803,12 +2808,20 @@ function Portada1() {
     <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5458">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5458} />
+        <img alt="Edificio La Barceloneta Neuquén" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5458} />
       </div>
       <ContentWrapper1 />
-      <div className="absolute h-[82px] left-[72px] top-[545px] w-[100px] hidden lg:block" data-name="image 5479">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5479} />
+      <div className="absolute h-[82px] left-[72px] top-[545px] w-[250px] hidden lg:block" data-name="logo neuquen">
+        <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-name="Row 7">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-w-full not-italic relative shrink-0 text-[#e8ebef] text-[10px] tracking-[-0.2px] w-[min-content]">
+        <p className="text-[14px] text-[#75808a] leading-[1.8] whitespace-pre-wrap">Desarrolla</p>
       </div>
+            <div className="pl-2 scale-150" data-name="logo gm 1">
+      <LogoGm />
+      </div>
+    </div>
+      </div>
+      
       <div className="hidden lg:block"><Group11 /></div>
       <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] leading-none left-[16px] lg:left-[72px] bottom-[16px] lg:bottom-auto lg:top-[40.04%] right-[16px] lg:right-auto not-italic text-[#7ecbe2] text-[24px] sm:text-[40px] lg:text-[101.098px] tracking-[-1px] sm:tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap">
         <p className="mb-0">La Barceloneta</p>
@@ -2822,7 +2835,7 @@ function Row7() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start leading-[0] not-italic relative shrink-0 text-[15px] tracking-[-0.15px] w-full" data-name="Row 1">
       <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center relative shrink-0 text-black w-full">
-        <p className="leading-[1.2] whitespace-pre-wrap">Entrega estimada</p>
+        <p className="leading-[1.2] font-bold whitespace-pre-wrap">Entrega estimada</p>
       </div>
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center relative shrink-0 text-[#575757] w-full">
         <p className="leading-[1.2] whitespace-pre-wrap">Segundo semestre 2026</p>
@@ -2835,7 +2848,7 @@ function Row8() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start leading-[0] not-italic relative shrink-0 text-[15px] tracking-[-0.15px] w-full" data-name="Row 5">
       <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center relative shrink-0 text-black w-full">
-        <p className="leading-[1.2] whitespace-pre-wrap">Ubicación</p>
+        <p className="leading-[1.2] font-bold whitespace-pre-wrap">Ubicación</p>
       </div>
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center relative shrink-0 text-[#575757] w-full">
         <p className="leading-[1.2] whitespace-pre-wrap">Neuquén Capital</p>
@@ -2914,7 +2927,7 @@ function Row9() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-name="Row 4">
       <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] min-w-full not-italic relative shrink-0 text-[15px] text-black tracking-[-0.15px] w-[min-content]">
-        <p className="leading-[1.2] whitespace-pre-wrap">Desarrolla</p>
+        <p className="leading-[1.2] font-bold whitespace-pre-wrap">Desarrolla</p>
       </div>
       <LogoGm2 />
     </div>
@@ -2939,7 +2952,7 @@ function SectionHeader1() {
   return (
     <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="Section header">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[22px] lg:text-[30px] text-black tracking-[-0.3px]">
-        <h3 className="block leading-[1.2] whitespace-pre-wrap">Lo que nació en Buenos Aires, ahora se expande al país</h3>
+        <h3 className="font-bold block leading-[1.2] whitespace-pre-wrap">Lo que nació en Buenos Aires, ahora se expande al país</h3>
       </div>
     </div>
   );
@@ -2954,7 +2967,7 @@ function Content11() {
       </div>
       <div className="aspect-[860/888] relative shrink-0 w-full" data-name="Image">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="Person with iPad" className="absolute h-[100.02%] left-[-5.78%] max-w-none top-[-0.01%] w-[105.78%]" src={imgImage2} />
+          <img alt="La Barceloneta Neuquén" loading="lazy" className="absolute inset-0 max-w-none object-cover size-full" src={imgNeuquenExpansion} />
         </div>
       </div>
     </div>
@@ -2974,9 +2987,9 @@ function PersonalitySection1() {
   return (
     <div id="neuquen" aria-label="Section 2 out of 6" className="relative shrink-0 w-full" data-name="Personality Section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col gap-[24px] lg:gap-[30px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[120px] relative w-full">
+      <div className="content-stretch flex flex-col gap-[24px] lg:gap-[30px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
         <Header14 />
-        <div className="content-stretch flex flex-col h-[280px] sm:h-[400px] lg:h-[763px] items-start pb-0 lg:pb-[64px] relative shrink-0 w-full overflow-hidden" data-name="Portada / Neuquen">
+        <div className="content-stretch flex flex-col h-[280px] sm:h-[400px] md:h-[550px] lg:h-[763px] items-start pb-0 lg:pb-[64px] relative shrink-0 w-full overflow-hidden" data-name="Portada / Neuquen">
           <Portada1 />
         </div>
         <ToneAndVoice1 />
@@ -2988,8 +3001,8 @@ function PersonalitySection1() {
 function Title4() {
   return (
     <div className="content-stretch flex flex-[1_0_0] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] w-full lg:w-[454px]">
-        <h2 className="block leading-[1.2] whitespace-pre-wrap">Experiencias reales de quienes ya están invirtiendo</h2>
+      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[28px] lg:text-[40px] text-black tracking-[-0.6px] w-full lg:w-[454px]">
+        <h2 className="block leading-[1.2] font-bold whitespace-pre-wrap">Experiencias reales de quienes ya están invirtiendo</h2>
       </div>
     </div>
   );
@@ -3001,54 +3014,49 @@ function Cards1() {
 
 const TESTIMONIALS_DATA = [
   {
-    name: "Martín R.",
-    subtitle: "2 fracciones MonoLoft Norte",
-    quote: "La fracción me permitió entrar al real estate sin tener que comprar un departamento completo. Desde el primer mes ya estaba cobrando renta.",
+    name: "Marco Tomas Alvarez",
+    subtitle: "★★★★★",
+    quote: "Invertí en el Crowdfunding hace un año y un éxito todo, un contrato super claro y me dejó muy tranquilo. Hoy recibí mi inversión más el retorno. ¡Aumenté mi capital!",
   },
   {
-    name: "Valeria S.",
-    subtitle: "1 fracción MonoLoft Sur",
-    quote: "Lo que más me convenció fue la escritura pública. Tenés la seguridad de un inmueble pero con la liquidez de una inversión más accesible.",
+    name: "AP",
+    subtitle: "★★★★★ · Inversora desde Puerto Rico",
+    quote: "Llegué a La Barceloneta por redes sociales y sin dudarlo empezamos las gestiones para invertir desde el exterior. Llevo 5 meses y estoy conforme con cada paso. ¡Recomendados al 1000%!",
   },
   {
-    name: "Federico L.",
-    subtitle: "3 fracciones MonoLoft Norte",
-    quote: "Empecé con una fracción para ver cómo funcionaba. Hoy tengo tres y planeo sumar más cuando abran el proyecto de Neuquén.",
+    name: "Sandra Melendi",
+    subtitle: "★★★★★",
+    quote: "Como jubilada, mi prioridad es la seguridad. Hoy mi inversión se traduce en una renta mensual que complementa mis ingresos. Ver cómo mi patrimonio crece mes a mes me da una tranquilidad enorme.",
   },
   {
-    name: "Carolina M.",
-    subtitle: "2 fracciones MonoLoft Sur",
-    quote: "El modelo de renta de espera me permitió generar ingresos desde el inicio de la obra. Una alternativa inteligente frente al plazo fijo.",
+    name: "Cesar Martin Lopez",
+    subtitle: "★★★★★",
+    quote: "Esta semana cerré la operación y ya soy parte de este hermoso proyecto. ¡Ya soy un Barceloneta más! Gracias por la calidad en el trato y por abrirme las puertas.",
   },
   {
-    name: "Sebastián D.",
-    subtitle: "1 fracción MonoLoft Norte",
-    quote: "Nunca pensé que podía invertir en hotelería con USD 20.000. La transparencia del proceso y la escritura pública me dieron mucha confianza.",
+    name: "Lo Mejor de mi",
+    subtitle: "★★★★★",
+    quote: "Excelente experiencia invirtiendo en La Barceloneta. El modelo de condohotel es muy sólido y la atención es impecable. Nos dieron muchísima confianza y tranquilidad en cada paso. ¡Totalmente recomendados!",
   },
   {
-    name: "Luciana P.",
-    subtitle: "2 fracciones MonoLoft Sur",
-    quote: "Excelente equipo y muy buen producto. La renta hotelera ya supera lo que me daba el plazo fijo y el dólar mep juntos.",
+    name: "Miguel Angel Rivera",
+    subtitle: "★★★★★ · Local Guide",
+    quote: "Muy profesionales, atentos y agradables.",
+  },
+  {
+    name: "Horacio Blanco",
+    subtitle: "★★★★★",
+    quote: "La mejor inversión que hice.",
   },
 ];
 
 function TestimonialCard({ name, subtitle, quote }: { name: string; subtitle: string; quote: string }) {
   return (
-    <article className="flex flex-col gap-[8px] shrink-0 w-[220px] lg:w-[256px] snap-start relative pr-[16px]">
-      {/* vertical right border */}
+    <article className="flex flex-col gap-[6px] shrink-0 w-[240px] lg:w-[280px] snap-start relative pr-[16px]">
       <div aria-hidden="true" className="absolute right-0 top-0 bottom-0 w-px bg-[rgba(0,0,0,0.1)]" />
-      {/* Avatar */}
-      <img
-        src={`${import.meta.env.BASE_URL}images/12a1d1f9a76a86ace883f4af20883e44a6eda988.png`}
-        alt={name}
-        className="size-[40px] lg:size-[56px] rounded-full object-cover mb-[8px] shrink-0"
-      />
-      {/* Name */}
-      <p className="font-['Helvetica:Regular',sans-serif] text-[22px] lg:text-[30px] text-[#141414] tracking-[-0.6px] leading-[1.2]">{name}</p>
-      {/* Subtitle */}
+      <p className="font-['Helvetica:Bold',sans-serif] font-bold text-[16px] lg:text-[20px] text-[#141414] tracking-[-0.3px] leading-[1.2]">{name}</p>
       <span className="font-['Helvetica:Regular',sans-serif] text-[12px] lg:text-[13px] text-[#575757] tracking-[-0.13px] leading-[1.4]">{subtitle}</span>
-      {/* Quote */}
-      <p className="font-['Helvetica:Bold',sans-serif] font-bold text-[16px] lg:text-[22px] text-[#141414] tracking-[-0.22px] leading-[1.3] mt-[8px]">"{quote}"</p>
+      <p className="font-['Helvetica:Regular',sans-serif] text-[14px] lg:text-[15px] text-[#575757] tracking-[-0.15px] leading-[1.5] mt-[8px]">"{quote}"</p>
     </article>
   );
 }
@@ -3068,8 +3076,24 @@ function StrategySection1() {
       <div className="content-stretch flex flex-col items-start pl-[16px] lg:pl-[32px] pt-[60px] lg:pt-[120px] pb-[40px] lg:pb-[80px] relative w-full">
         {/* Header: title left + empty spacer right (Figma original layout) */}
         <Header15 />
-        {/* Scroll track of testimonial cards */}
-        <div className="mt-[32px] lg:mt-[48px] flex gap-[16px] overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full">
+        {/* Scroll track of testimonial cards — drag to scroll on desktop */}
+        <div
+          className="mt-[32px] lg:mt-[48px] flex gap-[16px] overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full cursor-grab active:cursor-grabbing select-none"
+          onPointerDown={(e) => {
+            const el = e.currentTarget;
+            el.dataset.dragging = "true";
+            el.dataset.startX = String(e.clientX);
+            el.dataset.scrollLeft = String(el.scrollLeft);
+            el.setPointerCapture(e.pointerId);
+          }}
+          onPointerMove={(e) => {
+            const el = e.currentTarget;
+            if (el.dataset.dragging !== "true") return;
+            const dx = e.clientX - Number(el.dataset.startX);
+            el.scrollLeft = Number(el.dataset.scrollLeft) - dx;
+          }}
+          onPointerUp={(e) => { e.currentTarget.dataset.dragging = "false"; }}
+        >
           {TESTIMONIALS_DATA.map((t, i) => (
             <TestimonialCard key={i} {...t} />
           ))}
@@ -3082,9 +3106,9 @@ function StrategySection1() {
 
 function Title5() {
   return (
-    <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2] whitespace-pre-wrap">Prensa</h2>
+    <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1" data-name="Title">
+      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
+        <h2 className="block leading-[1.2] font-bold whitespace-pre-wrap">Prensa</h2>
       </div>
     </div>
   );
@@ -3092,9 +3116,9 @@ function Title5() {
 
 function Content12() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[265px]" data-name="Content">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[16px] tracking-[-0.5px] w-full">
-        <p className="leading-[1.6] whitespace-pre-wrap">Los medios hablan del modelo de inversión en fracciones y de La Barceloneta.</p>
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:flex-1 lg:max-w-[450px]" data-name="Content">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[16px] tracking-[-0.15px] w-full">
+        <p className="leading-[1.4] whitespace-pre-wrap">Los medios hablan del modelo de inversión en fracciones y de La Barceloneta.</p>
       </div>
     </div>
   );
@@ -3102,7 +3126,7 @@ function Content12() {
 
 function Header16() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-0 items-start justify-between relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[48px] items-start lg:items-center relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
       <Title5 />
       <Content12 />
     </div>
@@ -3113,7 +3137,7 @@ function StrategySection2() {
   return (
     <section className="relative shrink-0 w-full" data-name="Strategy section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[40px] lg:pb-[80px] pt-[60px] lg:pt-[120px] px-[16px] lg:px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[32px] relative w-full">
         <Header16 />
       </div>
     </section>
@@ -3159,7 +3183,7 @@ function Image1() {
     <div className="bg-[#f1f1f1] content-stretch flex flex-[1_0_0] flex-col items-center justify-center min-h-px min-w-px relative w-full overflow-hidden" data-name="Image">
       <div className="h-[180.396px] relative shrink-0 w-full max-w-[322.5px]" data-name="Imagen">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[106.53%] left-[-2.79%] max-w-none top-[-3.77%] w-[106.05%] transition-transform duration-500 group-hover:scale-105" src={imgImagen} />
+          <img alt="Testimonio de prensa" loading="lazy" className="absolute h-[106.53%] left-[-2.79%] max-w-none top-[-3.77%] w-[106.05%] transition-transform duration-500 group-hover:scale-105" src={imgImagen} />
         </div>
       </div>
     </div>
@@ -3190,7 +3214,7 @@ function Body1() {
 function Image2() {
   return (
     <div className="bg-[#f45f00] content-stretch flex flex-[1_0_0] flex-col items-center justify-center min-h-px min-w-px relative w-full" data-name="Image">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[36px] lg:text-[60px] text-center text-white tracking-[-0.6px] w-full max-w-[302px] whitespace-pre-wrap">Próximamente</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.1] not-italic relative shrink-0 text-[36px] lg:text-[45px] text-center text-white tracking-[-0.6px] w-full max-w-[302px] whitespace-pre-wrap">Próximamente</p>
     </div>
   );
 }
@@ -3330,10 +3354,10 @@ function Examples2() {
 function Title7() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full" data-name="Title">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
-        <h2 className="whitespace-pre-wrap">
-          <span className="leading-[1.2] text-[#f45f00]">{`1 `}</span>
-          <span className="leading-[1.2]">{` Definimos tu ticket de inversión`}</span>
+      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Bold',sans-serif] font-bold justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
+        <h2 className="whitespace-pre-wrap leading-[1.2]">
+          <span className="text-[#f45f00]">1</span>
+          {"  "}Definimos tu ticket de inversión
         </h2>
       </div>
     </div>
@@ -3421,11 +3445,10 @@ function Examples3() {
 function Title9() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
-        <h2>
-          <span className="leading-[1.2] text-[#f45f00]">2</span>
-          <span className="leading-[1.2]">{`  `}</span>
-          <span className="font-['Rethink_Sans:Medium',sans-serif] font-medium leading-[1.2]">Anticipo + cuotas</span>
+      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Bold',sans-serif] font-bold justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
+        <h2 className="whitespace-pre-wrap leading-[1.2]">
+          <span className="text-[#f45f00]">2</span>
+          {"  "}Anticipo + cuotas
         </h2>
       </div>
     </div>
@@ -3515,11 +3538,10 @@ function Examples4() {
 function Title11() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
-        <h2>
-          <span className="leading-[1.2] text-[#f45f00]">3</span>
-          <span className="leading-[1.2]">{`  `}</span>
-          <span className="font-['Rethink_Sans:Medium',sans-serif] font-medium leading-[1.2]">Escritura pública</span>
+      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Bold',sans-serif] font-bold justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
+        <h2 className="whitespace-pre-wrap leading-[1.2]">
+          <span className="text-[#f45f00]">3</span>
+          {"  "}Escritura pública
         </h2>
       </div>
     </div>
@@ -3608,10 +3630,10 @@ function Examples5() {
 function Title13() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
-        <h2>
-          <span className="leading-[1.2] text-[#f45f00]">4</span>
-          <span className="leading-[1.2]">{`  Operación hotelera`}</span>
+      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Bold',sans-serif] font-bold justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
+        <h2 className="whitespace-pre-wrap leading-[1.2]">
+          <span className="text-[#f45f00]">4</span>
+          {"  "}Operación hotelera
         </h2>
       </div>
     </div>
@@ -3700,10 +3722,10 @@ function Examples6() {
 function Title15() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full" data-name="Title">
-      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
-        <h2 className="whitespace-pre-wrap">
-          <span className="leading-[1.2] text-[#f45f00]">5</span>
-          <span className="leading-[1.2]">{`  Cobro de rentas en USD`}</span>
+      <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Bold',sans-serif] font-bold justify-center leading-[0] min-h-px min-w-px not-italic relative text-[30px] text-black tracking-[-0.6px]">
+        <h2 className="whitespace-pre-wrap leading-[1.2]">
+          <span className="text-[#f45f00]">5</span>
+          {"  "}Cobro de rentas en USD
         </h2>
       </div>
     </div>
@@ -3722,9 +3744,6 @@ function SectionHeader11() {
           </li>
           <li className="mb-0 ms-[22.5px]">
             <span className="leading-[1.2]">Renta Hotelera (hotel operativo)</span>
-          </li>
-          <li className="ms-[22.5px]">
-            <span className="leading-[1.2]">Renta Asegurada (renta asegurada, opcional)</span>
           </li>
         </ul>
       </div>
@@ -3781,7 +3800,7 @@ const COMO_INVERTIR_STEPS = [
   {
     num: "5",
     title: "Cobro de rentas en USD",
-    desc: "Recibís tus ingresos según el modelo elegido: Renta de Espera (durante la obra), Renta Hotelera (hotel operativo) o Renta Asegurada (opcional).",
+    desc: "Recibís tus ingresos según el modelo elegido: Renta de Espera (durante la obra) o Renta Hotelera (hotel operativo).",
   },
 ];
 
@@ -3792,20 +3811,22 @@ function Frame59() {
       <div className="lg:hidden w-full">
         <div className="content-stretch flex flex-col items-start px-[16px] py-[60px] relative w-full">
           <div className="content-stretch flex items-start pb-[32px] relative shrink-0 w-full">
-            <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px]">
-              <h2 className="block leading-[1.2]">¿Cómo invertir?</h2>
+            <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[34px] text-black tracking-[-0.6px]">
+              <h2 className="block leading-[1.2] font-bold">¿Cómo invertir?</h2>
             </div>
           </div>
-          <div className="flex flex-col gap-[16px] w-full">
+          <div className="flex flex-col gap-[24px] w-full">
             {COMO_INVERTIR_STEPS.map((step) => (
-              <div key={step.num} className="bg-white border border-[rgba(0,0,0,0.1)] p-[24px] flex flex-col gap-[16px] w-full">
-                <h3 className="font-['Helvetica:Regular',sans-serif] text-[22px] text-black tracking-[-0.6px] leading-[1.2]">
-                  <span className="text-[#f45f00]">{step.num}</span>
-                  {"  "}{step.title}
-                </h3>
-                <p className="font-['Helvetica:Regular',sans-serif] text-[15px] text-[#575757] tracking-[-0.15px] leading-[1.4]">
-                  {step.desc}
-                </p>
+              <div key={step.num} className="flex gap-[16px] items-start w-full">
+                <span className="font-['Helvetica:Bold',sans-serif] font-bold text-[28px] text-[#f45f00] tracking-[-0.6px] leading-[1] shrink-0 w-[28px] text-right">{step.num}</span>
+                <div className="flex flex-col gap-[6px] pt-[2px]">
+                  <h3 className="font-['Helvetica:Bold',sans-serif] font-bold text-[18px] text-black tracking-[-0.3px] leading-[1.2]">
+                    {step.title}
+                  </h3>
+                  <p className="font-['Helvetica:Regular',sans-serif] text-[15px] text-[#575757] tracking-[-0.15px] leading-[1.4]">
+                    {step.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -3972,7 +3993,7 @@ function Frame4() {
       <div className="flex flex-row items-center size-full">
         <div className="content-stretch flex gap-[10px] items-center px-[24px] py-[15px] relative size-full">
           <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[#575757] text-[15px] tracking-[-0.15px]">
-            <p className="leading-[1.2] whitespace-pre-wrap">USD $ 20.000 - $ 30.000</p>
+            <p className="leading-[1.2] whitespace-pre-wrap">USD $ 22.500 - $ 30.000</p>
           </div>
           <AntDesignCaretDownFilled />
         </div>
@@ -4166,31 +4187,31 @@ function ContentWrapper2() {
       {/* Nombre + Apellido */}
       <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
         <div className="content-stretch flex flex-col gap-[10px] items-start relative w-full">
-          <label className={labelCls}>Nombre completo</label>
-          <input name="nombre" type="text" value={formData.nombre} onChange={handleChange} placeholder="Juan" className={inputCls} required />
+          <label htmlFor="nombre" className={labelCls}>Nombre completo</label>
+          <input id="nombre" name="nombre" type="text" value={formData.nombre} onChange={handleChange} placeholder="Juan" className={inputCls} required />
         </div>
         <div className="content-stretch flex flex-col gap-[10px] items-start relative w-full">
-          <label className={labelCls}>Apellido completo</label>
-          <input name="apellido" type="text" value={formData.apellido} onChange={handleChange} placeholder="García" className={inputCls} required />
+          <label htmlFor="apellido" className={labelCls}>Apellido completo</label>
+          <input id="apellido" name="apellido" type="text" value={formData.apellido} onChange={handleChange} placeholder="García" className={inputCls} required />
         </div>
       </div>
       {/* Email */}
       <div className={fieldCls}>
-        <label className={labelCls}>Correo electrónico</label>
-        <input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="ejemplo@correo.com" className={inputCls} required />
+        <label htmlFor="email" className={labelCls}>Correo electrónico</label>
+        <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="ejemplo@correo.com" className={inputCls} required />
       </div>
       {/* Teléfono */}
       <div className={fieldCls}>
-        <label className={labelCls}>Número de teléfono</label>
-        <input name="telefono" type="tel" value={formData.telefono} onChange={handleChange} placeholder="(11) 1234-5678" className={inputCls} required />
+        <label htmlFor="telefono" className={labelCls}>Número de teléfono</label>
+        <input id="telefono" name="telefono" type="tel" value={formData.telefono} onChange={handleChange} placeholder="(11) 1234-5678" className={inputCls} required />
       </div>
       {/* Rango de inversión */}
       <div className={fieldCls}>
-        <label className={labelCls}>Rango de inversión deseado</label>
+        <label htmlFor="rango" className={labelCls}>Rango de inversión deseado</label>
         <div className="relative w-full">
-          <select name="rango" value={formData.rango} onChange={handleChange} className={selectCls} required>
+          <select id="rango" name="rango" value={formData.rango} onChange={handleChange} className={selectCls} required>
             <option value="">Seleccionar rango</option>
-            <option value="20-30">USD $ 20.000 - $ 30.000</option>
+            <option value="20-30">USD $ 22.500 - $ 30.000</option>
             <option value="30-50">USD $ 30.000 - $ 50.000</option>
             <option value="50-100">USD $ 50.000 - $ 100.000</option>
             <option value="100+">USD $ 100.000+</option>
@@ -4202,9 +4223,9 @@ function ContentWrapper2() {
       </div>
       {/* Proyecto */}
       <div className={fieldCls}>
-        <label className={labelCls}>Proyecto de interés</label>
+        <label htmlFor="proyecto" className={labelCls}>Proyecto de interés</label>
         <div className="relative w-full">
-          <select name="proyecto" value={formData.proyecto} onChange={handleChange} className={selectCls} required>
+          <select id="proyecto" name="proyecto" value={formData.proyecto} onChange={handleChange} className={selectCls} required>
             <option value="">Seleccionar proyecto</option>
             <option value="norte">Monoloft Norte</option>
             <option value="sur">Monoloft Sur</option>
@@ -4217,9 +4238,9 @@ function ContentWrapper2() {
       </div>
       {/* Perfil */}
       <div className={fieldCls}>
-        <label className={labelCls}>Perfil del usuario</label>
+        <label htmlFor="perfil" className={labelCls}>Perfil del usuario</label>
         <div className="relative w-full">
-          <select name="perfil" value={formData.perfil} onChange={handleChange} className={selectCls} required>
+          <select id="perfil" name="perfil" value={formData.perfil} onChange={handleChange} className={selectCls} required>
             <option value="">Seleccionar perfil</option>
             <option value="inversor">Inversor</option>
             <option value="propietario">Propietario</option>
@@ -4232,9 +4253,9 @@ function ContentWrapper2() {
       </div>
       {/* Fracciones */}
       <div className={fieldCls}>
-        <label className={labelCls}>Cantidad de fracciones</label>
+        <label htmlFor="fracciones" className={labelCls}>Cantidad de fracciones</label>
         <div className="relative w-full">
-          <select name="fracciones" value={formData.fracciones} onChange={handleChange} className={selectCls}>
+          <select id="fracciones" name="fracciones" value={formData.fracciones} onChange={handleChange} className={selectCls}>
             {[1,2,3,4,5,6,7,8].map(n => (
               <option key={n} value={String(n)}>{n}</option>
             ))}
@@ -4246,8 +4267,8 @@ function ContentWrapper2() {
       </div>
       {/* Mensaje */}
       <div className={fieldCls}>
-        <label className={labelCls}>Tu mensaje aquí</label>
-        <textarea name="mensaje" value={formData.mensaje} onChange={handleChange} placeholder="Escribe tu mensaje" rows={4} className="w-full border border-[rgba(0,0,0,0.1)] px-[24px] py-[15px] font-['Helvetica:Regular',sans-serif] text-[15px] text-[#040404] tracking-[-0.15px] placeholder:text-[#575757] focus:outline-none focus:border-[rgba(0,0,0,0.5)] transition-colors bg-transparent resize-none" />
+        <label htmlFor="mensaje" className={labelCls}>Tu mensaje aquí</label>
+        <textarea id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleChange} placeholder="Escribe tu mensaje" rows={4} className="w-full border border-[rgba(0,0,0,0.1)] px-[24px] py-[15px] font-['Helvetica:Regular',sans-serif] text-[15px] text-[#040404] tracking-[-0.15px] placeholder:text-[#575757] focus:outline-none focus:border-[rgba(0,0,0,0.5)] transition-colors bg-transparent resize-none" />
       </div>
       {/* Submit */}
       <button type="submit" className="bg-black content-stretch flex items-center justify-center px-[20px] py-[14px] relative rounded-[40px] shrink-0 w-[212px] cursor-pointer hover:bg-[#1d1d1b] transition-colors">
@@ -4289,7 +4310,7 @@ function Frame9() {
   return (
     <div className="content-stretch flex gap-[19px] items-center relative shrink-0">
       <MailOpen />
-      <a href="mailto:contacto@labarceloneta.com" className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[15px] text-black tracking-[-0.3px] no-underline hover:text-[#f20909] transition-colors">contacto@labarceloneta.com</a>
+      <a href="mailto:info.martingpropiedades@gmail.com" className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[15px] text-black tracking-[-0.3px] no-underline hover:text-[#f20909] transition-colors">info.martingpropiedades@gmail.com</a>
     </div>
   );
 }
@@ -4312,7 +4333,7 @@ function Frame10() {
   return (
     <div className="content-stretch flex gap-[19px] items-center relative shrink-0">
       <SmartPhone />
-      <a href="tel:+541155530104" className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[15px] text-black tracking-[-0.3px] no-underline hover:text-[#f20909] transition-colors">(11) 5553-0104</a>
+      <a href="tel:+5491173646541" className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[15px] text-black tracking-[-0.3px] no-underline hover:text-[#f20909] transition-colors">+54 9 11 7364-6541</a>
     </div>
   );
 }
@@ -4335,7 +4356,7 @@ function Frame11() {
   return (
     <div className="content-stretch flex gap-[19px] items-start relative shrink-0 w-full">
       <Location />
-      <p className="flex-[1_0_0] font-['Helvetica:Regular',sans-serif] leading-[1.2] min-h-px min-w-px not-italic relative text-[15px] text-black tracking-[-0.3px] whitespace-pre-wrap">Ángel Justiniano Carranza 1470 – Palermo Hollywood</p>
+      <p className="flex-[1_0_0] font-['Helvetica:Regular',sans-serif] leading-[1.2] min-h-px min-w-px not-italic relative text-[15px] text-black tracking-[-0.3px] whitespace-pre-wrap">Oficina comercial: Ángel Justiniano Carranza 1470 C1414 – Ciudad Autónoma de Buenos Aires</p>
     </div>
   );
 }
@@ -4353,7 +4374,7 @@ function Info() {
 function Text5() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[20px] items-start leading-[1.2] not-italic relative shrink-0 w-full" data-name="Text">
-      <p className="relative shrink-0 text-[30px] text-black tracking-[-0.6px]">Conocenos más</p>
+      <p className="relative shrink-0 text-[34px] lg:text-[40px] text-black tracking-[-0.6px] font-bold">Conocenos más</p>
       <p className="min-w-full opacity-80 relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-[min-content] whitespace-pre-wrap">Síguenos en nuestras redes sociales para conocer nuestro proceso de desarrollo inmobiliario. Comenzamos con una consulta para entender tus necesidades y ofrecerte soluciones innovadoras. ¡Mantente al tanto de nuestras novedades!</p>
     </div>
   );
@@ -4362,16 +4383,13 @@ function Text5() {
 function SocialIcon() {
   return (
     <div className="flex gap-[32px] items-center" data-name="Social Icon">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-black hover:opacity-60 transition-opacity">
+      <a href="https://www.facebook.com/labarcelonetafeelfree" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-black hover:opacity-60 transition-opacity">
         <FbIcon size={24} strokeWidth={1.5} />
       </a>
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="text-black hover:opacity-60 transition-opacity">
-        <TwIcon size={24} strokeWidth={1.5} />
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-black hover:opacity-60 transition-opacity">
+      <a href="https://www.instagram.com/labarceloneta.bsas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-black hover:opacity-60 transition-opacity">
         <IgIcon size={24} strokeWidth={1.5} />
       </a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-black hover:opacity-60 transition-opacity">
+      <a href="https://www.linkedin.com/company/la-barceloneta-feel-free/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-black hover:opacity-60 transition-opacity">
         <LiIcon size={24} strokeWidth={1.5} />
       </a>
     </div>
@@ -4423,7 +4441,7 @@ function Main1() {
       <Frame59 />
       <div id="contacto" className="bg-white relative shrink-0 w-full" data-name="Form" data-animate="fade-up">
         <div className="overflow-clip rounded-[inherit] w-full">
-          <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[60px] lg:py-[120px] relative w-full">
+          <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
             <Header22 />
             <Container11 />
           </div>
@@ -4504,8 +4522,7 @@ function Text8() {
 function Logo() {
   return (
     <div className="h-[98.092px] relative shrink-0 w-[205.243px]" data-name="Logo">
-      <Icon6 />
-      <Text8 />
+      <img alt="La Barceloneta" loading="lazy" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgLogoLB} />
     </div>
   );
 }
@@ -4529,16 +4546,13 @@ function Text6() {
 function SocialIcon1() {
   return (
     <div className="flex gap-[32px] items-center w-full" data-name="Social Icon">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
+      <a href="https://www.facebook.com/labarcelonetafeelfree" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
         <FbIcon size={24} strokeWidth={1.5} />
       </a>
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
-        <TwIcon size={24} strokeWidth={1.5} />
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
+      <a href="https://www.instagram.com/labarceloneta.bsas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
         <IgIcon size={24} strokeWidth={1.5} />
       </a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
+      <a href="https://www.linkedin.com/company/la-barceloneta-feel-free/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
         <LiIcon size={24} strokeWidth={1.5} />
       </a>
     </div>
@@ -4735,10 +4749,17 @@ export default function Home() {
   }, [menuOpen]);
 
   const handleToggleMute = () => {
-    const newMuted = !videoMuted;
-    setVideoMuted(newMuted);
-    if (videoRef.current) videoRef.current.muted = newMuted;
+    setVideoMuted(prev => {
+      const newMuted = !prev;
+      if (videoRef.current) videoRef.current.muted = newMuted;
+      return newMuted;
+    });
   };
+
+  // Sync muted state with video element (React doesn't update muted prop reliably)
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = videoMuted;
+  }, [videoMuted, videoVisible]);
 
   const handleFullscreen = () => {
     videoRef.current?.requestFullscreen?.().catch(() => {});
@@ -4804,7 +4825,7 @@ export default function Home() {
         <div className="flex gap-3 px-8 py-6 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {[imgArrowRight4, imgArrowRight3, imgArrowRight5].map((src, i) => (
             <div key={i} className="flex-none w-[140px] h-[100px] overflow-hidden rounded-[4px]">
-              <img alt="" src={src} className="size-full object-cover" />
+              <img alt="" loading="lazy" src={src} className="size-full object-cover" />
             </div>
           ))}
         </div>
@@ -4824,8 +4845,8 @@ export default function Home() {
         <IconamoonMenuBurgerHorizontalLight />
       </button>
       {videoVisible && (
-        <div id="vista360" className="fixed bottom-[16px] left-[16px] z-[100] h-[325px] overflow-clip rounded-[16px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] w-[200px]" data-name="Video">
-          <video ref={videoRef} src={`${import.meta.env.BASE_URL}videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mov`} autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted={videoMuted} playsInline />
+        <div id="vista360" className="fixed bottom-[12px] left-[12px] sm:bottom-[16px] sm:left-[16px] z-[100] h-[180px] w-[120px] sm:h-[250px] sm:w-[160px] lg:h-[325px] lg:w-[200px] overflow-clip rounded-[12px] lg:rounded-[16px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)]" data-name="Video">
+          <video ref={videoRef} src={`${import.meta.env.BASE_URL}videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mov`} autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted playsInline />
           <Button5 onClick={() => setVideoVisible(false)} />
           <Button6 onClick={handleFullscreen} />
           <Button7 onClick={handleToggleMute} isMuted={videoMuted} />
