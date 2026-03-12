@@ -4148,14 +4148,40 @@ function ContentWrapper2() {
     rango: "", proyecto: "", perfil: "", fracciones: "1", mensaje: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError(false);
+    try {
+      const res = await fetch("https://n8n.quantumconsult.io/webhook/barceloneta-landing-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: formData.nombre,
+          lastName: formData.apellido,
+          email: formData.email,
+          phone: formData.telefono,
+          rango_de_inversion: formData.rango,
+          proyecto_de_interes: formData.proyecto,
+          perfil_del_usuario: formData.perfil,
+          cantidad_de_fracciones: Number(formData.fracciones),
+          mensaje: formData.mensaje,
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const labelCls = "font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic opacity-80 relative shrink-0 text-[15px] text-black tracking-[-0.15px] w-full";
@@ -4271,8 +4297,11 @@ function ContentWrapper2() {
         <textarea id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleChange} placeholder="Escribe tu mensaje" rows={4} className="w-full border border-[rgba(0,0,0,0.1)] px-[24px] py-[15px] font-['Helvetica:Regular',sans-serif] text-[15px] text-[#040404] tracking-[-0.15px] placeholder:text-[#575757] focus:outline-none focus:border-[rgba(0,0,0,0.5)] transition-colors bg-transparent resize-none" />
       </div>
       {/* Submit */}
-      <button type="submit" className="bg-black content-stretch flex items-center justify-center px-[20px] py-[14px] relative rounded-[40px] shrink-0 w-[212px] cursor-pointer hover:bg-[#1d1d1b] transition-colors">
-        <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[15px] text-white tracking-[-0.15px]">Enviar mensaje</p>
+      {submitError && (
+        <p className="font-['Helvetica:Regular',sans-serif] text-[14px] text-[#f20909] leading-[1.4]">Hubo un error al enviar. Intentá de nuevo.</p>
+      )}
+      <button type="submit" disabled={submitting} className="bg-black content-stretch flex items-center justify-center px-[20px] py-[14px] relative rounded-[40px] shrink-0 w-[212px] cursor-pointer hover:bg-[#1d1d1b] transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+        <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[15px] text-white tracking-[-0.15px]">{submitting ? "Enviando..." : "Enviar mensaje"}</p>
       </button>
     </form>
   );
