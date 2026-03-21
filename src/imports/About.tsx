@@ -1,195 +1,13 @@
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router";
+import { useEffect, useCallback } from "react";
+import { useNavigate } from "react-router";
 import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon } from "lucide-react";
-import { useScrollAnimations } from "../hooks/useScrollAnimations";
+import Layout from "../components/Layout";
 import svgPaths from "./svg-36x96stg2x";
-import imgImage5475 from "figma:asset/a8c798b5c8be4c06e14d3f2ec3849a7ee96cbec3.png";
-import imgImage5474 from "figma:asset/28f87cdf85d8b9d691305432cfcd710646570202.png";
-import imgImage29 from "figma:asset/88f2a57d9ab1cb3b48181d8cec2a6a175d8ed5e1.png";
-import imgImage31 from "figma:asset/4372b663ba895d65a00e831afef24a66e96a387c.png";
-import imgImage32 from "figma:asset/1ed83031c13ff3e657b9319ce25234a8b5d42b68.png";
-
-function IconamoonMenuBurgerHorizontalLight() {
-  return (
-    <div className="relative shrink-0 size-[28px]" data-name="iconamoon:menu-burger-horizontal-light">
-      <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28 28">
-        <g id="iconamoon:menu-burger-horizontal-light">
-          <path d={svgPaths.p20066280} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Button({ onClick }: { onClick?: () => void }) {
-  return (
-    <button aria-label="Abrir menú" className="bg-black cursor-pointer h-[64px] relative shrink-0 w-full" data-name="Button" onClick={onClick}>
-      <div className="flex flex-row items-center justify-center overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex items-center justify-center px-[18px] relative size-full">
-          <IconamoonMenuBurgerHorizontalLight />
-        </div>
-      </div>
-    </button>
-  );
-}
-
-function NavMenu({ onMenuClick }: { onMenuClick?: () => void }) {
-  return (
-    <div className="bg-white content-stretch flex flex-col flex-1 items-center overflow-clip relative shrink-0 w-[56px]" data-name="Nav Menu">
-      <Button onClick={onMenuClick} />
-    </div>
-  );
-}
-
-function Button1() {
-  return (
-    <a href="https://data.sentiovr.com/spaces/54685/space_1700064741/vtour/tour.html" target="_blank" rel="noopener noreferrer" className="content-stretch flex items-center relative no-underline cursor-pointer" data-name="Button">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[15px] text-center tracking-[-0.3px] whitespace-nowrap hover:text-[#f20909] transition-colors">
-        <span className="leading-[1.2]">Vista 360</span>
-      </div>
-    </a>
-  );
-}
-
-function Button2() {
-  return (
-    <a href="#nosotros" className="content-stretch flex items-center relative no-underline cursor-pointer" data-name="Button">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[15px] text-center tracking-[-0.3px] whitespace-nowrap hover:text-[#f20909] transition-colors">
-        <span className="leading-[1.2]">Nosotros</span>
-      </div>
-    </a>
-  );
-}
-
-function Button3() {
-  return (
-    <a href="https://drive.google.com/file/d/1-NlHPsM-R_g7Uc5tK72hWYvNuhRM20gR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="content-stretch flex items-center relative no-underline cursor-pointer" data-name="Button">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#141414] text-[15px] text-center tracking-[-0.3px] whitespace-nowrap hover:text-[#f20909] transition-colors">
-        <span className="leading-[1.2]">Brochure</span>
-      </div>
-    </a>
-  );
-}
-
-function MenuItems() {
-  return (
-    <div className="content-stretch flex flex-col gap-[32px] items-start justify-end py-[40px] relative shrink-0" data-name="Menu Items">
-      <div className="flex h-[60px] items-center justify-center relative shrink-0 w-[18px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
-        <div className="flex-none rotate-90">
-          <Button1 />
-        </div>
-      </div>
-      <div className="flex h-[58px] items-center justify-center relative shrink-0 w-[18px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
-        <div className="flex-none rotate-90">
-          <Button2 />
-        </div>
-      </div>
-      <div className="flex h-[59px] items-center justify-center relative shrink-0 w-[18px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
-        <div className="flex-none rotate-90">
-          <Button3 />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PhArrowUpRightLight() {
-  return (
-    <div className="h-[48px] overflow-clip relative shrink-0 w-full" data-name="ph:arrow-up-right-light">
-      <div className="absolute bottom-[-0.41px] right-[-0.41px] size-[28.407px]" data-name="Vector">
-        <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28.4071 28.4071">
-          <path d={svgPaths.p2e1c7470} fill="var(--fill-0, white)" id="Vector" />
-        </svg>
-      </div>
-    </div>
-  );
-}
-
-function Button4() {
-  return (
-    <a href="https://wa.me/5491173646541" target="_blank" rel="noopener noreferrer" className="bg-[#f20909] relative shrink-0 w-full no-underline block cursor-pointer hover:bg-[#d00808] transition-colors" data-name="Button">
-      <div className="flex flex-col items-center justify-end overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[8px] items-center justify-end pb-[16px] pt-[24px] px-[8px] relative w-full">
-          <div className="flex h-[74px] items-center justify-center relative shrink-0 w-[26px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
-            <div className="flex-none rotate-90">
-              <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] not-italic relative text-[22px] text-white tracking-[-0.22px]">Invertir</p>
-            </div>
-          </div>
-          <PhArrowUpRightLight />
-        </div>
-      </div>
-    </a>
-  );
-}
-
-function NavMenu1() {
-  return (
-    <div className="bg-white content-stretch flex flex-col gap-[8px] items-center overflow-clip shrink-0 w-[56px]" data-name="Nav Menu">
-      <MenuItems />
-      <Button4 />
-    </div>
-  );
-}
-
-function PhXLight({ fill = "white" }: { fill?: string }) {
-  return (
-    <div className="relative shrink-0 size-[16px]" data-name="ph:x-light">
-      <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16 16">
-        <g id="ph:x-light">
-          <path d={svgPaths.p19eaba00} fill={fill} id="Vector" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Button5({ onClick }: { onClick?: () => void }) {
-  return (
-    <button aria-label="Cerrar video" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center overflow-clip px-[18px] right-[8px] rounded-[12px] size-[48px] top-[8px]" data-name="Button" onClick={onClick}>
-      <PhXLight />
-    </button>
-  );
-}
-
-function SystemUiconsExpand() {
-  return (
-    <div className="relative shrink-0 size-[16px]" data-name="system-uicons:expand">
-      <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16 16">
-        <g id="system-uicons:expand">
-          <path d={svgPaths.p10ee28e0} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.952381" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Button6({ onClick }: { onClick?: () => void }) {
-  return (
-    <button aria-label="Expandir video" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center left-[8px] overflow-clip px-[18px] rounded-[12px] size-[48px] top-[8px]" data-name="Button" onClick={onClick}>
-      <SystemUiconsExpand />
-    </button>
-  );
-}
-
-function OcticonMute() {
-  return (
-    <div className="relative shrink-0 size-[16px]" data-name="octicon:mute-24">
-      <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16 16">
-        <g id="octicon:mute-24">
-          <path d={svgPaths.pb778f80} fill="var(--fill-0, white)" id="Vector" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Button7({ onClick }: { onClick?: () => void }) {
-  return (
-    <button aria-label="Silenciar video" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] bottom-[8px] content-stretch cursor-pointer flex items-center justify-center left-[8px] overflow-clip px-[18px] rounded-[12px] size-[48px]" data-name="Button" onClick={onClick}>
-      <OcticonMute />
-    </button>
-  );
-}
+import imgImage5475 from "figma:asset/a8c798b5c8be4c06e14d3f2ec3849a7ee96cbec3.webp";
+import imgImage5474 from "figma:asset/28f87cdf85d8b9d691305432cfcd710646570202.webp";
+import imgImage29 from "figma:asset/88f2a57d9ab1cb3b48181d8cec2a6a175d8ed5e1.webp";
+import imgImage31 from "figma:asset/4372b663ba895d65a00e831afef24a66e96a387c.webp";
+import imgImage32 from "figma:asset/1ed83031c13ff3e657b9319ce25234a8b5d42b68.webp";
 
 function Group() {
   return (
@@ -344,7 +162,7 @@ function Image1() {
   return (
     <div className=" h-[300px] lg:h-[500px] overflow-clip relative shrink-0 w-full lg:flex-1" data-name="Image">
       <div className="-translate-x-1/2 absolute aspect-[1148/1526] bottom-0 left-[calc(50%+0.37px)] top-0" data-name="image 5474">
-        <img alt="Detalle del proyecto" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5474} />
+        <img alt="Detalle del proyecto" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5474} loading="lazy" />
       </div>
     </div>
   );
@@ -354,7 +172,7 @@ function Image2() {
   return (
     <div className="h-[300px] lg:h-[500px] overflow-clip relative shrink-0 w-full lg:flex-[1.5]" data-name="Image">
       <div className="absolute bottom-0 h-[489px] right-0 w-[734px]" data-name="image 29">
-        <img alt="Vista del emprendimiento" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage29} />
+        <img alt="Vista del emprendimiento" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage29} loading="lazy" />
       </div>
     </div>
   );
@@ -391,7 +209,7 @@ function StrategySection() {
 function Frame() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[16px] items-start leading-[1.2] not-italic relative shrink-0 text-[#040404]">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">94%</p>
+      <p className="relative shrink-0 text-[22px] lg:text-[30px] tracking-[-0.6px]">94%</p>
       <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Reseñas positivas</p>
     </div>
   );
@@ -408,7 +226,7 @@ function Stats() {
 function Frame3() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[16px] items-start leading-[1.2] not-italic relative shrink-0 text-[#040404]">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">+300</p>
+      <p className="relative shrink-0 text-[22px] lg:text-[30px] tracking-[-0.6px]">+300</p>
       <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Clientes satisfechos</p>
     </div>
   );
@@ -425,7 +243,7 @@ function Stats1() {
 function Frame1() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[16px] items-start leading-[1.2] not-italic relative shrink-0 text-[#040404]">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">+25</p>
+      <p className="relative shrink-0 text-[22px] lg:text-[30px] tracking-[-0.6px]">+25</p>
       <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Agentes expertos</p>
     </div>
   );
@@ -442,7 +260,7 @@ function Stats2() {
 function Frame2() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[16px] items-start leading-[1.2] not-italic relative shrink-0 text-[#040404]">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">25+</p>
+      <p className="relative shrink-0 text-[22px] lg:text-[30px] tracking-[-0.6px]">25+</p>
       <p className="opacity-60 relative shrink-0 text-[15px] tracking-[-0.15px]">Años de trayectoria</p>
     </div>
   );
@@ -578,7 +396,7 @@ function Frame6() {
 function Container() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Container">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full whitespace-pre-wrap">Ética y confianza</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] w-full whitespace-pre-wrap">Ética y confianza</p>
     </div>
   );
 }
@@ -651,7 +469,7 @@ function Frame7() {
 function Container1() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Container">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full whitespace-pre-wrap">Tecnología y visión digital</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] w-full whitespace-pre-wrap">Tecnología y visión digital</p>
     </div>
   );
 }
@@ -724,7 +542,7 @@ function Frame8() {
 function Container2() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Container">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full whitespace-pre-wrap">Crecimiento conjunto</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] w-full whitespace-pre-wrap">Crecimiento conjunto</p>
     </div>
   );
 }
@@ -797,7 +615,7 @@ function Frame9() {
 function Container3() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Container">
-      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[30px] text-black tracking-[-0.6px] w-full whitespace-pre-wrap">Productos con valor sostenido</p>
+      <p className="font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] w-full whitespace-pre-wrap">Productos con valor sostenido</p>
     </div>
   );
 }
@@ -862,7 +680,7 @@ function Image3() {
     <div className="bg-[#c4c4c4] h-[351px] overflow-clip relative shrink-0 w-full" data-name="Image">
       <div className="absolute inset-[-3px_-22.5px_0_-22px]" data-name="image 31">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[144.92%] left-[-57.87%] max-w-none top-[-15.48%] w-[215.73%]" src={imgImage31} />
+          <img alt="" className="absolute h-[144.92%] left-[-57.87%] max-w-none top-[-15.48%] w-[215.73%]" src={imgImage31} loading="lazy" />
         </div>
       </div>
     </div>
@@ -872,7 +690,7 @@ function Image3() {
 function Name() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[3px] items-start leading-[1.2] not-italic relative shrink-0 text-[#141414]" data-name="Name">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">Alan Piñeiro</p>
+      <p className="relative shrink-0 text-[22px] lg:text-[30px] tracking-[-0.6px]">Alan Piñeiro</p>
       <p className="opacity-80 relative shrink-0 text-[13px] tracking-[-0.13px]">CEO & Founder</p>
     </div>
   );
@@ -913,7 +731,7 @@ function Image4() {
     <div className="bg-[#c4c4c4] h-[351px] overflow-clip relative shrink-0 w-full" data-name="Image">
       <div className="absolute inset-[0_-21px_0_-19.5px]" data-name="image 31">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[145.3%] left-[-63.5%] max-w-none top-[-16.24%] w-[215.96%]" src={imgImage32} />
+          <img alt="" className="absolute h-[145.3%] left-[-63.5%] max-w-none top-[-16.24%] w-[215.96%]" src={imgImage32} loading="lazy" />
         </div>
       </div>
     </div>
@@ -923,7 +741,7 @@ function Image4() {
 function Name1() {
   return (
     <div className="content-stretch flex flex-col font-['Helvetica:Regular',sans-serif] gap-[3px] items-start leading-[1.2] not-italic relative shrink-0 text-[#141414]" data-name="Name">
-      <p className="relative shrink-0 text-[30px] tracking-[-0.6px]">Marcelino Piñeiro</p>
+      <p className="relative shrink-0 text-[22px] lg:text-[30px] tracking-[-0.6px]">Marcelino Piñeiro</p>
       <p className="opacity-80 relative shrink-0 text-[13px] tracking-[-0.13px]">Fundador</p>
     </div>
   );
@@ -990,7 +808,7 @@ function StrategySection3() {
 
 function Main1() {
   return (
-    <main className="content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-full" data-name="Main" tabIndex={-1}>
+    <main id="main" className="content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-full" data-name="Main" tabIndex={-1}>
       <IntroSection />
       <StrategySection />
       <StrategySection1 />
@@ -1130,30 +948,6 @@ function Header1() {
   );
 }
 
-function Column() {
-  const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors no-underline text-inherit";
-  return (
-    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[130px]" data-name="Column 1">
-      <Header1 />
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#como-gano" className={linkCls}>¿Cómo gano?</a>
-      </div>
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#fracciones" className={linkCls}>Elegí tu fracción</a>
-      </div>
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#proyecto" className={linkCls}>El proyecto (Buenos Aires)</a>
-      </div>
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#avance" className={linkCls}>Avance de obra</a>
-      </div>
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#neuquen" className={linkCls}>{`El próximo capítulo (Neuquén) `}</a>
-      </div>
-    </nav>
-  );
-}
-
 function Header2() {
   return (
     <div className="content-stretch flex items-start pb-[16px] relative shrink-0 w-full" data-name="Header">
@@ -1164,48 +958,55 @@ function Header2() {
   );
 }
 
-function Column1() {
-  const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors no-underline text-inherit";
-  return (
-    <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[130px]" data-name="Column 2">
-      <Header2 />
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#como-invertir" className={linkCls}>¿Cómo invertir?</a>
-      </div>
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#testimonios" className={linkCls}>Testimonios</a>
-      </div>
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#prensa" className={linkCls}>Prensa</a>
-      </div>
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#vista360" className={linkCls}>Vista 360</a>
-      </div>
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <a href="/#contacto" className={linkCls}>Contacto</a>
-      </div>
-    </nav>
-  );
-}
-
 function Nav() {
+  const navigate = useNavigate();
+  const navigateToAnchor = useCallback((anchor: string) => {
+    navigate("/");
+    const tryScroll = (retries = 10) => {
+      const el = document.getElementById(anchor);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      } else if (retries > 0) {
+        setTimeout(() => tryScroll(retries - 1), 100);
+      }
+    };
+    setTimeout(() => tryScroll(), 100);
+  }, [navigate]);
+
+  const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors text-inherit cursor-pointer text-left bg-transparent border-none p-0";
+  const cellCls = "flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full";
+
   return (
     <div className="content-stretch flex flex-wrap gap-[24px] lg:gap-[40px] items-start relative shrink-0 w-full lg:w-auto" data-name="Nav">
-      <Column />
-      <Column1 />
+      <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[130px]" data-name="Column 1">
+        <Header1 />
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("como-gano")} className={linkCls}>¿Cómo gano?</button></div>
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("fracciones")} className={linkCls}>Elegí tu fracción</button></div>
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("proyecto")} className={linkCls}>El proyecto (Buenos Aires)</button></div>
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("avance")} className={linkCls}>Avance de obra</button></div>
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("neuquen")} className={linkCls}>{`El próximo capítulo (Neuquén) `}</button></div>
+      </nav>
+      <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[130px]" data-name="Column 2">
+        <Header2 />
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("como-invertir")} className={linkCls}>¿Cómo invertir?</button></div>
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("testimonios")} className={linkCls}>Testimonios</button></div>
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("prensa")} className={linkCls}>Prensa</button></div>
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("vista360")} className={linkCls}>Vista 360</button></div>
+        <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("contacto")} className={linkCls}>Contacto</button></div>
+      </nav>
     </div>
   );
 }
 
 function Container4() {
   return (
-    <div className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-animate="fade-in">
+    <footer className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-animate="fade-in">
       <div aria-hidden="true" className="absolute border-[#575757] border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col lg:flex-row gap-[40px] lg:gap-[120px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
         <Content6 />
         <Nav />
       </div>
-    </div>
+    </footer>
   );
 }
 
@@ -1235,128 +1036,17 @@ function Iso() {
   );
 }
 
-const ABOUT_MENU_LINKS = [
-  { label: "Inicio", href: "/" },
-  { label: "¿Cómo gano?", href: "/#como-gano" },
-  { label: "Elegí tu fracción", href: "/#fracciones" },
-  { label: "El proyecto (Buenos Aires)", href: "/#proyecto" },
-  { label: "Avance de obra", href: "/#avance" },
-  { label: "El próximo capítulo (Neuquén)", href: "/#neuquen" },
-  { label: "¿Cómo invertir?", href: "/#como-invertir" },
-  { label: "Testimonios", href: "/#testimonios" },
-  { label: "Prensa", href: "/#prensa" },
-];
-
-const ABOUT_MENU_CARDS: { label: string; href: string; bg: string; isRoute?: boolean }[] = [
-  { label: "Nosotros", href: "#nosotros", bg: "bg-[#3d5a80]" },
-  { label: "Agendá una reunión", href: "/#contacto", bg: "bg-[#5c7a99]" },
-  { label: "Contactános", href: "/#contacto", bg: "bg-[#f45f00]" },
-];
-
 export default function About() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [videoVisible, setVideoVisible] = useState(true);
-  const [videoMuted, setVideoMuted] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useScrollAnimations();
-
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
-
-  const handleToggleMute = () => {
-    const newMuted = !videoMuted;
-    setVideoMuted(newMuted);
-    if (videoRef.current) videoRef.current.muted = newMuted;
-  };
-
-  const handleFullscreen = () => {
-    videoRef.current?.requestFullscreen?.().catch(() => {});
-  };
+    window.scrollTo(0, 0);
+    document.title = "Nosotros — La Barceloneta";
+    return () => { document.title = "La Barceloneta — Inversiones Inmobiliarias"; };
+  }, []);
 
   return (
-    <div className="bg-white content-stretch flex items-start justify-end lg:pr-[56px] relative size-full" data-name="About">
-      {/* Overlay del menú */}
-      <div
-        className={`fixed inset-0 bg-black/45 z-[199] transition-opacity duration-350 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-        onClick={() => setMenuOpen(false)}
-        aria-hidden={!menuOpen}
-      />
-      {/* Panel del menú */}
-      <div
-        className={`fixed top-0 right-0 w-[520px] max-w-full h-screen bg-white z-[200] flex flex-col p-20 pt-12 overflow-y-auto transition-transform duration-400 ease-out ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
-      >
-        <button
-          type="button"
-          className="absolute top-5 right-5 w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#eae9e8] transition-colors"
-          onClick={() => setMenuOpen(false)}
-          aria-label="Cerrar menú"
-        >
-          <PhXLight fill="#141414" />
-        </button>
-        {/* Links de navegación */}
-        <div className="flex flex-col gap-4 px-8 pt-12 pb-6">
-          {ABOUT_MENU_LINKS.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="font-['Helvetica:Regular',sans-serif] text-[15px] text-[#141414] hover:text-[#f20909] transition-colors no-underline"
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-        {/* Cards de acción */}
-        <div className="flex flex-col">
-          {ABOUT_MENU_CARDS.map((card) => {
-            const cardContent = (
-              <>
-                <span className="font-['Helvetica:Regular',sans-serif] text-[24px] text-white tracking-[-0.5px] leading-[1.2]">{card.label}</span>
-                <svg className="size-[28px] shrink-0 text-white opacity-80 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15M19.5 4.5v12M19.5 4.5h-12" />
-                </svg>
-              </>
-            );
-            const cls = `${card.bg} flex items-end justify-between px-8 py-6 min-h-[100px] no-underline group`;
-            return card.isRoute ? (
-              <Link key={card.label} to={card.href} className={cls} onClick={() => setMenuOpen(false)}>
-                {cardContent}
-              </Link>
-            ) : (
-              <a key={card.label} href={card.href} className={cls} onClick={() => setMenuOpen(false)}>
-                {cardContent}
-              </a>
-            );
-          })}
-        </div>
-      </div>
-      {/* Fixed right sidebar — hidden on mobile */}
-      <div className="hidden lg:flex fixed top-0 right-0 h-screen z-[150] flex-col" data-name="SidebarNav">
-        <NavMenu onMenuClick={() => setMenuOpen(true)} />
-        <NavMenu1 />
-      </div>
-      {/* Mobile hamburger */}
-      <button
-        type="button"
-        className="lg:hidden fixed top-3 right-3 z-[150] bg-black size-[48px] flex items-center justify-center rounded-full shadow-lg cursor-pointer"
-        onClick={() => setMenuOpen(true)}
-        aria-label="Abrir menú"
-      >
-        <IconamoonMenuBurgerHorizontalLight />
-      </button>
-      {videoVisible && (
-        <div className="fixed bottom-[16px] left-[16px] z-[100] h-[325px] overflow-clip rounded-[16px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] w-[200px]" data-name="Video">
-          <video ref={videoRef} src={`${import.meta.env.BASE_URL}videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mov`} autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted={videoMuted} playsInline />
-          <Button5 onClick={() => setVideoVisible(false)} />
-          <Button6 onClick={handleFullscreen} />
-          <Button7 onClick={handleToggleMute} />
-        </div>
-      )}
+    <Layout dataName="About">
       <Main />
       <Iso />
-    </div>
+    </Layout>
   );
 }

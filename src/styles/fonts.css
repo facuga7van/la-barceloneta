@@ -1,1 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Barlow+Semi+Condensed:wght@400;500&family=Rethink+Sans:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+/*
+ * Google Fonts loading strategy:
+ * Fonts are loaded via <link preload> in index.html for better performance.
+ * Do NOT re-add @import here.
+ *
+ * Fonts in use:
+ *   - Barlow Condensed (400, 500, 600) — Used in Home.tsx hero titles and overlay text
+ *   - Barlow Semi Condensed (400, 500) — Used in Home.tsx subtitle
+ *   - Inter (500) — Used in Home.tsx (2 instances)
+ *   - Helvetica (Regular, Bold) — Heavily used across Home.tsx, About.tsx, ConstructionTimeline.tsx (system font, not from Google Fonts)
+ *
+ * Fonts NOT in use (loaded but never referenced):
+ *   - Rethink Sans — Not referenced anywhere in src/ outside this file
+ */

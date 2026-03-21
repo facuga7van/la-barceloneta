@@ -40,6 +40,34 @@ Este proyecto tiene un sistema optimizado para procesar feedback del cliente:
 4. **Cambios de texto**: Edit directo sin leer contexto extra cuando la ubicación es clara
 5. **Read con offset/limit**: máximo 50 líneas de contexto por operación
 
+## Sistema de Auditoría (Slash Commands)
+
+Auditoría completa de todos los aspectos de la landing page. Solo analiza y reporta — NO modifica código.
+
+### Comando principal
+- `/audit` — Ejecuta auditoría completa (6 áreas en paralelo) y genera reporte consolidado con scores
+
+### Auditorías individuales
+- `/audit-perf` — Performance: bundle, assets, lazy loading, Core Web Vitals
+- `/audit-a11y` — Accesibilidad: WCAG 2.1 AA, semántica, ARIA, contraste
+- `/audit-seo` — SEO: meta tags, Open Graph, structured data, hash routing impact
+- `/audit-design` — Diseño: consistencia visual, tokens, tipografía, colores
+- `/audit-code` — Código: TypeScript, patrones React, seguridad, complejidad
+- `/audit-responsive` — Responsive: breakpoints, mobile-first, touch targets, overflow
+
+### Agents (en `.claude/agents/custom/`)
+- `audit-orchestrator` — Coordinador que delega y consolida resultados
+- `audit-performance` — Analista de rendimiento
+- `audit-accessibility` — Analista WCAG
+- `audit-seo` — Analista SEO
+- `audit-design` — Analista de diseño visual
+- `audit-code` — Analista de calidad de código
+- `audit-responsive` — Analista responsive
+
+### Scoring
+Cada área se evalúa 0-100. Score general es promedio ponderado:
+Performance 20%, Accesibilidad 25%, SEO 15%, Diseño 15%, Código 10%, Responsive 15%
+
 ## Convenciones
 - Idioma del sitio: español argentino
 - Responsive: mobile-first con breakpoints Tailwind (sm, md, lg, xl)

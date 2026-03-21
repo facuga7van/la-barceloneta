@@ -10,6 +10,11 @@ declare module "figma:asset/*.jpg" {
   export default src;
 }
 
+declare module "figma:asset/*.webp" {
+  const src: string;
+  export default src;
+}
+
 declare module "figma:asset/*.svg" {
   const src: string;
   export default src;

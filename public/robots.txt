@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://grupomarting.github.io/la-barceloneta/sitemap.xml
