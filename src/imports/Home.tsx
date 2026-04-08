@@ -1778,7 +1778,7 @@ function PersonalitySection() {
   return (
     <div aria-label="Section 2 out of 6" className="relative shrink-0 w-full" data-name="Personality Section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
+      <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[64px] xl:px-[120px] py-[40px] lg:py-[80px] relative w-full">
         <Header6 />
         <div className="content-stretch flex flex-col h-[280px] sm:h-[400px] md:h-[550px] lg:h-[763px] items-start pb-0 lg:pb-[64px] relative shrink-0 w-full overflow-hidden" data-name="Portada / Bs As">
           <Portada />
@@ -2181,7 +2181,7 @@ function PersonalitySection1() {
   return (
     <div id="neuquen" aria-label="Section 2 out of 6" className="relative shrink-0 w-full" data-name="Personality Section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col gap-[24px] lg:gap-[30px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
+      <div className="content-stretch flex flex-col gap-[24px] lg:gap-[30px] items-start px-[16px] lg:px-[64px] xl:px-[120px] py-[40px] lg:py-[80px] relative w-full">
         <Header14 />
         <div className="content-stretch flex flex-col h-[280px] sm:h-[400px] md:h-[550px] lg:h-[763px] items-start pb-0 lg:pb-[64px] relative shrink-0 w-full overflow-hidden" data-name="Portada / Neuquen">
           <Portada1 />
