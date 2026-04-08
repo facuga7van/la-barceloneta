@@ -101,10 +101,10 @@ export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineP
           <div className="mt-[20px] lg:mt-[28px] rounded-[16px] p-[20px] lg:p-[28px] flex flex-col gap-[14px] border border-[#e8ebef]" style={{ background: "linear-gradient(135deg, #f8fafb 0%, #f0f4f7 100%)" }}>
             <div className="flex items-center justify-between gap-[12px]">
               <div className="flex items-baseline gap-[10px]">
-                <span className="font-['Helvetica:Bold',sans-serif] text-[32px] lg:text-[44px] tracking-[-1.5px] leading-none" style={{ color: ACCENT }}>
+                <span key={step.pct} className="font-['Helvetica:Bold',sans-serif] text-[32px] lg:text-[44px] tracking-[-1.5px] leading-none animate-[numberPop_0.3s_ease-out]" style={{ color: ACCENT }}>
                   {step.pct}%
                 </span>
-                <span className="font-['Helvetica:Bold',sans-serif] text-[16px] lg:text-[20px] text-[#040404] tracking-[-0.3px] leading-[1.2]">
+                <span key={step.label} className="font-['Helvetica:Bold',sans-serif] text-[16px] lg:text-[20px] text-[#040404] tracking-[-0.3px] leading-[1.2] animate-[numberPop_0.3s_ease-out]">
                   {step.label}
                 </span>
               </div>

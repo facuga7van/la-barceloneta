@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 const CARD_DATA = [
   {
@@ -30,6 +30,12 @@ const CARD_DATA = [
 export default function RentaCards() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [glowPos, setGlowPos] = useState<{ x: number; y: number } | null>(null);
+
+  const onCardMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setGlowPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  }, []);
 
   // Refs for measuring expanded content height for smooth animation
   const detailRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -51,12 +57,25 @@ export default function RentaCards() {
             key={i}
             data-name={`Card${i + 1}`}
             data-gsap="fade-up"
-            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
+            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-colors duration-300 overflow-hidden border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
             style={{ backgroundColor: isHighlighted ? card.bgColor : undefined }}
             onClick={() => setActiveCard(isActive ? null : i)}
             onMouseEnter={() => setHoveredCard(i)}
-            onMouseLeave={() => setHoveredCard(null)}
+            onMouseLeave={() => { setHoveredCard(null); setGlowPos(null); }}
+            onMouseMove={onCardMouseMove}
           >
+            {/* Cursor-following glow spotlight */}
+            {isHighlighted && glowPos && hoveredCard === i && (
+              <div
+                className="absolute pointer-events-none z-0 rounded-full opacity-20 blur-[60px]"
+                style={{
+                  width: 200, height: 200,
+                  left: glowPos.x - 100, top: glowPos.y - 100,
+                  background: "white",
+                  transition: "left 0.15s ease-out, top 0.15s ease-out",
+                }}
+              />
+            )}
             {/* Default state: metric + title/subtitle */}
             <div
               className={`flex flex-col flex-1 justify-end gap-[32px] transition-all duration-400 ease-in-out ${isActive ? "opacity-0 max-h-0 overflow-hidden" : "opacity-100"}`}

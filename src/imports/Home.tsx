@@ -760,7 +760,7 @@ function Portada() {
   return (
     <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-visible" data-name="Portada" data-gsap="scale-in" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
-      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5457">
+      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[20px] lg:top-[35px] animate-[float_6s_ease-in-out_infinite]" data-name="image 5457">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="Edificio La Barceloneta" loading="lazy" className="absolute h-[114.29%] left-[-0.05%] max-w-none top-[-14.29%] w-[100.11%]" src={imgImage5457} />
         </div>
@@ -1250,12 +1250,12 @@ function Container4() {
             <span className="leading-[1.2]">{String(tab + 1).padStart(2, "0")}</span>
             <span className="leading-[1.2] text-[#575757]">/{String(total).padStart(2, "0")}</span>
           </p>
-          <p className="leading-[1.1] min-w-full relative shrink-0 text-[36px] lg:text-[60px] text-left lg:text-right tracking-[-0.6px] w-[min-content] whitespace-pre-wrap">{current.label}</p>
+          <p key={tab} className="leading-[1.1] min-w-full relative shrink-0 text-[36px] lg:text-[60px] text-left lg:text-right tracking-[-0.6px] w-[min-content] whitespace-pre-wrap animate-[fadeSlideIn_0.4s_ease-out]">{current.label}</p>
         </div>
       </div>
       {/* Gallery image */}
       <div aria-hidden="true" className="w-full h-[300px] lg:h-[552px] flex-none lg:flex-[1_0_0] min-h-px min-w-px relative overflow-hidden" data-name="Image" role="presentation">
-        <img key={tab} alt={current.label} loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={current.image} />
+        <img key={tab} alt={current.label} loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full animate-[fadeSlideIn_0.5s_ease-out]" src={current.image} />
       </div>
     </div>
   );
@@ -1973,7 +1973,7 @@ function Portada1() {
   return (
     <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-visible" data-name="Portada" data-gsap="scale-in" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
-      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5458">
+      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen right-[16px] lg:right-[62px] top-[20px] lg:top-[35px] animate-[float_7s_ease-in-out_infinite]" data-name="image 5458">
         <img alt="Edificio La Barceloneta Neuquén" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5458} />
       </div>
       <ContentWrapper1 />
@@ -2265,8 +2265,28 @@ const TESTIMONIALS_DATA = [
 ];
 
 function TestimonialCard({ name, subtitle, quote }: { name: string; subtitle: string; quote: string }) {
+  const cardRef = useRef<HTMLElement>(null);
+
+  const onMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
+  }, []);
+
+  const onMouseLeave = useCallback(() => {
+    if (cardRef.current) cardRef.current.style.transform = "";
+  }, []);
+
   return (
-    <article className="flex flex-col gap-[6px] shrink-0 w-[240px] lg:w-[280px] snap-start relative pr-[16px]">
+    <article
+      ref={cardRef}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      className="flex flex-col gap-[6px] shrink-0 w-[240px] lg:w-[280px] snap-start relative pr-[16px] transition-transform duration-300 ease-out cursor-default"
+    >
       <div aria-hidden="true" className="absolute right-0 top-0 bottom-0 w-px bg-[rgba(0,0,0,0.1)]" />
       <p className="font-['Helvetica:Bold',sans-serif] font-bold text-[16px] lg:text-[20px] text-[#141414] tracking-[-0.3px] leading-[1.2]">{name}</p>
       <span className="font-['Helvetica:Regular',sans-serif] text-[12px] lg:text-[13px] text-[#575757] tracking-[-0.13px] leading-[1.4]">{subtitle}</span>
