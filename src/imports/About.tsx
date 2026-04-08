@@ -318,7 +318,7 @@ function Title1() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[36px] lg:text-[60px] text-black tracking-[-0.6px]">
-        <h2 data-gsap-title className="block leading-[1.1] whitespace-pre-wrap">Nuestros valores</h2>
+        <h2 className="block leading-[1.1] whitespace-pre-wrap">Nuestros valores</h2>
       </div>
     </div>
   );
@@ -897,7 +897,7 @@ function Logo() {
 
 function Text3() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[280px]" data-name="Text">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[280px]" data-name="Text">
       <Logo />
     </div>
   );
@@ -913,15 +913,15 @@ function Text2() {
 
 function SocialIcons() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[257px]" data-name="Social Icons">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[257px]" data-name="Social Icons">
       <div className="flex gap-[32px] items-center w-full" data-name="Social Icon">
-        <a href="https://www.facebook.com/labarcelonetafeelfree" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="p-[10px] text-[#a3a3a3] hover:text-white transition-colors">
+        <a href="https://www.facebook.com/labarcelonetafeelfree" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
           <FbIcon size={24} strokeWidth={1.5} />
         </a>
-        <a href="https://www.instagram.com/labarceloneta.bsas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-[10px] text-[#a3a3a3] hover:text-white transition-colors">
+        <a href="https://www.instagram.com/labarceloneta.bsas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
           <IgIcon size={24} strokeWidth={1.5} />
         </a>
-        <a href="https://www.linkedin.com/company/la-barceloneta-feel-free/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-[10px] text-[#a3a3a3] hover:text-white transition-colors">
+        <a href="https://www.linkedin.com/company/la-barceloneta-feel-free/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#a3a3a3] hover:text-[#141414] transition-colors">
           <LiIcon size={24} strokeWidth={1.5} />
         </a>
       </div>
@@ -973,12 +973,12 @@ function Nav() {
     setTimeout(() => tryScroll(), 100);
   }, [navigate]);
 
-  const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors text-inherit cursor-pointer text-left bg-transparent border-none p-0 min-h-[44px] flex items-center";
-  const cellCls = "flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#9ca3af] text-[15px] tracking-[-0.15px] w-full";
+  const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors text-inherit cursor-pointer text-left bg-transparent border-none p-0";
+  const cellCls = "flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full";
 
   return (
     <div className="content-stretch flex flex-wrap gap-[24px] lg:gap-[40px] items-start relative shrink-0 w-full lg:w-auto" data-name="Nav">
-      <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[calc(50%-12px)] lg:w-[130px]" data-name="Column 1">
+      <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[130px]" data-name="Column 1">
         <Header1 />
         <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("como-gano")} className={linkCls}>¿Cómo gano?</button></div>
         <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("fracciones")} className={linkCls}>Elegí tu fracción</button></div>
@@ -986,7 +986,7 @@ function Nav() {
         <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("avance")} className={linkCls}>Avance de obra</button></div>
         <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("neuquen")} className={linkCls}>{`El próximo capítulo (Neuquén) `}</button></div>
       </nav>
-      <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[calc(50%-12px)] lg:w-[130px]" data-name="Column 2">
+      <nav className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0 w-[130px]" data-name="Column 2">
         <Header2 />
         <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("como-invertir")} className={linkCls}>¿Cómo invertir?</button></div>
         <div className={cellCls}><button type="button" onClick={() => navigateToAnchor("testimonios")} className={linkCls}>Testimonios</button></div>
