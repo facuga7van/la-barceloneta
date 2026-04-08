@@ -2,24 +2,14 @@ import React from "react";
 import svgPaths from "../imports/svg-1a10080iez";
 import { useHeroAnimations } from "../hooks/useHeroAnimations";
 
-function Frame40() {
-  return (
-    <div className="content-stretch flex items-end relative shrink-0 w-full">
-      <div className="bg-[#fbf7f4] flex-[1_0_0] h-[4px] min-h-px min-w-px" data-name="Divider" />
-      <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[40px] lg:text-[88px] text-white tracking-[-2px] lg:tracking-[-4px] uppercase whitespace-nowrap">
-        <span className="block leading-none text-[40px] lg:text-[88px]">{` Creamos rentabilidad`}</span>
-      </div>
-    </div>
-  );
-}
-
 function Frame42() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
-      <div className="flex flex-col justify-center not-italic relative shrink-0 text-[40px] lg:text-[64px] text-white tracking-[-4px] uppercase w-full" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 400 }}>
-        <h1 data-hero-headline className="block leading-[1] whitespace-pre-wrap">No vendemos metros</h1>
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 400 }}>
+      <h1 data-hero-headline className="text-[40px] lg:text-[64px] text-white tracking-[-4px] uppercase leading-[1] whitespace-pre-wrap m-0">No vendemos metros</h1>
+      <div className="flex items-end w-full">
+        <div className="bg-[#fbf7f4] flex-[1_0_0] h-[4px] min-h-px min-w-px" data-name="Divider" />
+        <span className="text-[40px] lg:text-[64px] text-white tracking-[-4px] uppercase leading-[1] whitespace-nowrap">{` Creamos rentabilidad`}</span>
       </div>
-      <Frame40 />
     </div>
   );
 }
@@ -28,8 +18,8 @@ function Text() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-center min-h-px min-w-px relative" data-name="Text">
       <Frame42 />
-      <div className="flex flex-col font-['Barlow_Semi_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[18px] lg:text-[30px] text-white tracking-[-1px] lg:tracking-[-2px] uppercase w-full">
-        <p data-hero-subtitle className="leading-[0.9] whitespace-pre-wrap">El real estate volvió a ser negocio.</p>
+      <div className="flex flex-col justify-center not-italic relative shrink-0 text-[18px] lg:text-[24px] text-white tracking-[-1px] uppercase w-full" style={{ fontFamily: "'Barlow Semi Condensed', sans-serif", fontWeight: 400 }}>
+        <p data-hero-subtitle className="leading-[1] whitespace-pre-wrap m-0">El real estate volvió a ser negocio.</p>
       </div>
     </div>
   );
