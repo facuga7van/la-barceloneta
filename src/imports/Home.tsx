@@ -728,7 +728,7 @@ function Container3() {
 
 function ContentWrapper() {
   return (
-    <div className="hidden lg:flex absolute bg-[#ff5a63] bottom-[20px] content-stretch h-auto items-center p-[30px] right-[98px] w-[295px] z-10" data-name="Content Wrapper">
+    <div className="hidden lg:flex absolute bg-[#ff5a63] bottom-[-40px] content-stretch h-auto items-center p-[30px] right-[98px] w-[295px] z-10" data-name="Content Wrapper">
       <Container3 />
     </div>
   );
@@ -758,7 +758,7 @@ function Group10() {
 
 function Portada() {
   return (
-    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="scale-in" data-parallax="slow">
+    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-visible" data-name="Portada" data-gsap="scale-in" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5457">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
