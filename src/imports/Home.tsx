@@ -565,7 +565,7 @@ function FractionViewerInteractive() {
           </div>
           {/* Sliding thumb — absolutely positioned, transitions between positions */}
           <div
-            className="absolute top-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none"
+            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none"
             style={{ left: `${(activeDot / (TOTAL_DOTS - 1)) * 100}%`, transition: "left 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
           >
             <div className="size-[20px] rounded-full bg-[#040404] shadow-[0_0_0_4px_rgba(4,4,4,0.15)]" />
