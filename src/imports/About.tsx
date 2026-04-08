@@ -318,7 +318,7 @@ function Title1() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[36px] lg:text-[60px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.1] whitespace-pre-wrap">Nuestros valores</h2>
+        <h2 data-gsap-title className="block leading-[1.1] whitespace-pre-wrap">Nuestros valores</h2>
       </div>
     </div>
   );

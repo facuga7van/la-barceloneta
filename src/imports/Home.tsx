@@ -172,7 +172,7 @@ function Title() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2] font-normal whitespace-pre-wrap">¿Cómo gano con este modelo?</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-normal whitespace-pre-wrap">¿Cómo gano con este modelo?</h2>
       </div>
     </div>
   );
@@ -213,7 +213,7 @@ function Title1() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2] font-normal whitespace-pre-wrap">Elegí tu fracción</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-normal whitespace-pre-wrap">Elegí tu fracción</h2>
       </div>
     </div>
   );
@@ -660,7 +660,7 @@ function Title2() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[36px] lg:text-[48px] text-black tracking-[-0.6px] lg:whitespace-nowrap">
-        <h2 className="block leading-[1.2] font-normal">El proyecto</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-normal">El proyecto</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
         <Number />
@@ -1845,7 +1845,7 @@ function Title3() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[36px] lg:text-[48px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2] font-normal">El próximo capítulo (Neuquén)</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-normal">El próximo capítulo (Neuquén)</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
         <Number1 />
@@ -2216,7 +2216,7 @@ function Title4() {
   return (
     <div className="content-stretch flex flex-[1_0_0] items-end min-h-px min-w-px relative" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[28px] lg:text-[40px] text-black tracking-[-0.6px] w-full lg:w-[454px]">
-        <h2 className="block leading-[1.2] font-normal whitespace-pre-wrap">Experiencias reales de quienes ya están invirtiendo</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-normal whitespace-pre-wrap">Experiencias reales de quienes ya están invirtiendo</h2>
       </div>
     </div>
   );

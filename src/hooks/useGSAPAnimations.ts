@@ -96,6 +96,41 @@ export function useGSAPAnimations() {
           }
         );
       });
+
+      // Section title reveals
+      const titles = gsap.utils.toArray<HTMLElement>("[data-gsap-title]");
+      titles.forEach((heading) => {
+        gsap.set(heading, { autoAlpha: 0, y: 30 });
+        gsap.to(heading, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: heading,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        // Paragraph after title
+        const nextP = heading.nextElementSibling;
+        if (nextP && (nextP.tagName === "P" || nextP.querySelector("p"))) {
+          gsap.set(nextP, { autoAlpha: 0, y: 20 });
+          gsap.to(nextP, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.6,
+            delay: 0.3,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: heading,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          });
+        }
+      });
     });
   });
 }
