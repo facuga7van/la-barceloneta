@@ -1028,15 +1028,11 @@ function Row3() {
 
 function Examples() {
   return (
-    <div className="w-full lg:flex-[1_0_0] lg:min-h-px lg:min-w-px relative" data-name="Examples">
-      <div className="flex flex-col justify-center w-full lg:size-full">
-        <div className="content-stretch flex flex-col gap-[16px] lg:gap-[40px] items-start justify-start lg:justify-center relative w-full">
-          <Row />
-          <Row1 />
-          <Row2 />
-          <Row3 />
-        </div>
-      </div>
+    <div className="w-full relative flex flex-col sm:flex-row gap-[24px] sm:gap-[40px] lg:gap-[60px]" data-name="Examples">
+      <Row />
+      <Row1 />
+      <Row2 />
+      <Row3 />
     </div>
   );
 }
@@ -1053,12 +1049,12 @@ function SectionHeader() {
 
 function Content7() {
   return (
-    <div className="content-stretch flex w-full lg:flex-[1_0_0] flex-col gap-[32px] items-start min-h-px min-w-px relative" data-name="Content">
+    <div className="content-stretch flex w-full flex-col gap-[32px] items-start relative" data-name="Content">
       <SectionHeader />
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-        <p className="leading-[1.2] whitespace-pre-wrap">La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 22.500 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.</p>
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] lg:text-[18px] tracking-[-0.15px] w-full lg:max-w-[700px]">
+        <p className="leading-[1.6] whitespace-pre-wrap">La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 22.500 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.</p>
       </div>
-      <div className="hidden lg:block aspect-[860/500] relative shrink-0 w-full max-h-[400px]" data-name="Image">
+      <div className="hidden lg:block aspect-[860/400] relative shrink-0 w-full max-h-[400px]" data-name="Image">
         <div className="absolute inset-0 overflow-hidden rounded-[8px] pointer-events-none">
           <img alt="Sección mostrando octavos" loading="lazy" className="absolute inset-0 max-w-none object-cover size-full" src={imgSeccionOctavos} />
         </div>
@@ -1069,7 +1065,7 @@ function Content7() {
 
 function ToneAndVoice() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start lg:items-center py-[24px] relative shrink-0 w-full max-w-[1100px] mx-auto" data-name="Tone and voice" data-gsap="fade-up">
+    <div className="content-stretch flex flex-col gap-[32px] items-start py-[24px] relative shrink-0 w-full" data-name="Tone and voice" data-gsap="fade-up">
       <Examples />
       <Content7 />
     </div>
@@ -2134,14 +2130,10 @@ function Row9() {
 
 function Examples1() {
   return (
-    <div className="w-full lg:flex-[1_0_0] lg:min-h-px lg:min-w-px relative" data-name="Examples">
-      <div className="flex flex-col justify-center lg:size-full">
-        <div className="content-stretch flex flex-col gap-[24px] lg:gap-[40px] items-start justify-center relative w-full">
-          <Row7 />
-          <Row8 />
-          <Row9 />
-        </div>
-      </div>
+    <div className="w-full relative flex flex-col sm:flex-row gap-[24px] sm:gap-[40px] lg:gap-[60px]" data-name="Examples">
+      <Row7 />
+      <Row8 />
+      <Row9 />
     </div>
   );
 }
@@ -2158,9 +2150,9 @@ function SectionHeader1() {
 
 function Content11() {
   return (
-    <div className="content-stretch flex w-full lg:flex-[1_0_0] flex-col gap-[24px] lg:gap-[32px] items-start lg:min-h-px lg:min-w-px relative" data-name="Content">
+    <div className="content-stretch flex w-full flex-col gap-[24px] lg:gap-[32px] items-start relative" data-name="Content">
       <SectionHeader1 />
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] lg:text-[18px] tracking-[-0.18px] w-full">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] lg:text-[18px] tracking-[-0.18px] w-full lg:max-w-[700px]">
         <p className="leading-[1.6] whitespace-pre-wrap">La Barceloneta llega a Neuquén con una torre de 17 pisos diseñada para el nuevo polo energético y corporativo de la región. Un proyecto que replica el modelo condo-hotel fraccionado con foco en hotelería, negocios y crecimiento federal.</p>
       </div>
       <div className="aspect-[860/500] relative shrink-0 w-full max-h-[400px] overflow-hidden rounded-[8px]" data-name="Image">
@@ -2174,7 +2166,7 @@ function Content11() {
 
 function ToneAndVoice1() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start py-[32px] relative shrink-0 w-full max-w-[1100px] mx-auto" data-name="Tone and voice">
+    <div className="content-stretch flex flex-col gap-[32px] items-start py-[32px] relative shrink-0 w-full" data-name="Tone and voice">
       <Examples1 />
       <Content11 />
     </div>
