@@ -6,9 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
-/* GSAP scroll-triggered animations — initial hidden state */
+/* GSAP scroll-triggered animations — initial hidden state.
+   Only opacity (not visibility) so elements still occupy layout space.
+   GSAP's autoAlpha handles visibility when animating in. */
 [data-gsap] {
-  visibility: hidden;
   opacity: 0;
 }
 
@@ -36,7 +37,6 @@ html {
 /* Accessibility: show everything immediately when reduced motion is preferred */
 @media (prefers-reduced-motion: reduce) {
   [data-gsap] {
-    visibility: visible;
     opacity: 1;
     transform: none;
     clip-path: none;

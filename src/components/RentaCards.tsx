@@ -1,16 +1,6 @@
-import { useState, type RefObject } from "react";
-import { useHorizontalScroll } from "../hooks/useHorizontalScroll";
-import { gsap, useGSAP } from "../lib/gsap-setup";
+import { useState, useRef, useEffect } from "react";
 
 const CARD_DATA = [
-  {
-    metric: "+6%",
-    period: "Por 24 meses",
-    title: "RENTA ASEGURADA",
-    subtitle: "Renta fija garantizada por contrato (opcional).",
-    detail: "Es la renta fija que obtenés desde el momento de tu inversión, garantizada por contrato durante los primeros 24 meses. Funciona como un retorno seguro e inmediato mientras el proyecto avanza en su etapa de construcción.",
-    bgColor: "#141414",
-  },
   {
     metric: "+8\u201312%",
     period: "Anual",
@@ -27,41 +17,31 @@ const CARD_DATA = [
     detail: "Es la renta que obtenés mientras la obra se encuentra en construcción.\nFunciona como una compensación fija por acompañar el desarrollo desde sus primeras etapas.\n\nTiene un rendimiento estable y previsible, y te permite generar ingresos desde el inicio, aun antes de que el edificio entre en operación hotelera.",
     bgColor: "#1e3d59",
   },
+  {
+    metric: "+30%",
+    period: "Estimado",
+    title: "VALORIZACIÓN",
+    subtitle: "Plusvalía del inmueble a medida que avanza la obra.",
+    detail: "Es la ganancia de capital que obtenés por la revalorización de tu fracción.\nA medida que la obra avanza y el edificio se acerca a su entrega, el valor de mercado de cada unidad aumenta.\n\nEsta valorización se refleja en el precio de reventa de tu fracción, generando una ganancia patrimonial que se suma a las rentas.",
+    bgColor: "#141414",
+  },
 ];
 
 export default function RentaCards() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const hscrollRef = useHorizontalScroll();
 
-  const { contextSafe } = useGSAP({ scope: hscrollRef });
+  // Refs for measuring expanded content height for smooth animation
+  const detailRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [detailHeights, setDetailHeights] = useState<number[]>([0, 0, 0]);
 
-  const onCardEnter = contextSafe((e: React.MouseEvent<HTMLElement>) => {
-    gsap.to(e.currentTarget, { y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.15)", duration: 0.3 });
-  });
-
-  const onCardLeave = contextSafe((e: React.MouseEvent<HTMLElement>) => {
-    gsap.to(e.currentTarget, { y: 0, boxShadow: "none", duration: 0.3 });
-  });
+  useEffect(() => {
+    const heights = detailRefs.current.map(el => el?.scrollHeight ?? 0);
+    setDetailHeights(heights);
+  }, [activeCard]);
 
   return (
-    <section
-      ref={hscrollRef as RefObject<HTMLElement>}
-      className="relative w-full overflow-hidden lg:h-screen"
-      data-name="RentaCardsSection"
-    >
-      {/* Progress bar — desktop only */}
-      <div
-        data-hscroll-progress
-        className="hidden lg:block fixed bottom-0 left-0 h-1 bg-[#f45f00] w-full z-50 origin-left"
-      />
-
-      {/* Card wrapper — flex-row on desktop for horizontal overflow */}
-      <div
-        data-hscroll-wrapper
-        className="flex flex-col lg:flex-row lg:flex-nowrap lg:w-max items-stretch"
-        data-name="Cards"
-      >
+    <div className="content-stretch flex flex-col lg:flex-row items-stretch relative shrink-0 w-full" data-name="Cards">
       {CARD_DATA.map((card, i) => {
         const isActive = activeCard === i;
         const isHighlighted = hoveredCard === i || isActive;
@@ -70,22 +50,17 @@ export default function RentaCards() {
           <div
             key={i}
             data-name={`Card${i + 1}`}
-            data-hscroll-card
-            className={`cursor-pointer h-[400px] lg:h-screen lg:w-[500px] lg:shrink-0 min-w-0 relative overflow-hidden transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
+            data-gsap="fade-up"
+            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
             style={{ backgroundColor: isHighlighted ? card.bgColor : undefined }}
             onClick={() => setActiveCard(isActive ? null : i)}
-            onMouseEnter={(e) => { setHoveredCard(i); onCardEnter(e); }}
-            onMouseLeave={(e) => { setHoveredCard(null); onCardLeave(e); }}
+            onMouseEnter={() => setHoveredCard(i)}
+            onMouseLeave={() => setHoveredCard(null)}
           >
-            {/* Default state: metric + title/subtitle — absolute positioned */}
+            {/* Default state: metric + title/subtitle */}
             <div
-              className={`absolute inset-0 flex flex-col justify-end gap-[32px] p-[24px] lg:p-[40px] transition-all duration-300 ease-in-out ${isActive ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+              className={`flex flex-col flex-1 justify-end gap-[32px] transition-all duration-400 ease-in-out ${isActive ? "opacity-0 max-h-0 overflow-hidden" : "opacity-100"}`}
             >
-              {/* (+) button — top-right corner */}
-              <div className={`absolute top-[24px] lg:top-[40px] right-[24px] lg:right-[40px] w-[28px] h-[28px] rounded-full border flex items-center justify-center transition-colors duration-300 ${isHighlighted ? 'border-white/40 text-white/40' : 'border-[#c4c4c4] text-[#c4c4c4]'}`}>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
-              </div>
-
               <div className="flex flex-col gap-[8px]">
                 <span className={`font-['Helvetica:Regular',sans-serif] leading-[1] text-[40px] lg:text-[60px] tracking-[-0.6px] transition-colors duration-300 ${isHighlighted ? 'text-white' : 'text-[#1e3d59]'}`}>
                   {card.metric}
@@ -113,31 +88,37 @@ export default function RentaCards() {
               </div>
             </div>
 
-            {/* Active/expanded state: title + detail — absolute positioned */}
+            {/* Active/expanded state: title + detail — animated with max-height */}
             <div
-              className={`absolute inset-0 flex flex-col gap-[16px] p-[24px] lg:p-[40px] overflow-y-auto transition-all duration-300 ease-in-out ${isActive ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+              ref={el => { detailRefs.current[i] = el; }}
+              className="overflow-hidden transition-all duration-400 ease-in-out"
+              style={{
+                maxHeight: isActive ? `${detailHeights[i] || 600}px` : "0px",
+                opacity: isActive ? 1 : 0,
+              }}
             >
-              <div className="flex items-center justify-between">
-                <h3 className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[24px] text-white font-bold tracking-[-0.24px]">
-                  {card.title}
-                </h3>
-                {/* Close "×" icon */}
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0">
-                  <path d="M5 5l10 10M15 5L5 15" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
+              <div className="flex flex-col gap-[16px] pt-[8px]">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[24px] text-white font-bold tracking-[-0.24px]">
+                    {card.title}
+                  </h3>
+                  {/* Close "×" icon */}
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0">
+                    <path d="M5 5l10 10M15 5L5 15" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div>
+                {card.detail.split("\n").map((line, li) =>
+                  line.trim() ? (
+                    <p key={li} className="font-['Helvetica:Regular',sans-serif] text-[16px] text-[rgba(255,255,255,0.8)] tracking-[-0.16px] leading-[1.6]">
+                      {line}
+                    </p>
+                  ) : <br key={li} />
+                )}
               </div>
-              {card.detail.split("\n").map((line, li) =>
-                line.trim() ? (
-                  <p key={li} className="font-['Helvetica:Regular',sans-serif] text-[16px] text-[rgba(255,255,255,0.8)] tracking-[-0.16px] leading-[1.6]">
-                    {line}
-                  </p>
-                ) : <br key={li} />
-              )}
             </div>
           </div>
         );
       })}
-      </div>
-    </section>
+    </div>
   );
 }

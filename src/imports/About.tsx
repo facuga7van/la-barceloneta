@@ -171,7 +171,7 @@ function Image1() {
 function Image2() {
   return (
     <div className="h-[300px] lg:h-[500px] overflow-clip relative shrink-0 w-full lg:flex-[1.5]" data-name="Image">
-      <div className="absolute bottom-0 w-full h-full right-0" data-name="image 29">
+      <div className="absolute bottom-0 h-[489px] right-0 w-[734px]" data-name="image 29">
         <img alt="Vista del emprendimiento" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage29} loading="lazy" />
       </div>
     </div>
