@@ -63,6 +63,11 @@ export default function RentaCards() {
             onMouseEnter={() => setHoveredCard(i)}
             onMouseLeave={() => { setHoveredCard(null); setGlowPos(null); }}
             onMouseMove={onCardMouseMove}
+            onTouchEnd={(e) => {
+              // On mobile: prevent hover emulation, just toggle active directly
+              e.preventDefault();
+              setActiveCard(isActive ? null : i);
+            }}
           >
             {/* Cursor-following glow spotlight */}
             {isHighlighted && glowPos && hoveredCard === i && (
