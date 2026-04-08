@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, type RefObject } from "react";
+import { useHorizontalScroll } from "../hooks/useHorizontalScroll";
 
 const CARD_DATA = [
   {
@@ -30,9 +31,26 @@ const CARD_DATA = [
 export default function RentaCards() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const hscrollRef = useHorizontalScroll();
 
   return (
-    <div className="content-stretch flex flex-col lg:flex-row items-stretch relative shrink-0 w-full" data-name="Cards">
+    <section
+      ref={hscrollRef as RefObject<HTMLElement>}
+      className="relative w-full overflow-hidden lg:h-screen"
+      data-name="RentaCardsSection"
+    >
+      {/* Progress bar — desktop only */}
+      <div
+        data-hscroll-progress
+        className="hidden lg:block fixed bottom-0 left-0 h-1 bg-[#f45f00] w-full z-50 origin-left"
+      />
+
+      {/* Card wrapper — flex-row on desktop for horizontal overflow */}
+      <div
+        data-hscroll-wrapper
+        className="flex flex-col lg:flex-row lg:flex-nowrap lg:w-max items-stretch"
+        data-name="Cards"
+      >
       {CARD_DATA.map((card, i) => {
         const isActive = activeCard === i;
         const isHighlighted = hoveredCard === i || isActive;
@@ -41,8 +59,8 @@ export default function RentaCards() {
           <div
             key={i}
             data-name={`Card${i + 1}`}
-            data-gsap="fade-up"
-            className={`cursor-pointer flex-[1_0_0] h-[400px] lg:h-[540px] min-w-0 lg:min-w-[340px] relative overflow-hidden transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
+            data-hscroll-card
+            className={`cursor-pointer h-[400px] lg:h-screen lg:w-[500px] lg:shrink-0 min-w-0 relative overflow-hidden transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
             style={{ backgroundColor: isHighlighted ? card.bgColor : undefined }}
             onClick={() => setActiveCard(isActive ? null : i)}
             onMouseEnter={() => setHoveredCard(i)}
@@ -108,6 +126,7 @@ export default function RentaCards() {
           </div>
         );
       })}
-    </div>
+      </div>
+    </section>
   );
 }
