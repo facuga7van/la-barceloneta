@@ -466,7 +466,7 @@ function Frame16() {
 
 function FractionViewerInteractive() {
   const [activeTab, setActiveTab] = useState<"norte" | "sur">("norte");
-  const [activeDot, setActiveDot] = useState(0);
+  const [activeDot, setActiveDot] = useState(1);
 
   const TOTAL_FRACTIONS = 8;
   const TOTAL_DOTS = TOTAL_FRACTIONS + 1; // 0/8 through 8/8
