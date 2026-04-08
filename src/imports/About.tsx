@@ -1000,7 +1000,7 @@ function Nav() {
 
 function Container4() {
   return (
-    <footer className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-gsap="fade-up">
+    <footer className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-gsap-footer>
       <div aria-hidden="true" className="absolute border-[#575757] border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col lg:flex-row gap-[40px] lg:gap-[120px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
         <Content6 />

@@ -97,6 +97,27 @@ export function useGSAPAnimations() {
         );
       });
 
+      // Footer reveal — dedicated ScrollTrigger with refreshPriority: 4
+      const footers = gsap.utils.toArray<HTMLElement>("[data-gsap-footer]");
+      footers.forEach((footer) => {
+        gsap.fromTo(
+          footer,
+          { clipPath: "inset(100% 0 0 0)", autoAlpha: 0 },
+          {
+            clipPath: "inset(0% 0 0 0)",
+            autoAlpha: 1,
+            duration: 1.2,
+            ease: "power3.inOut",
+            scrollTrigger: {
+              trigger: footer,
+              start: "top 90%",
+              toggleActions: "play none none none",
+              refreshPriority: 4,
+            },
+          }
+        );
+      });
+
       // Section title reveals
       const titles = gsap.utils.toArray<HTMLElement>("[data-gsap-title]");
       titles.forEach((heading) => {

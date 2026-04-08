@@ -3142,7 +3142,7 @@ function Nav() {
 
 function Container13() {
   return (
-    <footer className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-gsap="fade-up">
+    <footer className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-gsap-footer>
       <div aria-hidden="true" className="absolute border-[#575757] border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col lg:flex-row gap-[32px] lg:gap-[60px] items-start px-[16px] lg:px-[32px] py-[32px] lg:py-[56px] relative w-full">
         <Content18 />
