@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { Link, useNavigate, useLocation } from "react-router";
-import { useScrollAnimations } from "../hooks/useScrollAnimations";
+import "../lib/gsap-setup";
+import { useGSAPAnimations } from "../hooks/useGSAPAnimations";
 import svgPaths from "../imports/svg-1a10080iez";
 
 // ── Menu data (shared across all pages) ──
@@ -240,7 +241,7 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
   const navigate = useNavigate();
   const location = useLocation();
 
-  useScrollAnimations();
+  useGSAPAnimations();
 
   useEffect(() => {
     const handleScroll = () => setShowBackToTop(window.scrollY > 500);
@@ -333,7 +334,7 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
             <button
               key={item.label}
               type="button"
-              className="font-['Helvetica:Regular',sans-serif] text-[14px] text-[#141414] hover:text-[#f20909] transition-colors no-underline text-left bg-transparent border-none cursor-pointer p-0 min-h-[36px] flex items-center"
+              className="font-['Helvetica:Regular',sans-serif] text-[14px] text-[#141414] hover:text-[#f20909] transition-colors no-underline text-left bg-transparent border-none cursor-pointer p-0 min-h-[44px] flex items-center"
               onClick={() => navigateToAnchor(item.anchor)}
             >
               {item.label}

@@ -6,43 +6,39 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Scroll-triggered animations */
-[data-animate] {
+/* GSAP scroll-triggered animations — initial hidden state */
+[data-gsap] {
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  will-change: opacity, transform;
 }
 
-[data-animate="fade-up"] {
-  transform: translateY(30px);
+[data-gsap="fade-up"] {
+  transform: translateY(40px);
 }
 
-[data-animate="fade-in"] {
+[data-gsap="fade-left"] {
+  transform: translateX(-60px);
+}
+
+[data-gsap="fade-right"] {
+  transform: translateX(60px);
+}
+
+[data-gsap="scale-in"] {
+  transform: scale(0.8);
+}
+
+[data-gsap="reveal"] {
+  clip-path: inset(100% 0 0 0);
   transform: none;
 }
 
-[data-animate="fade-left"] {
-  transform: translateX(-30px);
-}
-
-[data-animate="fade-right"] {
-  transform: translateX(30px);
-}
-
-[data-animate="scale-in"] {
-  transform: scale(0.95);
-}
-
-[data-animate].is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* Respect reduced motion preference */
+/* Accessibility: show everything immediately when reduced motion is preferred */
 @media (prefers-reduced-motion: reduce) {
-  [data-animate] {
+  [data-gsap] {
+    visibility: visible;
     opacity: 1;
     transform: none;
-    transition: none;
+    clip-path: none;
   }
 }

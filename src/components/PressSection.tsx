@@ -24,7 +24,7 @@ function Content12() {
 
 function Header16() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[48px] items-start lg:items-center relative shrink-0 w-full" data-name="Header" data-animate="fade-up">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[48px] items-start lg:items-center relative shrink-0 w-full" data-name="Header" data-gsap="fade-up">
       <Title5 />
       <Content12 />
     </div>

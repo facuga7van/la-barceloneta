@@ -90,7 +90,7 @@ function Frame57() {
 
 function Content() {
   return (
-    <div className="content-stretch flex items-end justify-between relative shrink-0 w-full" data-name="Content" data-animate="fade-up">
+    <div className="content-stretch flex items-end justify-between relative shrink-0 w-full" data-name="Content" data-gsap="fade-up">
       <Frame57 />
     </div>
   );
