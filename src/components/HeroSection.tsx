@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useRef, useCallback } from "react";
 import svgPaths from "../imports/svg-1a10080iez";
 import { useHeroAnimations } from "../hooks/useHeroAnimations";
+
+function MagneticWrap({ children, strength = 0.3 }: { children: React.ReactNode; strength?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const onMove = useCallback((e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) * strength;
+    const y = (e.clientY - rect.top - rect.height / 2) * strength;
+    el.style.transform = `translate(${x}px, ${y}px)`;
+  }, [strength]);
+  const onLeave = useCallback(() => {
+    if (ref.current) ref.current.style.transform = "";
+  }, []);
+  return (
+    <div ref={ref} onMouseMove={onMove} onMouseLeave={onLeave} className="transition-transform duration-300 ease-out">
+      {children}
+    </div>
+  );
+}
 
 function Frame42() {
   return (
@@ -54,8 +74,8 @@ function SecondaryButton() {
 function Buttons1() {
   return (
     <div className="content-stretch cursor-pointer flex flex-col sm:flex-row gap-[8px] items-start relative shrink-0 w-full" data-name="Buttons">
-      <PrimaryButton />
-      <SecondaryButton />
+      <MagneticWrap strength={0.25}><PrimaryButton /></MagneticWrap>
+      <MagneticWrap strength={0.25}><SecondaryButton /></MagneticWrap>
     </div>
   );
 }

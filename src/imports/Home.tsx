@@ -89,13 +89,28 @@ function Images() {
         onTouchEnd={() => setIsPaused(false)}
       >
         {items.map((img, i) => (
-          <div key={i} className="flex-none w-[305px] h-[410px] overflow-hidden group">
+          <div
+            key={i}
+            className="flex-none w-[305px] h-[410px] overflow-hidden group"
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              const imgEl = e.currentTarget.querySelector("img");
+              if (!imgEl) return;
+              const x = ((e.clientX - rect.left) / rect.width - 0.5) * -10;
+              const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
+              imgEl.style.transform = `scale(1.08) translate(${x}px, ${y}px)`;
+            }}
+            onMouseLeave={(e) => {
+              const imgEl = e.currentTarget.querySelector("img");
+              if (imgEl) imgEl.style.transform = "";
+            }}
+          >
             <img
               src={img.src}
               alt={img.alt}
               loading="lazy"
               draggable={false}
-              className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.04] pointer-events-none"
+              className="w-full h-full object-cover transition-transform duration-500 ease-in-out pointer-events-none"
             />
           </div>
         ))}
@@ -1210,7 +1225,7 @@ function Container4() {
             <button
               type="button"
               onClick={() => setTab(t => (t - 1 + total) % total)}
-              className="flex items-center justify-center size-[40px] cursor-pointer hover:opacity-60 transition-opacity"
+              className="flex items-center justify-center size-[40px] cursor-pointer hover:opacity-60 hover:scale-110 active:scale-95 transition-all duration-200"
               aria-label="Anterior"
             >
               <svg className="size-[40px]" fill="none" viewBox="0 0 40 40">
@@ -1220,7 +1235,7 @@ function Container4() {
             <button
               type="button"
               onClick={() => setTab(t => (t + 1) % total)}
-              className="flex items-center justify-center size-[40px] cursor-pointer hover:opacity-60 transition-opacity"
+              className="flex items-center justify-center size-[40px] cursor-pointer hover:opacity-60 hover:scale-110 active:scale-95 transition-all duration-200"
               aria-label="Siguiente"
             >
               <svg className="size-[40px]" fill="none" viewBox="0 0 40 40">
@@ -1709,8 +1724,23 @@ function Header13() {
 
 function Map() {
   return (
-    <div className="w-full flex-none lg:flex-[1_0_0] h-[300px] lg:h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative" data-name="Map">
-      <img alt="Mapa ubicación" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5477} />
+    <div
+      className="w-full flex-none lg:flex-[1_0_0] h-[300px] lg:h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative cursor-zoom-in group" data-name="Map"
+      onMouseMove={(e) => {
+        const img = e.currentTarget.querySelector("img");
+        if (!img) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        img.style.transformOrigin = `${x}% ${y}%`;
+        img.style.transform = "scale(1.5)";
+      }}
+      onMouseLeave={(e) => {
+        const img = e.currentTarget.querySelector("img");
+        if (img) img.style.transform = "";
+      }}
+    >
+      <img alt="Mapa ubicación" loading="lazy" className="absolute inset-0 max-w-none object-cover size-full transition-transform duration-500 ease-out" src={imgImage5477} />
     </div>
   );
 }
@@ -3034,13 +3064,13 @@ function Text6() {
 function SocialIcon1() {
   return (
     <div className="flex gap-[32px] items-center w-full" data-name="Social Icon">
-      <a href="https://www.facebook.com/labarcelonetafeelfree" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[#767676] hover:text-[#141414] transition-colors">
+      <a href="https://www.facebook.com/labarcelonetafeelfree" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[#767676] hover:text-[#141414] hover:scale-125 hover:-translate-y-1 transition-all duration-300">
         <FbIcon size={24} strokeWidth={1.5} />
       </a>
-      <a href="https://www.instagram.com/labarceloneta.bsas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#767676] hover:text-[#141414] transition-colors">
+      <a href="https://www.instagram.com/labarceloneta.bsas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#767676] hover:text-[#141414] hover:scale-125 hover:-translate-y-1 transition-all duration-300">
         <IgIcon size={24} strokeWidth={1.5} />
       </a>
-      <a href="https://www.linkedin.com/company/la-barceloneta-feel-free/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#767676] hover:text-[#141414] transition-colors">
+      <a href="https://www.linkedin.com/company/la-barceloneta-feel-free/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#767676] hover:text-[#141414] hover:scale-125 hover:-translate-y-1 transition-all duration-300">
         <LiIcon size={24} strokeWidth={1.5} />
       </a>
     </div>

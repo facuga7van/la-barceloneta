@@ -73,8 +73,8 @@ function ContentWrapper2() {
   };
 
   const labelCls = "font-['Helvetica:Regular',sans-serif] leading-[1.2] not-italic opacity-80 relative shrink-0 text-[15px] text-black tracking-[-0.15px] w-full";
-  const inputCls = "w-full h-[48px] border border-[rgba(0,0,0,0.1)] px-[24px] font-['Helvetica:Regular',sans-serif] text-[15px] text-[#040404] tracking-[-0.15px] placeholder:text-[#575757] focus:outline-2 focus:outline-offset-2 focus:outline-[#030213] focus:border-[rgba(0,0,0,0.5)] transition-colors bg-transparent rounded-lg";
-  const selectCls = "w-full h-[48px] border border-[rgba(0,0,0,0.1)] px-[24px] font-['Helvetica:Regular',sans-serif] text-[15px] text-[#040404] tracking-[-0.15px] focus:outline-2 focus:outline-offset-2 focus:outline-[#030213] focus:border-[rgba(0,0,0,0.5)] transition-colors bg-transparent appearance-none cursor-pointer rounded-lg";
+  const inputCls = "w-full h-[48px] border border-[rgba(0,0,0,0.1)] px-[24px] font-['Helvetica:Regular',sans-serif] text-[15px] text-[#040404] tracking-[-0.15px] placeholder:text-[#575757] focus:outline-none focus:border-[#1e3d59] focus:shadow-[0_0_0_3px_rgba(30,61,89,0.15)] transition-all duration-300 bg-transparent rounded-lg";
+  const selectCls = "w-full h-[48px] border border-[rgba(0,0,0,0.1)] px-[24px] font-['Helvetica:Regular',sans-serif] text-[15px] text-[#040404] tracking-[-0.15px] focus:outline-none focus:border-[#1e3d59] focus:shadow-[0_0_0_3px_rgba(30,61,89,0.15)] transition-all duration-300 bg-transparent appearance-none cursor-pointer rounded-lg";
   const fieldCls = "content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full";
 
   if (submitted) {
@@ -188,7 +188,7 @@ function ContentWrapper2() {
       {submitError && (
         <p className="font-['Helvetica:Regular',sans-serif] text-[14px] text-[#f20909] leading-[1.4]">Hubo un error al enviar. Intentá de nuevo.</p>
       )}
-      <button type="submit" disabled={submitting} className="bg-black content-stretch flex items-center justify-center px-[20px] py-[14px] relative rounded-[40px] shrink-0 w-[212px] cursor-pointer hover:bg-[#333] hover:scale-[1.02] transition-all disabled:opacity-60 disabled:cursor-not-allowed">
+      <button type="submit" disabled={submitting} className="bg-black content-stretch flex items-center justify-center px-[20px] py-[14px] relative rounded-[40px] shrink-0 w-[212px] cursor-pointer hover:bg-[#333] hover:scale-[1.05] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] active:scale-[0.97] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed">
         <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[15px] text-white tracking-[-0.15px]">{submitting ? "Enviando..." : "Enviar mensaje"}</p>
       </button>
     </form>
