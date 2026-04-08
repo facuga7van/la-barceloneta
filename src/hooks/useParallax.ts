@@ -1,5 +1,5 @@
 // src/hooks/useParallax.ts
-import { gsap, ScrollTrigger, useGSAP, MM_CONDITIONS } from "../lib/gsap-setup";
+import { gsap, useGSAP, MM_CONDITIONS } from "../lib/gsap-setup";
 
 /**
  * Parallax for background images/sections.
