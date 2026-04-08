@@ -47,7 +47,7 @@ export default function RentaCards() {
             key={i}
             data-name={`Card${i + 1}`}
             data-gsap="fade-up"
-            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-all duration-300 overflow-hidden border-t border-b border-[rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] hover:-translate-y-1 active:translate-y-0 active:shadow-none ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
+            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative transition-all duration-300 overflow-hidden border-t border-b border-[rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] hover:-translate-y-1 active:translate-y-0 active:shadow-none ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
             style={{ backgroundColor: isActive ? card.bgColor : undefined }}
             onClick={() => setActiveCard(isActive ? null : i)}
             onMouseMove={onCardMouseMove}
@@ -69,9 +69,9 @@ export default function RentaCards() {
             <div className={`absolute top-[24px] lg:top-[40px] right-[24px] lg:right-[40px] w-[28px] h-[28px] rounded-full border flex items-center justify-center transition-all duration-300 ${isActive ? 'border-white/40 text-white/40 rotate-45' : 'border-[#c4c4c4] text-[#c4c4c4]'}`}>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
             </div>
-            {/* Default state: metric + title/subtitle */}
+            {/* Default state: metric + title/subtitle — absolute fill */}
             <div
-              className={`flex flex-col flex-1 justify-end gap-[32px] transition-all duration-400 ease-in-out ${isActive ? "opacity-0 max-h-0 overflow-hidden" : "opacity-100"}`}
+              className={`absolute inset-0 flex flex-col justify-end gap-[32px] p-[24px] lg:p-[40px] transition-opacity duration-300 ${isActive ? "opacity-0 pointer-events-none" : "opacity-100"}`}
             >
               <div className="flex flex-col gap-[8px]">
                 <span className={`font-['Helvetica:Regular',sans-serif] leading-[1] text-[40px] lg:text-[60px] tracking-[-0.6px] transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#1e3d59]'}`}>
@@ -89,39 +89,31 @@ export default function RentaCards() {
                   {card.subtitle}
                 </p>
               </div>
-              {/* "Ver más" indicator — always visible */}
+              {/* "Ver más" indicator */}
               <div className="flex items-center gap-[6px]">
-                <span className={`font-['Helvetica:Regular',sans-serif] text-[13px] tracking-[-0.13px] transition-colors duration-300 ${isActive ? 'text-white/70' : 'text-[#575757]'}`}>
+                <span className="font-['Helvetica:Regular',sans-serif] text-[13px] tracking-[-0.13px] text-[#575757]">
                   Ver más
                 </span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="translate-y-[1px]">
-                  <path d="M7 3v8M3 7h8" stroke={isActive ? "rgba(255,255,255,0.7)" : "#575757"} strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M7 3v8M3 7h8" stroke="#575757" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
 
-            {/* Active/expanded state: title + detail — grid row transition (no jank) */}
+            {/* Active/expanded state: title + detail — absolute fill, crossfade only */}
             <div
-              className="grid transition-[grid-template-rows,opacity] duration-400 ease-in-out"
-              style={{
-                gridTemplateRows: isActive ? "1fr" : "0fr",
-                opacity: isActive ? 1 : 0,
-              }}
+              className={`absolute inset-0 flex flex-col gap-[16px] p-[24px] lg:p-[40px] overflow-y-auto transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-0 pointer-events-none"}`}
             >
-              <div className="overflow-hidden">
-              <div className="flex flex-col gap-[16px] pt-[8px]">
-                <h3 className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[24px] text-white font-bold tracking-[-0.24px]">
-                  {card.title}
-                </h3>
-                {card.detail.split("\n").map((line, li) =>
-                  line.trim() ? (
-                    <p key={li} className="font-['Helvetica:Regular',sans-serif] text-[16px] text-[rgba(255,255,255,0.8)] tracking-[-0.16px] leading-[1.6]">
-                      {line}
-                    </p>
-                  ) : <br key={li} />
-                )}
-              </div>
-              </div>
+              <h3 className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[24px] text-white font-bold tracking-[-0.24px]">
+                {card.title}
+              </h3>
+              {card.detail.split("\n").map((line, li) =>
+                line.trim() ? (
+                  <p key={li} className="font-['Helvetica:Regular',sans-serif] text-[16px] text-[rgba(255,255,255,0.8)] tracking-[-0.16px] leading-[1.6]">
+                    {line}
+                  </p>
+                ) : <br key={li} />
+              )}
             </div>
           </div>
         );
