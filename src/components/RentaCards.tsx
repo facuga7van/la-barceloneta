@@ -118,15 +118,9 @@ export default function RentaCards() {
               }}
             >
               <div className="flex flex-col gap-[16px] pt-[8px]">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[24px] text-white font-bold tracking-[-0.24px]">
-                    {card.title}
-                  </h3>
-                  {/* Close "×" icon */}
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0">
-                    <path d="M5 5l10 10M15 5L5 15" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </div>
+                <h3 className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[24px] text-white font-bold tracking-[-0.24px]">
+                  {card.title}
+                </h3>
                 {card.detail.split("\n").map((line, li) =>
                   line.trim() ? (
                     <p key={li} className="font-['Helvetica:Regular',sans-serif] text-[16px] text-[rgba(255,255,255,0.8)] tracking-[-0.16px] leading-[1.6]">
