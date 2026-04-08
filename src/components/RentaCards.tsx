@@ -1,5 +1,6 @@
 import { useState, type RefObject } from "react";
 import { useHorizontalScroll } from "../hooks/useHorizontalScroll";
+import { gsap, useGSAP } from "../lib/gsap-setup";
 
 const CARD_DATA = [
   {
@@ -33,6 +34,16 @@ export default function RentaCards() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const hscrollRef = useHorizontalScroll();
 
+  const { contextSafe } = useGSAP({ scope: hscrollRef });
+
+  const onCardEnter = contextSafe((e: React.MouseEvent<HTMLElement>) => {
+    gsap.to(e.currentTarget, { y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.15)", duration: 0.3 });
+  });
+
+  const onCardLeave = contextSafe((e: React.MouseEvent<HTMLElement>) => {
+    gsap.to(e.currentTarget, { y: 0, boxShadow: "none", duration: 0.3 });
+  });
+
   return (
     <section
       ref={hscrollRef as RefObject<HTMLElement>}
@@ -63,8 +74,8 @@ export default function RentaCards() {
             className={`cursor-pointer h-[400px] lg:h-screen lg:w-[500px] lg:shrink-0 min-w-0 relative overflow-hidden transition-colors duration-300 border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
             style={{ backgroundColor: isHighlighted ? card.bgColor : undefined }}
             onClick={() => setActiveCard(isActive ? null : i)}
-            onMouseEnter={() => setHoveredCard(i)}
-            onMouseLeave={() => setHoveredCard(null)}
+            onMouseEnter={(e) => { setHoveredCard(i); onCardEnter(e); }}
+            onMouseLeave={(e) => { setHoveredCard(null); onCardLeave(e); }}
           >
             {/* Default state: metric + title/subtitle — absolute positioned */}
             <div

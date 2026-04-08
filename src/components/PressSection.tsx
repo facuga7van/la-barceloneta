@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import svgPaths from "../imports/svg-1a10080iez";
 import imgImagen from "figma:asset/7694e423852a974cdbc6d9264be6bf9dd34a1208.webp";
 import { gsap, ScrollTrigger, useGSAP, MM_CONDITIONS } from "../lib/gsap-setup";
@@ -138,7 +138,12 @@ function Body2() {
   );
 }
 
-function PrensaMobile() {
+interface HoverHandlers {
+  onMouseEnter: (e: React.MouseEvent<HTMLElement>) => void;
+  onMouseLeave: (e: React.MouseEvent<HTMLElement>) => void;
+}
+
+function PrensaMobile({ onLogoEnter, onLogoLeave }: { onLogoEnter: HoverHandlers["onMouseEnter"]; onLogoLeave: HoverHandlers["onMouseLeave"] }) {
   const PRENSA_DATA = [
     { image: <Image />, body: <Body /> },
     { image: <Image1 />, body: <Body1 /> },
@@ -148,7 +153,7 @@ function PrensaMobile() {
   return (
     <div className="flex flex-col gap-[24px] w-full px-[16px] lg:hidden">
       {PRENSA_DATA.map((item, i) => (
-        <article key={i} data-press-logo className="flex flex-col w-full bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.1)] rounded-[12px] overflow-hidden">
+        <article key={i} data-press-logo className="flex flex-col w-full bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.1)] rounded-[12px] overflow-hidden" onMouseEnter={onLogoEnter} onMouseLeave={onLogoLeave}>
           <div className="w-full h-[200px] shrink-0 flex">
             {item.image}
           </div>
@@ -161,7 +166,7 @@ function PrensaMobile() {
   );
 }
 
-function Frame53() {
+function Frame53({ onLogoEnter, onLogoLeave }: { onLogoEnter: HoverHandlers["onMouseEnter"]; onLogoLeave: HoverHandlers["onMouseLeave"] }) {
   const [activePressa, setActivePressa] = useState<number | null>(null);
 
   const PRENSA_DATA = [
@@ -181,6 +186,8 @@ function Frame53() {
             className={`bg-white flex-[1_0_0] h-[540px] min-w-0 relative overflow-hidden cursor-pointer ${!isActive ? "group" : ""}`}
             data-name={item.name}
             onClick={() => setActivePressa(isActive ? null : i)}
+            onMouseEnter={onLogoEnter}
+            onMouseLeave={onLogoLeave}
           >
             <div className="flex flex-col items-start overflow-clip rounded-[inherit] size-full">
               {item.image}
@@ -199,7 +206,7 @@ function Frame53() {
 export default function PressSection() {
   const pressRef = useRef<HTMLElement>(null);
 
-  useGSAP(() => {
+  const { contextSafe } = useGSAP(() => {
     if (!pressRef.current) return;
 
     const mm = gsap.matchMedia();
@@ -232,11 +239,19 @@ export default function PressSection() {
     });
   }, { scope: pressRef });
 
+  const onLogoEnter = contextSafe((e: React.MouseEvent<HTMLElement>) => {
+    gsap.to(e.currentTarget, { scale: 1.05, duration: 0.3 });
+  });
+
+  const onLogoLeave = contextSafe((e: React.MouseEvent<HTMLElement>) => {
+    gsap.to(e.currentTarget, { scale: 1, duration: 0.3 });
+  });
+
   return (
     <section ref={pressRef} id="prensa" className="content-stretch flex flex-col items-start pb-[60px] lg:pb-[120px] relative shrink-0 w-full">
       <StrategySection2 />
-      <Frame53 />
-      <PrensaMobile />
+      <Frame53 onLogoEnter={onLogoEnter} onLogoLeave={onLogoLeave} />
+      <PrensaMobile onLogoEnter={onLogoEnter} onLogoLeave={onLogoLeave} />
     </section>
   );
 }
