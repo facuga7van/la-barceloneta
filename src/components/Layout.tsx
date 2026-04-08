@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
+import React, { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { Link, useNavigate, useLocation } from "react-router";
 import "../lib/gsap-setup";
 import { useGSAPAnimations } from "../hooks/useGSAPAnimations";
+import { useNavbarAnimation } from "../hooks/useNavbarAnimation";
+import { usePageTransition } from "../hooks/usePageTransition";
 import svgPaths from "../imports/svg-1a10080iez";
 
 // ── Menu data (shared across all pages) ──
@@ -242,6 +244,8 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
   const location = useLocation();
 
   useGSAPAnimations();
+  const navRef = useNavbarAnimation();
+  const contentRef = usePageTransition();
 
   useEffect(() => {
     const handleScroll = () => setShowBackToTop(window.scrollY > 500);
@@ -389,7 +393,7 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
         )}
       </div>
       {/* Fixed right sidebar — hidden on mobile */}
-      <div className="hidden lg:flex fixed top-0 right-0 h-screen z-[150] flex-col" data-name="SidebarNav">
+      <div ref={navRef as React.Ref<HTMLDivElement>} className="hidden lg:flex fixed top-0 right-0 h-screen z-[150] flex-col" data-name="SidebarNav">
         <NavMenuTop onMenuClick={() => setMenuOpen(true)} />
         <NavMenuBottom isAboutPage={!isHome} />
       </div>
@@ -423,7 +427,9 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
           </svg>
         </button>
       )}
-      {children}
+      <div ref={contentRef}>
+        {children}
+      </div>
       <button
         type="button"
         className={`fixed bottom-4 right-4 lg:right-[72px] z-[100] bg-black/80 text-white size-[44px] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-black ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
