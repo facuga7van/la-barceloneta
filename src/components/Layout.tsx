@@ -167,9 +167,24 @@ function SidebarButton3() {
   );
 }
 
+function SidebarButtonInicio({ isActive }: { isActive?: boolean }) {
+  return (
+    <Link to="/" className="content-stretch flex items-center relative no-underline text-inherit cursor-pointer" data-name="Button">
+      <div className={`flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[15px] text-center tracking-[-0.3px] whitespace-nowrap transition-colors ${isActive ? 'text-[#f20909] font-bold' : 'text-[#141414] hover:text-[#f20909]'}`}>
+        <span className="leading-[1.2]">Inicio</span>
+      </div>
+    </Link>
+  );
+}
+
 function MenuItems({ isAboutPage }: { isAboutPage?: boolean }) {
   return (
     <div className="content-stretch flex flex-col gap-[32px] items-start justify-end py-[40px] relative shrink-0" data-name="Menu Items">
+      <div className="flex h-[58px] items-center justify-center relative shrink-0 w-[18px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
+        <div className="flex-none rotate-90">
+          <SidebarButtonInicio isActive={!isAboutPage} />
+        </div>
+      </div>
       <div className="flex h-[60px] items-center justify-center relative shrink-0 w-[18px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
         <div className="flex-none rotate-90">
           <SidebarButton1 />
