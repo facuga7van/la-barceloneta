@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import svgPaths from "../imports/svg-1a10080iez";
 import imgImagen from "figma:asset/7694e423852a974cdbc6d9264be6bf9dd34a1208.webp";
+import { gsap, ScrollTrigger, useGSAP, MM_CONDITIONS } from "../lib/gsap-setup";
 
 function Title5() {
   return (
@@ -147,7 +148,7 @@ function PrensaMobile() {
   return (
     <div className="flex flex-col gap-[24px] w-full px-[16px] lg:hidden">
       {PRENSA_DATA.map((item, i) => (
-        <article key={i} className="flex flex-col w-full bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.1)] rounded-[12px] overflow-hidden">
+        <article key={i} data-press-logo className="flex flex-col w-full bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.1)] rounded-[12px] overflow-hidden">
           <div className="w-full h-[200px] shrink-0 flex">
             {item.image}
           </div>
@@ -176,6 +177,7 @@ function Frame53() {
         return (
           <article
             key={i}
+            data-press-logo
             className={`bg-white flex-[1_0_0] h-[540px] min-w-0 relative overflow-hidden cursor-pointer ${!isActive ? "group" : ""}`}
             data-name={item.name}
             onClick={() => setActivePressa(isActive ? null : i)}
@@ -195,11 +197,46 @@ function Frame53() {
 }
 
 export default function PressSection() {
+  const pressRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    if (!pressRef.current) return;
+
+    const mm = gsap.matchMedia();
+    mm.add(MM_CONDITIONS, (context) => {
+      const { reduceMotion } = context.conditions!;
+      const el = pressRef.current;
+      if (!el) return;
+      const logos = gsap.utils.toArray<HTMLElement>("[data-press-logo]", el);
+
+      if (reduceMotion || logos.length === 0) {
+        gsap.set(logos, { autoAlpha: 1, scale: 1 });
+        return;
+      }
+
+      gsap.set(logos, { autoAlpha: 0, scale: 0.8 });
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 85%",
+        onEnter: () => {
+          gsap.to(logos, {
+            autoAlpha: 1,
+            scale: 1,
+            stagger: { each: 0.1, from: "edges" },
+            ease: "back.out(1.2)",
+            duration: 0.6,
+          });
+        },
+        once: true,
+      });
+    });
+  }, { scope: pressRef });
+
   return (
-    <div id="prensa" className="content-stretch flex flex-col items-start pb-[60px] lg:pb-[120px] relative shrink-0 w-full">
+    <section ref={pressRef} id="prensa" className="content-stretch flex flex-col items-start pb-[60px] lg:pb-[120px] relative shrink-0 w-full">
       <StrategySection2 />
       <Frame53 />
       <PrensaMobile />
-    </div>
+    </section>
   );
 }
