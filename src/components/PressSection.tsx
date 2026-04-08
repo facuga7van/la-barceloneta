@@ -190,12 +190,7 @@ function Frame53({ onLogoEnter, onLogoLeave }: { onLogoEnter: HoverHandlers["onM
             onMouseLeave={onLogoLeave}
           >
             <div className="flex flex-col items-start overflow-clip rounded-[inherit] size-full">
-              <div className="relative w-full overflow-hidden">
-                <div className="transition-transform duration-500 ease-out group-hover:scale-[1.05]">
-                  {item.image}
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              </div>
+              {item.image}
               <div className={`bg-white w-full overflow-hidden transition-[max-height] duration-500 ease-in-out shrink-0 ${isActive ? "max-h-[230px]" : "max-h-0 group-hover:max-h-[230px]"}`}>
                 {item.body}
               </div>
