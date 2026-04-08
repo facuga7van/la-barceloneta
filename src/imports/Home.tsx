@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon } from "lucide-react";
 import ConstructionTimeline from "../components/ConstructionTimeline";
 import Layout from "../components/Layout";
@@ -47,73 +47,49 @@ const GRID_IMAGES = [
 
 function Images() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const updateArrows = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 10);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-  }, []);
+  const [isPaused, setIsPaused] = useState(false);
+  const animationRef = useRef<number>();
+  const scrollPos = useRef(0);
+  const speed = 0.6; // px per frame
 
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
-    el.addEventListener("scroll", updateArrows, { passive: true });
-    updateArrows();
-    return () => el.removeEventListener("scroll", updateArrows);
-  }, [updateArrows]);
 
-  const scroll = useCallback((dir: 1 | -1) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const cardWidth = 305 + 16; // card width + gap
-    el.scrollTo({ left: el.scrollLeft + dir * cardWidth * 2, behavior: "smooth" });
-  }, []);
+    const halfWidth = el.scrollWidth / 2;
 
-  // Drag-to-scroll
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollStart = useRef(0);
+    const animate = () => {
+      if (!isPaused) {
+        scrollPos.current += speed;
+        if (scrollPos.current >= halfWidth) {
+          scrollPos.current -= halfWidth;
+        }
+        el.scrollLeft = scrollPos.current;
+      }
+      animationRef.current = requestAnimationFrame(animate);
+    };
 
-  const onPointerDown = useCallback((e: React.PointerEvent) => {
-    const el = trackRef.current;
-    if (!el) return;
-    isDragging.current = true;
-    startX.current = e.clientX;
-    scrollStart.current = el.scrollLeft;
-    el.style.cursor = "grabbing";
-    el.style.scrollSnapType = "none";
-    el.setPointerCapture(e.pointerId);
-  }, []);
+    animationRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [isPaused]);
 
-  const onPointerMove = useCallback((e: React.PointerEvent) => {
-    if (!isDragging.current || !trackRef.current) return;
-    const dx = e.clientX - startX.current;
-    trackRef.current.scrollLeft = scrollStart.current - dx;
-  }, []);
-
-  const onPointerUp = useCallback((e: React.PointerEvent) => {
-    if (!isDragging.current || !trackRef.current) return;
-    isDragging.current = false;
-    trackRef.current.style.cursor = "";
-    trackRef.current.style.scrollSnapType = "";
-    trackRef.current.releasePointerCapture(e.pointerId);
-  }, []);
+  // Duplicate items for seamless loop
+  const items = [...GRID_IMAGES, ...GRID_IMAGES];
 
   return (
     <div className="w-full overflow-hidden bg-black shrink-0 relative" data-name="Images">
       <div
         ref={trackRef}
-        className="flex gap-[16px] p-[16px] overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden cursor-grab select-none"
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
+        className="flex gap-[16px] p-[16px] overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
       >
-        {GRID_IMAGES.map((img, i) => (
-          <div key={i} className="flex-none w-[305px] h-[410px] snap-start overflow-hidden group">
+        {items.map((img, i) => (
+          <div key={i} className="flex-none w-[305px] h-[410px] overflow-hidden group">
             <img
               src={img.src}
               alt={img.alt}
@@ -125,29 +101,8 @@ function Images() {
         ))}
       </div>
       {/* Gradient fades */}
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-[40px] bg-gradient-to-r from-black/60 to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-[40px] bg-gradient-to-l from-black/60 to-transparent" />
-      {/* Arrow buttons — desktop only */}
-      {canScrollLeft && (
-        <button
-          type="button"
-          onClick={() => scroll(-1)}
-          className="hidden lg:flex absolute left-[16px] top-1/2 -translate-y-1/2 z-10 size-[44px] items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/40 transition-colors cursor-pointer border-none"
-          aria-label="Anterior"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-7 6-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        </button>
-      )}
-      {canScrollRight && (
-        <button
-          type="button"
-          onClick={() => scroll(1)}
-          className="hidden lg:flex absolute right-[16px] top-1/2 -translate-y-1/2 z-10 size-[44px] items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/40 transition-colors cursor-pointer border-none"
-          aria-label="Siguiente"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-7-6-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        </button>
-      )}
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-[40px] bg-gradient-to-r from-black/60 to-transparent z-10" />
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-[40px] bg-gradient-to-l from-black/60 to-transparent z-10" />
     </div>
   );
 }
@@ -556,9 +511,9 @@ function FractionViewerInteractive() {
   });
 
   return (
-    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start pt-[32px] relative shrink-0 w-full" data-gsap="fade-up">
+    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start pt-[32px] relative shrink-0 w-full">
       {/* Left: tabs + floor plan + slider */}
-      <div className="content-stretch flex flex-col gap-[24px] isolate items-center relative shrink-0 w-full lg:w-[713px] overflow-hidden">
+      <div className="content-stretch flex flex-col gap-[24px] isolate items-center relative shrink-0 w-full lg:w-[713px] overflow-hidden" data-gsap="fade-left">
         {/* Norte/Sur tabs */}
         <div className="content-stretch flex gap-[8px] items-start justify-center p-[4px] relative rounded-[99px] shrink-0 w-full max-w-[542px] z-[3]">
           <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none rounded-[99px]" />
@@ -585,11 +540,11 @@ function FractionViewerInteractive() {
         </div>
       </div>
       {/* Right: dynamic investment table */}
-      <div className="content-stretch flex w-full lg:flex-[1_0_0] flex-col gap-[8px] items-start justify-center leading-[1.2] min-h-px lg:min-w-px not-italic py-[20px] lg:py-[40px] relative border-t border-[rgba(0,0,0,0.1)] lg:border-none lg:self-stretch">
+      <div className="content-stretch flex w-full lg:flex-[1_0_0] flex-col gap-[8px] items-start justify-center leading-[1.2] min-h-px lg:min-w-px not-italic py-[20px] lg:py-[40px] relative border-t border-[rgba(0,0,0,0.1)] lg:border-none lg:self-stretch" data-gsap="fade-right">
         {/* TU INVERSIÓN */}
         <div className="content-stretch flex font-['Helvetica:Bold',sans-serif] items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] w-full">
           <p className="relative shrink-0">TU INVERSIÓN</p>
-          <p className="relative shrink-0 text-right transition-all duration-300">U$D {fmt(investment)}</p>
+          <p key={investment} className="relative shrink-0 text-right animate-[numberPop_0.3s_ease-out]">U$D {fmt(investment)}</p>
         </div>
         {/* RENTA DE ESPERA */}
         <div className="content-stretch flex items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
@@ -598,7 +553,7 @@ function FractionViewerInteractive() {
             <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(5% anual)</p>
           </div>
           <div className="flex items-end justify-end shrink-0">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaEspera)}</p>
+            <p key={rentaEspera} className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] animate-[numberPop_0.3s_ease-out]">+U$D {fmt(rentaEspera)}</p>
             <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
           </div>
         </div>
@@ -609,7 +564,7 @@ function FractionViewerInteractive() {
             <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(5% anual)</p>
           </div>
           <div className="flex items-end justify-end shrink-0">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaHotelera)}</p>
+            <p key={rentaHotelera} className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] animate-[numberPop_0.3s_ease-out]">+U$D {fmt(rentaHotelera)}</p>
             <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
           </div>
         </div>
@@ -620,7 +575,7 @@ function FractionViewerInteractive() {
             <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(5% anual)</p>
           </div>
           <div className="flex items-end justify-end shrink-0">
-            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaAsegurada)}</p>
+            <p key={rentaAsegurada} className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] animate-[numberPop_0.3s_ease-out]">+U$D {fmt(rentaAsegurada)}</p>
             <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
           </div>
         </div>
