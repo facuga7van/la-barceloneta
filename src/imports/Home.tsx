@@ -123,8 +123,8 @@ function Banner() {
 function Title() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
-        <h2 data-gsap-title className="block leading-[1.2] font-bold whitespace-pre-wrap">¿Cómo gano con este modelo?</h2>
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
+        <h2 data-gsap-title className="block leading-[1.2] whitespace-pre-wrap">¿Cómo gano con este modelo?</h2>
       </div>
     </div>
   );
@@ -153,7 +153,7 @@ function ComoGano() {
   return (
     <section id="como-gano" className="relative shrink-0 w-full" data-name="Como gano">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[24px] lg:pb-[40px] pt-[32px] lg:pt-[48px] px-[24px] lg:px-[80px] xl:px-[160px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[24px] lg:pb-[40px] pt-[32px] lg:pt-[48px] px-[24px] lg:px-[80px] xl:px-[260px] relative w-full">
         <Header />
       </div>
     </section>
@@ -164,8 +164,8 @@ function ComoGano() {
 function Title1() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
-        <h2 data-gsap-title className="block leading-[1.2] font-bold whitespace-pre-wrap">Elegí tu fracción</h2>
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
+        <h2 data-gsap-title className="block leading-[1.2] whitespace-pre-wrap">Elegí tu fracción</h2>
       </div>
     </div>
   );
@@ -194,7 +194,7 @@ function StrategySection() {
   return (
     <section id="fracciones" className="relative shrink-0 w-full" data-name="Strategy section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[24px] lg:pb-[40px] pt-[32px] lg:pt-[48px] px-[24px] lg:px-[80px] xl:px-[160px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[24px] lg:pb-[40px] pt-[32px] lg:pt-[48px] px-[24px] lg:px-[80px] xl:px-[260px] relative w-full">
         <Header1 />
       </div>
     </section>
@@ -616,8 +616,8 @@ function Number() {
 function Title2() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[36px] lg:text-[48px] text-black tracking-[-0.6px] whitespace-nowrap">
-        <h2 data-gsap-title className="block leading-[1.2] font-bold">El proyecto</h2>
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[28px] lg:text-[40px] text-black tracking-[-0.6px] whitespace-nowrap">
+        <h2 data-gsap-title className="block leading-[1.2]">El proyecto</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
         <Number />
@@ -1800,8 +1800,8 @@ function Number1() {
 function Title3() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] lg:text-[42px] text-black tracking-[-0.6px]">
-        <h2 data-gsap-title className="block leading-[1.2] font-bold">El próximo capítulo (Neuquén)</h2>
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
+        <h2 data-gsap-title className="block leading-[1.2]">El próximo capítulo (Neuquén)</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
         <Number1 />
@@ -2169,8 +2169,8 @@ function PersonalitySection1() {
 function Title4() {
   return (
     <div className="content-stretch flex flex-[1_0_0] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[28px] lg:text-[40px] text-black tracking-[-0.6px] w-full lg:w-[454px]">
-        <h2 data-gsap-title className="block leading-[1.2] font-bold whitespace-pre-wrap">Experiencias reales de quienes ya están invirtiendo</h2>
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[28px] lg:text-[40px] text-black tracking-[-0.6px] w-full lg:w-[454px]">
+        <h2 data-gsap-title className="block leading-[1.2] whitespace-pre-wrap">Experiencias reales de quienes ya están invirtiendo</h2>
       </div>
     </div>
   );
@@ -2857,8 +2857,8 @@ function Frame59() {
       <div className="lg:hidden w-full">
         <div className="content-stretch flex flex-col items-start px-[16px] py-[60px] relative w-full">
           <div className="content-stretch flex items-start pb-[32px] relative shrink-0 w-full">
-            <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[34px] text-black tracking-[-0.6px]">
-              <h2 className="block leading-[1.2] font-bold">¿Cómo invertir?</h2>
+            <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
+              <h2 className="block leading-[1.2]">¿Cómo invertir?</h2>
             </div>
           </div>
           <div className="flex flex-col gap-[24px] w-full">
