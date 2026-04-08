@@ -429,7 +429,7 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
           </svg>
         </button>
       )}
-      <div ref={contentRef}>
+      <div ref={contentRef} className="w-full min-w-0">
         {children}
       </div>
       <button
