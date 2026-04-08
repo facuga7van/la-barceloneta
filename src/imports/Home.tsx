@@ -468,13 +468,14 @@ function FractionViewerInteractive() {
   const [activeTab, setActiveTab] = useState<"norte" | "sur">("norte");
   const [activeDot, setActiveDot] = useState(0);
 
-  const TOTAL_DOTS = 8;
+  const TOTAL_FRACTIONS = 8;
+  const TOTAL_DOTS = TOTAL_FRACTIONS + 1; // 0/8 through 8/8
   const BASE = activeTab === "norte" ? 22500 : 25000;
-  const fractions = activeDot + 1;
+  const fractions = activeDot; // 0 = no fractions, 1-8 = fractions
   const investment = BASE * fractions;
-  const rentaEspera     = Math.round(investment * 0.05  / 12);
-  const rentaHotelera   = Math.round(investment * 0.10  / 12);
-  const rentaAsegurada  = Math.round(investment * 0.05  / 12);
+  const rentaEspera     = fractions > 0 ? Math.round(investment * 0.05  / 12) : 0;
+  const rentaHotelera   = fractions > 0 ? Math.round(investment * 0.10  / 12) : 0;
+  const rentaAsegurada  = fractions > 0 ? Math.round(investment * 0.05  / 12) : 0;
 
   const fmt = (n: number) => n.toLocaleString("es-AR");
 
@@ -524,12 +525,12 @@ function FractionViewerInteractive() {
                 type="button"
                 onClick={() => setActiveDot(i)}
                 className="relative cursor-pointer flex items-center justify-center shrink-0 p-[4px]"
-                aria-label={`${i + 1}/${TOTAL_DOTS} fracciones`}
+                aria-label={`${i}/${TOTAL_FRACTIONS} fracciones`}
               >
                 {isSelected ? (
                   <div className="bg-[#040404] rounded-[9999px] size-[14px] relative transition-transform duration-300 scale-100">
                     <p className="absolute font-['Helvetica:Bold',sans-serif] font-bold text-[#040404] text-[16px] tracking-[-0.16px] leading-[1.2] top-[20px] left-1/2 -translate-x-1/2 whitespace-nowrap">
-                      {`${i + 1}/${TOTAL_DOTS}`}
+                      {`${i}/${TOTAL_FRACTIONS}`}
                     </p>
                   </div>
                 ) : (
