@@ -128,7 +128,7 @@ function Image() {
 
 function IntroSection() {
   return (
-    <section id="nosotros" className="relative shrink-0 w-full" data-name="Intro section" data-gsap="fade-up">
+    <section id="nosotros" className="relative shrink-0 w-full" data-name="Intro section" data-gsap="fade-left">
       <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[30px] items-start pb-[40px] lg:pb-[80px] pt-[24px] lg:pt-[32px] px-[16px] lg:px-[32px] relative w-full">
         <Content />
         <Image />
@@ -198,7 +198,7 @@ function Frame12() {
 
 function StrategySection() {
   return (
-    <section id="historia" className="relative shrink-0 w-full" data-name="Strategy section" data-gsap="fade-up">
+    <section id="historia" className="relative shrink-0 w-full" data-name="Strategy section" data-gsap="fade-right">
       <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[32px] relative w-full">
         <Frame12 />
       </div>
@@ -303,7 +303,7 @@ function Frame11() {
 
 function StrategySection1() {
   return (
-    <section className="relative shrink-0 w-full" data-name="Strategy section" data-gsap="fade-up">
+    <section className="relative shrink-0 w-full" data-name="Strategy section" data-gsap="scale-in">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-b border-solid border-t inset-0 pointer-events-none" />
       <div className="flex flex-col justify-center size-full">
         <div className="content-stretch flex flex-col items-start justify-center px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
@@ -318,7 +318,7 @@ function Title1() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[36px] lg:text-[60px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.1] whitespace-pre-wrap">Nuestros valores</h2>
+        <h2 data-gsap-title className="block leading-[1.1] whitespace-pre-wrap">Nuestros valores</h2>
       </div>
     </div>
   );
@@ -643,7 +643,7 @@ function Card4() {
 
 function Cards() {
   return (
-    <div className="content-start flex flex-col lg:flex-row lg:flex-wrap gap-0 items-start relative shrink-0 w-full" data-name="Cards" data-gsap="fade-up">
+    <div className="content-start flex flex-col lg:flex-row lg:flex-wrap gap-0 items-start relative shrink-0 w-full" data-name="Cards" data-gsap="scale-in">
       <Card1 />
       <Card2 />
       <Card3 />
@@ -797,7 +797,7 @@ function Frame14() {
 
 function StrategySection3() {
   return (
-    <section id="equipo" className="relative shrink-0 w-full" data-name="Strategy section" data-gsap="fade-up">
+    <section id="equipo" className="relative shrink-0 w-full" data-name="Strategy section" data-gsap="fade-left">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
         <Frame14 />

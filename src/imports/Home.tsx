@@ -67,7 +67,7 @@ function Images() {
 
 function Banner() {
   return (
-    <a id="brochure" href="https://drive.google.com/file/d/1-NlHPsM-R_g7Uc5tK72hWYvNuhRM20gR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="relative shrink-0 w-full block cursor-pointer no-underline" data-name="Banner" data-gsap="fade-up">
+    <a id="brochure" href="https://drive.google.com/file/d/1-NlHPsM-R_g7Uc5tK72hWYvNuhRM20gR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="relative shrink-0 w-full block cursor-pointer no-underline" data-name="Banner" data-gsap="scale-in">
       <div aria-hidden="true" className="absolute border-[#eae9e8] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col items-start p-[32px] relative w-full">
         <div className="aspect-[2320/264] relative shrink-0 w-full" data-name="image 5483">
@@ -82,7 +82,7 @@ function Title() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2] font-bold whitespace-pre-wrap">¿Cómo gano con este modelo?</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-bold whitespace-pre-wrap">¿Cómo gano con este modelo?</h2>
       </div>
     </div>
   );
@@ -123,7 +123,7 @@ function Title1() {
   return (
     <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2] font-bold whitespace-pre-wrap">Elegí tu fracción</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-bold whitespace-pre-wrap">Elegí tu fracción</h2>
       </div>
     </div>
   );
@@ -415,6 +415,7 @@ function Frame16() {
       <Header2 />
       <Header3 />
       <Header4 />
+      <Header5 />
       <p className="font-['Helvetica:Regular',sans-serif] opacity-70 relative shrink-0 text-[#040404] text-[13px] tracking-[-0.13px] w-full max-w-[393px] whitespace-pre-wrap">* Los valores son estimados. La renta hotelera (RH) puede variar según ocupación y tarifa.</p>
     </div>
   );
@@ -428,8 +429,9 @@ function FractionViewerInteractive() {
   const BASE = activeTab === "norte" ? 22500 : 25000;
   const fractions = activeDot + 1;
   const investment = BASE * fractions;
-  const rentaEspera   = Math.round(investment * 0.05  / 12);
-  const rentaHotelera = Math.round(investment * 0.10  / 12);
+  const rentaEspera     = Math.round(investment * 0.05  / 12);
+  const rentaHotelera   = Math.round(investment * 0.10  / 12);
+  const rentaAsegurada  = Math.round(investment * 0.05  / 12);
 
   const fmt = (n: number) => n.toLocaleString("es-AR");
 
@@ -517,10 +519,21 @@ function FractionViewerInteractive() {
         <div className="content-stretch flex items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
           <div className="flex flex-[1_0_0] flex-col items-start justify-center min-w-0">
             <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[14px] lg:text-[22px] tracking-[-0.22px]">RENTA HOTELERA</p>
-            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(8–12% anual est.)</p>
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(5% anual)</p>
           </div>
           <div className="flex items-end justify-end shrink-0">
             <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaHotelera)}</p>
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
+          </div>
+        </div>
+        {/* RENTA ASEGURADA */}
+        <div className="content-stretch flex items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
+          <div className="flex flex-[1_0_0] flex-col items-start justify-center min-w-0">
+            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[14px] lg:text-[22px] tracking-[-0.22px]">RENTA ASEGURADA</p>
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">(5% anual)</p>
+          </div>
+          <div className="flex items-end justify-end shrink-0">
+            <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] transition-all duration-300">+U$D {fmt(rentaAsegurada)}</p>
             <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[11px] lg:text-[13px] tracking-[-0.13px]">/MES</p>
           </div>
         </div>
@@ -559,7 +572,7 @@ function Title2() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[36px] lg:text-[48px] text-black tracking-[-0.6px] whitespace-nowrap">
-        <h2 className="block leading-[1.2] font-bold">El proyecto</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-bold">El proyecto</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
         <Number />
@@ -700,7 +713,7 @@ function Group10() {
 
 function Portada() {
   return (
-    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="fade-up">
+    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="reveal" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5457">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -1698,15 +1711,15 @@ function PersonalitySection() {
           <Portada />
         </div>
         <ToneAndVoice />
-        <section className="content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center py-[40px] lg:py-[80px] relative shrink-0 w-full" data-name="Galería de fotos" data-gsap="fade-up">
+        <section className="content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center py-[40px] lg:py-[80px] relative shrink-0 w-full" data-name="Galería de fotos" data-gsap="fade-left">
           <TitleAndSubtitle />
           <Container4 />
         </section>
-        <section id="avance" className="bg-white content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center py-[40px] lg:py-[80px] relative shrink-0 w-full" data-name="Avance de obra" data-gsap="fade-up">
+        <section id="avance" className="bg-white content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center py-[40px] lg:py-[80px] relative shrink-0 w-full" data-name="Avance de obra" data-gsap="fade-right">
           <TitleAndSubtitle1 />
           <Container6 />
         </section>
-        <section className="bg-white content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center py-[40px] lg:py-[80px] relative shrink-0 w-full" data-name="Ubicación" data-gsap="fade-up">
+        <section className="bg-white content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center py-[40px] lg:py-[80px] relative shrink-0 w-full" data-name="Ubicación" data-gsap="fade-left">
           <Header13 />
           <Container8 />
         </section>
@@ -1717,7 +1730,7 @@ function PersonalitySection() {
 
 function Banner1() {
   return (
-    <section id="banner" className="relative shrink-0 w-full" data-name="Banner" data-gsap="fade-up">
+    <section id="banner" className="relative shrink-0 w-full" data-name="Banner" data-gsap="scale-in">
       <div aria-hidden="true" className="absolute border-[#eae9e8] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="flex flex-col justify-center size-full">
         <div className="content-stretch flex flex-col items-start justify-center p-[16px] lg:p-[32px] relative w-full">
@@ -1743,7 +1756,7 @@ function Title3() {
   return (
     <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[30px] lg:text-[42px] text-black tracking-[-0.6px]">
-        <h2 className="block leading-[1.2] font-bold">El próximo capítulo (Neuquén)</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-bold">El próximo capítulo (Neuquén)</h2>
       </div>
       <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
         <Number1 />
@@ -1913,7 +1926,7 @@ function Group11() {
 
 function Portada1() {
   return (
-    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="fade-up">
+    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="reveal" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5458">
         <img alt="Edificio La Barceloneta Neuquén" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5458} />
@@ -2112,7 +2125,7 @@ function Title4() {
   return (
     <div className="content-stretch flex flex-[1_0_0] items-end min-h-px min-w-px relative" data-name="Title">
       <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[28px] lg:text-[40px] text-black tracking-[-0.6px] w-full lg:w-[454px]">
-        <h2 className="block leading-[1.2] font-bold whitespace-pre-wrap">Experiencias reales de quienes ya están invirtiendo</h2>
+        <h2 data-gsap-title className="block leading-[1.2] font-bold whitespace-pre-wrap">Experiencias reales de quienes ya están invirtiendo</h2>
       </div>
     </div>
   );
@@ -2226,20 +2239,67 @@ function Header15() {
   );
 }
 
+function InfiniteTestimonialCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const animationRef = useRef<number>();
+  const scrollPos = useRef(0);
+  const speed = 0.5; // px per frame
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    // Wait for layout to settle so scrollWidth is accurate
+    const halfWidth = el.scrollWidth / 2;
+
+    const animate = () => {
+      if (!isPaused) {
+        scrollPos.current += speed;
+        if (scrollPos.current >= halfWidth) {
+          scrollPos.current -= halfWidth;
+        }
+        el.scrollLeft = scrollPos.current;
+      }
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [isPaused]);
+
+  // Duplicate items for seamless loop
+  const items = [...TESTIMONIALS_DATA, ...TESTIMONIALS_DATA];
+
+  return (
+    <div
+      ref={scrollRef}
+      className="mt-[32px] lg:mt-[48px] flex gap-[16px] overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+    >
+      {items.map((t, i) => (
+        <TestimonialCard key={i} {...t} />
+      ))}
+    </div>
+  );
+}
+
 function StrategySection1() {
   return (
-    <section className="relative shrink-0 w-full" id="testimonios" data-name="Strategy section" data-gsap="fade-up">
+    <section className="relative shrink-0 w-full" id="testimonios" data-name="Strategy section" data-gsap="scale-in">
       <div className="content-stretch flex flex-col items-start pl-[16px] lg:pl-[32px] pt-[60px] lg:pt-[120px] pb-[40px] lg:pb-[80px] relative w-full">
         {/* Header: title left + empty spacer right (Figma original layout) */}
         <Header15 />
-        {/* Scroll track of testimonial cards — drag to scroll on desktop */}
+        {/* Infinite scrolling testimonial carousel */}
         <div className="relative w-full">
-        <DragScrollContainer className="mt-[32px] lg:mt-[48px] flex gap-[16px] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full">
-          {TESTIMONIALS_DATA.map((t, i) => (
-            <TestimonialCard key={i} {...t} />
-          ))}
-        </DragScrollContainer>
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-[40px] bg-gradient-to-l from-white to-transparent" />
+          <InfiniteTestimonialCarousel />
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-[40px] bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-[40px] bg-gradient-to-l from-white to-transparent z-10" />
         </div>
       </div>
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-solid border-t inset-0 pointer-events-none" />
@@ -2802,7 +2862,7 @@ function Main1() {
       <StrategySection1 />
       <PressSection />
       <Frame59 />
-      <div id="contacto" className="bg-white relative shrink-0 w-full" data-name="Form" data-gsap="fade-up">
+      <div id="contacto" className="bg-white relative shrink-0 w-full" data-name="Form" data-gsap="scale-in">
         <div className="overflow-clip rounded-[inherit] w-full">
           <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
             <ContactHeader />

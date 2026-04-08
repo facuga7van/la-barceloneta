@@ -1,4 +1,6 @@
+import React from "react";
 import svgPaths from "../imports/svg-1a10080iez";
+import { useHeroAnimations } from "../hooks/useHeroAnimations";
 
 function Frame40() {
   return (
@@ -15,7 +17,7 @@ function Frame42() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
       <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[40px] lg:text-[88px] text-white tracking-[2px] lg:tracking-[4px] uppercase w-full">
-        <h1 className="block leading-none whitespace-pre-wrap">No vendemos metros</h1>
+        <h1 data-hero-headline className="block leading-none whitespace-pre-wrap">No vendemos metros</h1>
       </div>
       <Frame40 />
     </div>
@@ -27,7 +29,7 @@ function Text() {
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-center min-h-px min-w-px relative" data-name="Text">
       <Frame42 />
       <div className="flex flex-col font-['Barlow_Semi_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[18px] lg:text-[30px] text-white tracking-[-1px] lg:tracking-[-2px] uppercase w-full">
-        <p className="leading-[0.9] whitespace-pre-wrap">El real estate volvió a ser negocio.</p>
+        <p data-hero-subtitle className="leading-[0.9] whitespace-pre-wrap">El real estate volvió a ser negocio.</p>
       </div>
     </div>
   );
@@ -43,7 +45,7 @@ function Frame41() {
 
 function PrimaryButton() {
   return (
-    <a href="https://wa.me/5491173646541" target="_blank" rel="noopener noreferrer" className="bg-white content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-full sm:w-[265px] no-underline cursor-pointer hover:bg-gray-100 transition-colors" data-name="Primary button">
+    <a data-hero-cta href="https://wa.me/5491173646541" target="_blank" rel="noopener noreferrer" className="bg-white content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-full sm:w-[265px] no-underline cursor-pointer hover:bg-gray-100 transition-colors" data-name="Primary button">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic overflow-hidden relative text-[#141414] text-[15px] text-center text-ellipsis tracking-[-0.15px] whitespace-nowrap">
         <p className="leading-[1.2] overflow-hidden">Quiero invertir</p>
       </div>
@@ -90,7 +92,7 @@ function Frame57() {
 
 function Content() {
   return (
-    <div className="content-stretch flex items-end justify-between relative shrink-0 w-full" data-name="Content" data-gsap="fade-up">
+    <div className="content-stretch flex items-end justify-between relative shrink-0 w-full" data-name="Content">
       <Frame57 />
     </div>
   );
@@ -318,7 +320,7 @@ function Row6() {
 
 function Logos() {
   return (
-    <div className="hidden lg:flex absolute content-stretch flex-col gap-[16px] items-start left-[32px] top-[136px] w-[113px]" data-name="Logos">
+    <div data-hero-logo className="hidden lg:flex absolute content-stretch flex-col gap-[16px] items-start left-[32px] top-[136px] w-[113px]" data-name="Logos">
       <Row4 />
       <Row5 />
       <Row6 />
@@ -327,9 +329,10 @@ function Logos() {
 }
 
 export default function HeroSection() {
+  const heroRef = useHeroAnimations();
   return (
-    <div className="h-[100svh] lg:h-[640px] overflow-clip relative shrink-0 w-full" data-name="Hero" id="inicio">
-      <video aria-label="Logo on colored background" autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop muted playsInline poster={`${import.meta.env.BASE_URL}images/hero-poster.jpg`} preload="metadata">
+    <div ref={heroRef as React.RefObject<HTMLDivElement>} className="h-[100svh] lg:h-[640px] overflow-clip relative shrink-0 w-full" data-name="Hero" id="inicio">
+      <video data-hero-bg aria-label="Logo on colored background" autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop muted playsInline poster={`${import.meta.env.BASE_URL}images/hero-poster.jpg`} preload="metadata">
         <source src={`${import.meta.env.BASE_URL}videos/2bd5ae44656fe5e0504e38223d283ffeb8c6d21e.mp4`} type="video/mp4" />
       </video>
       <IntroSection />
