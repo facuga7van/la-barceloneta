@@ -5,8 +5,8 @@ import { useHeroAnimations } from "../hooks/useHeroAnimations";
 function Frame42() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full font-['Barlow_Condensed',sans-serif] font-normal">
-      <h1 data-hero-headline className="text-[48px] lg:text-[88px] text-white tracking-[-4px] uppercase leading-[1] whitespace-pre-wrap m-0 font-normal">No vendemos metros</h1>
-      <h1 data-hero-headline className="text-[48px] lg:text-[88px] text-white tracking-[-4px] uppercase leading-[1] whitespace-pre-wrap m-0 font-normal">____ CREAMOS RENTABILIDAD</h1>
+      <h1 data-hero-headline className="text-[48px] lg:text-[88px] text-white tracking-[-4px] uppercase leading-[1] whitespace-nowrap m-0 font-normal">No vendemos metros</h1>
+      <h1 data-hero-headline className="text-[48px] lg:text-[88px] text-white tracking-[-4px] uppercase leading-[1] whitespace-nowrap m-0 font-normal">____ CREAMOS RENTABILIDAD</h1>
     </div>
   );
 }
