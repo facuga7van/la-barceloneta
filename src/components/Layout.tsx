@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, type ReactNode } from 
 import { Link, useNavigate, useLocation } from "react-router";
 import "../lib/gsap-setup";
 import { useGSAPAnimations } from "../hooks/useGSAPAnimations";
+import { useParallax } from "../hooks/useParallax";
 import { useNavbarAnimation } from "../hooks/useNavbarAnimation";
 import { usePageTransition } from "../hooks/usePageTransition";
 import svgPaths from "../imports/svg-1a10080iez";
@@ -244,6 +245,7 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
   const location = useLocation();
 
   useGSAPAnimations();
+  useParallax();
   const navRef = useNavbarAnimation();
   const contentRef = usePageTransition();
 

@@ -802,7 +802,7 @@ function Group10() {
 
 function Portada() {
   return (
-    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="fade-up">
+    <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="fade-up" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5457">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -2017,7 +2017,7 @@ function Group11() {
 
 function Portada1() {
   return (
-    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="fade-up">
+    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="fade-up" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5458">
         <img alt="Edificio La Barceloneta Neuquén" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5458} />
