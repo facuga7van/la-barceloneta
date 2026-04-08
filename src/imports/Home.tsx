@@ -509,9 +509,10 @@ function FractionViewerInteractive() {
         <div ref={sliderTrackRef} className="content-stretch flex isolate items-center relative shrink-0 w-full z-[1] px-[8px] mb-8" data-name="Slider">
           {Array.from({ length: TOTAL_DOTS }).flatMap((_, i) => {
             const isSelected = i === activeDot;
-            const isBefore = i < activeDot;
+            const isBefore = i <= activeDot;
             const items: React.ReactElement[] = [];
             if (i > 0) {
+              // Line between dot i-1 and dot i: painted if dot i is at or before selected
               items.push(
                 <div key={`d-${i}`} className={`flex-[1_0_0] h-[2px] min-h-px min-w-px transition-colors duration-300 ${isBefore ? "bg-[#040404]" : "bg-[#c4c4c4]"}`} />
               );
