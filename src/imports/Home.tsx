@@ -479,34 +479,7 @@ function FractionViewerInteractive() {
 
   const planSrc = imgImage5472;
 
-  // Draggable slider
   const sliderTrackRef = useRef<HTMLDivElement>(null);
-  const sliderDragging = useRef(false);
-
-  const getSliderDot = useCallback((clientX: number) => {
-    const el = sliderTrackRef.current;
-    if (!el) return activeDot;
-    const rect = el.getBoundingClientRect();
-    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-    const dot = Math.round((x / rect.width) * (TOTAL_DOTS - 1));
-    return Math.max(0, Math.min(TOTAL_DOTS - 1, dot));
-  }, [activeDot, TOTAL_DOTS]);
-
-  const onSliderPointerDown = useCallback((e: React.PointerEvent) => {
-    sliderDragging.current = true;
-    e.currentTarget.setPointerCapture(e.pointerId);
-    setActiveDot(getSliderDot(e.clientX));
-  }, [getSliderDot]);
-
-  const onSliderPointerMove = useCallback((e: React.PointerEvent) => {
-    if (!sliderDragging.current) return;
-    setActiveDot(getSliderDot(e.clientX));
-  }, [getSliderDot]);
-
-  const onSliderPointerUp = useCallback((e: React.PointerEvent) => {
-    sliderDragging.current = false;
-    e.currentTarget.releasePointerCapture(e.pointerId);
-  }, []);
 
   return (
     <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start pt-[32px] relative shrink-0 w-full">
@@ -532,47 +505,38 @@ function FractionViewerInteractive() {
         </div>
         {/* Floor plan */}
         <Grafico planSrc={planSrc} fraction={activeDot} totalFractions={TOTAL_DOTS} onFractionChange={setActiveDot} />
-        {/* Slider — draggable + clickable, thumb slides smooth between dots */}
-        <div
-          ref={sliderTrackRef}
-          className="relative w-full z-[1] mb-10 cursor-grab active:cursor-grabbing select-none touch-none h-[26px]"
-          data-name="Slider"
-          onPointerDown={onSliderPointerDown}
-          onPointerMove={onSliderPointerMove}
-          onPointerUp={onSliderPointerUp}
-          onPointerCancel={onSliderPointerUp}
-        >
-          {/* Track background */}
-          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#c4c4c4] rounded-full" />
-          {/* Track fill — smooth animated width */}
-          <div
-            className="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#040404] rounded-full"
-            style={{ width: `${(activeDot / (TOTAL_DOTS - 1)) * 100}%`, transition: "width 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
-          />
-          {/* Static dots (click targets) */}
-          <div className="absolute inset-0 flex items-center justify-between">
-            {Array.from({ length: TOTAL_DOTS }).map((_, i) => (
+        {/* Slider — click dots to select fraction */}
+        <div ref={sliderTrackRef} className="content-stretch flex isolate items-center relative shrink-0 w-full z-[1] px-[8px] mb-8" data-name="Slider">
+          {Array.from({ length: TOTAL_DOTS }).flatMap((_, i) => {
+            const isSelected = i === activeDot;
+            const isBefore = i < activeDot;
+            const items: React.ReactElement[] = [];
+            if (i > 0) {
+              items.push(
+                <div key={`d-${i}`} className={`flex-[1_0_0] h-[2px] min-h-px min-w-px transition-colors duration-300 ${isBefore ? "bg-[#040404]" : "bg-[#c4c4c4]"}`} />
+              );
+            }
+            items.push(
               <button
-                key={i}
+                key={`b-${i}`}
                 type="button"
-                onClick={(e) => { e.stopPropagation(); setActiveDot(i); }}
-                className="relative flex items-center justify-center size-[26px] cursor-pointer p-0 bg-transparent border-none"
+                onClick={() => setActiveDot(i)}
+                className="relative cursor-pointer flex items-center justify-center shrink-0 p-[4px]"
                 aria-label={`${i + 1}/${TOTAL_DOTS} fracciones`}
               >
-                <div className={`rounded-full transition-all duration-300 ${i <= activeDot ? "size-[8px] bg-[#040404]" : "size-[8px] bg-[#c4c4c4]"}`} />
+                {isSelected ? (
+                  <div className="bg-[#040404] rounded-[9999px] size-[14px] relative transition-transform duration-300 scale-100">
+                    <p className="absolute font-['Helvetica:Bold',sans-serif] font-bold text-[#040404] text-[16px] tracking-[-0.16px] leading-[1.2] top-[20px] left-1/2 -translate-x-1/2 whitespace-nowrap">
+                      {`${i + 1}/${TOTAL_DOTS}`}
+                    </p>
+                  </div>
+                ) : (
+                  <div className={`rounded-[9999px] size-[14px] border-2 transition-all duration-300 ${isBefore ? "bg-[#040404] border-[#040404]" : "bg-white border-[#c4c4c4]"}`} />
+                )}
               </button>
-            ))}
-          </div>
-          {/* Sliding thumb — absolutely positioned, transitions between positions */}
-          <div
-            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none"
-            style={{ left: `${(activeDot / (TOTAL_DOTS - 1)) * 100}%`, transition: "left 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
-          >
-            <div className="size-[20px] rounded-full bg-[#040404] shadow-[0_0_0_4px_rgba(4,4,4,0.15)]" />
-            <p className="font-['Helvetica:Bold',sans-serif] font-bold text-[#040404] text-[16px] tracking-[-0.16px] leading-[1.2] mt-[6px] whitespace-nowrap">
-              {`${activeDot + 1}/${TOTAL_DOTS}`}
-            </p>
-          </div>
+            );
+            return items;
+          })}
         </div>
       </div>
       {/* Right: dynamic investment table */}
