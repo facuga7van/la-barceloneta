@@ -188,7 +188,7 @@ function ContentWrapper2() {
       {submitError && (
         <p className="font-['Helvetica:Regular',sans-serif] text-[14px] text-[#f20909] leading-[1.4]">Hubo un error al enviar. Intentá de nuevo.</p>
       )}
-      <button type="submit" disabled={submitting} className="bg-black content-stretch flex items-center justify-center px-[20px] py-[14px] relative rounded-[40px] shrink-0 w-[212px] cursor-pointer hover:bg-[#333] hover:scale-[1.02] transition-all disabled:opacity-60 disabled:cursor-not-allowed">
+      <button type="submit" disabled={submitting} data-gsap-cta className="bg-black content-stretch flex items-center justify-center px-[20px] py-[14px] relative rounded-[40px] shrink-0 w-full sm:w-[212px] cursor-pointer hover:bg-[#333] hover:scale-[1.02] transition-all disabled:opacity-60 disabled:cursor-not-allowed">
         <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[15px] text-white tracking-[-0.15px]">{submitting ? "Enviando..." : "Enviar mensaje"}</p>
       </button>
     </form>
@@ -300,13 +300,13 @@ function Text5() {
 function SocialIcon() {
   return (
     <div className="flex gap-[32px] items-center" data-name="Social Icon">
-      <a href="https://www.facebook.com/labarcelonetafeelfree" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-black hover:opacity-60 transition-opacity">
+      <a href="https://www.facebook.com/labarcelonetafeelfree" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-black hover:opacity-60 transition-opacity p-[10px]">
         <FbIcon size={24} strokeWidth={1.5} />
       </a>
-      <a href="https://www.instagram.com/labarceloneta.bsas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-black hover:opacity-60 transition-opacity">
+      <a href="https://www.instagram.com/labarceloneta.bsas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-black hover:opacity-60 transition-opacity p-[10px]">
         <IgIcon size={24} strokeWidth={1.5} />
       </a>
-      <a href="https://www.linkedin.com/company/la-barceloneta-feel-free/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-black hover:opacity-60 transition-opacity">
+      <a href="https://www.linkedin.com/company/la-barceloneta-feel-free/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-black hover:opacity-60 transition-opacity p-[10px]">
         <LiIcon size={24} strokeWidth={1.5} />
       </a>
     </div>

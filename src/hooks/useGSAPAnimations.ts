@@ -97,6 +97,21 @@ export function useGSAPAnimations() {
         );
       });
 
+      // CTA button hover — with explicit cleanup for vanilla event listeners
+      const ctas = gsap.utils.toArray<HTMLElement>("[data-gsap-cta]");
+      ctas.forEach((btn) => {
+        const enter = () => gsap.to(btn, { scale: 1.05, duration: 0.2 });
+        const leave = () => gsap.to(btn, { scale: 1, duration: 0.2 });
+        btn.addEventListener("mouseenter", enter);
+        btn.addEventListener("mouseleave", leave);
+        context.add(() => {
+          return () => {
+            btn.removeEventListener("mouseenter", enter);
+            btn.removeEventListener("mouseleave", leave);
+          };
+        });
+      });
+
       // Footer reveal — dedicated ScrollTrigger with refreshPriority: 4
       const footers = gsap.utils.toArray<HTMLElement>("[data-gsap-footer]");
       footers.forEach((footer) => {

@@ -191,7 +191,7 @@ function MenuItems({ isAboutPage }: { isAboutPage?: boolean }) {
 
 function InvertirButton() {
   return (
-    <a href="https://wa.me/5491173646541" target="_blank" rel="noopener noreferrer" className="bg-[#f20909] relative shrink-0 w-full block no-underline text-inherit cursor-pointer hover:bg-[#d00808] transition-colors" data-name="Button">
+    <a href="https://wa.me/5491173646541" target="_blank" rel="noopener noreferrer" className="bg-[#f20909] relative shrink-0 w-full block no-underline text-inherit cursor-pointer hover:bg-[#d00808] transition-colors" data-name="Button" data-gsap-cta>
       <div className="flex flex-col items-center justify-end overflow-clip rounded-[inherit] size-full">
         <div className="content-stretch flex flex-col gap-[8px] items-center justify-end pb-[16px] pt-[24px] px-[8px] relative w-full">
           <div className="flex h-[74px] items-center justify-center relative shrink-0 w-[26px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "21" } as React.CSSProperties}>
