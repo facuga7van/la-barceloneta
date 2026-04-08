@@ -55,7 +55,7 @@ export default function RentaCards() {
             key={i}
             data-name={`Card${i + 1}`}
             data-gsap="fade-up"
-            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-colors duration-300 overflow-hidden border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
+            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-all duration-300 overflow-hidden border-t border-b border-[rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] hover:-translate-y-1 active:translate-y-0 active:shadow-none ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
             style={{ backgroundColor: isActive ? card.bgColor : undefined }}
             onClick={() => setActiveCard(isActive ? null : i)}
             onMouseMove={onCardMouseMove}
