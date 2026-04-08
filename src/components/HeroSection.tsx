@@ -107,7 +107,7 @@ function Content() {
 
 function IntroSection() {
   return (
-    <section className="absolute bottom-0 content-stretch flex flex-col items-start justify-end left-0 p-[16px] lg:p-[32px] right-0" data-name="Intro section">
+    <section className="absolute bottom-0 content-stretch flex flex-col items-start justify-end left-0 px-[16px] lg:px-[32px] pt-[16px] lg:pt-[32px] pb-[40px] lg:pb-[64px] right-0" data-name="Intro section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid inset-0 pointer-events-none" />
       <Content />
     </section>
