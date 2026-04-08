@@ -1941,7 +1941,7 @@ function Container10() {
 
 function ContentWrapper1() {
   return (
-    <div className="hidden lg:flex absolute bg-[#040404] bottom-[20px] content-stretch h-auto items-center p-[30px] right-[98px] w-[295px] z-10" data-name="Content Wrapper">
+    <div className="hidden lg:flex absolute bg-[#040404] bottom-[-40px] content-stretch h-auto items-center p-[30px] right-[98px] w-[295px] z-10" data-name="Content Wrapper">
       <Container10 />
     </div>
   );
@@ -1971,7 +1971,7 @@ function Group11() {
 
 function Portada1() {
   return (
-    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden" data-name="Portada" data-gsap="scale-in" data-parallax="slow">
+    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-visible" data-name="Portada" data-gsap="scale-in" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
       <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen right-[16px] lg:right-[62px] top-[20px] lg:top-[35px]" data-name="image 5458">
         <img alt="Edificio La Barceloneta Neuquén" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5458} />
