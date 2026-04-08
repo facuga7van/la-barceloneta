@@ -532,10 +532,10 @@ function FractionViewerInteractive() {
         </div>
         {/* Floor plan */}
         <Grafico planSrc={planSrc} fraction={activeDot} totalFractions={TOTAL_DOTS} onFractionChange={setActiveDot} />
-        {/* Slider — draggable + clickable, snaps to nearest dot */}
+        {/* Slider — draggable + clickable, thumb slides smooth between dots */}
         <div
           ref={sliderTrackRef}
-          className="relative w-full z-[1] px-[8px] mb-8 cursor-grab active:cursor-grabbing select-none touch-none"
+          className="relative w-full z-[1] mb-10 cursor-grab active:cursor-grabbing select-none touch-none h-[26px]"
           data-name="Slider"
           onPointerDown={onSliderPointerDown}
           onPointerMove={onSliderPointerMove}
@@ -543,42 +543,35 @@ function FractionViewerInteractive() {
           onPointerCancel={onSliderPointerUp}
         >
           {/* Track background */}
-          <div className="absolute left-[8px] right-[8px] top-1/2 -translate-y-1/2 h-[2px] bg-[#c4c4c4]" />
-          {/* Track fill — animated width */}
+          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#c4c4c4] rounded-full" />
+          {/* Track fill — smooth animated width */}
           <div
-            className="absolute left-[8px] top-1/2 -translate-y-1/2 h-[2px] bg-[#040404] transition-[width] duration-300 ease-out"
-            style={{ width: `${(activeDot / (TOTAL_DOTS - 1)) * 100}%` }}
+            className="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#040404] rounded-full"
+            style={{ width: `${(activeDot / (TOTAL_DOTS - 1)) * 100}%`, transition: "width 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
           />
-          {/* Dots */}
-          <div className="relative flex items-center justify-between w-full">
-            {Array.from({ length: TOTAL_DOTS }).map((_, i) => {
-              const isSelected = i === activeDot;
-              const isBefore = i <= activeDot;
-              return (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={(e) => { e.stopPropagation(); setActiveDot(i); }}
-                  className="relative flex items-center justify-center shrink-0 p-[4px] cursor-pointer"
-                  aria-label={`${i + 1}/${TOTAL_DOTS} fracciones`}
-                >
-                  <div
-                    className={`rounded-full transition-all duration-300 ease-out ${
-                      isSelected
-                        ? "size-[18px] bg-[#040404] scale-100"
-                        : isBefore
-                        ? "size-[10px] bg-[#040404]"
-                        : "size-[10px] bg-white border-2 border-[#c4c4c4]"
-                    }`}
-                  />
-                  {isSelected && (
-                    <p className="absolute font-['Helvetica:Bold',sans-serif] font-bold text-[#040404] text-[16px] tracking-[-0.16px] leading-[1.2] top-[28px] left-1/2 -translate-x-1/2 whitespace-nowrap animate-[numberPop_0.3s_ease-out]">
-                      {`${i + 1}/${TOTAL_DOTS}`}
-                    </p>
-                  )}
-                </button>
-              );
-            })}
+          {/* Static dots (click targets) */}
+          <div className="absolute inset-0 flex items-center justify-between">
+            {Array.from({ length: TOTAL_DOTS }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setActiveDot(i); }}
+                className="relative flex items-center justify-center size-[26px] cursor-pointer p-0 bg-transparent border-none"
+                aria-label={`${i + 1}/${TOTAL_DOTS} fracciones`}
+              >
+                <div className={`rounded-full transition-all duration-300 ${i <= activeDot ? "size-[8px] bg-[#040404]" : "size-[8px] bg-[#c4c4c4]"}`} />
+              </button>
+            ))}
+          </div>
+          {/* Sliding thumb — absolutely positioned, transitions between positions */}
+          <div
+            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none"
+            style={{ left: `${(activeDot / (TOTAL_DOTS - 1)) * 100}%`, transition: "left 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
+          >
+            <div className="size-[20px] rounded-full bg-[#040404] shadow-[0_0_0_4px_rgba(4,4,4,0.15)]" />
+            <p className="font-['Helvetica:Bold',sans-serif] font-bold text-[#040404] text-[16px] tracking-[-0.16px] leading-[1.2] mt-[6px] whitespace-nowrap">
+              {`${activeDot + 1}/${TOTAL_DOTS}`}
+            </p>
           </div>
         </div>
       </div>
