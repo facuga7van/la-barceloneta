@@ -255,7 +255,8 @@ function Grafico({
     return Math.round((x / rect.width) * (totalFractions - 1));
   };
 
-  const overlayPct = ((fraction + 1) / totalFractions) * 100;
+  // Sync with slider: dot 0 = left edge (0%), dot 7 = right edge (100%)
+  const overlayPct = (fraction / (totalFractions - 1)) * 100;
 
   return (
     <div
