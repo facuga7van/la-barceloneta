@@ -284,7 +284,7 @@ function Grafico({
       {/* Draggable overlay — grows left→right as fraction increases */}
       <div
         className="absolute top-0 left-0 h-full bg-[rgba(0,0,0,0.08)] z-[2] pointer-events-none"
-        style={{ width: `${overlayPct}%` }}
+        style={{ width: `${overlayPct}%`, transition: "width 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
       >
         {/* Right border = thumb cursor */}
         <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-[#040404]" />
