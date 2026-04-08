@@ -331,7 +331,7 @@ function Logos() {
 export default function HeroSection() {
   const heroRef = useHeroAnimations();
   return (
-    <div ref={heroRef as React.RefObject<HTMLDivElement>} className="h-[100svh] lg:h-[640px] overflow-clip relative shrink-0 w-full" data-name="Hero" id="inicio">
+    <div ref={heroRef as React.RefObject<HTMLDivElement>} className="h-[100svh] overflow-clip relative shrink-0 w-full" data-name="Hero" id="inicio">
       <video data-hero-bg aria-label="Logo on colored background" autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop muted playsInline poster={`${import.meta.env.BASE_URL}images/hero-poster.jpg`} preload="metadata">
         <source src={`${import.meta.env.BASE_URL}videos/2bd5ae44656fe5e0504e38223d283ffeb8c6d21e.mp4`} type="video/mp4" />
       </video>
