@@ -73,6 +73,10 @@ export default function RentaCards() {
                 }}
               />
             )}
+            {/* (+) / (×) toggle button — always visible */}
+            <div className={`absolute top-[24px] lg:top-[40px] right-[24px] lg:right-[40px] w-[28px] h-[28px] rounded-full border flex items-center justify-center transition-all duration-300 ${isActive ? 'border-white/40 text-white/40 rotate-45' : 'border-[#c4c4c4] text-[#c4c4c4]'}`}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+            </div>
             {/* Default state: metric + title/subtitle */}
             <div
               className={`flex flex-col flex-1 justify-end gap-[32px] transition-all duration-400 ease-in-out ${isActive ? "opacity-0 max-h-0 overflow-hidden" : "opacity-100"}`}
@@ -93,9 +97,9 @@ export default function RentaCards() {
                   {card.subtitle}
                 </p>
               </div>
-              {/* "Ver más" indicator */}
-              <div className={`flex items-center gap-[6px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
-                <span className={`font-['Helvetica:Regular',sans-serif] text-[13px] tracking-[-0.13px] ${isActive ? 'text-white/70' : 'text-[#575757]'}`}>
+              {/* "Ver más" indicator — always visible */}
+              <div className="flex items-center gap-[6px]">
+                <span className={`font-['Helvetica:Regular',sans-serif] text-[13px] tracking-[-0.13px] transition-colors duration-300 ${isActive ? 'text-white/70' : 'text-[#575757]'}`}>
                   Ver más
                 </span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="translate-y-[1px]">
