@@ -38,12 +38,16 @@ export default function RentaCards() {
 
   // Refs for measuring expanded content height for smooth animation
   const detailRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [detailHeights, setDetailHeights] = useState<number[]>([0, 0, 0]);
+  const detailHeights = useRef<number[]>([]);
 
+  // Measure once after mount — detail content is rendered but hidden (maxHeight:0)
   useEffect(() => {
-    const heights = detailRefs.current.map(el => el?.scrollHeight ?? 0);
-    setDetailHeights(heights);
-  }, [activeCard]);
+    detailRefs.current.forEach((el, i) => {
+      if (el && !detailHeights.current[i]) {
+        detailHeights.current[i] = el.scrollHeight;
+      }
+    });
+  });
 
   return (
     <div className="content-stretch flex flex-col lg:flex-row items-stretch relative shrink-0 w-full" data-name="Cards">
@@ -113,7 +117,7 @@ export default function RentaCards() {
               ref={el => { detailRefs.current[i] = el; }}
               className="overflow-hidden transition-all duration-400 ease-in-out"
               style={{
-                maxHeight: isActive ? `${detailHeights[i] || 600}px` : "0px",
+                maxHeight: isActive ? `${detailHeights.current[i] || 300}px` : "0px",
                 opacity: isActive ? 1 : 0,
               }}
             >
