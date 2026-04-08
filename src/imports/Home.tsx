@@ -479,36 +479,34 @@ function FractionViewerInteractive() {
 
   const planSrc = imgImage5472;
 
-  const sliderItems = Array.from({ length: TOTAL_DOTS }).flatMap((_, i) => {
-    const isSelected = i === activeDot;
-    const isBefore   = i < activeDot;
-    const items: React.ReactElement[] = [];
-    if (i > 0) {
-      items.push(
-        <div key={`d-${i}`} className={`flex-[1_0_0] h-[2px] min-h-px min-w-px transition-colors duration-300 ${isBefore ? "bg-[#040404]" : "bg-[#c4c4c4]"}`} />
-      );
-    }
-    items.push(
-      <button
-        key={`b-${i}`}
-        type="button"
-        onClick={() => setActiveDot(i)}
-        className="relative cursor-pointer flex items-center justify-center shrink-0 p-[4px]"
-        aria-label={`${i + 1}/${TOTAL_DOTS} fracciones`}
-      >
-        {isSelected ? (
-          <div className="bg-[#040404] rounded-[9999px] size-[14px] relative">
-            <p className="absolute font-['Helvetica:Bold',sans-serif] font-bold text-[#040404] text-[16px] tracking-[-0.16px] leading-[1.2] top-[20px] left-1/2 -translate-x-1/2 whitespace-nowrap">
-              {`${i + 1}/${TOTAL_DOTS}`}
-            </p>
-          </div>
-        ) : (
-          <div className={`rounded-[9999px] size-[14px] border-2 transition-colors duration-300 ${isBefore ? "bg-[#040404] border-[#040404]" : "bg-white border-[#c4c4c4]"}`} />
-        )}
-      </button>
-    );
-    return items;
-  });
+  // Draggable slider
+  const sliderTrackRef = useRef<HTMLDivElement>(null);
+  const sliderDragging = useRef(false);
+
+  const getSliderDot = useCallback((clientX: number) => {
+    const el = sliderTrackRef.current;
+    if (!el) return activeDot;
+    const rect = el.getBoundingClientRect();
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+    const dot = Math.round((x / rect.width) * (TOTAL_DOTS - 1));
+    return Math.max(0, Math.min(TOTAL_DOTS - 1, dot));
+  }, [activeDot, TOTAL_DOTS]);
+
+  const onSliderPointerDown = useCallback((e: React.PointerEvent) => {
+    sliderDragging.current = true;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    setActiveDot(getSliderDot(e.clientX));
+  }, [getSliderDot]);
+
+  const onSliderPointerMove = useCallback((e: React.PointerEvent) => {
+    if (!sliderDragging.current) return;
+    setActiveDot(getSliderDot(e.clientX));
+  }, [getSliderDot]);
+
+  const onSliderPointerUp = useCallback((e: React.PointerEvent) => {
+    sliderDragging.current = false;
+    e.currentTarget.releasePointerCapture(e.pointerId);
+  }, []);
 
   return (
     <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start pt-[32px] relative shrink-0 w-full">
@@ -534,9 +532,54 @@ function FractionViewerInteractive() {
         </div>
         {/* Floor plan */}
         <Grafico planSrc={planSrc} fraction={activeDot} totalFractions={TOTAL_DOTS} onFractionChange={setActiveDot} />
-        {/* Slider — click dot to select fraction, table updates. mb-8 to clear the absolute 1/8 label */}
-        <div className="content-stretch flex isolate items-center relative shrink-0 w-full z-[1] px-[8px] mb-8" data-name="Slider">
-          {sliderItems}
+        {/* Slider — draggable + clickable, snaps to nearest dot */}
+        <div
+          ref={sliderTrackRef}
+          className="relative w-full z-[1] px-[8px] mb-8 cursor-grab active:cursor-grabbing select-none touch-none"
+          data-name="Slider"
+          onPointerDown={onSliderPointerDown}
+          onPointerMove={onSliderPointerMove}
+          onPointerUp={onSliderPointerUp}
+          onPointerCancel={onSliderPointerUp}
+        >
+          {/* Track background */}
+          <div className="absolute left-[8px] right-[8px] top-1/2 -translate-y-1/2 h-[2px] bg-[#c4c4c4]" />
+          {/* Track fill — animated width */}
+          <div
+            className="absolute left-[8px] top-1/2 -translate-y-1/2 h-[2px] bg-[#040404] transition-[width] duration-300 ease-out"
+            style={{ width: `${(activeDot / (TOTAL_DOTS - 1)) * 100}%` }}
+          />
+          {/* Dots */}
+          <div className="relative flex items-center justify-between w-full">
+            {Array.from({ length: TOTAL_DOTS }).map((_, i) => {
+              const isSelected = i === activeDot;
+              const isBefore = i <= activeDot;
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); setActiveDot(i); }}
+                  className="relative flex items-center justify-center shrink-0 p-[4px] cursor-pointer"
+                  aria-label={`${i + 1}/${TOTAL_DOTS} fracciones`}
+                >
+                  <div
+                    className={`rounded-full transition-all duration-300 ease-out ${
+                      isSelected
+                        ? "size-[18px] bg-[#040404] scale-100"
+                        : isBefore
+                        ? "size-[10px] bg-[#040404]"
+                        : "size-[10px] bg-white border-2 border-[#c4c4c4]"
+                    }`}
+                  />
+                  {isSelected && (
+                    <p className="absolute font-['Helvetica:Bold',sans-serif] font-bold text-[#040404] text-[16px] tracking-[-0.16px] leading-[1.2] top-[28px] left-1/2 -translate-x-1/2 whitespace-nowrap animate-[numberPop_0.3s_ease-out]">
+                      {`${i + 1}/${TOTAL_DOTS}`}
+                    </p>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
       {/* Right: dynamic investment table */}
