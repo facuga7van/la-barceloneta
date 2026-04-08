@@ -29,7 +29,6 @@ const CARD_DATA = [
 
 export default function RentaCards() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [glowPos, setGlowPos] = useState<{ x: number; y: number } | null>(null);
 
   const onCardMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -50,7 +49,6 @@ export default function RentaCards() {
     <div className="content-stretch flex flex-col lg:flex-row items-stretch relative shrink-0 w-full" data-name="Cards">
       {CARD_DATA.map((card, i) => {
         const isActive = activeCard === i;
-        const isHighlighted = hoveredCard === i || isActive;
 
         return (
           <div
@@ -58,19 +56,13 @@ export default function RentaCards() {
             data-name={`Card${i + 1}`}
             data-gsap="fade-up"
             className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative flex flex-col p-[24px] lg:p-[40px] transition-colors duration-300 overflow-hidden border-t border-b border-[rgba(0,0,0,0.1)] ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
-            style={{ backgroundColor: isHighlighted ? card.bgColor : undefined }}
+            style={{ backgroundColor: isActive ? card.bgColor : undefined }}
             onClick={() => setActiveCard(isActive ? null : i)}
-            onMouseEnter={() => setHoveredCard(i)}
-            onMouseLeave={() => { setHoveredCard(null); setGlowPos(null); }}
             onMouseMove={onCardMouseMove}
-            onTouchEnd={(e) => {
-              // On mobile: prevent hover emulation, just toggle active directly
-              e.preventDefault();
-              setActiveCard(isActive ? null : i);
-            }}
+            onMouseLeave={() => setGlowPos(null)}
           >
             {/* Cursor-following glow spotlight */}
-            {isHighlighted && glowPos && hoveredCard === i && (
+            {isActive && glowPos && (
               <div
                 className="absolute pointer-events-none z-0 rounded-full opacity-20 blur-[60px]"
                 style={{
@@ -86,28 +78,28 @@ export default function RentaCards() {
               className={`flex flex-col flex-1 justify-end gap-[32px] transition-all duration-400 ease-in-out ${isActive ? "opacity-0 max-h-0 overflow-hidden" : "opacity-100"}`}
             >
               <div className="flex flex-col gap-[8px]">
-                <span className={`font-['Helvetica:Regular',sans-serif] leading-[1] text-[40px] lg:text-[60px] tracking-[-0.6px] transition-colors duration-300 ${isHighlighted ? 'text-white' : 'text-[#1e3d59]'}`}>
+                <span className={`font-['Helvetica:Regular',sans-serif] leading-[1] text-[40px] lg:text-[60px] tracking-[-0.6px] transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#1e3d59]'}`}>
                   {card.metric}
                 </span>
-                <span className={`font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[20px] lg:text-[30px] tracking-[-0.6px] transition-colors duration-300 ${isHighlighted ? 'text-white' : 'text-[#575757]'}`}>
+                <span className={`font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[20px] lg:text-[30px] tracking-[-0.6px] transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#575757]'}`}>
                   {card.period}
                 </span>
               </div>
               <div className="flex flex-col gap-[8px]">
-                <p className={`font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[22px] lg:text-[30px] tracking-[-0.6px] transition-colors duration-300 ${isHighlighted ? 'text-white' : 'text-black'}`}>
+                <p className={`font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[22px] lg:text-[30px] tracking-[-0.6px] transition-colors duration-300 ${isActive ? 'text-white' : 'text-black'}`}>
                   {card.title}
                 </p>
-                <p className={`font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[15px] lg:text-[18px] tracking-[-0.18px] opacity-80 transition-colors duration-300 ${isHighlighted ? 'text-white' : 'text-black'}`}>
+                <p className={`font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[15px] lg:text-[18px] tracking-[-0.18px] opacity-80 transition-colors duration-300 ${isActive ? 'text-white' : 'text-black'}`}>
                   {card.subtitle}
                 </p>
               </div>
               {/* "Ver más" indicator */}
-              <div className={`flex items-center gap-[6px] transition-opacity duration-300 ${isHighlighted ? 'opacity-100' : 'opacity-0'}`}>
-                <span className={`font-['Helvetica:Regular',sans-serif] text-[13px] tracking-[-0.13px] ${isHighlighted ? 'text-white/70' : 'text-[#575757]'}`}>
+              <div className={`flex items-center gap-[6px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+                <span className={`font-['Helvetica:Regular',sans-serif] text-[13px] tracking-[-0.13px] ${isActive ? 'text-white/70' : 'text-[#575757]'}`}>
                   Ver más
                 </span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="translate-y-[1px]">
-                  <path d="M7 3v8M3 7h8" stroke={isHighlighted ? "rgba(255,255,255,0.7)" : "#575757"} strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M7 3v8M3 7h8" stroke={isActive ? "rgba(255,255,255,0.7)" : "#575757"} strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
