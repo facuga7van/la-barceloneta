@@ -1028,9 +1028,9 @@ function Row3() {
 
 function Examples() {
   return (
-    <div className="w-full lg:flex-[1_0_0] lg:min-h-px lg:min-w-px relative" data-name="Examples">
+    <div className="w-full lg:w-[280px] lg:shrink-0 relative" data-name="Examples">
       <div className="flex flex-col justify-center w-full lg:size-full">
-        <div className="content-stretch flex flex-col gap-[16px] lg:gap-[40px] items-start justify-start lg:justify-center px-0 lg:px-[80px] relative w-full">
+        <div className="content-stretch flex flex-col gap-[16px] lg:gap-[40px] items-start justify-start lg:justify-center relative w-full">
           <Row />
           <Row1 />
           <Row2 />
@@ -2134,9 +2134,9 @@ function Row9() {
 
 function Examples1() {
   return (
-    <div className="w-full lg:flex-[1_0_0] lg:min-h-px lg:min-w-px relative" data-name="Examples">
+    <div className="w-full lg:w-[280px] lg:shrink-0 relative" data-name="Examples">
       <div className="flex flex-col justify-center lg:size-full">
-        <div className="content-stretch flex flex-col gap-[24px] lg:gap-[40px] items-start justify-center px-0 lg:px-[80px] relative w-full">
+        <div className="content-stretch flex flex-col gap-[24px] lg:gap-[40px] items-start justify-center relative w-full">
           <Row7 />
           <Row8 />
           <Row9 />
