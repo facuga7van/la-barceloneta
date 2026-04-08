@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 const CARD_DATA = [
   {
@@ -36,18 +36,6 @@ export default function RentaCards() {
     setGlowPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   }, []);
 
-  // Refs for measuring expanded content height for smooth animation
-  const detailRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const detailHeights = useRef<number[]>([]);
-
-  // Measure once after mount — detail content is rendered but hidden (maxHeight:0)
-  useEffect(() => {
-    detailRefs.current.forEach((el, i) => {
-      if (el && !detailHeights.current[i]) {
-        detailHeights.current[i] = el.scrollHeight;
-      }
-    });
-  });
 
   return (
     <div className="content-stretch flex flex-col lg:flex-row items-stretch relative shrink-0 w-full" data-name="Cards">
@@ -112,15 +100,15 @@ export default function RentaCards() {
               </div>
             </div>
 
-            {/* Active/expanded state: title + detail — animated with max-height */}
+            {/* Active/expanded state: title + detail — grid row transition (no jank) */}
             <div
-              ref={el => { detailRefs.current[i] = el; }}
-              className="overflow-hidden transition-all duration-400 ease-in-out"
+              className="grid transition-[grid-template-rows,opacity] duration-400 ease-in-out"
               style={{
-                maxHeight: isActive ? `${detailHeights.current[i] || 300}px` : "0px",
+                gridTemplateRows: isActive ? "1fr" : "0fr",
                 opacity: isActive ? 1 : 0,
               }}
             >
+              <div className="overflow-hidden">
               <div className="flex flex-col gap-[16px] pt-[8px]">
                 <h3 className="font-['Helvetica:Regular',sans-serif] leading-[1.2] text-[24px] text-white font-bold tracking-[-0.24px]">
                   {card.title}
@@ -132,6 +120,7 @@ export default function RentaCards() {
                     </p>
                   ) : <br key={li} />
                 )}
+              </div>
               </div>
             </div>
           </div>
