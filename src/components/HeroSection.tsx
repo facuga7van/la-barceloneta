@@ -16,8 +16,8 @@ function Frame40() {
 function Frame42() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
-      <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[40px] lg:text-[88px] text-white tracking-[2px] lg:tracking-[4px] uppercase w-full">
-        <h1 data-hero-headline className="block leading-none whitespace-pre-wrap">No vendemos metros</h1>
+      <div className="flex flex-col font-['Barlow_Condensed:Regular',sans-serif] justify-center not-italic relative shrink-0 text-[40px] lg:text-[64px] text-white tracking-[-4px] uppercase w-full">
+        <h1 data-hero-headline className="block leading-[1] whitespace-pre-wrap">No vendemos metros</h1>
       </div>
       <Frame40 />
     </div>
