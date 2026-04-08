@@ -322,10 +322,45 @@ function Left() {
   );
 }
 
+function TrustIndicators() {
+  return (
+    <div className="flex flex-col gap-[20px] w-full">
+      <div className="flex items-center gap-[12px]">
+        <div className="size-[40px] rounded-full bg-[#f0f4f7] flex items-center justify-center shrink-0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#1e3d59" strokeWidth="1.5" strokeLinejoin="round"/></svg>
+        </div>
+        <div>
+          <p className="font-['Helvetica:Bold',sans-serif] text-[14px] text-black tracking-[-0.14px] leading-[1.2]">Escritura pública</p>
+          <p className="font-['Helvetica:Regular',sans-serif] text-[13px] text-[#575757] tracking-[-0.13px] leading-[1.4]">Respaldo legal desde el día 1</p>
+        </div>
+      </div>
+      <div className="flex items-center gap-[12px]">
+        <div className="size-[40px] rounded-full bg-[#f0f4f7] flex items-center justify-center shrink-0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#1e3d59" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </div>
+        <div>
+          <p className="font-['Helvetica:Bold',sans-serif] text-[14px] text-black tracking-[-0.14px] leading-[1.2]">Rentabilidad en dólares</p>
+          <p className="font-['Helvetica:Regular',sans-serif] text-[13px] text-[#575757] tracking-[-0.13px] leading-[1.4]">Rentas desde el primer mes</p>
+        </div>
+      </div>
+      <div className="flex items-center gap-[12px]">
+        <div className="size-[40px] rounded-full bg-[#f0f4f7] flex items-center justify-center shrink-0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M3 7v14M21 7v14M6 11h4M6 15h4M14 11h4M14 15h4M9 21V17h6v4" stroke="#1e3d59" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 2l9 5H3l9-5z" stroke="#1e3d59" strokeWidth="1.5" strokeLinejoin="round"/></svg>
+        </div>
+        <div>
+          <p className="font-['Helvetica:Bold',sans-serif] text-[14px] text-black tracking-[-0.14px] leading-[1.2]">+200 inversores</p>
+          <p className="font-['Helvetica:Regular',sans-serif] text-[13px] text-[#575757] tracking-[-0.13px] leading-[1.4]">Confiaron en nuestro modelo</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ContactInfoSidebar() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col h-auto lg:h-[665px] gap-[40px] lg:gap-0 items-start justify-between min-h-px min-w-px relative">
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[32px] items-start min-h-px min-w-px relative">
       <Info />
+      <TrustIndicators />
       <Left />
     </div>
   );

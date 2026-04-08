@@ -190,7 +190,12 @@ function Frame53({ onLogoEnter, onLogoLeave }: { onLogoEnter: HoverHandlers["onM
             onMouseLeave={onLogoLeave}
           >
             <div className="flex flex-col items-start overflow-clip rounded-[inherit] size-full">
-              {item.image}
+              <div className="relative w-full overflow-hidden">
+                <div className="transition-transform duration-500 ease-out group-hover:scale-[1.05]">
+                  {item.image}
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              </div>
               <div className={`bg-white w-full overflow-hidden transition-[max-height] duration-500 ease-in-out shrink-0 ${isActive ? "max-h-[230px]" : "max-h-0 group-hover:max-h-[230px]"}`}>
                 {item.body}
               </div>
@@ -240,11 +245,11 @@ export default function PressSection() {
   }, { scope: pressRef });
 
   const onLogoEnter = contextSafe((e: React.MouseEvent<HTMLElement>) => {
-    gsap.to(e.currentTarget, { scale: 1.05, duration: 0.3 });
+    gsap.to(e.currentTarget, { y: -4, boxShadow: "0 8px 24px rgba(0,0,0,0.12)", duration: 0.3 });
   });
 
   const onLogoLeave = contextSafe((e: React.MouseEvent<HTMLElement>) => {
-    gsap.to(e.currentTarget, { scale: 1, duration: 0.3 });
+    gsap.to(e.currentTarget, { y: 0, boxShadow: "0 4px 12px rgba(0,0,0,0.05)", duration: 0.3 });
   });
 
   return (

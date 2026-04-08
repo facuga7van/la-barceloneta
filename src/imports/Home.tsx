@@ -3185,9 +3185,24 @@ function Container13() {
   return (
     <footer className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-gsap="fade-up">
       <div aria-hidden="true" className="absolute border-[#575757] border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col lg:flex-row gap-[40px] lg:gap-[120px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
-        <Content18 />
-        <Nav />
+      <div className="content-stretch flex flex-col gap-[40px] px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
+        {/* Top row: logo left, nav columns right */}
+        <div className="flex flex-col lg:flex-row gap-[40px] lg:gap-0 items-start justify-between w-full">
+          <div className="flex flex-col gap-[24px]">
+            <Logo />
+            <p className="font-['Helvetica:Regular',sans-serif] text-[#575757] text-[14px] tracking-[-0.14px] leading-[1.5] max-w-[300px]">
+              Invertí en real estate fraccionado con escritura pública y rentabilidad en dólares.
+            </p>
+          </div>
+          <Nav />
+        </div>
+        {/* Bottom row: social icons left, copyright right */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-[24px] border-t border-[#1a1a1a] pt-[24px]">
+          <SocialIcons />
+          <p className="font-['Helvetica:Regular',sans-serif] text-[#575757] text-[13px] tracking-[-0.13px]">
+            © {new Date().getFullYear()} La Barceloneta. Todos los derechos reservados.
+          </p>
+        </div>
       </div>
     </footer>
   );
