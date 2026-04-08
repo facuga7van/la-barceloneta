@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useTimelineAnimation } from "../hooks/useTimelineAnimation";
 
 const STEPS = [
   { date: "Nov 2024", pct: 30, label: "Estructura", description: "Hormigón armado, columnas y losas de todos los pisos completados." },
@@ -25,13 +26,14 @@ interface ConstructionTimelineProps {
 export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineProps) {
   const [selectedStep, setSelectedStep] = useState(ACTIVE_STEP);
   const step = STEPS[selectedStep];
+  const timelineRef = useTimelineAnimation();
 
   const goTo = (index: number) => {
     if (index >= 0 && index < STEPS.length) setSelectedStep(index);
   };
 
   return (
-    <div className="w-full">
+    <div ref={timelineRef as React.RefObject<HTMLDivElement>} className="w-full">
       <div className="flex flex-col lg:flex-row gap-[24px] lg:gap-[40px] items-stretch w-full">
 
         {/* Timeline panel */}
@@ -40,6 +42,7 @@ export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineP
           {/* Progress bar — CSS transition, no JS animation */}
           <div className="relative h-[4px] w-full rounded-full overflow-hidden bg-[#e8ebef]">
             <div
+              data-tl-progress
               className="absolute left-0 top-0 h-full rounded-full transition-[width] duration-700 ease-out"
               style={{ width: `${STEPS[selectedStep].pct}%`, background: `linear-gradient(90deg, ${ACCENT}, #48749e)` }}
             />
@@ -55,6 +58,7 @@ export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineP
                 return (
                   <button
                     key={i}
+                    data-tl-step
                     type="button"
                     className="flex flex-col items-center gap-[8px] bg-transparent border-none cursor-pointer p-0 group"
                     style={{ width: `${100 / STEPS.length}%` }}
@@ -63,11 +67,12 @@ export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineP
                     aria-current={isSelected ? "step" : undefined}
                   >
                     {/* Dot */}
-                    <div className="relative flex items-center justify-center">
+                    <div className="relative flex items-center justify-center min-w-[44px] min-h-[44px]">
                       {isSelected && (
                         <div className="absolute size-[28px] rounded-full opacity-20 transition-transform duration-300" style={{ background: ACCENT }} />
                       )}
                       <div
+                        data-tl-icon
                         className={`rounded-full transition-all duration-300 relative z-[1] ${
                           isSelected
                             ? "size-[14px]"
@@ -81,7 +86,7 @@ export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineP
                     {/* Label + date */}
                     <div className="flex flex-col items-center gap-[2px]">
                       <span
-                        className={`font-['Helvetica:Regular',sans-serif] text-[11px] lg:text-[13px] tracking-[-0.11px] text-center leading-[1.3] transition-all duration-200 ${
+                        className={`font-['Helvetica:Regular',sans-serif] text-[12px] lg:text-[13px] tracking-[-0.11px] text-center leading-[1.3] transition-all duration-200 ${
                           isSelected ? "font-bold text-[#040404]" : isDone ? "text-[#575757]" : "text-[#aaa]"
                         }`}
                       >
