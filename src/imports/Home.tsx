@@ -51,6 +51,9 @@ function Images() {
   const animationRef = useRef<number>();
   const scrollPos = useRef(0);
   const speed = 0.6; // px per frame
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragScrollStart = useRef(0);
 
   useEffect(() => {
     const el = trackRef.current;
@@ -59,7 +62,7 @@ function Images() {
     const halfWidth = el.scrollWidth / 2;
 
     const animate = () => {
-      if (!isPaused) {
+      if (!isPaused && !isDragging.current) {
         scrollPos.current += speed;
         if (scrollPos.current >= halfWidth) {
           scrollPos.current -= halfWidth;
@@ -75,18 +78,104 @@ function Images() {
     };
   }, [isPaused]);
 
+  // Mouse drag
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    const onMouseDown = (e: MouseEvent) => {
+      isDragging.current = true;
+      dragStartX.current = e.pageX;
+      dragScrollStart.current = el.scrollLeft;
+      el.style.cursor = "grabbing";
+    };
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      e.preventDefault();
+      const dx = e.pageX - dragStartX.current;
+      const newScroll = dragScrollStart.current - dx;
+      el.scrollLeft = newScroll;
+      scrollPos.current = newScroll;
+    };
+    const onMouseUp = () => {
+      if (!isDragging.current) return;
+      isDragging.current = false;
+      el.style.cursor = "grab";
+      scrollPos.current = el.scrollLeft;
+    };
+
+    el.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    return () => {
+      el.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  }, []);
+
+  // Touch drag
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    const onTouchStart = (e: TouchEvent) => {
+      isDragging.current = true;
+      dragStartX.current = e.touches[0].pageX;
+      dragScrollStart.current = el.scrollLeft;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isDragging.current) return;
+      const dx = e.touches[0].pageX - dragStartX.current;
+      const newScroll = dragScrollStart.current - dx;
+      el.scrollLeft = newScroll;
+      scrollPos.current = newScroll;
+    };
+    const onTouchEnd = () => {
+      isDragging.current = false;
+      scrollPos.current = el.scrollLeft;
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: true });
+    el.addEventListener("touchend", onTouchEnd);
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
   // Duplicate items for seamless loop
   const items = [...GRID_IMAGES, ...GRID_IMAGES];
+
+  // Keyboard arrow handler
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    const el = trackRef.current;
+    if (!el) return;
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      el.scrollLeft -= 300;
+      scrollPos.current = el.scrollLeft;
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      el.scrollLeft += 300;
+      scrollPos.current = el.scrollLeft;
+    }
+  }, []);
 
   return (
     <div className="w-full overflow-hidden bg-black shrink-0 relative" data-name="Images">
       <div
         ref={trackRef}
-        className="flex gap-[16px] p-[16px] overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        tabIndex={0}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Galería de imágenes del proyecto"
+        className="flex gap-[16px] p-[16px] overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden cursor-grab focus:outline-none"
         onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
+        onMouseLeave={() => { setIsPaused(false); isDragging.current = false; }}
+        onKeyDown={handleKeyDown}
       >
         {items.map((img, i) => (
           <div
@@ -775,7 +864,7 @@ function Portada() {
   return (
     <div className="bg-[#0d3477] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-visible" data-name="Portada" data-gsap="scale-in" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
-      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[20px] lg:top-[35px] animate-[float_6s_ease-in-out_infinite]" data-name="image 5457">
+      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen opacity-84 right-[16px] lg:right-[62px] top-[60px] sm:top-[20px] lg:top-[35px] w-[50%] sm:w-auto animate-[float_6s_ease-in-out_infinite]" data-name="image 5457">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="Edificio La Barceloneta" loading="lazy" className="absolute h-[114.29%] left-[-0.05%] max-w-none top-[-14.29%] w-[100.11%]" src={imgImage5457} />
         </div>
@@ -784,7 +873,7 @@ function Portada() {
       <div className="absolute h-[50px] lg:h-[82px] left-[16px] lg:left-[72px] top-[16px] lg:top-[35px] w-[200px] lg:w-[334px]" data-name="logo feel free">
         <img alt="La Barceloneta Feel Free" loading="lazy" className="absolute inset-0 max-w-none object-contain object-left pointer-events-none size-full" src={imgLogoFeelFree} />
       </div>
-      <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] left-[16px] lg:left-[5.84%] bottom-[16px] lg:bottom-auto lg:top-[40.04%] right-[16px] lg:right-[12.41%] leading-none not-italic text-[#ff5a63] text-[24px] sm:text-[40px] lg:text-[101.098px] tracking-[-1px] sm:tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap">
+      <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] left-[16px] lg:left-[5.84%] bottom-[16px] lg:bottom-auto lg:top-[40.04%] right-[40%] sm:right-[16px] lg:right-[12.41%] leading-none not-italic text-[#ff5a63] text-[24px] sm:text-[40px] lg:text-[101.098px] tracking-[-1px] sm:tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap z-10">
         <p className="mb-0">La Barceloneta</p>
         <p>buenos aires</p>
       </div>
@@ -1028,8 +1117,8 @@ function Row3() {
 
 function Examples() {
   return (
-    <div className="w-full lg:w-[240px] lg:shrink-0 relative" data-name="Examples">
-      <div className="flex flex-row lg:flex-col gap-[24px] lg:gap-[32px] flex-wrap">
+    <div className="w-full md:w-[240px] md:shrink-0 relative" data-name="Examples">
+      <div className="flex flex-row md:flex-col gap-[16px] sm:gap-[24px] md:gap-[32px] flex-wrap">
         <Row />
         <Row1 />
         <Row2 />
@@ -1051,12 +1140,12 @@ function SectionHeader() {
 
 function Content7() {
   return (
-    <div className="content-stretch flex w-full lg:flex-1 lg:min-w-0 flex-col gap-[32px] items-start relative" data-name="Content">
+    <div className="content-stretch flex w-full md:flex-1 md:min-w-0 flex-col gap-[24px] md:gap-[32px] items-start relative" data-name="Content">
       <SectionHeader />
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] lg:text-[18px] tracking-[-0.15px] w-full">
+      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] md:text-[18px] tracking-[-0.15px] w-full">
         <p className="leading-[1.6] whitespace-pre-wrap">La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 22.500 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.</p>
       </div>
-      <div className="hidden lg:block aspect-[860/400] relative shrink-0 w-full max-h-[400px]" data-name="Image">
+      <div className="hidden md:block aspect-[860/400] relative shrink-0 w-full max-h-[400px]" data-name="Image">
         <div className="absolute inset-0 overflow-hidden rounded-[8px] pointer-events-none">
           <img alt="Sección mostrando octavos" loading="lazy" className="absolute inset-0 max-w-none object-cover size-full" src={imgSeccionOctavos} />
         </div>
@@ -1067,7 +1156,7 @@ function Content7() {
 
 function ToneAndVoice() {
   return (
-    <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start py-[24px] relative shrink-0 w-full" data-name="Tone and voice" data-gsap="fade-up">
+    <div className="content-stretch flex flex-col md:flex-row gap-[32px] items-start py-[24px] relative shrink-0 w-full" data-name="Tone and voice" data-gsap="fade-up">
       <Examples />
       <Content7 />
     </div>
@@ -1722,8 +1811,13 @@ function Header13() {
 
 function Map() {
   return (
-    <div
-      className="w-full flex-none lg:flex-[1_0_0] h-[300px] lg:h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative cursor-zoom-in group" data-name="Map"
+    <a
+      href="https://maps.app.goo.gl/zbCNkz27gbWEb72c6"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Ver ubicación de La Barceloneta en Google Maps"
+      className="w-full flex-none lg:flex-[1_0_0] h-[300px] lg:h-[573px] max-w-[800px] min-h-px min-w-px overflow-clip relative cursor-pointer group block"
+      data-name="Map"
       onMouseMove={(e) => {
         const img = e.currentTarget.querySelector("img");
         if (!img) return;
@@ -1739,7 +1833,7 @@ function Map() {
       }}
     >
       <img alt="Mapa ubicación" loading="lazy" className="absolute inset-0 max-w-none object-cover size-full transition-transform duration-500 ease-out" src={imgImage5477} />
-    </div>
+    </a>
   );
 }
 
@@ -1999,9 +2093,9 @@ function Group11() {
 
 function Portada1() {
   return (
-    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-visible" data-name="Portada" data-gsap="scale-in" data-parallax="slow">
+    <div className="bg-[#1e3d59] flex-[1_0_0] min-h-px min-w-px relative w-full overflow-hidden lg:overflow-visible" data-name="Portada" data-gsap="scale-in" data-parallax="slow">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
-      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen right-[16px] lg:right-[62px] top-[20px] lg:top-[35px] animate-[float_7s_ease-in-out_infinite]" data-name="image 5458">
+      <div className="absolute aspect-[592/665] bottom-[20px] lg:bottom-[40px] mix-blend-screen right-[16px] lg:right-[62px] top-[60px] sm:top-[20px] lg:top-[35px] w-[50%] sm:w-auto animate-[float_7s_ease-in-out_infinite]" data-name="image 5458">
         <img alt="Edificio La Barceloneta Neuquén" loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5458} />
       </div>
       <ContentWrapper1 />
@@ -2206,51 +2300,6 @@ function Cards1() {
   return <div className="flex-[1_0_0] min-h-px min-w-px" data-name="Cards" />;
 }
 
-function DragScrollContainer({ children, className }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollLeftStart = useRef(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const onDown = (e: MouseEvent) => {
-      isDragging.current = true;
-      startX.current = e.pageX;
-      scrollLeftStart.current = el.scrollLeft;
-      el.style.cursor = "grabbing";
-      el.style.userSelect = "none";
-    };
-    const onMove = (e: MouseEvent) => {
-      if (!isDragging.current) return;
-      e.preventDefault();
-      const dx = e.pageX - startX.current;
-      el.scrollLeft = scrollLeftStart.current - dx;
-    };
-    const onUp = () => {
-      isDragging.current = false;
-      el.style.cursor = "grab";
-      el.style.removeProperty("user-select");
-    };
-
-    el.addEventListener("mousedown", onDown);
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseup", onUp);
-    return () => {
-      el.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseup", onUp);
-    };
-  }, []);
-
-  return (
-    <div ref={ref} className={`${className} cursor-grab`}>
-      {children}
-    </div>
-  );
-}
 
 const TESTIMONIALS_DATA = [
   {
@@ -2311,7 +2360,7 @@ function TestimonialCard({ name, subtitle, quote }: { name: string; subtitle: st
       ref={cardRef}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className="flex flex-col gap-[6px] shrink-0 w-[240px] lg:w-[280px] snap-start relative pr-[16px] transition-transform duration-300 ease-out cursor-default"
+      className="flex flex-col gap-[6px] shrink-0 w-[220px] sm:w-[240px] lg:w-[280px] snap-start relative pr-[16px] transition-transform duration-300 ease-out cursor-default"
     >
       <div aria-hidden="true" className="absolute right-0 top-0 bottom-0 w-px bg-[rgba(0,0,0,0.1)]" />
       <p className="font-['Helvetica:Bold',sans-serif] font-bold text-[16px] lg:text-[20px] text-[#141414] tracking-[-0.3px] leading-[1.2]">{name}</p>
@@ -2336,16 +2385,18 @@ function InfiniteTestimonialCarousel() {
   const animationRef = useRef<number>();
   const scrollPos = useRef(0);
   const speed = 0.5; // px per frame
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragScrollStart = useRef(0);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
-    // Wait for layout to settle so scrollWidth is accurate
     const halfWidth = el.scrollWidth / 2;
 
     const animate = () => {
-      if (!isPaused) {
+      if (!isPaused && !isDragging.current) {
         scrollPos.current += speed;
         if (scrollPos.current >= halfWidth) {
           scrollPos.current -= halfWidth;
@@ -2361,17 +2412,103 @@ function InfiniteTestimonialCarousel() {
     };
   }, [isPaused]);
 
+  // Mouse drag
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onMouseDown = (e: MouseEvent) => {
+      isDragging.current = true;
+      dragStartX.current = e.pageX;
+      dragScrollStart.current = el.scrollLeft;
+      el.style.cursor = "grabbing";
+    };
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      e.preventDefault();
+      const dx = e.pageX - dragStartX.current;
+      const newScroll = dragScrollStart.current - dx;
+      el.scrollLeft = newScroll;
+      scrollPos.current = newScroll;
+    };
+    const onMouseUp = () => {
+      if (!isDragging.current) return;
+      isDragging.current = false;
+      el.style.cursor = "grab";
+      scrollPos.current = el.scrollLeft;
+    };
+
+    el.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    return () => {
+      el.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  }, []);
+
+  // Touch drag
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onTouchStart = (e: TouchEvent) => {
+      isDragging.current = true;
+      dragStartX.current = e.touches[0].pageX;
+      dragScrollStart.current = el.scrollLeft;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isDragging.current) return;
+      const dx = e.touches[0].pageX - dragStartX.current;
+      const newScroll = dragScrollStart.current - dx;
+      el.scrollLeft = newScroll;
+      scrollPos.current = newScroll;
+    };
+    const onTouchEnd = () => {
+      isDragging.current = false;
+      scrollPos.current = el.scrollLeft;
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: true });
+    el.addEventListener("touchend", onTouchEnd);
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
   // Duplicate items for seamless loop
   const items = [...TESTIMONIALS_DATA, ...TESTIMONIALS_DATA];
+
+  // Keyboard arrow handler
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      el.scrollLeft -= 300;
+      scrollPos.current = el.scrollLeft;
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      el.scrollLeft += 300;
+      scrollPos.current = el.scrollLeft;
+    }
+  }, []);
 
   return (
     <div
       ref={scrollRef}
-      className="mt-[32px] lg:mt-[48px] flex gap-[16px] overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full"
+      tabIndex={0}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Testimonios de inversores"
+      className="mt-[32px] lg:mt-[48px] flex gap-[16px] overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full cursor-grab focus:outline-none select-none"
       onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onTouchStart={() => setIsPaused(true)}
-      onTouchEnd={() => setIsPaused(false)}
+      onMouseLeave={() => { setIsPaused(false); isDragging.current = false; }}
+      onKeyDown={handleKeyDown}
     >
       {items.map((t, i) => (
         <TestimonialCard key={i} {...t} />
@@ -2383,11 +2520,11 @@ function InfiniteTestimonialCarousel() {
 function StrategySection1() {
   return (
     <section className="relative shrink-0 w-full" id="testimonios" data-name="Strategy section" data-gsap="scale-in">
-      <div className="content-stretch flex flex-col items-start pl-[16px] lg:pl-[32px] pt-[60px] lg:pt-[120px] pb-[40px] lg:pb-[80px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pl-[16px] pr-[16px] lg:pl-[32px] lg:pr-0 pt-[60px] lg:pt-[120px] pb-[40px] lg:pb-[80px] relative w-full overflow-hidden">
         {/* Header: title left + empty spacer right (Figma original layout) */}
         <Header15 />
         {/* Infinite scrolling testimonial carousel */}
-        <div className="relative w-full">
+        <div className="relative w-[calc(100%+16px)] lg:w-full -mr-[16px] lg:mr-0">
           <InfiniteTestimonialCarousel />
           <div className="pointer-events-none absolute left-0 top-0 h-full w-[40px] bg-gradient-to-r from-white to-transparent z-10" />
           <div className="pointer-events-none absolute right-0 top-0 h-full w-[40px] bg-gradient-to-l from-white to-transparent z-10" />
@@ -3036,7 +3173,7 @@ function Text8() {
 function Logo() {
   return (
     <div className="h-[98.092px] relative shrink-0 w-[205.243px]" data-name="Logo">
-      <img alt="La Barceloneta" loading="lazy" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgLogoLB} />
+      <img alt="La Barceloneta" loading="lazy" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgLogoFeelFree} />
     </div>
   );
 }

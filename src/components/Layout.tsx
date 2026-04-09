@@ -93,7 +93,7 @@ function PhArrowUpRightLight() {
 
 function CloseButton({ onClick }: { onClick?: () => void }) {
   return (
-    <button className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center overflow-clip px-[18px] right-[8px] rounded-[12px] size-[48px] top-[8px]" data-name="Button" onClick={onClick} aria-label="Cerrar video">
+    <button className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center overflow-clip px-[8px] sm:px-[18px] right-[4px] sm:right-[8px] rounded-[8px] sm:rounded-[12px] size-[28px] sm:size-[48px] top-[4px] sm:top-[8px]" data-name="Button" onClick={onClick} aria-label="Cerrar video">
       <PhXLight />
     </button>
   );
@@ -101,7 +101,7 @@ function CloseButton({ onClick }: { onClick?: () => void }) {
 
 function ExpandButton({ onClick }: { onClick?: () => void }) {
   return (
-    <button type="button" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center left-[8px] overflow-clip px-[18px] rounded-[12px] size-[48px] top-[8px]" data-name="Button" onClick={onClick} aria-label="Pantalla completa">
+    <button type="button" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] content-stretch cursor-pointer flex items-center justify-center left-[4px] sm:left-[8px] overflow-clip px-[8px] sm:px-[18px] rounded-[8px] sm:rounded-[12px] size-[28px] sm:size-[48px] top-[4px] sm:top-[8px]" data-name="Button" onClick={onClick} aria-label="Pantalla completa">
       <SystemUiconsExpand />
     </button>
   );
@@ -109,7 +109,7 @@ function ExpandButton({ onClick }: { onClick?: () => void }) {
 
 function MuteButton({ onClick, isMuted }: { onClick?: () => void; isMuted?: boolean }) {
   return (
-    <button type="button" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] bottom-[8px] content-stretch cursor-pointer flex items-center justify-center left-[8px] overflow-clip px-[18px] rounded-[12px] size-[48px]" data-name="Button" onClick={onClick} aria-label={isMuted ? "Activar sonido" : "Silenciar"}>
+    <button type="button" className="absolute backdrop-blur-[2px] bg-[rgba(0,0,0,0.4)] bottom-[4px] sm:bottom-[8px] content-stretch cursor-pointer flex items-center justify-center left-[4px] sm:left-[8px] overflow-clip px-[8px] sm:px-[18px] rounded-[8px] sm:rounded-[12px] size-[28px] sm:size-[48px]" data-name="Button" onClick={onClick} aria-label={isMuted ? "Activar sonido" : "Silenciar"}>
       {isMuted ? (
         <OcticonMute />
       ) : (
@@ -424,7 +424,7 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
         <IconamoonMenuBurgerHorizontalLight />
       </button>
       {videoVisible && (
-        <div id="vista360" className="fixed bottom-[12px] left-[12px] sm:bottom-[16px] sm:left-[16px] z-[100] h-[180px] w-[120px] sm:h-[250px] sm:w-[160px] lg:h-[325px] lg:w-[200px] overflow-clip rounded-[12px] lg:rounded-[16px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)]" data-name="Video">
+        <div id="vista360" className="fixed bottom-[8px] right-[8px] sm:bottom-[16px] sm:right-[16px] lg:right-[72px] z-[100] h-[120px] w-[80px] sm:h-[250px] sm:w-[160px] lg:h-[325px] lg:w-[200px] overflow-clip rounded-[8px] sm:rounded-[12px] lg:rounded-[16px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)]" data-name="Video">
           <video ref={videoRef} src={`${import.meta.env.BASE_URL}videos/2d3bf204646db6c10443dbfebd36299d3a2dbf23.mp4`} autoPlay className="absolute max-w-none object-cover rounded-[16px] size-full" controlsList="nodownload" loop muted playsInline poster={`${import.meta.env.BASE_URL}images/video-flotante-poster.jpg`} />
           <CloseButton onClick={() => setVideoVisible(false)} />
           <ExpandButton onClick={handleFullscreen} />
@@ -436,7 +436,7 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
         <button
           type="button"
           onClick={() => setVideoVisible(true)}
-          className="fixed bottom-[12px] left-[12px] sm:bottom-[16px] sm:left-[16px] z-[100] size-[40px] sm:size-[44px] bg-black/80 hover:bg-black rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.25)] transition-all duration-200 cursor-pointer hover:scale-110"
+          className="fixed bottom-[8px] right-[8px] sm:bottom-[16px] sm:right-[16px] lg:right-[72px] z-[100] size-[32px] sm:size-[44px] bg-black/80 hover:bg-black rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.25)] transition-all duration-200 cursor-pointer hover:scale-110"
           aria-label="Reabrir video"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">

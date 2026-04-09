@@ -35,19 +35,20 @@ export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineP
       <div className="flex flex-col lg:flex-row gap-[24px] lg:gap-[40px] items-stretch w-full">
 
         {/* Timeline panel */}
-        <div className="flex-1 flex flex-col min-w-0">
+        <div className="flex-1 flex flex-col min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-x-visible">
 
-          {/* Progress bar — CSS transition, no JS animation */}
-          <div className="relative h-[4px] w-full rounded-full overflow-hidden bg-[#e8ebef]">
-            <div
-              className="absolute left-0 top-0 h-full rounded-full transition-[width] duration-700 ease-out"
-              style={{ width: `${STEPS[selectedStep].pct}%`, background: `linear-gradient(90deg, ${ACCENT}, #48749e)` }}
-            />
-          </div>
+          {/* Progress bar + dots unified container */}
+          <div className="relative w-full min-w-[480px] lg:min-w-0">
+            {/* Bar track */}
+            <div className="relative h-[4px] w-full rounded-full overflow-hidden bg-[#e8ebef]">
+              <div
+                className="absolute left-0 top-0 h-full rounded-full transition-[width] duration-700 ease-out"
+                style={{ width: `${STEPS[selectedStep].pct}%`, background: `linear-gradient(90deg, ${ACCENT}, #48749e)` }}
+              />
+            </div>
 
-          {/* Step dots — positioned on the bar */}
-          <div className="relative w-full mt-[20px] lg:mt-[24px]">
-            <div className="flex items-start justify-between w-full">
+            {/* Step dots — overlaid on bar */}
+            <div className="flex items-start justify-between w-full mt-[20px] lg:mt-[24px]">
               {STEPS.map((s, i) => {
                 const isSelected = i === selectedStep;
                 const isDone = i <= ACTIVE_STEP;
@@ -56,7 +57,7 @@ export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineP
                   <button
                     key={i}
                     type="button"
-                    className="flex flex-col items-center gap-[8px] bg-transparent border-none cursor-pointer p-0 group"
+                    className="flex flex-col items-center gap-[8px] bg-transparent border-none cursor-pointer p-0 group min-w-[72px] lg:min-w-0"
                     style={{ width: `${100 / STEPS.length}%` }}
                     onClick={() => goTo(i)}
                     aria-label={`${s.label} — ${s.pct}%`}
@@ -81,13 +82,13 @@ export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineP
                     {/* Label + date */}
                     <div className="flex flex-col items-center gap-[2px]">
                       <span
-                        className={`font-['Helvetica:Regular',sans-serif] text-[11px] lg:text-[13px] tracking-[-0.11px] text-center leading-[1.3] transition-all duration-200 ${
+                        className={`font-['Helvetica:Regular',sans-serif] text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[13px] tracking-[-0.11px] text-center leading-[1.3] transition-all duration-200 whitespace-nowrap lg:whitespace-normal ${
                           isSelected ? "font-bold text-[#040404]" : isDone ? "text-[#575757]" : "text-[#aaa]"
                         }`}
                       >
                         {s.label}
                       </span>
-                      <span className={`font-['Helvetica:Regular',sans-serif] text-[10px] lg:text-[11px] tracking-[-0.11px] text-center leading-[1.2] ${isSelected ? "text-[#575757]" : "text-[#c4c4c4]"}`}>
+                      <span className={`font-['Helvetica:Regular',sans-serif] text-[9px] sm:text-[10px] lg:text-[10px] xl:text-[11px] tracking-[-0.11px] text-center leading-[1.2] whitespace-nowrap lg:whitespace-normal ${isSelected ? "text-[#575757]" : "text-[#c4c4c4]"}`}>
                         {s.date}
                       </span>
                     </div>
