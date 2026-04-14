@@ -13,16 +13,28 @@ interface PageProps {
 export default function Page({ slug, menuThumbnails }: PageProps) {
   const [story, setStory] = useState<PageStory | null>(null)
   const [settings, setSettings] = useState<SiteSettings | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    getPageContent(slug).then(setStory)
-    getSiteSettings().then(setSettings)
+    getPageContent(slug)
+      .then(setStory)
+      .catch((err) => {
+        console.error(`Failed to load page "${slug}":`, err)
+        setError(`No se pudo cargar la página "${slug}"`)
+      })
+    getSiteSettings()
+      .then(setSettings)
+      .catch((err) => console.error('Failed to load site settings:', err))
   }, [slug])
 
-  // Enable Storyblok bridge for live editing
+  // TODO: useStoryblokState expects ISbStoryData — cast needed until PageStory extends it
   const liveStory = useStoryblokState(story as any)
   const activeStory = (liveStory ?? story) as PageStory | null
+
+  if (error) {
+    return <div className="min-h-screen flex items-center justify-center text-red-600">{error}</div>
+  }
 
   if (!activeStory || !settings) {
     return <div className="min-h-screen" />
