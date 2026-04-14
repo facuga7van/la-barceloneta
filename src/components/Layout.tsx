@@ -6,6 +6,7 @@ import { useParallax } from "../hooks/useParallax";
 import { useNavbarAnimation } from "../hooks/useNavbarAnimation";
 import { usePageTransition } from "../hooks/usePageTransition";
 import svgPaths from "../imports/svg-1a10080iez";
+import type { SiteSettings } from "../storyblok/types";
 
 // ── Menu data (shared across all pages) ──
 
@@ -244,13 +245,32 @@ interface LayoutProps {
   children: ReactNode;
   /** Optional thumbnail images for the menu panel */
   menuThumbnails?: string[];
+  /** CMS site settings for menu links, social links, etc. */
+  settings?: SiteSettings;
   /** data-name attribute on root div */
   dataName?: string;
 }
 
 // ── Main Layout component ──
 
-export default function Layout({ children, menuThumbnails, dataName = "Page" }: LayoutProps) {
+export default function Layout({ children, menuThumbnails, settings, dataName = "Page" }: LayoutProps) {
+  // Derive menu data from CMS settings, falling back to hardcoded constants
+  const menuLinksData = settings?.menu_links ?? MENU_LINKS
+
+  const menuCardsData = settings?.menu_cards
+    ? settings.menu_cards.map(card => ({
+        label: card.label,
+        route: card.target.startsWith('/') ? card.target : undefined,
+        anchor: !card.target.startsWith('/') && !card.target.startsWith('http') ? card.target : undefined,
+        href: card.target.startsWith('http') ? card.target : undefined,
+        bgStyle: { backgroundColor: card.bg_color } as React.CSSProperties,
+        bg: undefined as string | undefined,
+      }))
+    : MENU_CARDS.map(card => ({
+        ...card,
+        bgStyle: undefined as React.CSSProperties | undefined,
+      }))
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [videoVisible, setVideoVisible] = useState(true);
   const [videoMuted, setVideoMuted] = useState(true);
@@ -351,7 +371,7 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
         </button>
         {/* Links de navegación */}
         <div className="flex flex-col gap-1 px-6 pt-10 pb-4">
-          {MENU_LINKS.map((item) => (
+          {menuLinksData.map((item) => (
             <button
               key={item.label}
               type="button"
@@ -364,7 +384,7 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
         </div>
         {/* Cards de acción */}
         <div className="flex flex-col">
-          {MENU_CARDS.map((card) => {
+          {menuCardsData.map((card) => {
             const cardContent = (
               <>
                 <span className="font-['Helvetica:Regular',sans-serif] text-[20px] text-white tracking-[-0.5px] leading-[1.2]">{card.label}</span>
@@ -373,24 +393,26 @@ export default function Layout({ children, menuThumbnails, dataName = "Page" }: 
                 </svg>
               </>
             );
-            const cls = `${card.bg} flex items-end justify-between px-6 py-4 min-h-[72px] no-underline group`;
+            const baseCls = "flex items-end justify-between px-6 py-4 min-h-[72px] no-underline group";
+            const cls = card.bgStyle ? baseCls : `${card.bg} ${baseCls}`;
             if (card.route) {
               return (
-                <Link key={card.label} to={card.route} className={cls} onClick={() => setMenuOpen(false)}>
+                <Link key={card.label} to={card.route} className={cls} style={card.bgStyle} onClick={() => setMenuOpen(false)}>
                   {cardContent}
                 </Link>
               );
             }
             if (card.anchor) {
+              const anchor = card.anchor;
               return (
-                <button key={card.label} type="button" className={cls + " border-none cursor-pointer"} onClick={() => navigateToAnchor(card.anchor)}>
+                <button key={card.label} type="button" className={cls + " border-none cursor-pointer"} style={card.bgStyle} onClick={() => navigateToAnchor(anchor)}>
                   {cardContent}
                 </button>
               );
             }
             if (card.href) {
               return (
-                <a key={card.label} href={card.href} target="_blank" rel="noopener noreferrer" className={cls} onClick={() => setMenuOpen(false)}>
+                <a key={card.label} href={card.href} target="_blank" rel="noopener noreferrer" className={cls} style={card.bgStyle} onClick={() => setMenuOpen(false)}>
                   {cardContent}
                 </a>
               );
