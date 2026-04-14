@@ -1,0 +1,24 @@
+{
+  "logo": { "filename": "/la-barceloneta/images/LB BS AS FEEL FREE - ROSA.svg", "alt": "La Barceloneta" },
+  "logo_alt": { "filename": "/la-barceloneta/images/LB LOGO.svg", "alt": "La Barceloneta Logo" },
+  "whatsapp_number": "5491173646541",
+  "social_facebook": "https://www.facebook.com/labarcelonetafeelfree",
+  "social_instagram": "https://www.instagram.com/labarceloneta.bsas/",
+  "social_linkedin": "https://www.linkedin.com/company/la-barceloneta-feel-free/",
+  "menu_links": [
+    { "_uid": "ml-1", "component": "menuLink", "label": "Inicio", "anchor": "inicio" },
+    { "_uid": "ml-2", "component": "menuLink", "label": "¿Cómo gano?", "anchor": "como-gano" },
+    { "_uid": "ml-3", "component": "menuLink", "label": "Elegí tu fracción", "anchor": "fracciones" },
+    { "_uid": "ml-4", "component": "menuLink", "label": "El proyecto (Buenos Aires)", "anchor": "proyecto" },
+    { "_uid": "ml-5", "component": "menuLink", "label": "Avance de obra", "anchor": "avance" },
+    { "_uid": "ml-6", "component": "menuLink", "label": "El próximo capítulo (Neuquén)", "anchor": "neuquen" },
+    { "_uid": "ml-7", "component": "menuLink", "label": "¿Cómo invertir?", "anchor": "como-invertir" },
+    { "_uid": "ml-8", "component": "menuLink", "label": "Testimonios", "anchor": "testimonios" },
+    { "_uid": "ml-9", "component": "menuLink", "label": "Prensa", "anchor": "prensa" }
+  ],
+  "menu_cards": [
+    { "_uid": "mc-1", "component": "menuCard", "label": "Nosotros", "target": "/about", "bg_color": "#3d5a80" },
+    { "_uid": "mc-2", "component": "menuCard", "label": "Agendá una reunión", "target": "contacto", "bg_color": "#5c7a99" },
+    { "_uid": "mc-3", "component": "menuCard", "label": "Contactános", "target": "https://wa.me/5491173646541", "bg_color": "#f45f00" }
+  ]
+}
