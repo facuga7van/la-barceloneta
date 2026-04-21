@@ -3,10 +3,10 @@ import type { AnyBlok, PageStory, SiteSettings } from './types'
 const isEditor = typeof window !== 'undefined' &&
   window.location.search.includes('_storyblok')
 
-// Flip to true once the Storyblok space has canonical content matching our schema.
-// Until then, editor mode renders the static JSON so the block system is visible
-// for visual editing while space content is still being migrated.
-const EDITOR_USES_SPACE_CONTENT = false
+// Editor mode reads draft content from the Storyblok space so the visual editor
+// gets the _editable markers it needs for click-to-edit pencils. Set to false to
+// force the static JSON fallback (useful if the space is temporarily wrong).
+const EDITOR_USES_SPACE_CONTENT = true
 
 const KNOWN_COMPONENTS = new Set([
   'heroBlock', 'imageCarouselBlock', 'comoGanoBlock', 'fraccionesBlock', 'proyectoBlock',

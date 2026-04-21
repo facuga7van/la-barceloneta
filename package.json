@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "npx vite",
     "fetch-content": "npx tsx scripts/fetch-content.ts",
+    "storyblok:setup": "npx tsx scripts/setup-storyblok.ts",
+    "storyblok:migrate": "npx tsx scripts/migrate-content-to-storyblok.ts",
     "build": "npm run fetch-content && vite build",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",

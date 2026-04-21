@@ -468,6 +468,21 @@ const contentTypes: ComponentDef[] = [
       body: bloks(0, allBlockNames, 'Body'),
     },
   },
+  {
+    name: 'siteSettings',
+    display_name: 'Site Settings',
+    is_root: true,
+    schema: {
+      logo: asset(0, 'Logo'),
+      logo_alt: asset(1, 'Logo Alt'),
+      whatsapp_number: text(2, 'WhatsApp Number'),
+      social_facebook: text(3, 'Facebook URL'),
+      social_instagram: text(4, 'Instagram URL'),
+      social_linkedin: text(5, 'LinkedIn URL'),
+      menu_links: bloks(6, ['menuLink'], 'Menu Links'),
+      menu_cards: bloks(7, ['menuCard'], 'Menu Cards'),
+    },
+  },
 ]
 
 // ── Main ──
