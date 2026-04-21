@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-const STEPS = [
+export interface TimelineStep {
+  date: string;
+  pct: number;
+  label: string;
+  description: string;
+}
+
+const DEFAULT_STEPS: TimelineStep[] = [
   { date: "Nov 2024", pct: 30, label: "Estructura", description: "Hormigón armado, columnas y losas de todos los pisos completados." },
   { date: "Mar 2025", pct: 45, label: "Cerramientos", description: "Carpintería exterior, vidrios y fachada en proceso de instalación." },
   { date: "Jul 2025", pct: 55, label: "Instalaciones", description: "Instalaciones eléctricas, sanitarias y de gas en ejecución." },
@@ -9,22 +16,22 @@ const STEPS = [
   { date: "Jul 2026", pct: 100, label: "Entrega", description: "Entrega final de unidades y puesta en marcha del condo-hotel." },
 ];
 
-/**
- * ACTIVE_STEP — Índice del paso actual de obra (0-based).
- *   0 = Estructura (30%), 1 = Cerramientos (45%), 2 = Instalaciones (55%),
- *   3 = Terminaciones (65%), 4 = Equipamiento (80%), 5 = Entrega (100%)
- */
-const ACTIVE_STEP = 2;
+const DEFAULT_ACTIVE_STEP = 2;
 
 const ACCENT = "#1e3d59";
 
 interface ConstructionTimelineProps {
   imageSrc: string;
+  steps?: TimelineStep[];
+  activeStep?: number;
+  getStepProps?: (step: TimelineStep, index: number) => Record<string, unknown>;
 }
 
-export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineProps) {
+export default function ConstructionTimeline({ imageSrc, steps, activeStep, getStepProps }: ConstructionTimelineProps) {
+  const STEPS = steps && steps.length > 0 ? steps : DEFAULT_STEPS;
+  const ACTIVE_STEP = typeof activeStep === "number" ? Math.max(0, Math.min(activeStep, STEPS.length - 1)) : DEFAULT_ACTIVE_STEP;
   const [selectedStep, setSelectedStep] = useState(ACTIVE_STEP);
-  const step = STEPS[selectedStep];
+  const step = STEPS[selectedStep] ?? STEPS[0];
 
   const goTo = (index: number) => {
     if (index >= 0 && index < STEPS.length) setSelectedStep(index);
@@ -53,10 +60,12 @@ export default function ConstructionTimeline({ imageSrc }: ConstructionTimelineP
                 const isSelected = i === selectedStep;
                 const isDone = i <= ACTIVE_STEP;
 
+                const extraProps = getStepProps ? getStepProps(s, i) : {};
                 return (
                   <button
                     key={i}
                     type="button"
+                    {...extraProps}
                     className="flex flex-col items-center gap-[8px] bg-transparent border-none cursor-pointer p-0 group min-w-[72px] lg:min-w-0"
                     style={{ width: `${100 / STEPS.length}%` }}
                     onClick={() => goTo(i)}
