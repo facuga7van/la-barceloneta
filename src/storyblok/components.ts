@@ -1,26 +1,44 @@
 // This file maps Storyblok blok component names to React components.
-// Each block is lazy-loaded to preserve code splitting.
-import { lazy } from 'react'
+import HeroBlock from '../blocks/HeroBlock'
+import ImageCarouselBlock from '../blocks/ImageCarouselBlock'
+import ComoGanoBlock from '../blocks/ComoGanoBlock'
+import FraccionesBlock from '../blocks/FraccionesBlock'
+import ProyectoBlock from '../blocks/ProyectoBlock'
+import RentaCardsBlock from '../blocks/RentaCardsBlock'
+import GaleriaBlock from '../blocks/GaleriaBlock'
+import AvanceObraBlock from '../blocks/AvanceObraBlock'
+import UbicacionBlock from '../blocks/UbicacionBlock'
+import BannerBlock from '../blocks/BannerBlock'
+import NeuquenBlock from '../blocks/NeuquenBlock'
+import ComoInvertirBlock from '../blocks/ComoInvertirBlock'
+import TestimonialsBlock from '../blocks/TestimonialsBlock'
+import PressBlock from '../blocks/PressBlock'
+import ContactFormBlock from '../blocks/ContactFormBlock'
+import IntroBlock from '../blocks/IntroBlock'
+import HistoriaBlock from '../blocks/HistoriaBlock'
+import ValoresBlock from '../blocks/ValoresBlock'
+import EquipoBlock from '../blocks/EquipoBlock'
+import FooterBlock from '../blocks/FooterBlock'
 
-export const blockComponents: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-  heroBlock: lazy(() => import('../blocks/HeroBlock')),
-  imageCarouselBlock: lazy(() => import('../blocks/ImageCarouselBlock')),
-  comoGanoBlock: lazy(() => import('../blocks/ComoGanoBlock')),
-  fraccionesBlock: lazy(() => import('../blocks/FraccionesBlock')),
-  proyectoBlock: lazy(() => import('../blocks/ProyectoBlock')),
-  rentaCardsBlock: lazy(() => import('../blocks/RentaCardsBlock')),
-  galeriaBlock: lazy(() => import('../blocks/GaleriaBlock')),
-  avanceObraBlock: lazy(() => import('../blocks/AvanceObraBlock')),
-  ubicacionBlock: lazy(() => import('../blocks/UbicacionBlock')),
-  bannerBlock: lazy(() => import('../blocks/BannerBlock')),
-  neuquenBlock: lazy(() => import('../blocks/NeuquenBlock')),
-  comoInvertirBlock: lazy(() => import('../blocks/ComoInvertirBlock')),
-  testimonialsBlock: lazy(() => import('../blocks/TestimonialsBlock')),
-  pressBlock: lazy(() => import('../blocks/PressBlock')),
-  contactFormBlock: lazy(() => import('../blocks/ContactFormBlock')),
-  introBlock: lazy(() => import('../blocks/IntroBlock')),
-  historiaBlock: lazy(() => import('../blocks/HistoriaBlock')),
-  valoresBlock: lazy(() => import('../blocks/ValoresBlock')),
-  equipoBlock: lazy(() => import('../blocks/EquipoBlock')),
-  footerBlock: lazy(() => import('../blocks/FooterBlock')),
+export const blockComponents: Record<string, React.ComponentType<any>> = {
+  heroBlock: HeroBlock,
+  imageCarouselBlock: ImageCarouselBlock,
+  comoGanoBlock: ComoGanoBlock,
+  fraccionesBlock: FraccionesBlock,
+  proyectoBlock: ProyectoBlock,
+  rentaCardsBlock: RentaCardsBlock,
+  galeriaBlock: GaleriaBlock,
+  avanceObraBlock: AvanceObraBlock,
+  ubicacionBlock: UbicacionBlock,
+  bannerBlock: BannerBlock,
+  neuquenBlock: NeuquenBlock,
+  comoInvertirBlock: ComoInvertirBlock,
+  testimonialsBlock: TestimonialsBlock,
+  pressBlock: PressBlock,
+  contactFormBlock: ContactFormBlock,
+  introBlock: IntroBlock,
+  historiaBlock: HistoriaBlock,
+  valoresBlock: ValoresBlock,
+  equipoBlock: EquipoBlock,
+  footerBlock: FooterBlock,
 }

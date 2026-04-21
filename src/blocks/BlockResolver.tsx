@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { useEffect } from 'react'
 import { blockComponents } from '../storyblok/components'
 import type { AnyBlok } from '../storyblok/types'
 
@@ -7,6 +7,16 @@ interface BlockResolverProps {
 }
 
 export default function BlockResolver({ bloks }: BlockResolverProps) {
+  // After blocks mount, tell GSAP/ScrollTrigger to re-scan the DOM
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      import('../lib/gsap-setup').then(({ ScrollTrigger }) => {
+        ScrollTrigger.refresh()
+      })
+    })
+    return () => cancelAnimationFrame(id)
+  }, [bloks])
+
   return (
     <>
       {bloks.map((blok) => {
@@ -15,11 +25,7 @@ export default function BlockResolver({ bloks }: BlockResolverProps) {
           console.warn(`Unknown block type: ${blok.component}`)
           return null
         }
-        return (
-          <Suspense key={blok._uid} fallback={<div className="min-h-[200px]" />}>
-            <Component blok={blok} />
-          </Suspense>
-        )
+        return <Component key={blok._uid} blok={blok} />
       })}
     </>
   )
