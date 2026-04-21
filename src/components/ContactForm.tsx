@@ -2,32 +2,25 @@ import { useState, useRef, type ChangeEvent } from "react";
 import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon } from "lucide-react";
 import svgPaths from "../imports/svg-1a10080iez";
 
-function Number7() {
-  return <div className="flex-[1_0_0] h-full min-h-px min-w-px" data-name="Number" />;
-}
+const DEFAULT_CONTACT_TITLE = "Calcula tu inversión";
+const DEFAULT_WEBHOOK_URL = "https://n8n.quantumconsult.io/webhook/barceloneta-landing-form";
 
-function Title16() {
-  return (
-    <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
-      <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
-        <h2 className="block leading-[1.2]">Calcula tu inversión</h2>
-      </div>
-      <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
-        <Number7 />
-      </div>
-    </div>
-  );
-}
-
-export function ContactHeader() {
+export function ContactHeader({ title }: { title?: string } = {}) {
   return (
     <div className="content-stretch flex items-start pb-[32px] relative shrink-0 w-full" data-name="Header">
-      <Title16 />
+      <div className="content-stretch flex flex-[1_0_0] gap-[4px] items-end min-h-px min-w-px relative" data-name="Title">
+        <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
+          <h2 className="block leading-[1.2]">{title || DEFAULT_CONTACT_TITLE}</h2>
+        </div>
+        <div className="flex flex-[1_0_0] flex-row items-end self-stretch">
+          <div className="flex-[1_0_0] h-full min-h-px min-w-px" />
+        </div>
+      </div>
     </div>
   );
 }
 
-function ContentWrapper2() {
+function ContentWrapper2({ webhookUrl }: { webhookUrl?: string } = {}) {
   const [formData, setFormData] = useState({
     nombre: "", apellido: "", email: "", telefono: "",
     rango: "", proyecto: "", perfil: "", fracciones: "1", mensaje: "",
@@ -46,7 +39,7 @@ function ContentWrapper2() {
     setSubmitting(true);
     setSubmitError(false);
     try {
-      const res = await fetch("https://n8n.quantumconsult.io/webhook/barceloneta-landing-form", {
+      const res = await fetch(webhookUrl || DEFAULT_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -195,12 +188,12 @@ function ContentWrapper2() {
   );
 }
 
-function ContactFormCard() {
+function ContactFormCard({ webhookUrl }: { webhookUrl?: string } = {}) {
   return (
     <div className="bg-white w-full lg:flex-[1_0_0] lg:min-h-px lg:min-w-px relative" data-name="Contact Form">
       <div className="flex flex-col items-start overflow-clip rounded-[inherit] w-full">
         <div className="content-stretch flex items-start p-[20px] lg:p-[32px] relative w-full">
-          <ContentWrapper2 />
+          <ContentWrapper2 webhookUrl={webhookUrl} />
         </div>
       </div>
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none" />
@@ -366,10 +359,14 @@ function ContactInfoSidebar() {
   );
 }
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  webhookUrl?: string;
+}
+
+export default function ContactSection({ webhookUrl }: ContactSectionProps = {}) {
   return (
     <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start relative shrink-0 w-full" data-name="Container">
-      <ContactFormCard />
+      <ContactFormCard webhookUrl={webhookUrl} />
       <ContactInfoSidebar />
     </div>
   );
