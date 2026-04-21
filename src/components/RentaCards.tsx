@@ -1,6 +1,15 @@
 import { useState, useCallback } from "react";
 
-const CARD_DATA = [
+export interface RentaCardData {
+  metric: string;
+  period: string;
+  title: string;
+  subtitle: string;
+  detail: string;
+  bgColor: string;
+}
+
+const DEFAULT_CARD_DATA: RentaCardData[] = [
   {
     metric: "+8\u201312%",
     period: "Anual",
@@ -27,7 +36,13 @@ const CARD_DATA = [
   },
 ];
 
-export default function RentaCards() {
+interface RentaCardsProps {
+  cards?: RentaCardData[];
+  getCardProps?: (card: RentaCardData, index: number) => Record<string, unknown>;
+}
+
+export default function RentaCards({ cards, getCardProps }: RentaCardsProps = {}) {
+  const data = cards && cards.length > 0 ? cards : DEFAULT_CARD_DATA;
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [glowPos, setGlowPos] = useState<{ x: number; y: number } | null>(null);
 
@@ -39,15 +54,17 @@ export default function RentaCards() {
 
   return (
     <div className="content-stretch flex flex-col lg:flex-row items-stretch relative shrink-0 w-full" data-name="Cards">
-      {CARD_DATA.map((card, i) => {
+      {data.map((card, i) => {
         const isActive = activeCard === i;
 
+        const extraProps = getCardProps ? getCardProps(card, i) : {};
         return (
           <div
             key={i}
             data-name={`Card${i + 1}`}
             data-gsap="fade-up"
-            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative transition-all duration-300 overflow-hidden border-t border-b border-[rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] hover:-translate-y-1 active:translate-y-0 active:shadow-none ${i < 2 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
+            {...extraProps}
+            className={`cursor-pointer flex-[1_0_0] min-h-[400px] lg:min-h-[540px] min-w-0 lg:min-w-[340px] relative transition-all duration-300 overflow-hidden border-t border-b border-[rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] hover:-translate-y-1 active:translate-y-0 active:shadow-none ${i < data.length - 1 ? "lg:border-r border-[rgba(0,0,0,0.1)]" : ""}`}
             style={{ backgroundColor: isActive ? card.bgColor : undefined }}
             onClick={() => setActiveCard(isActive ? null : i)}
             onMouseMove={onCardMouseMove}
