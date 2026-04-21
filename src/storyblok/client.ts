@@ -1,7 +1,7 @@
 import type { AnyBlok, PageStory, SiteSettings } from './types'
+import { isStoryblokEditor } from './env'
 
-const isEditor = typeof window !== 'undefined' &&
-  window.location.search.includes('_storyblok')
+const isEditor = isStoryblokEditor()
 
 // Editor mode reads draft content from the Storyblok space so the visual editor
 // gets the _editable markers it needs for click-to-edit pencils. Set to false to

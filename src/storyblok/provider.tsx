@@ -1,4 +1,5 @@
 import { storyblokInit, apiPlugin } from '@storyblok/react'
+import { isStoryblokEditor } from './env'
 
 // Initialize Storyblok — must run before any component renders.
 // In production, the token is only needed for editor preview.
@@ -6,5 +7,5 @@ import { storyblokInit, apiPlugin } from '@storyblok/react'
 storyblokInit({
   accessToken: import.meta.env.VITE_STORYBLOK_TOKEN || 'placeholder-for-dev',
   use: [apiPlugin],
-  bridge: typeof window !== 'undefined' && window.location.search.includes('_storyblok'),
+  bridge: isStoryblokEditor(),
 })
