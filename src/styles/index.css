@@ -73,3 +73,13 @@ html {
     clip-path: none;
   }
 }
+
+/* Storyblok visual editor: show everything immediately (ScrollTrigger can't fire in iframe) */
+.storyblok-editor [data-gsap],
+.storyblok-editor [data-gsap-title],
+.storyblok-editor [data-gsap-footer] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  clip-path: none !important;
+}
