@@ -1,10 +1,11 @@
+import { storyblokEditable } from '@storyblok/react'
 import type { ComoGanoBlok } from '../storyblok/types'
 
 interface Props { blok: ComoGanoBlok }
 
 export default function ComoGanoBlock({ blok }: Props) {
   return (
-    <section id="como-gano" className="relative shrink-0 w-full" data-name="Como gano">
+    <section {...storyblokEditable(blok)} id="como-gano" className="relative shrink-0 w-full" data-name="Como gano">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col items-start pb-[24px] lg:pb-[40px] pt-[32px] lg:pt-[48px] px-[24px] lg:px-[80px] xl:px-[260px] relative w-full">
         <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[48px] items-start lg:items-center relative shrink-0 w-full" data-name="Header" data-gsap="fade-up">

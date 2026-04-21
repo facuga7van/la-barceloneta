@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import { storyblokEditable } from '@storyblok/react'
 import { blockComponents } from '../storyblok/components'
 import type { AnyBlok } from '../storyblok/types'
 
@@ -18,7 +17,7 @@ export default function BlockResolver({ bloks }: BlockResolverProps) {
         }
         return (
           <Suspense key={blok._uid} fallback={<div className="min-h-[200px]" />}>
-            <Component blok={blok} {...storyblokEditable(blok)} />
+            <Component blok={blok} />
           </Suspense>
         )
       })}

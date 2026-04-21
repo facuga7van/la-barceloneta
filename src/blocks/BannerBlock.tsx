@@ -1,3 +1,4 @@
+import { storyblokEditable } from '@storyblok/react'
 import type { BannerBlok } from '../storyblok/types'
 import { resolveImage } from '../storyblok/image'
 
@@ -7,6 +8,7 @@ export default function BannerBlock({ blok }: Props) {
   const imgSrc = resolveImage(blok.image)
   const hasOverlay = blok.overlay_text && blok.overlay_text.length > 0
   const hasLink = blok.link && blok.link.length > 0
+  const editable = storyblokEditable(blok)
 
   const inner = (
     <div className="relative shrink-0 w-full" data-name="Banner" data-gsap="scale-in">
@@ -28,11 +30,11 @@ export default function BannerBlock({ blok }: Props) {
 
   if (hasLink) {
     return (
-      <a href={blok.link} target="_blank" rel="noopener noreferrer" className="block cursor-pointer no-underline">
+      <a {...editable} href={blok.link} target="_blank" rel="noopener noreferrer" className="block cursor-pointer no-underline">
         {inner}
       </a>
     )
   }
 
-  return <section>{inner}</section>
+  return <section {...editable}>{inner}</section>
 }

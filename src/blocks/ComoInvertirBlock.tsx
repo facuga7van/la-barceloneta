@@ -1,10 +1,11 @@
+import { storyblokEditable } from '@storyblok/react'
 import type { ComoInvertirBlok } from '../storyblok/types'
 
 interface Props { blok: ComoInvertirBlok }
 
 export default function ComoInvertirBlock({ blok }: Props) {
   return (
-    <div id="como-invertir" className="content-stretch flex flex-col items-start relative shrink-0 w-full">
+    <div {...storyblokEditable(blok)} id="como-invertir" className="content-stretch flex flex-col items-start relative shrink-0 w-full">
       {/* Mobile: clean stacked steps */}
       <div className="lg:hidden w-full">
         <div className="content-stretch flex flex-col items-start px-[16px] py-[60px] relative w-full">

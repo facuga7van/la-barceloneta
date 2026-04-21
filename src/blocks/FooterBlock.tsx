@@ -1,4 +1,5 @@
 import { Facebook as FbIcon, Instagram as IgIcon, Linkedin as LiIcon } from 'lucide-react'
+import { storyblokEditable } from '@storyblok/react'
 import type { FooterBlok } from '../storyblok/types'
 import { resolveImage } from '../storyblok/image'
 
@@ -15,7 +16,7 @@ export default function FooterBlock({ blok }: Props) {
   const linkCls = "leading-[1.2] whitespace-pre-wrap hover:text-white transition-colors text-inherit cursor-pointer text-left bg-transparent border-none p-0"
 
   return (
-    <footer className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-gsap="fade-up">
+    <footer {...storyblokEditable(blok)} className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-gsap="fade-up">
       <div aria-hidden="true" className="absolute border-[#575757] border-solid border-t inset-0 pointer-events-none" />
       <div className="content-stretch flex flex-col gap-[40px] px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
         <div className="flex flex-col lg:flex-row gap-[40px] lg:gap-0 items-start justify-between w-full">
