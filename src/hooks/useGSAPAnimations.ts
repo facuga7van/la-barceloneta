@@ -1,5 +1,6 @@
 // src/hooks/useGSAPAnimations.ts
 import { gsap, ScrollTrigger, useGSAP, MM_CONDITIONS } from "../lib/gsap-setup";
+import { isStoryblokEditor } from "../storyblok/env";
 
 /**
  * Batch scroll reveal for all [data-gsap] elements.
@@ -15,6 +16,15 @@ import { gsap, ScrollTrigger, useGSAP, MM_CONDITIONS } from "../lib/gsap-setup";
  */
 export function useGSAPAnimations() {
   useGSAP(() => {
+    // Disable scroll animations inside Storyblok visual editor iframe
+    if (isStoryblokEditor()) {
+      gsap.set("[data-gsap], [data-gsap-title], [data-gsap-footer]", {
+        autoAlpha: 1, y: 0, x: 0, scale: 1,
+        clipPath: "inset(0% 0 0 0)",
+      });
+      return;
+    }
+
     const mm = gsap.matchMedia();
 
     mm.add(MM_CONDITIONS, (context) => {
