@@ -77,21 +77,33 @@ interface ComponentDef {
 
 const delay = (ms: number) => new Promise(r => setTimeout(r, ms))
 
+let componentsCache: { id: number; name: string }[] | null = null
+
+async function listComponents(): Promise<{ id: number; name: string }[]> {
+  if (componentsCache) return componentsCache
+  const { components } = await api('/components', 'GET')
+  componentsCache = components as { id: number; name: string }[]
+  return componentsCache
+}
+
 async function createComponent(def: ComponentDef, retries = 2): Promise<any> {
   try {
+    const existing = (await listComponents()).find(c => c.name === def.name)
+    if (existing) {
+      const result = await api(`/components/${existing.id}`, 'PUT', { component: { ...def, id: existing.id } })
+      console.log(`  ↻ ${def.name} (updated)`)
+      return result
+    }
     const result = await api('/components', 'POST', { component: def })
-    console.log(`  ✓ ${def.name}`)
+    console.log(`  ✓ ${def.name} (created)`)
+    componentsCache = null // invalidate so subsequent upserts see the new id
     return result
   } catch (err: any) {
     if (err.message?.includes('429') && retries > 0) {
       await delay(1500)
       return createComponent(def, retries - 1)
     }
-    if (err.message?.includes('422') && err.message?.includes('already')) {
-      console.log(`  ⊘ ${def.name} (already exists)`)
-    } else {
-      console.error(`  ✗ ${def.name}: ${err.message}`)
-    }
+    console.error(`  ✗ ${def.name}: ${err.message}`)
   }
 }
 
@@ -231,6 +243,15 @@ const nestedBlocks: ComponentDef[] = [
       bg_color: text(2, 'Background Color (hex)'),
     },
   },
+  {
+    name: 'statItem',
+    display_name: 'Stat Item',
+    is_nestable: true,
+    schema: {
+      value: text(0, 'Value'),
+      label: text(1, 'Label'),
+    },
+  },
 ]
 
 // Phase 2: Top-level section blocks (depend on nested blocks)
@@ -295,6 +316,11 @@ const sectionBlocks: ComponentDef[] = [
       location_name: text(6, 'Location Name'),
       location_city: text(7, 'Location City'),
       background_image: asset(8, 'Background Image'),
+      display_line1: text(9, 'Display Line 1'),
+      display_line2: text(10, 'Display Line 2'),
+      section_title: text(11, 'Section Title'),
+      section_description: textarea(12, 'Section Description'),
+      section_image: asset(13, 'Section Image'),
     },
   },
   {
@@ -359,6 +385,15 @@ const sectionBlocks: ComponentDef[] = [
       features: bloks(2, ['featureItem'], 'Features'),
       image: asset(3, 'Image'),
       logo: asset(4, 'Logo'),
+      display_line1: text(5, 'Display Line 1'),
+      display_line2: text(6, 'Display Line 2'),
+      delivery_label: text(7, 'Delivery Label'),
+      delivery_date: text(8, 'Delivery Date'),
+      location_label: text(9, 'Location Label'),
+      location_value: text(10, 'Location Value'),
+      expansion_title: text(11, 'Expansion Title'),
+      expansion_description: textarea(12, 'Expansion Description'),
+      expansion_image: asset(13, 'Expansion Image'),
     },
   },
   {
@@ -409,6 +444,7 @@ const sectionBlocks: ComponentDef[] = [
       description: textarea(1, 'Description'),
       external_link_text: text(2, 'External Link Text'),
       external_link_url: text(3, 'External Link URL'),
+      hero_image: asset(4, 'Hero Image (right side)'),
     },
   },
   {
@@ -418,7 +454,10 @@ const sectionBlocks: ComponentDef[] = [
     schema: {
       title: text(0, 'Title'),
       paragraphs: textarea(1, 'Paragraphs (one per line)'),
-      image: asset(2, 'Image'),
+      image: asset(2, 'Image (left)'),
+      image_secondary: asset(3, 'Image (right)'),
+      stats_heading: text(4, 'Stats Heading'),
+      stats: bloks(5, ['statItem'], 'Stats'),
     },
   },
   {
@@ -427,7 +466,8 @@ const sectionBlocks: ComponentDef[] = [
     is_nestable: true,
     schema: {
       title: text(0, 'Title'),
-      valores: bloks(1, ['valor'], 'Values'),
+      description: textarea(1, 'Description'),
+      valores: bloks(2, ['valor'], 'Values'),
     },
   },
   {

@@ -165,7 +165,12 @@
         "delivery_date": "Segundo semestre 2026",
         "location_name": "La Barceloneta Buenos Aires",
         "location_city": "Buenos Aires",
-        "background_image": { "filename": "/la-barceloneta/images/a1e4300735e617601eb68cb252aab3a81e0488cb.webp", "alt": "Edificio La Barceloneta" }
+        "background_image": { "filename": "/la-barceloneta/images/a1e4300735e617601eb68cb252aab3a81e0488cb.webp", "alt": "Edificio La Barceloneta" },
+        "display_line1": "La Barceloneta",
+        "display_line2": "buenos aires",
+        "section_title": "Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado",
+        "section_description": "La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 22.500 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.",
+        "section_image": { "filename": "/la-barceloneta/images/SECCION-MOSTRANDO-OCTAVOS.webp", "alt": "Sección mostrando octavos" }
       },
       {
         "_uid": "galeria-1",
@@ -253,7 +258,16 @@
           { "_uid": "nf-3", "component": "featureItem", "text": "Torre de 17 pisos" }
         ],
         "image": { "filename": "/la-barceloneta/images/914b7a18cc94a82207d92425d5761fe22525c121.webp", "alt": "Edificio La Barceloneta Neuquén" },
-        "logo": { "filename": "/la-barceloneta/images/LB NEUQUÉN CELESTE.svg", "alt": "La Barceloneta Neuquén" }
+        "logo": { "filename": "/la-barceloneta/images/LB NEUQUÉN CELESTE.svg", "alt": "La Barceloneta Neuquén" },
+        "display_line1": "La Barceloneta",
+        "display_line2": "NEUQUÉN",
+        "delivery_label": "Entrega estimada",
+        "delivery_date": "Segundo semestre 2026",
+        "location_label": "Ubicación",
+        "location_value": "Neuquén Capital",
+        "expansion_title": "Lo que nació en Buenos Aires, ahora se expande al país",
+        "expansion_description": "La Barceloneta llega a Neuquén con una torre de 17 pisos diseñada para el nuevo polo energético y corporativo de la región. Un proyecto que replica el modelo condo-hotel fraccionado con foco en hotelería, negocios y crecimiento federal.",
+        "expansion_image": { "filename": "/la-barceloneta/images/lb-enandb.webp", "alt": "La Barceloneta Neuquén" }
       },
       {
         "_uid": "testimonials-1",

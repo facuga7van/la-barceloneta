@@ -29,7 +29,7 @@ export default function ValoresBlock({ blok }: Props) {
             </div>
             <div className="content-stretch flex flex-col items-start relative shrink-0 w-full lg:w-[265px]" data-name="Content">
               <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] tracking-[-0.15px] w-full">
-                <p className="leading-[1.2] whitespace-pre-wrap">Creando espacios visionarios con precisión y arte. Eleva tu arquitectura con diseño y innovación de vanguardia.</p>
+                <p className="leading-[1.2] whitespace-pre-wrap">{blok.description || 'Creando espacios visionarios con precisión y arte. Eleva tu arquitectura con diseño y innovación de vanguardia.'}</p>
               </div>
             </div>
           </div>

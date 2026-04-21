@@ -10,7 +10,8 @@
         "logo": { "filename": "", "alt": "Grupo Marting" },
         "description": "25 años de trayectoria. Una nueva generación que transforma el real estate en Argentina.",
         "external_link_text": "Visita nuestro sitio web",
-        "external_link_url": "https://grupomarting.com"
+        "external_link_url": "https://grupomarting.com",
+        "hero_image": { "filename": "/la-barceloneta/images/a8c798b5c8be4c06e14d3f2ec3849a7ee96cbec3.webp", "alt": "Edificio La Barceloneta exterior" }
       },
       {
         "_uid": "historia-1",
@@ -21,12 +22,21 @@
           "Hoy, bajo la dirección de Alan Piñeiro, la empresa se consolida como una desarrolladora integral con visión federal y enfoque 100 % digital.",
           "Nuestro propósito: transformar la experiencia de invertir, vivir y trabajar en el Real Estate argentino, combinando innovación, tecnología y modelos propios como el condo hotel fraccionado, representado por nuestra marca insignia La Barceloneta."
         ],
-        "image": { "filename": "/la-barceloneta/images/a8c798b5c8be4c06e14d3f2ec3849a7ee96cbec3.webp", "alt": "Edificio La Barceloneta exterior" }
+        "image": { "filename": "/la-barceloneta/images/28f87cdf85d8b9d691305432cfcd710646570202.webp", "alt": "Detalle del proyecto" },
+        "image_secondary": { "filename": "/la-barceloneta/images/88f2a57d9ab1cb3b48181d8cec2a6a175d8ed5e1.webp", "alt": "Vista del emprendimiento" },
+        "stats_heading": "Nuestras estadísticas destacadas en 2025",
+        "stats": [
+          { "_uid": "st-1", "component": "statItem", "value": "94%", "label": "Reseñas positivas" },
+          { "_uid": "st-2", "component": "statItem", "value": "+300", "label": "Clientes satisfechos" },
+          { "_uid": "st-3", "component": "statItem", "value": "+25", "label": "Agentes expertos" },
+          { "_uid": "st-4", "component": "statItem", "value": "25+", "label": "Años de trayectoria" }
+        ]
       },
       {
         "_uid": "valores-1",
         "component": "valoresBlock",
         "title": "Nuestros valores",
+        "description": "Creando espacios visionarios con precisión y arte. Eleva tu arquitectura con diseño y innovación de vanguardia.",
         "valores": [
           {
             "_uid": "v-1",

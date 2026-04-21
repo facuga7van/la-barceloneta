@@ -10,6 +10,15 @@ interface Props { blok: NeuquenBlok }
 export default function NeuquenBlock({ blok }: Props) {
   const imageSrc = blok.image?.filename ? resolveImage(blok.image) : ''
   const logoSrc = blok.logo?.filename ? resolveImage(blok.logo) : ''
+  const expansionImgSrc = blok.expansion_image?.filename ? resolveImage(blok.expansion_image) : imgNeuquenExpansion
+  const displayLine1 = blok.display_line1 || 'La Barceloneta'
+  const displayLine2 = blok.display_line2 || 'NEUQUÉN'
+  const deliveryLabel = blok.delivery_label || 'Entrega estimada'
+  const deliveryDate = blok.delivery_date || 'Segundo semestre 2026'
+  const locationLabel = blok.location_label || 'Ubicación'
+  const locationValue = blok.location_value || 'Neuquén Capital'
+  const expansionTitle = blok.expansion_title || 'Lo que nació en Buenos Aires, ahora se expande al país'
+  const expansionDescription = blok.expansion_description || 'La Barceloneta llega a Neuquén con una torre de 17 pisos diseñada para el nuevo polo energético y corporativo de la región. Un proyecto que replica el modelo condo-hotel fraccionado con foco en hotelería, negocios y crecimiento federal.'
 
   return (
     <div
@@ -68,8 +77,8 @@ export default function NeuquenBlock({ blok }: Props) {
               </div>
             )}
             <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] leading-none left-[16px] lg:left-[72px] bottom-[16px] lg:bottom-auto lg:top-[40.04%] right-[16px] lg:right-auto not-italic text-[#7ecbe2] text-[24px] sm:text-[40px] lg:text-[101.098px] tracking-[-1px] sm:tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap">
-              <p className="mb-0">La Barceloneta</p>
-              <p>NEUQUÉN</p>
+              <p className="mb-0">{displayLine1}</p>
+              <p>{displayLine2}</p>
             </div>
           </div>
         </div>
@@ -77,8 +86,8 @@ export default function NeuquenBlock({ blok }: Props) {
         <div className="content-stretch flex flex-col lg:flex-row gap-[32px] items-start py-[32px] relative shrink-0 w-full">
           <div className="w-full lg:w-[240px] lg:shrink-0 relative">
             <div className="flex flex-row lg:flex-col gap-[24px] lg:gap-[32px] flex-wrap">
-              <InfoRow label="Entrega estimada" value="Segundo semestre 2026" />
-              <InfoRow label="Ubicación" value="Neuquén Capital" />
+              <InfoRow label={deliveryLabel} value={deliveryDate} />
+              <InfoRow label={locationLabel} value={locationValue} />
               <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full">
                 <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] min-w-full not-italic relative shrink-0 text-[15px] text-black tracking-[-0.15px] w-[min-content]">
                   <p className="leading-[1.2] font-bold whitespace-pre-wrap">Desarrolla</p>
@@ -92,15 +101,15 @@ export default function NeuquenBlock({ blok }: Props) {
           <div className="content-stretch flex w-full lg:flex-1 lg:min-w-0 flex-col gap-[24px] lg:gap-[32px] items-start relative">
             <div className="content-stretch flex items-center relative shrink-0 w-full">
               <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[22px] lg:text-[30px] text-black tracking-[-0.3px]">
-                <h3 className="font-bold block leading-[1.2] whitespace-pre-wrap">Lo que nació en Buenos Aires, ahora se expande al país</h3>
+                <h3 className="font-bold block leading-[1.2] whitespace-pre-wrap">{expansionTitle}</h3>
               </div>
             </div>
             <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] lg:text-[18px] tracking-[-0.18px] w-full">
-              <p className="leading-[1.6] whitespace-pre-wrap">La Barceloneta llega a Neuquén con una torre de 17 pisos diseñada para el nuevo polo energético y corporativo de la región. Un proyecto que replica el modelo condo-hotel fraccionado con foco en hotelería, negocios y crecimiento federal.</p>
+              <p className="leading-[1.6] whitespace-pre-wrap">{expansionDescription}</p>
             </div>
             <div className="aspect-[860/500] relative shrink-0 w-full max-h-[400px] overflow-hidden rounded-[8px]">
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <img alt="La Barceloneta Neuquén" loading="lazy" className="absolute inset-0 max-w-none object-cover size-full" src={imgNeuquenExpansion} />
+                <img alt={blok.expansion_image?.alt || 'La Barceloneta Neuquén'} loading="lazy" className="absolute inset-0 max-w-none object-cover size-full" src={expansionImgSrc} />
               </div>
             </div>
           </div>

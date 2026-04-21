@@ -9,6 +9,8 @@ interface Props { blok: IntroBlok }
 export default function IntroBlock({ blok }: Props) {
   const hasLogo = !!blok.logo?.filename
   const hasLink = !!(blok.external_link_text && blok.external_link_url)
+  const heroImageSrc = blok.hero_image?.filename ? resolveImage(blok.hero_image) : imgImage5475
+  const heroImageAlt = blok.hero_image?.alt || 'Edificio La Barceloneta exterior'
 
   return (
     <section
@@ -49,7 +51,7 @@ export default function IntroBlock({ blok }: Props) {
         </div>
         <div className="bg-white h-[350px] lg:h-[690px] overflow-clip relative shrink-0 w-full lg:w-[600px]" data-name="Image">
           <div className="-translate-y-1/2 absolute aspect-[581/765] left-0 right-px top-[calc(50%+83px)]" data-name="image 5475">
-            <img alt="Edificio La Barceloneta exterior" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage5475} />
+            <img alt={heroImageAlt} className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={heroImageSrc} />
           </div>
         </div>
       </div>

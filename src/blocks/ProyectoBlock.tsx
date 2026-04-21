@@ -9,6 +9,11 @@ interface Props { blok: ProyectoBlok }
 
 export default function ProyectoBlock({ blok }: Props) {
   const bgSrc = blok.background_image?.filename ? resolveImage(blok.background_image) : ''
+  const displayLine1 = blok.display_line1 || 'La Barceloneta'
+  const displayLine2 = blok.display_line2 || blok.location_city || 'buenos aires'
+  const sectionTitle = blok.section_title || 'Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado'
+  const sectionDescription = blok.section_description || 'La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 22.500 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.'
+  const sectionImgSrc = blok.section_image?.filename ? resolveImage(blok.section_image) : imgSeccionOctavos
 
   return (
     <div
@@ -69,8 +74,8 @@ export default function ProyectoBlock({ blok }: Props) {
               <img alt="La Barceloneta Feel Free" loading="lazy" className="absolute inset-0 max-w-none object-contain object-left pointer-events-none size-full" src={imgLogoFeelFree} />
             </div>
             <div className="absolute font-['Barlow_Condensed:Medium',sans-serif] left-[16px] lg:left-[5.84%] bottom-[16px] lg:bottom-auto lg:top-[40.04%] right-[40%] sm:right-[16px] lg:right-[12.41%] leading-none not-italic text-[#ff5a63] text-[24px] sm:text-[40px] lg:text-[101.098px] tracking-[-1px] sm:tracking-[-3px] lg:tracking-[-8.7698px] uppercase whitespace-pre-wrap z-10">
-              <p className="mb-0">La Barceloneta</p>
-              <p>{blok.location_city || 'buenos aires'}</p>
+              <p className="mb-0">{displayLine1}</p>
+              <p>{displayLine2}</p>
             </div>
           </div>
         </div>
@@ -85,15 +90,15 @@ export default function ProyectoBlock({ blok }: Props) {
           <div className="content-stretch flex w-full md:flex-1 md:min-w-0 flex-col gap-[24px] md:gap-[32px] items-start relative">
             <div className="content-stretch flex items-center relative shrink-0 w-full">
               <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[22px] text-black tracking-[-0.22px]">
-                <h3 className="block leading-[1.2] whitespace-pre-wrap">Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado</h3>
+                <h3 className="block leading-[1.2] whitespace-pre-wrap">{sectionTitle}</h3>
               </div>
             </div>
             <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#575757] text-[15px] md:text-[18px] tracking-[-0.15px] w-full">
-              <p className="leading-[1.6] whitespace-pre-wrap">La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 22.500 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.</p>
+              <p className="leading-[1.6] whitespace-pre-wrap">{sectionDescription}</p>
             </div>
             <div className="hidden md:block aspect-[860/400] relative shrink-0 w-full max-h-[400px]">
               <div className="absolute inset-0 overflow-hidden rounded-[8px] pointer-events-none">
-                <img alt="Sección mostrando octavos" loading="lazy" className="absolute inset-0 max-w-none object-cover size-full" src={imgSeccionOctavos} />
+                <img alt={blok.section_image?.alt || 'Sección mostrando octavos'} loading="lazy" className="absolute inset-0 max-w-none object-cover size-full" src={sectionImgSrc} />
               </div>
             </div>
           </div>

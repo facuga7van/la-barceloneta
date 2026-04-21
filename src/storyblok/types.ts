@@ -149,6 +149,11 @@ export interface ProyectoBlok extends SbBlokData {
   location_name: string
   location_city: string
   background_image: StoryblokAsset
+  display_line1?: string
+  display_line2?: string
+  section_title?: string
+  section_description?: string
+  section_image?: StoryblokAsset
 }
 
 export interface RentaCardsBlok extends SbBlokData {
@@ -195,6 +200,15 @@ export interface NeuquenBlok extends SbBlokData {
   features: FeatureItem[]
   image: StoryblokAsset
   logo: StoryblokAsset
+  display_line1?: string
+  display_line2?: string
+  delivery_label?: string
+  delivery_date?: string
+  location_label?: string
+  location_value?: string
+  expansion_title?: string
+  expansion_description?: string
+  expansion_image?: StoryblokAsset
 }
 
 export interface ComoInvertirBlok extends SbBlokData {
@@ -230,18 +244,29 @@ export interface IntroBlok extends SbBlokData {
   description: string
   external_link_text: string
   external_link_url: string
+  hero_image?: StoryblokAsset
+}
+
+export interface StatItem extends SbBlokData {
+  component: 'statItem'
+  value: string
+  label: string
 }
 
 export interface HistoriaBlok extends SbBlokData {
   component: 'historiaBlock'
   title: string
-  paragraphs: string[]
+  paragraphs: string[] | string
   image: StoryblokAsset
+  image_secondary?: StoryblokAsset
+  stats_heading?: string
+  stats?: StatItem[]
 }
 
 export interface ValoresBlok extends SbBlokData {
   component: 'valoresBlock'
   title: string
+  description?: string
   valores: Valor[]
 }
 
