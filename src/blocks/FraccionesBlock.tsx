@@ -108,7 +108,7 @@ export default function FraccionesBlock({ blok }: Props) {
           </div>
 
           <div className="content-stretch flex w-full lg:flex-[1_0_0] flex-col gap-[8px] items-start justify-center leading-[1.2] min-h-px lg:min-w-px not-italic py-[20px] lg:py-[40px] relative border-t border-[rgba(0,0,0,0.1)] lg:border-none lg:self-stretch" data-gsap="fade-right">
-            <div className="content-stretch flex font-['Helvetica:Bold',sans-serif] items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] w-full">
+            <div className="content-stretch flex flex-wrap font-['Helvetica:Bold',sans-serif] items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 text-[#040404] text-[16px] lg:text-[22px] tracking-[-0.22px] w-full gap-x-[8px]">
               <p className="relative shrink-0">TU INVERSIÓN</p>
               <p key={investment} className="relative shrink-0 text-right animate-[numberPop_0.3s_ease-out]">U$D {fmt(investment)}</p>
             </div>
@@ -127,8 +127,8 @@ export default function FraccionesBlock({ blok }: Props) {
 
 function RentaRow({ label, rate, value, fmt }: { label: string; rate: number; value: number; fmt: (n: number) => string }) {
   return (
-    <div className="content-stretch flex items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)]">
-      <div className="flex flex-[1_0_0] flex-col items-start justify-center min-w-0">
+    <div className="content-stretch flex flex-wrap items-start justify-between py-[12px] lg:py-[16px] relative shrink-0 w-full border-t border-[rgba(0,0,0,0.1)] gap-x-[8px]">
+      <div className="flex flex-col items-start justify-center min-w-0">
         <p className="font-['Helvetica:Bold',sans-serif] text-[#040404] text-[14px] lg:text-[22px] tracking-[-0.22px]">{label}</p>
         <p className="font-['Helvetica:Regular',sans-serif] text-[#a3a3a3] text-[13px] lg:text-[15px] tracking-[-0.15px] opacity-70">({rate}% anual)</p>
       </div>
