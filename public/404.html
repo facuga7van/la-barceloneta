@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>La Barceloneta</title>
+    <script>
+      // GitHub Pages SPA redirect: serves the app for any path (e.g. /home, /about)
+      // so that Storyblok visual editor and deep links work with hash routing.
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      window.location.replace(
+        window.location.origin + '/la-barceloneta/' + search + hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
