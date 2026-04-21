@@ -1,0 +1,120 @@
+{
+  "name": "About",
+  "slug": "about",
+  "content": {
+    "component": "page",
+    "body": [
+      {
+        "_uid": "intro-1",
+        "component": "introBlock",
+        "logo": { "filename": "", "alt": "Grupo Marting" },
+        "description": "25 años de trayectoria. Una nueva generación que transforma el real estate en Argentina.",
+        "external_link_text": "Visita nuestro sitio web",
+        "external_link_url": "https://grupomarting.com",
+        "hero_image": { "filename": "/la-barceloneta/images/a8c798b5c8be4c06e14d3f2ec3849a7ee96cbec3.webp", "alt": "Edificio La Barceloneta exterior" }
+      },
+      {
+        "_uid": "historia-1",
+        "component": "historiaBlock",
+        "title": "Nuestra historia",
+        "paragraphs": [
+          "Grupo Marting nació hace más de 25 años de la mano de Marcelino Piñeiro, con la misión de brindar un servicio inmobiliario transparente y profesional.",
+          "Hoy, bajo la dirección de Alan Piñeiro, la empresa se consolida como una desarrolladora integral con visión federal y enfoque 100 % digital.",
+          "Nuestro propósito: transformar la experiencia de invertir, vivir y trabajar en el Real Estate argentino, combinando innovación, tecnología y modelos propios como el condo hotel fraccionado, representado por nuestra marca insignia La Barceloneta."
+        ],
+        "image": { "filename": "/la-barceloneta/images/28f87cdf85d8b9d691305432cfcd710646570202.webp", "alt": "Detalle del proyecto" },
+        "image_secondary": { "filename": "/la-barceloneta/images/88f2a57d9ab1cb3b48181d8cec2a6a175d8ed5e1.webp", "alt": "Vista del emprendimiento" },
+        "stats_heading": "Nuestras estadísticas destacadas en 2025",
+        "stats": [
+          { "_uid": "st-1", "component": "statItem", "value": "94%", "label": "Reseñas positivas" },
+          { "_uid": "st-2", "component": "statItem", "value": "+300", "label": "Clientes satisfechos" },
+          { "_uid": "st-3", "component": "statItem", "value": "+25", "label": "Agentes expertos" },
+          { "_uid": "st-4", "component": "statItem", "value": "25+", "label": "Años de trayectoria" }
+        ]
+      },
+      {
+        "_uid": "valores-1",
+        "component": "valoresBlock",
+        "title": "Nuestros valores",
+        "description": "Creando espacios visionarios con precisión y arte. Eleva tu arquitectura con diseño y innovación de vanguardia.",
+        "valores": [
+          {
+            "_uid": "v-1",
+            "component": "valor",
+            "name": "Transparencia",
+            "description": "Ética y confianza",
+            "icon": "cross"
+          },
+          {
+            "_uid": "v-2",
+            "component": "valor",
+            "name": "Innovación",
+            "description": "Tecnología y visión digital",
+            "icon": "cross"
+          },
+          {
+            "_uid": "v-3",
+            "component": "valor",
+            "name": "Comunidad",
+            "description": "Crecimiento conjunto",
+            "icon": "cross"
+          },
+          {
+            "_uid": "v-4",
+            "component": "valor",
+            "name": "Rentabilidad",
+            "description": "Productos con valor sostenido",
+            "icon": "cross"
+          }
+        ]
+      },
+      {
+        "_uid": "equipo-1",
+        "component": "equipoBlock",
+        "title": "Conoce a los visionarios detrás de Grupo Marting",
+        "members": [
+          {
+            "_uid": "tm-1",
+            "component": "teamMember",
+            "name": "Alan Piñeiro",
+            "role": "CEO & Founder",
+            "photo": { "filename": "/la-barceloneta/images/4372b663ba895d65a00e831afef24a66e96a387c.webp", "alt": "Alan Piñeiro" },
+            "linkedin": ""
+          },
+          {
+            "_uid": "tm-2",
+            "component": "teamMember",
+            "name": "Marcelino Piñeiro",
+            "role": "Fundador",
+            "photo": { "filename": "/la-barceloneta/images/1ed83031c13ff3e657b9319ce25234a8b5d42b68.webp", "alt": "Marcelino Piñeiro" },
+            "linkedin": ""
+          }
+        ]
+      },
+      {
+        "_uid": "footer-about",
+        "component": "footerBlock",
+        "logo": { "filename": "/la-barceloneta/images/LB BS AS FEEL FREE - ROSA.svg", "alt": "La Barceloneta" },
+        "tagline": "Invertí en real estate fraccionado con escritura pública y rentabilidad en dólares.",
+        "copyright_text": "La Barceloneta. Todos los derechos reservados.",
+        "social_facebook": "https://www.facebook.com/labarcelonetafeelfree",
+        "social_instagram": "https://www.instagram.com/labarceloneta.bsas/",
+        "social_linkedin": "https://www.linkedin.com/company/la-barceloneta-feel-free/",
+        "sections_links": [
+          { "_uid": "asl-1", "component": "menuLink", "label": "¿Cómo gano?", "anchor": "como-gano" },
+          { "_uid": "asl-2", "component": "menuLink", "label": "Elegí tu fracción", "anchor": "fracciones" },
+          { "_uid": "asl-3", "component": "menuLink", "label": "El proyecto (Buenos Aires)", "anchor": "proyecto" },
+          { "_uid": "asl-4", "component": "menuLink", "label": "Avance de obra", "anchor": "avance" },
+          { "_uid": "asl-5", "component": "menuLink", "label": "El próximo capítulo (Neuquén)", "anchor": "neuquen" }
+        ],
+        "info_links": [
+          { "_uid": "ail-1", "component": "menuLink", "label": "¿Cómo invertir?", "anchor": "como-invertir" },
+          { "_uid": "ail-2", "component": "menuLink", "label": "Testimonios", "anchor": "testimonios" },
+          { "_uid": "ail-3", "component": "menuLink", "label": "Prensa", "anchor": "prensa" },
+          { "_uid": "ail-4", "component": "menuLink", "label": "Vista 360", "anchor": "vista360" },
+          { "_uid": "ail-5", "component": "menuLink", "label": "Contacto", "anchor": "contacto" }
+        ]
+      }
+    ]
+  }
+}

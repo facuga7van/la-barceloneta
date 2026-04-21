@@ -5,3 +5,4 @@ dist
 feedback
 .md
 .pdf
+# content/ — will be gitignored once fetch-content script exists

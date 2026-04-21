@@ -22,39 +22,47 @@ function MagneticWrap({ children, strength = 0.3 }: { children: React.ReactNode;
   );
 }
 
-function Frame42() {
+const DEFAULT_HEADLINE_1 = "No vendemos metros";
+const DEFAULT_HEADLINE_2 = "____ CREAMOS RENTABILIDAD";
+const DEFAULT_SUBTITLE = "El real estate volvió a ser negocio.";
+const DEFAULT_CTA_TEXT = "Quiero invertir";
+const DEFAULT_CTA_LINK = "https://wa.me/5491173646541";
+const DEFAULT_VIDEO_SRC = `${import.meta.env.BASE_URL}videos/2bd5ae44656fe5e0504e38223d283ffeb8c6d21e.mp4`;
+const DEFAULT_VIDEO_POSTER = `${import.meta.env.BASE_URL}images/hero-poster.jpg`;
+
+function Frame42({ headline1, headline2 }: { headline1: string; headline2: string }) {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full font-['Barlow_Condensed',sans-serif] font-normal">
-      <h1 data-hero-headline className="text-[48px] lg:text-[88px] text-white tracking-[-4px] uppercase leading-[1] whitespace-nowrap m-0 font-normal">No vendemos metros</h1>
-      <h1 data-hero-headline className="text-[48px] lg:text-[88px] text-white tracking-[-4px] uppercase leading-[1] whitespace-nowrap m-0 font-normal">____ CREAMOS RENTABILIDAD</h1>
+      <h1 data-hero-headline className="text-[48px] lg:text-[88px] text-white tracking-[-4px] uppercase leading-[1] whitespace-nowrap m-0 font-normal">{headline1}</h1>
+      <h1 data-hero-headline className="text-[48px] lg:text-[88px] text-white tracking-[-4px] uppercase leading-[1] whitespace-nowrap m-0 font-normal">{headline2}</h1>
     </div>
   );
 }
 
-function Text() {
+function Text({ headline1, headline2, subtitle }: { headline1: string; headline2: string; subtitle: string }) {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-center min-h-px min-w-px relative" data-name="Text">
-      <Frame42 />
+      <Frame42 headline1={headline1} headline2={headline2} />
       <div className="flex flex-col justify-center not-italic relative shrink-0 text-[22px] lg:text-[32px] text-white tracking-[-1px] uppercase w-full font-['Barlow_Semi_Condensed',sans-serif] font-normal">
-        <p data-hero-subtitle className="leading-[1] whitespace-pre-wrap m-0">El real estate volvió a ser negocio.</p>
+        <p data-hero-subtitle className="leading-[1] whitespace-pre-wrap m-0">{subtitle}</p>
       </div>
     </div>
   );
 }
 
-function Frame41() {
+function Frame41(props: { headline1: string; headline2: string; subtitle: string }) {
   return (
     <div className="content-stretch flex items-center justify-between relative shrink-0 w-full lg:w-[548px]">
-      <Text />
+      <Text {...props} />
     </div>
   );
 }
 
-function PrimaryButton() {
+function PrimaryButton({ text, link }: { text: string; link: string }) {
   return (
-    <a data-hero-cta href="https://wa.me/5491173646541" target="_blank" rel="noopener noreferrer" className="bg-white content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-full sm:w-[265px] no-underline cursor-pointer hover:bg-gray-100 transition-colors" data-name="Primary button">
+    <a data-hero-cta href={link} target="_blank" rel="noopener noreferrer" className="bg-white content-stretch flex h-[48px] items-center justify-center px-[25px] py-[12px] relative rounded-[999px] shrink-0 w-full sm:w-[265px] no-underline cursor-pointer hover:bg-gray-100 transition-colors" data-name="Primary button">
       <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic overflow-hidden relative text-[#141414] text-[15px] text-center text-ellipsis tracking-[-0.15px] whitespace-nowrap">
-        <p className="leading-[1.2] overflow-hidden">Quiero invertir</p>
+        <p className="leading-[1.2] overflow-hidden">{text}</p>
       </div>
     </a>
   );
@@ -71,45 +79,45 @@ function SecondaryButton() {
   );
 }
 
-function Buttons1() {
+function Buttons1({ ctaText, ctaLink }: { ctaText: string; ctaLink: string }) {
   return (
     <div className="content-stretch cursor-pointer flex flex-col sm:flex-row gap-[8px] items-start relative shrink-0 w-full" data-name="Buttons">
-      <MagneticWrap strength={0.25}><PrimaryButton /></MagneticWrap>
+      <MagneticWrap strength={0.25}><PrimaryButton text={ctaText} link={ctaLink} /></MagneticWrap>
       <MagneticWrap strength={0.25}><SecondaryButton /></MagneticWrap>
     </div>
   );
 }
 
-function Buttons() {
+function Buttons({ ctaText, ctaLink }: { ctaText: string; ctaLink: string }) {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Buttons">
-      <Buttons1 />
+      <Buttons1 ctaText={ctaText} ctaLink={ctaLink} />
     </div>
   );
 }
 
-function Frame57() {
+function Frame57(props: { headline1: string; headline2: string; subtitle: string; ctaText: string; ctaLink: string }) {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[24px] items-start justify-end min-h-px min-w-px relative">
-      <Frame41 />
-      <Buttons />
+      <Frame41 headline1={props.headline1} headline2={props.headline2} subtitle={props.subtitle} />
+      <Buttons ctaText={props.ctaText} ctaLink={props.ctaLink} />
     </div>
   );
 }
 
-function Content() {
+function Content(props: { headline1: string; headline2: string; subtitle: string; ctaText: string; ctaLink: string }) {
   return (
     <div className="content-stretch flex items-end justify-between relative shrink-0 w-full" data-name="Content">
-      <Frame57 />
+      <Frame57 {...props} />
     </div>
   );
 }
 
-function IntroSection() {
+function IntroSection(props: { headline1: string; headline2: string; subtitle: string; ctaText: string; ctaLink: string }) {
   return (
     <section className="absolute bottom-0 content-stretch flex flex-col items-start justify-end left-0 px-[16px] lg:px-[32px] pt-[16px] lg:pt-[32px] pb-[40px] lg:pb-[64px] right-0" data-name="Intro section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid inset-0 pointer-events-none" />
-      <Content />
+      <Content {...props} />
     </section>
   );
 }
@@ -335,14 +343,32 @@ function Logos() {
   );
 }
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  headline1?: string;
+  headline2?: string;
+  subtitle?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  videoSrc?: string;
+  videoPoster?: string;
+}
+
+export default function HeroSection(props: HeroSectionProps = {}) {
   const heroRef = useHeroAnimations();
+  const headline1 = props.headline1 || DEFAULT_HEADLINE_1;
+  const headline2 = props.headline2 || DEFAULT_HEADLINE_2;
+  const subtitle = props.subtitle || DEFAULT_SUBTITLE;
+  const ctaText = props.ctaText || DEFAULT_CTA_TEXT;
+  const ctaLink = props.ctaLink || DEFAULT_CTA_LINK;
+  const videoSrc = props.videoSrc || DEFAULT_VIDEO_SRC;
+  const videoPoster = props.videoPoster || DEFAULT_VIDEO_POSTER;
+
   return (
     <div ref={heroRef as React.RefObject<HTMLDivElement>} className="h-[100svh] overflow-clip relative shrink-0 w-full" data-name="Hero" id="inicio">
-      <video data-hero-bg aria-label="Logo on colored background" autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop muted playsInline poster={`${import.meta.env.BASE_URL}images/hero-poster.jpg`} preload="metadata">
-        <source src={`${import.meta.env.BASE_URL}videos/2bd5ae44656fe5e0504e38223d283ffeb8c6d21e.mp4`} type="video/mp4" />
+      <video data-hero-bg aria-label="Logo on colored background" autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop muted playsInline poster={videoPoster} preload="metadata" key={videoSrc}>
+        <source src={videoSrc} type="video/mp4" />
       </video>
-      <IntroSection />
+      <IntroSection headline1={headline1} headline2={headline2} subtitle={subtitle} ctaText={ctaText} ctaLink={ctaLink} />
       <Logos />
     </div>
   );

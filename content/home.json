@@ -1,0 +1,436 @@
+{
+  "name": "Home",
+  "slug": "home",
+  "content": {
+    "component": "page",
+    "body": [
+      {
+        "_uid": "hero-1",
+        "component": "heroBlock",
+        "headline_line1": "No vendemos metros",
+        "headline_line2": "____ CREAMOS RENTABILIDAD",
+        "subtitle": "El real estate volvió a ser negocio.",
+        "cta_text": "Quiero invertir",
+        "cta_link": "https://wa.me/5491173646541",
+        "background_video": {
+          "filename": "/la-barceloneta/videos/2bd5ae44656fe5e0504e38223d283ffeb8c6d21e.mp4",
+          "alt": "Video de fondo hero"
+        },
+        "background_image": {
+          "filename": "/la-barceloneta/images/hero-poster.jpg",
+          "alt": "La Barceloneta hero poster"
+        }
+      },
+      {
+        "_uid": "carousel-1",
+        "component": "imageCarouselBlock",
+        "scroll_speed": 0.6,
+        "images": [
+          {
+            "_uid": "ci-1",
+            "component": "carouselImage",
+            "image": { "filename": "/la-barceloneta/images/e7b02b83f7d79cd443a54c11301740ab75dd548e.webp", "alt": "Interior lounge" },
+            "alt": "Interior lounge"
+          },
+          {
+            "_uid": "ci-2",
+            "component": "carouselImage",
+            "image": { "filename": "/la-barceloneta/images/4f6aa36958afd713bc1c8acb59b4994a3636420d.webp", "alt": "Rooftop terraza" },
+            "alt": "Rooftop terraza"
+          },
+          {
+            "_uid": "ci-3",
+            "component": "carouselImage",
+            "image": { "filename": "/la-barceloneta/images/ee42972642d8fa9e5f8cda6dbdda134bd59958d1.webp", "alt": "SPA y piscina" },
+            "alt": "SPA y piscina"
+          },
+          {
+            "_uid": "ci-4",
+            "component": "carouselImage",
+            "image": { "filename": "/la-barceloneta/images/6af0a074825e112e70f7ac339572847d568610c2.webp", "alt": "Piscina vista aérea" },
+            "alt": "Piscina vista aérea"
+          },
+          {
+            "_uid": "ci-5",
+            "component": "carouselImage",
+            "image": { "filename": "/la-barceloneta/images/742d27d63a4c2ac7129e534a9d89fd15a13a1a99.webp", "alt": "Terraza nocturna" },
+            "alt": "Terraza nocturna"
+          },
+          {
+            "_uid": "ci-6",
+            "component": "carouselImage",
+            "image": { "filename": "/la-barceloneta/images/e7b02b83f7d79cd443a54c11301740ab75dd548e.webp", "alt": "Interior lounge" },
+            "alt": "Interior lounge"
+          },
+          {
+            "_uid": "ci-7",
+            "component": "carouselImage",
+            "image": { "filename": "/la-barceloneta/images/4f6aa36958afd713bc1c8acb59b4994a3636420d.webp", "alt": "Rooftop terraza" },
+            "alt": "Rooftop terraza"
+          },
+          {
+            "_uid": "ci-8",
+            "component": "carouselImage",
+            "image": { "filename": "/la-barceloneta/images/ee42972642d8fa9e5f8cda6dbdda134bd59958d1.webp", "alt": "SPA y piscina" },
+            "alt": "SPA y piscina"
+          }
+        ]
+      },
+      {
+        "_uid": "banner-1",
+        "component": "bannerBlock",
+        "image": { "filename": "/la-barceloneta/images/5fa2811ceac5459ca22dc90ff1434b4271d95280.webp", "alt": "La Barceloneta Buenos Aires" },
+        "overlay_text": "",
+        "link": "https://drive.google.com/file/d/1-NlHPsM-R_g7Uc5tK72hWYvNuhRM20gR/view?usp=sharing"
+      },
+      {
+        "_uid": "comogano-1",
+        "component": "comoGanoBlock",
+        "title": "¿Cómo gano con este modelo?",
+        "description": "Nos ajustamos a tus posibilidades de inversión otorgando beneficios desde el principio. Para que más que invertir en un inmueble inviertas en una experiencia."
+      },
+      {
+        "_uid": "renta-1",
+        "component": "rentaCardsBlock",
+        "cards": [
+          {
+            "_uid": "rc-1",
+            "component": "rentaCard",
+            "metric": "+8–12%",
+            "period": "Anual",
+            "title": "RENTA HOTELERA",
+            "subtitle": "Ganancia luego, con hotel (variable, mayor).",
+            "detail": "Es la renta que obtenés una vez que el edificio entra en operación hotelera. Se calcula en base a ocupación, tarifa promedio (ADR) y estadísticas reales del hotel, por eso es la renta más alta del modelo.",
+            "bg_color": "#f45f00"
+          },
+          {
+            "_uid": "rc-2",
+            "component": "rentaCard",
+            "metric": "+5%",
+            "period": "Anual",
+            "title": "RENTA DE ESPERA",
+            "subtitle": "Ganancia durante obra (segura, baja).",
+            "detail": "Es la renta que obtenés mientras la obra se encuentra en construcción.\nFunciona como una compensación fija por acompañar el desarrollo desde sus primeras etapas.\n\nTiene un rendimiento estable y previsible, y te permite generar ingresos desde el inicio, aun antes de que el edificio entre en operación hotelera.",
+            "bg_color": "#1e3d59"
+          },
+          {
+            "_uid": "rc-3",
+            "component": "rentaCard",
+            "metric": "+30%",
+            "period": "Estimado",
+            "title": "VALORIZACIÓN",
+            "subtitle": "Plusvalía del inmueble a medida que avanza la obra.",
+            "detail": "Es la ganancia de capital que obtenés por la revalorización de tu fracción.\nA medida que la obra avanza y el edificio se acerca a su entrega, el valor de mercado de cada unidad aumenta.\n\nEsta valorización se refleja en el precio de reventa de tu fracción, generando una ganancia patrimonial que se suma a las rentas.",
+            "bg_color": "#141414"
+          }
+        ]
+      },
+      {
+        "_uid": "fracciones-1",
+        "component": "fraccionesBlock",
+        "title": "Elegí tu fracción",
+        "description": "Accedé a una unidad desde USD 22.500 y hacé que tu ladrillo trabaje por vos.",
+        "tipologias": [
+          {
+            "_uid": "tip-1",
+            "component": "tipologia",
+            "name": "Monoloft NORTE",
+            "base_price": 22500,
+            "image": { "filename": "/la-barceloneta/images/e3b035696adca0a791535c23f307956a1eceb398.webp", "alt": "Plano Monoloft Norte" }
+          },
+          {
+            "_uid": "tip-2",
+            "component": "tipologia",
+            "name": "Monoloft SUR",
+            "base_price": 25000,
+            "image": { "filename": "/la-barceloneta/images/e3b035696adca0a791535c23f307956a1eceb398.webp", "alt": "Plano Monoloft Sur" }
+          }
+        ],
+        "renta_espera_pct": 5,
+        "renta_hotelera_pct": 10,
+        "renta_asegurada_pct": 5,
+        "disclaimer": "* Los valores son estimados. La renta hotelera (RH) puede variar según ocupación y tarifa."
+      },
+      {
+        "_uid": "proyecto-1",
+        "component": "proyectoBlock",
+        "title": "El proyecto",
+        "price_label": "desde",
+        "price": "USD 22.500",
+        "features": [
+          { "_uid": "pf-1", "component": "featureItem", "text": "Llave en mano" },
+          { "_uid": "pf-2", "component": "featureItem", "text": "Apto explotación hotelera" }
+        ],
+        "delivery_label": "Entrega estimada",
+        "delivery_date": "Segundo semestre 2026",
+        "location_name": "La Barceloneta Buenos Aires",
+        "location_city": "Buenos Aires",
+        "background_image": { "filename": "/la-barceloneta/images/a1e4300735e617601eb68cb252aab3a81e0488cb.webp", "alt": "Edificio La Barceloneta" },
+        "display_line1": "La Barceloneta",
+        "display_line2": "buenos aires",
+        "section_title": "Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado",
+        "section_description": "La Barceloneta Buenos Aires es un desarrollo donde cada unidad se divide en 8 fracciones (1/8), permitiendo invertir desde USD 22.500 con escritura pública y rentabilidad en dólares. Somos la única empresa en CABA que comercializa departamentos fraccionados bajo este formato.",
+        "section_image": { "filename": "/la-barceloneta/images/SECCION-MOSTRANDO-OCTAVOS.webp", "alt": "Sección mostrando octavos" }
+      },
+      {
+        "_uid": "galeria-1",
+        "component": "galeriaBlock",
+        "title": "Prestaciones selectas",
+        "subtitle": "",
+        "tabs": [
+          {
+            "_uid": "gt-1",
+            "component": "galeriaTab",
+            "label": "ROOFTOP",
+            "description": "Pileta + solarium con vista panorámica",
+            "image": { "filename": "/la-barceloneta/images/Copia de Copia de Copia de OCHA-BRC-ROOF TOP-CHILLA-14.webp", "alt": "Rooftop" }
+          },
+          {
+            "_uid": "gt-2",
+            "component": "galeriaTab",
+            "label": "GALERÍA DE ARTE",
+            "description": "Galería de arte integrada al hotel",
+            "image": { "filename": "/la-barceloneta/images/GALERÍA DE ARTE 3.webp", "alt": "Galería de arte" }
+          },
+          {
+            "_uid": "gt-3",
+            "component": "galeriaTab",
+            "label": "BAR DE JAZZ Y TANGO",
+            "description": "Bar temático de jazz y tango",
+            "image": { "filename": "/la-barceloneta/images/BAR 5.webp", "alt": "Bar de jazz y tango" }
+          },
+          {
+            "_uid": "gt-4",
+            "component": "galeriaTab",
+            "label": "RECREATION ROOM",
+            "description": "Sala de recreación y entretenimiento",
+            "image": { "filename": "/la-barceloneta/images/RECREATION ROOM 7.webp", "alt": "Recreation room" }
+          },
+          {
+            "_uid": "gt-5",
+            "component": "galeriaTab",
+            "label": "ÁREA DE BIENESTAR",
+            "description": "Espacio zen y wellness",
+            "image": { "filename": "/la-barceloneta/images/Copia de Copia de Copia de OCHA-BRC-AMENITIE-ZEN 1.webp", "alt": "Área de bienestar" }
+          }
+        ]
+      },
+      {
+        "_uid": "avance-1",
+        "component": "avanceObraBlock",
+        "title": "Avance de obra",
+        "subtitle": "A medida que la obra avanza, bajamos el ticket.",
+        "active_step": 2,
+        "steps": [
+          { "_uid": "os-1", "component": "obraStep", "date": "Nov 2024", "percentage": 30, "label": "Estructura", "description": "Hormigón armado, columnas y losas de todos los pisos completados." },
+          { "_uid": "os-2", "component": "obraStep", "date": "Mar 2025", "percentage": 45, "label": "Cerramientos", "description": "Carpintería exterior, vidrios y fachada en proceso de instalación." },
+          { "_uid": "os-3", "component": "obraStep", "date": "Jul 2025", "percentage": 55, "label": "Instalaciones", "description": "Instalaciones eléctricas, sanitarias y de gas en ejecución." },
+          { "_uid": "os-4", "component": "obraStep", "date": "Nov 2025", "percentage": 65, "label": "Terminaciones", "description": "Pisos, revestimientos, pintura y detalles de terminación." },
+          { "_uid": "os-5", "component": "obraStep", "date": "Mar 2026", "percentage": 80, "label": "Equipamiento", "description": "Equipamiento de amenities, ascensores y áreas comunes." },
+          { "_uid": "os-6", "component": "obraStep", "date": "Jul 2026", "percentage": 100, "label": "Entrega", "description": "Entrega final de unidades y puesta en marcha del condo-hotel." }
+        ],
+        "image": { "filename": "/la-barceloneta/images/aecf8491a4aed42a021d65d003982cb10eaa27bb.webp", "alt": "Avance de obra La Barceloneta" }
+      },
+      {
+        "_uid": "ubicacion-1",
+        "component": "ubicacionBlock",
+        "title": "Ubicación",
+        "subtitle": "Desarrollo La Barceloneta Feel Free\nBuenos Aires – Argentina\nObra en construcción: Venezuela 2475, C1096ABQ – CABA\nOficina comercial: Ángel Justiniano Carranza 1470 C1414 – Ciudad Autónoma de Buenos Aires",
+        "address": "Venezuela 2475, C1096ABQ – CABA",
+        "map_coordinates": "https://maps.app.goo.gl/zbCNkz27gbWEb72c6",
+        "image": { "filename": "/la-barceloneta/images/f57b3df53eecbd1024de251092ca13b5ba9f2c7f.webp", "alt": "Mapa ubicación" }
+      },
+      {
+        "_uid": "banner-2",
+        "component": "bannerBlock",
+        "image": { "filename": "/la-barceloneta/images/c2f24df4b6ca0039f037d93862af8ddfbae7000b.webp", "alt": "Vista aérea del proyecto" },
+        "overlay_text": "Próximamente",
+        "link": ""
+      },
+      {
+        "_uid": "neuquen-1",
+        "component": "neuquenBlock",
+        "title": "El próximo capítulo (Neuquén)",
+        "project_name": "Energy & Business Tower",
+        "features": [
+          { "_uid": "nf-1", "component": "featureItem", "text": "Modelo 1/8 en formato condo-hotel" },
+          { "_uid": "nf-2", "component": "featureItem", "text": "Foco corporativo y energético" },
+          { "_uid": "nf-3", "component": "featureItem", "text": "Torre de 17 pisos" }
+        ],
+        "image": { "filename": "/la-barceloneta/images/914b7a18cc94a82207d92425d5761fe22525c121.webp", "alt": "Edificio La Barceloneta Neuquén" },
+        "logo": { "filename": "/la-barceloneta/images/LB NEUQUÉN CELESTE.svg", "alt": "La Barceloneta Neuquén" },
+        "display_line1": "La Barceloneta",
+        "display_line2": "NEUQUÉN",
+        "delivery_label": "Entrega estimada",
+        "delivery_date": "Segundo semestre 2026",
+        "location_label": "Ubicación",
+        "location_value": "Neuquén Capital",
+        "expansion_title": "Lo que nació en Buenos Aires, ahora se expande al país",
+        "expansion_description": "La Barceloneta llega a Neuquén con una torre de 17 pisos diseñada para el nuevo polo energético y corporativo de la región. Un proyecto que replica el modelo condo-hotel fraccionado con foco en hotelería, negocios y crecimiento federal.",
+        "expansion_image": { "filename": "/la-barceloneta/images/lb-enandb.webp", "alt": "La Barceloneta Neuquén" }
+      },
+      {
+        "_uid": "testimonials-1",
+        "component": "testimonialsBlock",
+        "title": "Experiencias reales de quienes ya están invirtiendo",
+        "description": "",
+        "testimonials": [
+          {
+            "_uid": "t-1",
+            "component": "testimonial",
+            "name": "Marco Tomas Alvarez",
+            "subtitle": "★★★★★",
+            "quote": "Invertí en el Crowdfunding hace un año y un éxito todo, un contrato super claro y me dejó muy tranquilo. Hoy recibí mi inversión más el retorno. ¡Aumenté mi capital!"
+          },
+          {
+            "_uid": "t-2",
+            "component": "testimonial",
+            "name": "AP",
+            "subtitle": "★★★★★ · Inversora desde Puerto Rico",
+            "quote": "Llegué a La Barceloneta por redes sociales y sin dudarlo empezamos las gestiones para invertir desde el exterior. Llevo 5 meses y estoy conforme con cada paso. ¡Recomendados al 1000%!"
+          },
+          {
+            "_uid": "t-3",
+            "component": "testimonial",
+            "name": "Sandra Melendi",
+            "subtitle": "★★★★★",
+            "quote": "Como jubilada, mi prioridad es la seguridad. Hoy mi inversión se traduce en una renta mensual que complementa mis ingresos. Ver cómo mi patrimonio crece mes a mes me da una tranquilidad enorme."
+          },
+          {
+            "_uid": "t-4",
+            "component": "testimonial",
+            "name": "Cesar Martin Lopez",
+            "subtitle": "★★★★★",
+            "quote": "Esta semana cerré la operación y ya soy parte de este hermoso proyecto. ¡Ya soy un Barceloneta más! Gracias por la calidad en el trato y por abrirme las puertas."
+          },
+          {
+            "_uid": "t-5",
+            "component": "testimonial",
+            "name": "Lo Mejor de mi",
+            "subtitle": "★★★★★",
+            "quote": "Excelente experiencia invirtiendo en La Barceloneta. El modelo de condohotel es muy sólido y la atención es impecable. Nos dieron muchísima confianza y tranquilidad en cada paso. ¡Totalmente recomendados!"
+          },
+          {
+            "_uid": "t-6",
+            "component": "testimonial",
+            "name": "Miguel Angel Rivera",
+            "subtitle": "★★★★★ · Local Guide",
+            "quote": "Muy profesionales, atentos y agradables."
+          },
+          {
+            "_uid": "t-7",
+            "component": "testimonial",
+            "name": "Horacio Blanco",
+            "subtitle": "★★★★★",
+            "quote": "La mejor inversión que hice."
+          }
+        ]
+      },
+      {
+        "_uid": "press-1",
+        "component": "pressBlock",
+        "title": "Prensa",
+        "description": "Los medios hablan del modelo de inversión en fracciones y de La Barceloneta.",
+        "articles": [
+          {
+            "_uid": "pa-1",
+            "component": "pressArticle",
+            "media_name": "Forbes Argentina",
+            "description": "Forbes Argentina destacó el crecimiento del formato 1/8 en CABA y el rol de La Barceloneta como referencia dentro del segmento condo-hotel.",
+            "image": { "filename": "", "alt": "Forbes Argentina logo" },
+            "link": ""
+          },
+          {
+            "_uid": "pa-2",
+            "component": "pressArticle",
+            "media_name": "Perfil",
+            "description": "El medio analizó la propuesta del modelo fraccionado y su impacto en el mercado inmobiliario actual.",
+            "image": { "filename": "/la-barceloneta/images/7694e423852a974cdbc6d9264be6bf9dd34a1208.webp", "alt": "Testimonio de prensa" },
+            "link": ""
+          },
+          {
+            "_uid": "pa-3",
+            "component": "pressArticle",
+            "media_name": "Medio de Inversiones",
+            "description": "Un análisis del mecanismo de renta (RE, RH, RA) y por qué está creciendo entre inversores jóvenes y conservadores por igual.",
+            "image": { "filename": "", "alt": "" },
+            "link": ""
+          }
+        ]
+      },
+      {
+        "_uid": "comoinvertir-1",
+        "component": "comoInvertirBlock",
+        "title": "¿Cómo invertir?",
+        "intro_subtitle": "Nuestro desarrollo insignia en CABA bajo el modelo condo-hotel fraccionado",
+        "steps": [
+          {
+            "_uid": "is-1",
+            "component": "investStep",
+            "number": "1",
+            "title": "Definimos tu ticket de inversión",
+            "description": "Elegís cuántas fracciones querés (1/8, 2/8, 3/8…) y la tipología (Norte o Sur)."
+          },
+          {
+            "_uid": "is-2",
+            "component": "investStep",
+            "number": "2",
+            "title": "Anticipo + cuotas",
+            "description": "Anticipo sugerido: USD 10.000. El resto se completa con cuotas accesibles hasta la entrega."
+          },
+          {
+            "_uid": "is-3",
+            "component": "investStep",
+            "number": "3",
+            "title": "Escritura pública",
+            "description": "Tu participación queda respaldada legalmente mediante escritura pública y título de propiedad."
+          },
+          {
+            "_uid": "is-4",
+            "component": "investStep",
+            "number": "4",
+            "title": "Operación hotelera",
+            "description": "Una vez entregado, el edificio pasa a operar bajo Own Hotels, dentro del pool de renta."
+          },
+          {
+            "_uid": "is-5",
+            "component": "investStep",
+            "number": "5",
+            "title": "Cobro de rentas en USD",
+            "description": "Recibís tus ingresos según el modelo elegido: Renta de Espera (durante la obra) o Renta Hotelera (hotel operativo)."
+          }
+        ]
+      },
+      {
+        "_uid": "contact-1",
+        "component": "contactFormBlock",
+        "title": "Calcula tu inversión",
+        "webhook_url": "https://n8n.quantumconsult.io/webhook/barceloneta-landing-form"
+      },
+      {
+        "_uid": "footer-1",
+        "component": "footerBlock",
+        "logo": { "filename": "/la-barceloneta/images/LB BS AS FEEL FREE - ROSA.svg", "alt": "La Barceloneta" },
+        "tagline": "Invertí en real estate fraccionado con escritura pública y rentabilidad en dólares.",
+        "copyright_text": "La Barceloneta. Todos los derechos reservados.",
+        "social_facebook": "https://www.facebook.com/labarcelonetafeelfree",
+        "social_instagram": "https://www.instagram.com/labarceloneta.bsas/",
+        "social_linkedin": "https://www.linkedin.com/company/la-barceloneta-feel-free/",
+        "sections_links": [
+          { "_uid": "sl-1", "component": "menuLink", "label": "¿Cómo gano?", "anchor": "como-gano" },
+          { "_uid": "sl-2", "component": "menuLink", "label": "Elegí tu fracción", "anchor": "fracciones" },
+          { "_uid": "sl-3", "component": "menuLink", "label": "El proyecto (Buenos Aires)", "anchor": "proyecto" },
+          { "_uid": "sl-4", "component": "menuLink", "label": "Avance de obra", "anchor": "avance" },
+          { "_uid": "sl-5", "component": "menuLink", "label": "El próximo capítulo (Neuquén)", "anchor": "neuquen" }
+        ],
+        "info_links": [
+          { "_uid": "il-1", "component": "menuLink", "label": "¿Cómo invertir?", "anchor": "como-invertir" },
+          { "_uid": "il-2", "component": "menuLink", "label": "Testimonios", "anchor": "testimonios" },
+          { "_uid": "il-3", "component": "menuLink", "label": "Prensa", "anchor": "prensa" },
+          { "_uid": "il-4", "component": "menuLink", "label": "Vista 360", "anchor": "vista360" },
+          { "_uid": "il-5", "component": "menuLink", "label": "Contacto", "anchor": "contacto" }
+        ]
+      }
+    ]
+  }
+}
