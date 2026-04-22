@@ -8,7 +8,7 @@ export default function UbicacionBlock({ blok }: Props) {
   const imgSrc = resolveImage(blok.image)
 
   return (
-    <section {...storyblokEditable(blok)} className="bg-white content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center py-[40px] lg:py-[80px] relative shrink-0 w-full" data-name="Ubicación" data-gsap="fade-left">
+    <section {...storyblokEditable(blok)} className="bg-white content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center px-[16px] lg:px-[64px] xl:px-[120px] py-[40px] lg:py-[80px] relative shrink-0 w-full" data-name="Ubicación" data-gsap="fade-left">
       <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Header">
         <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] whitespace-nowrap">
           <p className="leading-[1.2] font-bold">{blok.title}</p>

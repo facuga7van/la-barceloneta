@@ -18,7 +18,7 @@ export default function GaleriaBlock({ blok }: Props) {
   return (
     <section
       {...storyblokEditable(blok)}
-      className="content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center py-[40px] lg:py-[80px] relative shrink-0 w-full"
+      className="content-stretch flex flex-col gap-[32px] lg:gap-[64px] items-start justify-center px-[16px] lg:px-[64px] xl:px-[120px] py-[40px] lg:py-[80px] relative shrink-0 w-full"
       data-name="Galería de fotos"
       data-gsap="fade-left"
     >

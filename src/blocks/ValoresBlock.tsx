@@ -20,7 +20,7 @@ export default function ValoresBlock({ blok }: Props) {
         data-name="Strategy section"
       >
         <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-        <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[32px] relative w-full">
+        <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[64px] xl:px-[120px] relative w-full">
           <div className="content-stretch flex flex-col lg:flex-row items-start justify-between gap-[16px] lg:gap-0 relative shrink-0 w-full" data-name="Header" data-gsap="fade-up">
             <div className="content-stretch flex items-end relative shrink-0 w-full lg:w-[562px]" data-name="Title">
               <div className="flex flex-[1_0_0] flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] min-h-px min-w-px not-italic relative text-[36px] lg:text-[60px] text-black tracking-[-0.6px]">

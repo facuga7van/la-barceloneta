@@ -20,7 +20,7 @@ export default function IntroBlock({ blok }: Props) {
       data-name="Intro section"
       data-gsap="fade-left"
     >
-      <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[30px] items-start pb-[40px] lg:pb-[80px] pt-[24px] lg:pt-[32px] px-[16px] lg:px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[30px] items-start pb-[40px] lg:pb-[80px] pt-[24px] lg:pt-[32px] px-[16px] lg:px-[64px] xl:px-[120px] relative w-full">
         <div className="content-stretch flex flex-[1_0_0] flex-col gap-[40px] lg:gap-[120px] items-center justify-end min-h-px min-w-px relative self-stretch" data-name="Content">
           {hasLogo ? (
             <div className="h-[160px] lg:h-[233px] overflow-clip relative shrink-0 w-full max-w-[414.424px]">

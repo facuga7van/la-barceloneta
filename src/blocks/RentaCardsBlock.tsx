@@ -15,7 +15,7 @@ export default function RentaCardsBlock({ blok }: Props) {
   }))
 
   return (
-    <div {...storyblokEditable(blok)} className="w-full">
+    <div {...storyblokEditable(blok)} className="w-full px-[16px] lg:px-[64px] xl:px-[120px]">
       <RentaCards
         cards={cards}
         getCardProps={(_card, i) => storyblokEditable(blok.cards[i])}

@@ -26,7 +26,7 @@ export function useHeroAnimations() {
 
       // Reduced motion: show everything, no animations
       if (reduceMotion) {
-        gsap.set(scope.current!.querySelectorAll("[data-hero-bg], [data-hero-logo], [data-hero-headline], [data-hero-subtitle], [data-hero-stats] > *, [data-hero-cta]"), {
+        gsap.set(scope.current!.querySelectorAll("[data-hero-bg], [data-hero-brand], [data-hero-logo], [data-hero-headline], [data-hero-subtitle], [data-hero-stats] > *, [data-hero-cta]"), {
           autoAlpha: 1,
           y: 0,
           scale: 1,
@@ -38,6 +38,7 @@ export function useHeroAnimations() {
       if (!el) return;
 
       const bg = el.querySelector("[data-hero-bg]");
+      const brand = el.querySelector("[data-hero-brand]");
       const logo = el.querySelector("[data-hero-logo]");
       const headline = el.querySelector("[data-hero-headline]");
       const subtitle = el.querySelector("[data-hero-subtitle]");
@@ -52,7 +53,13 @@ export function useHeroAnimations() {
         tl.to(bg, { scale: 1, duration: 3, ease: "power1.out" }, 0);
       }
 
-      // 2. Logo reveal
+      // 2a. Brand logo reveal (top-left)
+      if (brand) {
+        gsap.set(brand, { autoAlpha: 0, y: -20 });
+        tl.to(brand, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.2);
+      }
+
+      // 2b. Partner logos reveal
       if (logo) {
         gsap.set(logo, { autoAlpha: 0, y: -30 });
         tl.to(logo, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.3);

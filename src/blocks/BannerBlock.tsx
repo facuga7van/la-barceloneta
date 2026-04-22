@@ -14,7 +14,7 @@ export default function BannerBlock({ blok }: Props) {
     <div className="relative shrink-0 w-full" data-name="Banner" data-gsap="scale-in">
       <div aria-hidden="true" className="absolute border-[#eae9e8] border-l border-solid border-t inset-0 pointer-events-none" />
       <div className="flex flex-col justify-center size-full">
-        <div className="content-stretch flex flex-col items-start justify-center p-[16px] lg:p-[32px] relative w-full">
+        <div className="content-stretch flex flex-col items-start justify-center px-[16px] lg:px-[64px] xl:px-[120px] py-[16px] lg:py-[32px] relative w-full">
           <div className="aspect-[2320/264] relative shrink-0 w-full overflow-hidden rounded-[8px]">
             <img alt={blok.image.alt || ''} loading="lazy" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgSrc} />
             {hasOverlay && (

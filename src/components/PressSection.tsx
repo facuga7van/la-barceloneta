@@ -36,7 +36,7 @@ function StrategySection2() {
   return (
     <section className="relative shrink-0 w-full" data-name="Strategy section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[64px] xl:px-[120px] relative w-full">
         <Header16 />
       </div>
     </section>
@@ -309,7 +309,7 @@ function CustomHeader({ title, description }: { title: string; description: stri
   return (
     <section className="relative shrink-0 w-full" data-name="Strategy section">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[64px] xl:px-[120px] relative w-full">
         <div className="content-stretch flex flex-col lg:flex-row gap-[16px] lg:gap-[48px] items-start lg:items-center relative shrink-0 w-full" data-name="Header" data-gsap="fade-up">
           <div className="content-stretch flex items-end relative shrink-0 w-full lg:flex-1">
             <div className="flex flex-col font-['Helvetica:Bold',sans-serif] justify-center leading-[0] not-italic relative text-[28px] lg:text-[40px] text-black tracking-[-0.6px]">

@@ -1,6 +1,7 @@
 import React, { useRef, useCallback } from "react";
 import svgPaths from "../imports/svg-1a10080iez";
 import { useHeroAnimations } from "../hooks/useHeroAnimations";
+import imgLogoFeelFree from "figma:asset/LB BS AS FEEL FREE - ROSA.svg";
 
 function MagneticWrap({ children, strength = 0.3 }: { children: React.ReactNode; strength?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -365,9 +366,13 @@ export default function HeroSection(props: HeroSectionProps = {}) {
 
   return (
     <div ref={heroRef as React.RefObject<HTMLDivElement>} className="h-[100svh] overflow-clip relative shrink-0 w-full" data-name="Hero" id="inicio">
-      <video data-hero-bg aria-label="Logo on colored background" autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop muted playsInline poster={videoPoster} preload="metadata" key={videoSrc}>
+      <video data-hero-bg aria-label="Video de fondo del hero" autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop muted playsInline poster={videoPoster} preload="metadata" key={videoSrc}>
         <source src={videoSrc} type="video/mp4" />
       </video>
+      <div className="absolute inset-0 bg-black/40 pointer-events-none" aria-hidden="true" />
+      <div data-hero-brand className="absolute left-[16px] lg:left-[32px] top-[16px] lg:top-[32px] h-[40px] lg:h-[64px] w-[160px] lg:w-[280px] z-10">
+        <img alt="La Barceloneta Feel Free" className="absolute inset-0 max-w-none object-contain object-left pointer-events-none size-full brightness-0 invert" src={imgLogoFeelFree} />
+      </div>
       <IntroSection headline1={headline1} headline2={headline2} subtitle={subtitle} ctaText={ctaText} ctaLink={ctaLink} />
       <Logos />
     </div>

@@ -28,7 +28,7 @@ export default function HistoriaBlock({ blok }: Props) {
       data-name="Strategy section"
       data-gsap="fade-right"
     >
-      <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[32px] relative w-full">
+      <div className="content-stretch flex flex-col items-start pb-[32px] lg:pb-[60px] pt-[40px] lg:pt-[80px] px-[16px] lg:px-[64px] xl:px-[120px] relative w-full">
         <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
           <div className="content-stretch flex flex-col lg:flex-row font-['Helvetica:Regular',sans-serif] items-start gap-[16px] lg:gap-[48px] not-italic relative shrink-0 w-full max-w-[1100px] mx-auto" data-name="Title">
             <div className="flex flex-col justify-center leading-[0] relative shrink-0 text-[36px] lg:text-[60px] text-black tracking-[-0.6px]">
@@ -71,7 +71,7 @@ function StatsStrip({ heading, stats }: { heading: string; stats: StatItem[] }) 
     <div className="relative shrink-0 w-full" data-name="Strategy section" data-gsap="scale-in">
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-b border-solid border-t inset-0 pointer-events-none" />
       <div className="flex flex-col justify-center size-full">
-        <div className="content-stretch flex flex-col items-start justify-center px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
+        <div className="content-stretch flex flex-col items-start justify-center px-[16px] lg:px-[64px] xl:px-[120px] py-[40px] lg:py-[80px] relative w-full">
           <div className="content-stretch flex flex-col lg:flex-row gap-[24px] items-start lg:items-center relative shrink-0 w-full">
             <p className="font-['Helvetica:Bold',sans-serif] leading-[1.2] not-italic relative shrink-0 text-[#040404] text-[22px] tracking-[-0.22px] w-full lg:w-[220px] whitespace-pre-wrap">{heading}</p>
             <div className="h-[81px] relative shrink-0 w-0">

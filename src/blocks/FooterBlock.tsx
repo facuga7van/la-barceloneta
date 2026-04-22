@@ -18,7 +18,7 @@ export default function FooterBlock({ blok }: Props) {
   return (
     <footer {...storyblokEditable(blok)} className="bg-[#040404] relative shrink-0 w-full" data-name="Container" data-gsap="fade-up">
       <div aria-hidden="true" className="absolute border-[#575757] border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col gap-[40px] px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
+      <div className="content-stretch flex flex-col gap-[40px] px-[16px] lg:px-[64px] xl:px-[120px] py-[40px] lg:py-[80px] relative w-full">
         <div className="flex flex-col lg:flex-row gap-[40px] lg:gap-0 items-start justify-between w-full">
           <div className="flex flex-col gap-[24px]">
             <div className="h-[98.092px] relative shrink-0 w-[205.243px]">

@@ -8,7 +8,7 @@ export default function ContactFormBlock({ blok }: Props) {
   return (
     <div {...storyblokEditable(blok)} id="contacto" className="bg-white relative shrink-0 w-full" data-name="Form" data-gsap="scale-in">
       <div className="overflow-clip rounded-[inherit] w-full">
-        <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
+        <div className="content-stretch flex flex-col gap-[30px] items-start px-[16px] lg:px-[64px] xl:px-[120px] py-[40px] lg:py-[80px] relative w-full">
           <ContactHeader title={blok.title} />
           <ContactSection webhookUrl={blok.webhook_url} />
         </div>

@@ -13,7 +13,7 @@ export default function TestimonialsBlock({ blok }: Props) {
       data-name="Strategy section"
       data-gsap="scale-in"
     >
-      <div className="content-stretch flex flex-col items-start pl-[16px] pr-[16px] lg:pl-[32px] lg:pr-0 pt-[60px] lg:pt-[120px] pb-[40px] lg:pb-[80px] relative w-full overflow-hidden">
+      <div className="content-stretch flex flex-col items-start pl-[16px] pr-[16px] lg:pl-[64px] xl:pl-[120px] lg:pr-0 pt-[60px] lg:pt-[120px] pb-[40px] lg:pb-[80px] relative w-full overflow-hidden">
         <header className="content-stretch flex gap-[32px] items-start relative shrink-0 w-full">
           <div className="content-stretch flex flex-[1_0_0] items-end min-h-px min-w-px relative">
             <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[28px] lg:text-[40px] text-black tracking-[-0.6px] w-full lg:w-[454px]">

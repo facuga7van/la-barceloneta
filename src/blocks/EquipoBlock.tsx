@@ -15,7 +15,7 @@ export default function EquipoBlock({ blok }: Props) {
       data-gsap="fade-left"
     >
       <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.1)] border-l border-solid border-t inset-0 pointer-events-none" />
-      <div className="content-stretch flex flex-col items-start px-[16px] lg:px-[32px] py-[40px] lg:py-[80px] relative w-full">
+      <div className="content-stretch flex flex-col items-start px-[16px] lg:px-[64px] xl:px-[120px] py-[40px] lg:py-[80px] relative w-full">
         <div className="content-stretch flex flex-col lg:flex-row gap-[24px] lg:gap-[32px] items-start relative shrink-0 w-full">
           <div className="content-stretch flex flex-[1_0_0] flex-col gap-[32px] items-start min-h-px min-w-px pb-[32px] relative" data-name="Title">
             <div className="flex flex-col font-['Helvetica:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[22px] lg:text-[30px] text-black tracking-[-0.6px] w-full lg:w-[487px]">

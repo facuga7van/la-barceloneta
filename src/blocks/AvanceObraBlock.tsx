@@ -22,7 +22,7 @@ export default function AvanceObraBlock({ blok }: Props) {
       data-name="Avance de obra"
       data-gsap="fade-right"
     >
-      <div className="content-stretch flex flex-col lg:flex-row font-['Helvetica:Regular',sans-serif] gap-[12px] lg:gap-[32px] items-start lg:items-center leading-[0] not-italic relative shrink-0 w-full px-[16px] lg:px-[32px]">
+      <div className="content-stretch flex flex-col lg:flex-row font-['Helvetica:Regular',sans-serif] gap-[12px] lg:gap-[32px] items-start lg:items-center leading-[0] not-italic relative shrink-0 w-full px-[16px] lg:px-[64px] xl:px-[120px]">
         <div className="flex flex-[1_0_0] flex-col justify-center min-h-px min-w-px relative text-[22px] lg:text-[30px] text-black tracking-[-0.6px]">
           <p className="leading-[1.2] whitespace-pre-wrap">{blok.title}</p>
         </div>
@@ -30,7 +30,7 @@ export default function AvanceObraBlock({ blok }: Props) {
           <p className="leading-[1.2] whitespace-pre-wrap">{blok.subtitle}</p>
         </div>
       </div>
-      <div className="px-[16px] lg:px-[32px] w-full">
+      <div className="px-[16px] lg:px-[64px] xl:px-[120px] w-full">
         <ConstructionTimeline
           imageSrc={imgSrc}
           steps={steps.length > 0 ? steps : undefined}
